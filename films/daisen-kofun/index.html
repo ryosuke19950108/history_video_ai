@@ -118,7 +118,7 @@ const L = {
   mysteries(u, s, d) { // the four questions and how far each is settled; recurs through the film
     backdrop(s.bg || { img: 'daisen_z17', span: 2200, a: .2 }, u, d); const Q = FILM.mysteries; const k0 = rise(u, .1);
     kicker(s.kicker || '4つの謎', 300, 230, k0, C.gold, 'k');
-    Q.forEach((q, i) => { const y = 330 + i * 140, st = (s.status || [])[i] || 'open', on = s.focus === i, ka = rise(u, .15 + i * .12) * (s.focus == null || on ? 1 : .5);
+    Q.forEach((q, i) => { const y = 330 + i * 140, st = (s.status || [])[i] || 'open', on = s.focus === i, ka = rise(u, .15 + i * .12) * (s.focus == null || on ? 1 : .72);
       alpha(ka, () => { fill(300, y - 10, 1320, 110, on ? 'rgba(200,162,78,.10)' : 'rgba(23,20,15,.6)'); box(300, y - 10, 1320, 110, on ? C.gold : C.hairline, 1.5); });
       txt(String(i + 1).padStart(2, '0'), 340, y + 66, { s: 40, f: F.mono, c: on ? C.gold : C.dim, a: ka, id: 'qn' + i });
       txt(q, 440, y + 64, { s: 44, w: 700, f: F.serif, a: ka, id: 'q' + i });
@@ -204,7 +204,7 @@ const L = {
     x.restore();
   },
   theories(u, s, d) { backdrop(s.bg, u, d); const n = s.items.length, bw = n === 3 ? 480 : 720, gap = 40, X0 = (W - (n * bw + (n - 1) * gap)) / 2; kicker(s.kicker, X0, 230, rise(u, .05), C.gold, 'k');
-    s.items.forEach((it, i) => { const X = X0 + i * (bw + gap), hi = (s.hi || []).includes(i), dim = s.hi && !hi, kk = (s.show ? (s.show.includes(i) ? rise(u, .2 + .3 * s.show.indexOf(i)) : 1) : rise(u, .2 + i * .3)) * (dim ? .45 : 1);
+    s.items.forEach((it, i) => { const X = X0 + i * (bw + gap), hi = (s.hi || []).includes(i), dim = s.hi && !hi, kk = (s.show ? (s.show.includes(i) ? rise(u, .2 + .3 * s.show.indexOf(i)) : 1) : rise(u, .2 + i * .3)) * (dim ? .65 : 1);
       if (s.hide && s.hide.includes(i)) return; alpha(kk, () => { fill(X, 290, bw, 480, hi ? 'rgba(200,162,78,.10)' : 'rgba(23,20,15,.78)'); box(X, 290, bw, 480, hi ? C.gold : C.hairline, hi ? 2.5 : 1.5, it.dashed ? [10, 8] : null); });
       txt(it.k, X + 40, 360, { s: 22, f: F.mono, c: hi ? C.gold : C.dim, ls: 2, a: kk, id: 'k' + i }); const lines = it.name.split('\n');
       lines.forEach((ln, j) => txt(ln, X + 38, 470 + j * 74, { s: n === 3 ? 52 : 64, w: 700, f: F.serif, a: kk, id: 'n' + i + j })); if (it.sub) txt(it.sub, X + 40, 470 + lines.length * 74 + 30, { s: 26, c: C.dim, a: kk, id: 's' + i }); });
@@ -219,7 +219,7 @@ const L = {
 function endCard(u) { const k = rise(u, .3, .6);
   txt(FILM.title, 120, 330, { s: 76, w: 700, f: F.serif, a: k, id: 'e1' }); line(124, 380, lerp(124, 1000, rise(u, .5, .7)), 380, C.red, 1.5);
   txt('灯下の資料室', 124, 446, { s: 30, f: F.serif, c: C.gold, a: rise(u, .5), id: 'e3' });
-  (FILM.credits || []).forEach((c, i) => txt(c, 124, 560 + i * 40, { s: 22, c: i === FILM.credits.length - 1 ? C.dim : '#C9BFAD', a: rise(u, .8 + i * .06), id: 'cr' + i, pass: true })); }
+  (FILM.credits || []).forEach((c, i) => txt(c, 124, 560 + i * 40, { s: 22, c: i === FILM.credits.length - 1 ? C.dim : C.text, a: rise(u, .8 + i * .06), id: 'cr' + i, pass: true })); }
 function subs(t) { for (const [a, b, s] of FILM.subs) if (t >= a && t < b) txt(s, W / 2, S.frame.subtitle_baseline, { s: S.type.subtitle_px, w: 700, al: 'center', shadow: 14 }); }
 function drawScene(i, t) { x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground); if (i >= FILM.scenes.length) { endCard(t - FILM.end.t0); return; }
   const s = FILM.scenes[i]; L[s.layout](t - s.t0, s, s.t1 - s.t0); if (s.source) txt(s.source, W - 80, 1062, { s: 17, f: F.mono, c: C.dim, al: 'right' }); }
@@ -230,7 +230,10 @@ window.render = function (t) { FR = Math.floor(t * FILM.fps); const T = M.transi
   else { const k = seg(t, b - T / 2, b + T / 2), iA = sceneAt(b - 1e-3), iB = sceneAt(b + 1e-3); const keep = REC; REC = null;
     x = LAYER[0].getContext('2d'); drawScene(iA, t); x = LAYER[1].getContext('2d'); drawScene(iB, t); REC = keep; x = x0; x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground);
     const dim = 1 - .55 * Math.sin(Math.PI * k); x.globalAlpha = (1 - ss(k)) * dim; x.drawImage(LAYER[0], 0, 0); x.globalAlpha = ss(k) * dim; x.drawImage(LAYER[1], 0, 0); x.globalAlpha = 1; }
-  x = x0; x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; lamp(); subs(t); };
+  x = x0; x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; lamp();
+  const ex = +(new URLSearchParams(location.search).get('exposure') || G.exposure || 1);   // overall exposure (config grade.exposure)
+  if (ex !== 1) { const c = LAYER[0], g = c.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.filter = 'none'; g.drawImage(cv, 0, 0); x.save(); x.filter = `brightness(${ex})`; x.drawImage(c, 0, 0); x.restore(); }
+  subs(t); };
 window.TEXTS = function (t) { REC = []; window.render(t); const r = REC; REC = null; return r; };
 window.EV = [];
 boot();

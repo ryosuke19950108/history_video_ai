@@ -29,7 +29,7 @@ res = {
     'vignette': round(sorted(s['vignette'] for s in st)[n // 2], 2),
 }
 checks = [
-    ('平均輝度', res['luma_mean'] <= C['frame_luma_mean_max'], f"{res['luma_mean']} ≤ {C['frame_luma_mean_max']}"),
+    ('平均輝度', C.get('frame_luma_mean_min', 0) <= res['luma_mean'] <= C['frame_luma_mean_max'], f"{C.get('frame_luma_mean_min', 0)} ≤ {res['luma_mean']} ≤ {C['frame_luma_mean_max']}"),
     ('明るいコマ（輝度90以上）の割合', res['light_ratio'] <= C['light_frame_ratio_max'], f"{res['light_ratio']} ≤ {C['light_frame_ratio_max']}"),
     ('非常に明るいコマ（150以上）の割合', res['bright_ratio'] <= C['bright_frame_ratio_max'], f"{res['bright_ratio']} ≤ {C['bright_frame_ratio_max']}"),
     ('暖色/寒色', res['warm_over_cool'] >= C['warm_over_cool_min'], f"{res['warm_over_cool']} ≥ {C['warm_over_cool_min']}"),

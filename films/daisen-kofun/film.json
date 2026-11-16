@@ -7426,13 +7426,13 @@
   "palette": {
    "ground": "#0D0C0B",
    "panel": "#17140F",
-   "hairline": "#3A342B",
-   "text": "#EDE6D6",
-   "dim": "#9A9080",
-   "faint": "#5A5246",
-   "gold": "#C8A24E",
-   "red": "#B5452F",
-   "teal": "#4FA3A5",
+   "hairline": "#4A4236",
+   "text": "#FFF9EE",
+   "dim": "#CFC5B2",
+   "faint": "#8E8473",
+   "gold": "#E6C068",
+   "red": "#D2593E",
+   "teal": "#6FC6C8",
    "paper": "#CBBE9E",
    "paper_edge": "#5E5444",
    "ink": "#2A2118"
@@ -7440,7 +7440,7 @@
   "grade": {
    "photo": "saturate(0.72) contrast(1.12) brightness(0.62) sepia(0.18)",
    "map": "grayscale(1) invert(1) brightness(0.42) contrast(1.25) sepia(0.35)",
-   "vignette_edge_alpha": 0.95,
+   "vignette_edge_alpha": 0.85,
    "grain_alpha": 0.16,
    "lamp_alpha": 0.12,
    "lamp_rgb": [
@@ -7449,7 +7449,8 @@
     104
    ],
    "terrain": "grayscale(1) brightness(0.34) contrast(1.2) sepia(0.45)",
-   "old_photo": "grayscale(1) contrast(1.15) brightness(0.55) sepia(0.25)"
+   "old_photo": "grayscale(1) contrast(1.15) brightness(0.55) sepia(0.25)",
+   "exposure": 1.3
   },
   "type": {
    "heading": "SerifJP",
@@ -7493,7 +7494,8 @@
     10,
     70
    ],
-   "subtitle_always_on": true
+   "subtitle_always_on": true,
+   "frame_luma_mean_min": 30
   }
  },
  "mysteries": [
