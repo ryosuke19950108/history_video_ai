@@ -1,0 +1,109 @@
+{
+ "_about": "One entry per script sentence, same order (handbook 11-3 step 2: each sentence gets a layout). Written by Claude Code in the session (no paid API). Layout names are the native layouts of my-styles/lamplit-archive/STYLE.md §6. `asr` = what the speech check heard for a line whose reading was verified through VOICEVOX's kana (voice/timing.json) and an isolated re-test; a person still listens once.",
+ "title": "箸墓古墳は誰の墓か",
+ "title_en": "Whose Tomb Is Hashihaka?",
+ "scenes": [
+  {
+   "layout": "map_locator",
+   "img": "hillshade",
+   "label": "箸墓古墳",
+   "sub": "奈良県桜井市箸中 · 34.539N 135.841E",
+   "source": "出典：国土地理院（陰影起伏図）",
+   "asr": "ららぼんちの東のふもとに、全長およそ280メートルの巨大な墓があります。"
+  },
+  {
+   "layout": "measured_outline",
+   "img": "aerial18",
+   "number": "約278",
+   "unit": "m",
+   "caption": "墳丘長",
+   "kicker": "FILE 01 · 前方後円墳",
+   "source": "出典：国土地理院（空中写真）",
+   "asr": "それが橋博子墳、3世紀の中頃から 後半に築かれたと見られる前方公園墳です。"
+  },
+  {
+   "layout": "document_highlight",
+   "doc": "『日本書紀』崇神天皇十年条（書き下し）",
+   "lines": [
+    "是の墓は、",
+    "日は人作り、",
+    "夜は神作る。"
+   ],
+   "hl": [
+    1,
+    2
+   ],
+   "source": "史料：『日本書紀』巻第五（書き下しによる翻刻）"
+  },
+  {
+   "layout": "question",
+   "text": "眠っているのは、誰か。",
+   "asr": "ではこの墓に眠っているのは一体誰なのでしょうか"
+  },
+  {
+   "layout": "theories",
+   "step": 1,
+   "a_kicker": "宮内庁の治定",
+   "a_name": "倭迹迹日百襲姫命",
+   "a_sub": "大市墓（孝霊天皇皇女）",
+   "b_kicker": "もう一つの説",
+   "b_name": "卑弥呼",
+   "b_sub": "邪馬台国の女王",
+   "asr": "区内町は、ここを山とととひももそひめのみことの墓として管理しています。"
+  },
+  {
+   "layout": "theories",
+   "step": 2,
+   "asr": "一方で山大国の女王ひみ子の墓ではないかという説があります"
+  },
+  {
+   "layout": "source_meets_measure",
+   "doc": "『魏志』倭人伝（原文）",
+   "lines": [
+    "卑弥呼以死",
+    "大作冢",
+    "径百余歩"
+   ],
+   "hl": [
+    2
+   ],
+   "img": "aerial18",
+   "circle_m": 150,
+   "circle_label": "後円部 径 約150 m",
+   "note": "≒ 百余歩（長里で換算した場合）",
+   "source": "史料：『三国志』魏書 東夷伝 倭人条（翻刻）／出典：国土地理院（空中写真）",
+   "asr": "岸輪神殿は、ヒミコの墓の大きさを 軽百余歩と記しています"
+  },
+  {
+   "layout": "year_band",
+   "axis": [
+    200,
+    360
+   ],
+   "bands": [
+    {
+     "from": 240,
+     "to": 260,
+     "label": "240〜260年ごろ",
+     "who": "国立歴史民俗博物館（2009）",
+     "main": true
+    },
+    {
+     "from": 280,
+     "to": 300,
+     "label": "280〜300年",
+     "who": "橿原考古学研究所の推定",
+     "main": false
+    }
+   ],
+   "note": "諸説あり",
+   "source": "出典：国立歴史民俗博物館 発表（2009）ほか",
+   "asr": "そして2009年、畜生を生歴240年から260年頃とする研究が報告されました。"
+  },
+  {
+   "layout": "pull_out",
+   "img": "aerial16",
+   "source": "出典：国土地理院（空中写真）"
+  }
+ ]
+}

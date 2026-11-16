@@ -1,0 +1,12 @@
+{
+ "slug": "lamplit-archive",
+ "en": "Lamplit Archive",
+ "ja": "灯下の資料室",
+ "based_on": "visual-investigation",
+ "borrows": ["paper-lantern", "map-explainer"],
+ "library_version": "3a7132b",
+ "created": "2026-11-16",
+ "status": "draft (MY-STYLES §3; kept in this repository instead of ~/lemo-my-styles because cloud sessions are ephemeral)",
+ "line": "History and archaeology mysteries read under a single lamp: real maps, aerial photographs and typeset sources rise out of the dark, one finding at a time, and sink back into it.",
+ "line_ja": "一灯の下で読む歴史ミステリー。地図・空中写真・史料が闇から浮かび、一つずつ確かめられ、また闇に沈む。"
+}

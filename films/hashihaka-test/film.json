@@ -1,0 +1,295 @@
+{
+ "title": "箸墓古墳は誰の墓か",
+ "title_en": "Whose Tomb Is Hashihaka?",
+ "dur": 59.563,
+ "fps": 30,
+ "scenes": [
+  {
+   "layout": "map_locator",
+   "img": "hillshade",
+   "label": "箸墓古墳",
+   "sub": "奈良県桜井市箸中 · 34.539N 135.841E",
+   "source": "出典：国土地理院（陰影起伏図）",
+   "asr": "ららぼんちの東のふもとに、全長およそ280メートルの巨大な墓があります。",
+   "id": "s01",
+   "line": "奈良盆地の東のふもとに、全長およそ280メートルの巨大な墓があります。",
+   "t0": 0.0,
+   "t1": 6.318,
+   "voice": 0.3,
+   "vdur": 5.568
+  },
+  {
+   "layout": "measured_outline",
+   "img": "aerial18",
+   "number": "約278",
+   "unit": "m",
+   "caption": "墳丘長",
+   "kicker": "FILE 01 · 前方後円墳",
+   "source": "出典：国土地理院（空中写真）",
+   "asr": "それが橋博子墳、3世紀の中頃から 後半に築かれたと見られる前方公園墳です。",
+   "id": "s02",
+   "line": "それが箸墓古墳、3世紀の中頃から後半に築かれたとみられる前方後円墳です。",
+   "t0": 6.318,
+   "t1": 13.155,
+   "voice": 6.668,
+   "vdur": 6.037
+  },
+  {
+   "layout": "document_highlight",
+   "doc": "『日本書紀』崇神天皇十年条（書き下し）",
+   "lines": [
+    "是の墓は、",
+    "日は人作り、",
+    "夜は神作る。"
+   ],
+   "hl": [
+    1,
+    2
+   ],
+   "source": "史料：『日本書紀』巻第五（書き下しによる翻刻）",
+   "id": "s03",
+   "line": "日本書紀は、この墓を「昼は人が作り、夜は神が作った」と伝えています。",
+   "t0": 13.155,
+   "t1": 20.238,
+   "voice": 13.505,
+   "vdur": 6.283
+  },
+  {
+   "layout": "question",
+   "text": "眠っているのは、誰か。",
+   "asr": "ではこの墓に眠っているのは一体誰なのでしょうか",
+   "id": "s04",
+   "line": "では、この墓に眠っているのは、いったい誰なのでしょうか。",
+   "t0": 20.238,
+   "t1": 25.113,
+   "voice": 20.588,
+   "vdur": 4.075
+  },
+  {
+   "layout": "theories",
+   "step": 1,
+   "a_kicker": "宮内庁の治定",
+   "a_name": "倭迹迹日百襲姫命",
+   "a_sub": "大市墓（孝霊天皇皇女）",
+   "b_kicker": "もう一つの説",
+   "b_name": "卑弥呼",
+   "b_sub": "邪馬台国の女王",
+   "asr": "区内町は、ここを山とととひももそひめのみことの墓として管理しています。",
+   "id": "s05",
+   "line": "宮内庁は、ここを倭迹迹日百襲姫命の墓として管理しています。",
+   "t0": 25.113,
+   "t1": 30.734,
+   "voice": 25.463,
+   "vdur": 4.821
+  },
+  {
+   "layout": "theories",
+   "step": 2,
+   "asr": "一方で山大国の女王ひみ子の墓ではないかという説があります",
+   "id": "s06",
+   "line": "一方で、邪馬台国の女王、卑弥呼の墓ではないかという説があります。",
+   "t0": 30.734,
+   "t1": 36.526,
+   "voice": 31.084,
+   "vdur": 4.992
+  },
+  {
+   "layout": "source_meets_measure",
+   "doc": "『魏志』倭人伝（原文）",
+   "lines": [
+    "卑弥呼以死",
+    "大作冢",
+    "径百余歩"
+   ],
+   "hl": [
+    2
+   ],
+   "img": "aerial18",
+   "circle_m": 150,
+   "circle_label": "後円部 径 約150 m",
+   "note": "≒ 百余歩（長里で換算した場合）",
+   "source": "史料：『三国志』魏書 東夷伝 倭人条（翻刻）／出典：国土地理院（空中写真）",
+   "asr": "岸輪神殿は、ヒミコの墓の大きさを 軽百余歩と記しています",
+   "id": "s07",
+   "line": "魏志倭人伝は、卑弥呼の墓の大きさを「径百余歩」と記しています。",
+   "t0": 36.526,
+   "t1": 42.702,
+   "voice": 36.876,
+   "vdur": 5.376
+  },
+  {
+   "layout": "year_band",
+   "axis": [
+    200,
+    360
+   ],
+   "bands": [
+    {
+     "from": 240,
+     "to": 260,
+     "label": "240〜260年ごろ",
+     "who": "国立歴史民俗博物館（2009）",
+     "main": true
+    },
+    {
+     "from": 280,
+     "to": 300,
+     "label": "280〜300年",
+     "who": "橿原考古学研究所の推定",
+     "main": false
+    }
+   ],
+   "note": "諸説あり",
+   "source": "出典：国立歴史民俗博物館 発表（2009）ほか",
+   "asr": "そして2009年、畜生を生歴240年から260年頃とする研究が報告されました。",
+   "id": "s08",
+   "line": "そして2009年、築造を西暦240年から260年ごろとする研究が報告されました。",
+   "t0": 42.702,
+   "t1": 50.478,
+   "voice": 43.052,
+   "vdur": 6.976
+  },
+  {
+   "layout": "pull_out",
+   "img": "aerial16",
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s09",
+   "line": "答えはまだ、この森の土の下に眠っています。",
+   "t0": 50.478,
+   "t1": 54.563,
+   "voice": 50.828,
+   "vdur": 3.285
+  }
+ ],
+ "end": {
+  "t0": 54.563,
+  "t1": 59.563
+ },
+ "subs": [
+  [
+   0.3,
+   6.468,
+   "奈良盆地の東のふもとに、全長およそ280メートルの巨大な墓があります。"
+  ],
+  [
+   6.668,
+   13.305,
+   "それが箸墓古墳、3世紀の中頃から後半に築かれたとみられる前方後円墳です。"
+  ],
+  [
+   13.505,
+   20.388,
+   "日本書紀は、この墓を「昼は人が作り、夜は神が作った」と伝えています。"
+  ],
+  [
+   20.588,
+   25.263,
+   "では、この墓に眠っているのは、いったい誰なのでしょうか。"
+  ],
+  [
+   25.463,
+   30.884,
+   "宮内庁は、ここを倭迹迹日百襲姫命の墓として管理しています。"
+  ],
+  [
+   31.084,
+   36.676,
+   "一方で、邪馬台国の女王、卑弥呼の墓ではないかという説があります。"
+  ],
+  [
+   36.876,
+   42.852,
+   "魏志倭人伝は、卑弥呼の墓の大きさを「径百余歩」と記しています。"
+  ],
+  [
+   43.052,
+   50.628,
+   "そして2009年、築造を西暦240年から260年ごろとする研究が報告されました。"
+  ],
+  [
+   50.828,
+   54.563,
+   "答えはまだ、この森の土の下に眠っています。"
+  ]
+ ],
+ "style": {
+  "_about": "Single source of truth for the channel look (handbook 5-4: measured values turned into conditions). The page, the checks and the mix read this file; do not hard-code these values elsewhere. Measurements: config/style_measurements.json.",
+  "style": "lamplit-archive",
+  "frame": {
+   "w": 1920,
+   "h": 1080,
+   "fps": 30,
+   "margin": 80,
+   "content_bottom": 900,
+   "subtitle_baseline": 1000
+  },
+  "palette": {
+   "ground": "#0D0C0B",
+   "panel": "#17140F",
+   "hairline": "#3A342B",
+   "text": "#EDE6D6",
+   "dim": "#9A9080",
+   "faint": "#5A5246",
+   "gold": "#C8A24E",
+   "red": "#B5452F",
+   "teal": "#4FA3A5",
+   "paper": "#CBBE9E",
+   "paper_edge": "#5E5444",
+   "ink": "#2A2118"
+  },
+  "grade": {
+   "photo": "saturate(0.72) contrast(1.12) brightness(0.62) sepia(0.18)",
+   "map": "grayscale(1) invert(1) brightness(0.42) contrast(1.25) sepia(0.35)",
+   "vignette_edge_alpha": 0.9,
+   "grain_alpha": 0.16,
+   "lamp_alpha": 0.07,
+   "lamp_rgb": [
+    214,
+    170,
+    104
+   ]
+  },
+  "type": {
+   "heading": "SerifJP",
+   "body": "SansJP",
+   "mono": "PlexMono",
+   "subtitle_px": 38,
+   "subtitle_safe_width": 1500
+  },
+  "motion": {
+   "transition": "lamp-dim dissolve: the outgoing layout dims toward the ground while the incoming one rises from it",
+   "transition_s": 0.7,
+   "photo_push_max": 1.06,
+   "map_push_max": 1.6,
+   "lead_in_s": 0.35,
+   "tail_s": 0.45
+  },
+  "sound": {
+   "music_below_voice_db": 14,
+   "voice_speaker": "玄野武宏",
+   "voice_style": "ノーマル",
+   "speed_scale": 1.0,
+   "credit": "VOICEVOX:玄野武宏"
+  },
+  "conditions": {
+   "_from": "measurements (51 reference frames, 17 videos): luma mean 34.5, dark 82.4 %, light 2.0 %, bright 0 %, warm 55 % / cool 42 % of coloured pixels, coloured share 15 %, vignette 2.68",
+   "frame_luma_mean_max": 45,
+   "light_frame_ratio_max": 0.05,
+   "bright_frame_ratio_max": 0.0,
+   "warm_over_cool_min": 1.0,
+   "coloured_share_range": [
+    0.05,
+    0.3
+   ],
+   "vignette_range": [
+    1.8,
+    4.0
+   ],
+   "scene_chars_range": [
+    10,
+    70
+   ],
+   "subtitle_always_on": true
+  }
+ }
+}

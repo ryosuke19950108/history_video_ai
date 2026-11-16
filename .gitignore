@@ -221,3 +221,10 @@ __marimo__/
 
 # Project-local tools (ffmpeg 7 static build etc.), not committed
 .tools/
+
+# Film outputs (rebuild with films/<name>/build.sh)
+films/*/out/
+films/*/raw/
+films/*/stills/
+films/*/voice/*.wav
+films/*/*.mp4

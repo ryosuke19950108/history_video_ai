@@ -1,0 +1,64 @@
+{
+ "source": "reference channel frames (in-video auto frames at ~25/50/75 %; thumbnails excluded)",
+ "frames": 51,
+ "videos": 17,
+ "luma_mean": 34.5,
+ "luma_median": 25.5,
+ "dark_ratio": 0.824,
+ "mid_ratio": 0.157,
+ "light_ratio": 0.02,
+ "bright_ratio": 0.0,
+ "saturation_mean": 0.35,
+ "saturation_coloured_mean": 0.383,
+ "coloured_pixel_share": 0.152,
+ "cool_share_of_coloured": 0.422,
+ "warm_share_of_coloured": 0.55,
+ "vignette_centre_over_edge": 2.68,
+ "accent_hues": [
+  {
+   "hue_deg": "30-60",
+   "share": 0.442,
+   "example_rgb": [
+    80,
+    71,
+    57
+   ]
+  },
+  {
+   "hue_deg": "0-30",
+   "share": 0.251,
+   "example_rgb": [
+    63,
+    43,
+    38
+   ]
+  },
+  {
+   "hue_deg": "210-240",
+   "share": 0.127,
+   "example_rgb": [
+    25,
+    32,
+    40
+   ]
+  },
+  {
+   "hue_deg": "180-210",
+   "share": 0.124,
+   "example_rgb": [
+    28,
+    40,
+    44
+   ]
+  },
+  {
+   "hue_deg": "330-360",
+   "share": 0.017,
+   "example_rgb": [
+    52,
+    35,
+    37
+   ]
+  }
+ ]
+}

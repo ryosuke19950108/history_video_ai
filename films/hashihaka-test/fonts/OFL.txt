@@ -1,0 +1,2 @@
+Noto Serif JP, Noto Sans JP (Google, SIL Open Font License 1.1); IBM Plex Mono (IBM, SIL Open Font License 1.1).
+Subsets downloaded from Google Fonts for the characters this film uses.

@@ -1,0 +1,18 @@
+箸墓古墳は誰の墓か（テスト版）— credits
+
+Maps and aerial photographs
+  出典：国土地理院ウェブサイト（地理院タイル：陰影起伏図 hillshademap z12、シームレス空中写真 seamlessphoto z16/z18、淡色地図 pale z12 [not used on screen]）
+  https://maps.gsi.go.jp/development/ichiran.html — 国土地理院コンテンツ利用規約（出典の明示により利用可）
+Texts (typeset transcriptions)
+  『日本書紀』巻第五 崇神天皇十年条（書き下し）、『三国志』魏書 東夷伝 倭人条（原文）— public domain
+Facts
+  FACTS.md (Japanese Wikipedia「箸墓古墳」, to be replaced by primary sources before publishing)
+Voice
+  VOICEVOX:玄野武宏 — VOICEVOX engine 0.26.2 (https://voicevox.hiroshiba.jp/), commercial use allowed with this credit; check the character's own terms before publishing
+Music and sound
+  Synthesized in code (numpy) with Lemo-Opuscar core/audio/sfx.py — no samples
+Fonts
+  Noto Serif JP, Noto Sans JP (Google, SIL OFL 1.1); IBM Plex Mono (IBM, SIL OFL 1.1) — subsets
+Tools
+  Lemo-Opuscar core render, speech check and mastering (MIT) — https://github.com/lemomo-ai/lemo-opuscar
+  Drawing primitives adapted from the Visual Investigation demo (MIT)

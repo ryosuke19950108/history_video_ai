@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>箸墓古墳は誰の墓か</title>
+<style>
+@font-face{font-family:SerifJP;src:url(fonts/serif700.woff2) format('woff2');font-weight:700}
+@font-face{font-family:SerifJP;src:url(fonts/serif500.woff2) format('woff2');font-weight:500}
+@font-face{font-family:SansJP;src:url(fonts/sans700.woff2) format('woff2');font-weight:700}
+@font-face{font-family:SansJP;src:url(fonts/sans500.woff2) format('woff2');font-weight:500}
+@font-face{font-family:PlexMono;src:url(fonts/mono500.woff2) format('woff2');font-weight:500}
+html,body{margin:0;background:#0D0C0B;overflow:hidden}canvas{display:block}
+</style></head><body><canvas id="c" width="1920" height="1080"></canvas>
+<script>
+// 箸墓古墳は誰の墓か — test film in the "Lamplit Archive" style (my-styles/lamplit-archive).
+// Canvas 2D, drawn deterministically by window.render(t). Timing and every scene parameter come from film.json
+// (built by tools/build_timeline.py from script.txt, scenes.json and the VOICEVOX durations); palette, grades and
+// motion limits from film.json.style (= config/style.json). Drawing primitives follow the Visual Investigation demo
+// of Lemo-Opuscar (MIT); the layouts are this style's own.
+const W = 1920, H = 1080;
+const cv = document.getElementById('c'), x0 = cv.getContext('2d');
+let x = x0;                                   // current target (scene layers are drawn off-screen during a dissolve)
+let FILM, S, C, G, M, FR = 0, REC = null;
+const F = { serif: 'SerifJP', sans: 'SansJP', mono: 'PlexMono, SansJP' };
+
+// ── utilities ──
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const eo = k => 1 - Math.pow(1 - k, 3), ss = k => k * k * (3 - 2 * k), eio = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+function rnd(s) { return function () { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+// ── assets ──
+const IM = {}; let GRAIN = [];
+const SRC = { hillshade: { f: 'assets/hillshade.jpg', pt: [1170.3, 716.4], mpp: 31.482 },
+  aerial18: { f: 'assets/aerial18.jpg', pt: [1168.2, 792.4], mpp: 0.4919 },
+  aerial16: { f: 'assets/aerial16.jpg', pt: [1060.1, 710.1], mpp: 1.9676 } };
+// schematic keyhole outline traced from aerial18 (source pixels): rear mound circle + front part (≈, see FACTS.md)
+const MOUND = { c: [1155, 795], r: 165, a0: 167, a1: 482, front: [[1060, 945], [790, 1062], [718, 818], [1000, 830]] };
+function load(src) { return new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => { console.warn('missing', src); r(null); }; i.src = src; }); }
+async function boot() {
+  FILM = await (await fetch('film.json')).json(); window.DUR = FILM.dur;
+  S = FILM.style; C = S.palette; G = S.grade; M = S.motion;
+  const L = Object.entries(SRC).map(([k, v]) => load(v.f).then(i => IM[k] = i));
+  for (const f of ['700 40px SerifJP', '500 40px SerifJP', '700 40px SansJP', '500 40px SansJP', '500 20px PlexMono']) L.push(document.fonts.load(f));
+  await Promise.all(L);
+  for (let g = 0; g < 6; g++) { const c = document.createElement('canvas'); c.width = c.height = 256; const gx = c.getContext('2d'); const d = gx.createImageData(256, 256); const r = rnd(g * 131 + 5);
+    for (let i = 0; i < d.data.length; i += 4) { const v = 128 + (r() + r() + r() - 1.5) * 110; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } gx.putImageData(d, 0, 0); GRAIN.push(c); }
+  LAYER = [mk(), mk()];
+  window.READY = true;
+}
+let LAYER; function mk() { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; }
+
+// ── primitives ──
+function font(o) { return `${o.w || 500} ${o.s || 24}px ${o.f || F.sans}`; }
+function txt(s, X, Y, o = {}) {
+  x.save(); x.font = font(o); x.fillStyle = o.c || C.text; x.globalAlpha *= (o.a ?? 1);
+  x.textAlign = o.al || 'left'; x.textBaseline = 'alphabetic'; x.letterSpacing = (o.ls || 0) + 'px';
+  if (o.shadow) { x.shadowColor = 'rgba(0,0,0,.9)'; x.shadowBlur = o.shadow; }
+  if (x.globalAlpha > 0.001) x.fillText(s, X, Y);
+  const w = x.measureText(s).width; const vis = x.globalAlpha; x.restore();
+  if (REC && o.id && vis > 0.5) { const sz = o.s || 24, xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X;
+    REC.push({ id: o.id, text: s, x0: xa, y0: Y - sz * .9, x1: xa + w, y1: Y + sz * .25, ...(o.pass ? { pass: true } : {}) }); }
+  return w;
+}
+function tw(s, o = {}) { x.save(); x.font = font(o); x.letterSpacing = (o.ls || 0) + 'px'; const w = x.measureText(s).width; x.restore(); return w; }
+function line(a, b, c, d, col, w = 1, dash) { x.save(); x.strokeStyle = col; x.lineWidth = w; if (dash) x.setLineDash(dash); x.beginPath(); x.moveTo(a, b); x.lineTo(c, d); x.stroke(); x.restore(); }
+function fill(X, Y, w, h, c) { x.fillStyle = c; x.fillRect(X, Y, w, h); }
+function box(X, Y, w, h, col, lw = 1.5, dash) { x.save(); x.strokeStyle = col; x.lineWidth = lw; if (dash) x.setLineDash(dash); x.strokeRect(X + .5, Y + .5, w - 1, h - 1); x.restore(); }
+function grain(X, Y, w, h, a) { if (!GRAIN.length) return; x.save(); x.beginPath(); x.rect(X, Y, w, h); x.clip(); x.globalCompositeOperation = 'overlay'; x.globalAlpha *= a;
+  const g = GRAIN[FR % 6]; for (let gy = Y; gy < Y + h; gy += 256) for (let gx = X; gx < X + w; gx += 256) x.drawImage(g, gx, gy); x.restore(); }
+// a camera on one source image: screen = centre + (src - focus) * scale; returns the mapping so drawings stay on the picture
+function view(key, fx, fy, scale, o = {}) {
+  const img = IM[key]; const X = o.X ?? 0, Y = o.Y ?? 0, w = o.w ?? W, h = o.h ?? H; const cx = X + w / 2, cy = Y + h / 2;
+  const map = (px, py) => [cx + (px - fx) * scale, cy + (py - fy) * scale];
+  x.save(); x.beginPath(); x.rect(X, Y, w, h); x.clip(); fill(X, Y, w, h, C.ground);
+  if (img) { x.globalAlpha *= (o.a ?? 1); x.filter = o.map ? G.map : G.photo; const [sx, sy] = map(0, 0); x.drawImage(img, sx, sy, img.width * scale, img.height * scale); x.filter = 'none'; }
+  x.restore(); grain(X, Y, w, h, (o.a ?? 1) * G.grain_alpha * (o.map ? .5 : 1));
+  return map;
+}
+function vignette(a = G.vignette_edge_alpha) {
+  const g = x.createRadialGradient(W / 2, H * .46, H * .28, W / 2, H * .5, H * .95);
+  g.addColorStop(0, 'rgba(13,12,11,0)'); g.addColorStop(1, `rgba(13,12,11,${a})`); x.fillStyle = g; x.fillRect(0, 0, W, H);
+}
+function lamp() { // the one lamp over the desk: a faint warm light in the middle, the edges falling into the ground (config grade.*)
+  const [r, g, b] = G.lamp_rgb; const l = x.createRadialGradient(W / 2, H * .44, 0, W / 2, H * .44, H * .62);
+  l.addColorStop(0, `rgba(${r},${g},${b},${G.lamp_alpha})`); l.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  x.save(); x.globalCompositeOperation = 'screen'; x.fillStyle = l; x.fillRect(0, 0, W, H); x.restore();
+  const v = x.createRadialGradient(W / 2, H * .46, H * .22, W / 2, H * .5, H * 1.0);
+  v.addColorStop(0, 'rgba(13,12,11,0)'); v.addColorStop(1, `rgba(13,12,11,${G.vignette_edge_alpha})`); x.fillStyle = v; x.fillRect(0, 0, W, H);
+}
+function shade(X0, X1, a) { // horizontal darkening for text over pictures
+  const g = x.createLinearGradient(X0, 0, X1, 0); g.addColorStop(0, `rgba(13,12,11,${a})`); g.addColorStop(1, 'rgba(13,12,11,0)'); x.fillStyle = g; x.fillRect(Math.min(X0, X1), 0, Math.abs(X1 - X0), H);
+}
+function ring(cx, cy, r, k, col = C.red, lw = 3) { if (k <= 0) return; x.save(); x.strokeStyle = col; x.lineWidth = lw; x.beginPath(); x.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * eo(k)); x.stroke(); x.restore(); }
+// lit paper card: centre lit, edges falling off; vertical text columns right to left, highlighted columns wiped top→bottom
+function paperCard(X, Y, w, h, cols, hl, t, at, o = {}) {
+  const k = eo(seg(t, at, at + .6)); if (k <= 0) return; x.save(); x.globalAlpha *= k; x.translate(0, (1 - k) * 18);
+  const g = x.createRadialGradient(X + w / 2, Y + h * .45, 40, X + w / 2, Y + h / 2, Math.max(w, h) * .72);
+  g.addColorStop(0, C.paper); g.addColorStop(1, C.paper_edge); x.fillStyle = g; x.fillRect(X, Y, w, h);
+  grain(X, Y, w, h, .12); box(X, Y, w, h, 'rgba(0,0,0,.35)', 1);
+  const fs = o.fs || 64, gap = o.gap || fs * 1.55, n = cols.length, x0c = X + w / 2 + (n - 1) * gap / 2, ytop = Y + (o.top || 90);
+  cols.forEach((col, i) => { const cx = x0c - i * gap; const chars = [...col];
+    if (hl.includes(i)) { const kk = eo(seg(t, at + .9 + .55 * hl.indexOf(i), at + 1.5 + .55 * hl.indexOf(i)));
+      if (kk > 0) { x.save(); x.globalCompositeOperation = 'multiply'; x.globalAlpha *= .62; x.fillStyle = C.red; x.fillRect(cx - fs * .62, ytop - fs * .95, fs * 1.24, chars.length * fs * 1.12 * kk + fs * .15); x.restore(); } }
+    chars.forEach((ch, j) => { const rot = /[、。「」（）]/.test(ch); const yy = ytop + j * fs * 1.12;
+      x.save(); x.font = `700 ${fs}px ${F.serif}`; x.fillStyle = C.ink; x.textAlign = 'center';
+      if (rot) x.fillText(ch, cx + fs * .55, yy - fs * .55); else x.fillText(ch, cx, yy); x.restore(); });
+    if (REC) REC.push({ id: (o.id || 'doc') + i, text: col, x0: cx - fs / 2, y0: ytop - fs, x1: cx + fs / 2, y1: ytop + chars.length * fs * 1.12 }); });
+  x.restore();
+}
+function srcLine(s, a = 1) { if (s) txt(s, W - 80, 1062, { s: 17, f: F.mono, c: C.dim, al: 'right', a }); }
+function kicker(s, X, Y, a, col = C.red, id) { x.save(); x.globalAlpha *= a; fill(X, Y - 15, 4, 18, col); x.restore(); return txt(s, X + 16, Y, { s: 20, f: F.mono, c: col, ls: 2, a, id }); }
+
+// ── layouts (each gets local time u = t - scene start, and the scene) ──
+const L = {
+  map_locator(u, s, d) { // hillshade of the Nara basin, slow push to the site, locator ring, lower third
+    const P = SRC.hillshade.pt, sc = lerp(1.12, 1.52, ss(seg(u, 0, d)));
+    const mp = view('hillshade', P[0] - 120, P[1] - 40, sc, { map: 1 }); const [sx, sy] = mp(P[0], P[1]);
+    vignette();
+    ring(sx, sy, 34, seg(u, .8, 1.4)); ring(sx, sy, 6, seg(u, .8, .9), C.red, 6);
+    const k = seg(u, 1.1, 1.5);
+    if (k > 0) { line(sx + 26 * k, sy + 24 * k, sx + 120 * k, sy + 110 * k, C.red, 1.5);
+      kicker(s.sub, sx + 132, sy + 116, k, C.dim, 'sub'); txt(s.label, sx + 132, sy + 178, { s: 56, w: 700, f: F.serif, a: k, id: 'label' }); }
+    // 5 km scale bar
+    const km5 = 5000 / SRC.hillshade.mpp * sc; const a = seg(u, .6, 1.2);
+    line(120, 860, 120 + km5, 860, C.dim, 2); line(120, 852, 120, 868, C.dim, 2); line(120 + km5, 852, 120 + km5, 868, C.dim, 2);
+    txt('5 km', 120, 842, { s: 18, f: F.mono, c: C.dim, a });
+  },
+  measured_outline(u, s, d) { // aerial photograph, keyhole traced in teal, length in gold
+    const sc = lerp(1.22, 1.22 * M.photo_push_max, ss(seg(u, 0, d)));
+    const mp = view('aerial18', 900, 850, sc); vignette(.7); shade(0, 1000, .92);
+    // outline drawn stroke by stroke
+    const k = eio(seg(u, .8, 2.8)); if (k > 0) { x.save(); x.strokeStyle = C.teal; x.lineWidth = 3; x.setLineDash([]);
+      const pts = []; const [cx, cy] = MOUND.c; for (let a = MOUND.a0; a <= MOUND.a1; a += 3) { const r = a * Math.PI / 180; pts.push(mp(cx + MOUND.r * Math.cos(r), cy + MOUND.r * Math.sin(r))); }
+      for (const p of MOUND.front) pts.push(mp(p[0], p[1]));
+      const n = Math.max(2, Math.floor(pts.length * k)); x.beginPath(); x.moveTo(...pts[0]); for (let i = 1; i < n; i++) x.lineTo(...pts[i]); x.stroke(); x.restore(); }
+    // 100 m scale under the mound
+    const [bx, by] = mp(1000, 1110), m100 = 100 / SRC.aerial18.mpp * sc, ka = seg(u, 2.6, 3.0);
+    x.save(); x.globalAlpha = ka; line(bx, by, bx + m100, by, C.teal, 2); line(bx, by - 8, bx, by + 8, C.teal, 2); line(bx + m100, by - 8, bx + m100, by + 8, C.teal, 2); x.restore();
+    txt('100 m', bx, by - 14, { s: 18, f: F.mono, c: C.teal, a: ka });
+    txt('輪郭は空中写真からの概略', bx + m100 + 18, by + 6, { s: 16, f: F.mono, c: C.dim, a: ka });
+    const k1 = eo(seg(u, .35, .9)); kicker(s.kicker, 120, 300, k1, C.red, 'kick');
+    txt('箸墓古墳', 116, 430 - 14 * (1 - k1), { s: 112, w: 700, f: F.serif, a: k1, id: 'title' });
+    line(120, 470, lerp(120, 560, eo(seg(u, .6, 1.3))), 470, C.red, 2);
+    const k2 = eo(seg(u, 2.4, 2.9));
+    txt(s.caption, 120, 560, { s: 26, c: C.dim, a: k2, id: 'cap' });
+    const nw = txt(s.number, 116, 680 - 10 * (1 - k2), { s: 120, w: 700, f: F.serif, c: C.gold, a: k2, id: 'num' });
+    txt(s.unit, 128 + nw, 680, { s: 48, f: F.mono, c: C.gold, a: k2 });
+  },
+  document_highlight(u, s, d) {
+    view('aerial18', 1150, 800, 1.0, { a: .16 }); vignette(.9);
+    const k = eo(seg(u, .2, .7)); kicker(s.doc, 640, 168, k, C.gold, 'doc');
+    paperCard(640, 200, 640, 640, s.lines, s.hl, u, .2, { fs: 70, id: 'doc' });
+  },
+  question(u, s, d) {
+    view('aerial18', 1155, 795, 1.6, { a: .07 }); vignette(.95);
+    const k = eo(seg(u, .5, 1.3));
+    txt(s.text, 200, 560 - 16 * (1 - k), { s: 100, w: 700, f: F.serif, a: k, id: 'q' });
+    line(204, 610, lerp(204, 520, eo(seg(u, 1.0, 1.8))), 610, C.red, 2);
+  },
+  theories(u, s, d, all) { // two theories side by side; the official designation solid, the alternative dashed
+    const base = s.step === 1 ? s : all.find(q => q.layout === 'theories' && q.step === 1);
+    view('aerial18', 1155, 795, 1.05, { a: .12 }); vignette(.92);
+    const col = (X, kick, name, sub, k, dashed, dim, id) => { if (k <= 0) return; x.save(); x.globalAlpha *= k * (dim ? .55 : 1);
+      fill(X, 280, 720, 460, 'rgba(23,20,15,.78)'); box(X, 280, 720, 460, dashed ? C.teal : C.hairline, 1.5, dashed ? [10, 8] : null); x.restore();
+      const a = k * (dim ? .55 : 1);
+      kicker(kick, X + 50, 360, a, dashed ? C.teal : C.gold, id + 'k');
+      const fs = tw(name, { s: 76, w: 700, f: F.serif }) > 620 ? 64 : 76;
+      txt(name, X + 46, 500, { s: fs, w: 700, f: F.serif, a, id: id + 'n' }); txt(sub, X + 50, 580, { s: 30, c: C.dim, a, id: id + 's' }); };
+    if (s.step === 1) col(200, base.a_kicker, base.a_name, base.a_sub, eo(seg(u, .4, 1.0)), false, false, 'a');
+    else { col(200, base.a_kicker, base.a_name, base.a_sub, 1, false, true, 'a'); col(1000, base.b_kicker, base.b_name, base.b_sub, eo(seg(u, .5, 1.1)), true, false, 'b');
+      const kv = seg(u, 1.0, 1.4); txt('？', 960, 530, { s: 60, f: F.serif, c: C.red, al: 'center', a: kv }); }
+  },
+  source_meets_measure(u, s, d) { // the quoted size beside a circle of that size on the photograph
+    const k = eo(seg(u, .2, .7)); kicker(s.doc, 140, 168, k, C.gold, 'doc');
+    paperCard(140, 200, 560, 640, s.lines, s.hl, u, .2, { fs: 66, id: 'gishi' });
+    const PX = 820, PY = 200, PW = 980, PH = 640, sc = lerp(1.3, 1.36, ss(seg(u, 0, d)));
+    const mp = view('aerial18', 1110, 820, sc, { X: PX, Y: PY, w: PW, h: PH }); box(PX, PY, PW, PH, C.hairline, 1);
+    const [cx, cy] = mp(MOUND.c[0], MOUND.c[1]), r = (s.circle_m / 2) / SRC.aerial18.mpp * sc;
+    const kc = seg(u, .7, 1.4); x.save(); x.beginPath(); x.rect(PX, PY, PW, PH); x.clip(); ring(cx, cy, r, kc, C.teal, 3);
+    if (kc >= 1) { line(cx - r, cy, cx + r, cy, C.teal, 1.5, [6, 6]); } x.restore();
+    const kl = eo(seg(u, 1.15, 1.45));
+    if (kl > 0) { x.save(); x.globalAlpha = kl; const g = x.createLinearGradient(0, PY + PH - 150, 0, PY + PH); g.addColorStop(0, 'rgba(13,12,11,0)'); g.addColorStop(1, 'rgba(13,12,11,.88)'); x.fillStyle = g; x.fillRect(PX, PY + PH - 150, PW, 150); x.restore(); }
+    txt(s.circle_label, PX + 40, PY + PH - 70, { s: 34, w: 700, c: C.teal, a: kl, id: 'cl' });
+    txt(s.note, PX + 40, PY + PH - 28, { s: 22, c: C.text, a: kl, id: 'note' });
+  },
+  year_band(u, s, d) {
+    view('aerial18', 1155, 795, 1.3, { a: .08 }); vignette(.95);
+    const [y0, y1] = s.axis, AX = 200, AW = 1520, AY = 640, X = y => AX + (y - y0) / (y1 - y0) * AW;
+    const ka = eo(seg(u, 0, .6)); x.save(); x.globalAlpha = ka; line(AX, AY, AX + AW * ka, AY, C.dim, 1.5);
+    for (let y = y0; y <= y1; y += 20) { line(X(y), AY - 8, X(y), AY + 8, C.faint, 1.5); } x.restore();
+    for (let y = y0; y <= y1; y += 20) txt(String(y), X(y), AY + 40, { s: 20, f: F.mono, c: C.dim, al: 'center', a: ka });
+    txt('西暦（年）', AX + AW, AY + 76, { s: 18, f: F.mono, c: C.faint, al: 'right', a: ka });
+    s.bands.forEach((b, i) => { const k = eo(seg(u, .5 + i * 1.6, 1.0 + i * 1.6)); if (k <= 0) return; const bx = X(b.from), bw = X(b.to) - bx;
+      if (b.main) { x.save(); x.globalAlpha = k * .9; fill(bx, AY - 26, bw, 52, C.red); x.restore();
+        txt(b.label, bx - 6, AY - 150, { s: 64, w: 700, f: F.serif, c: C.gold, a: k, id: 'b' + i }); txt(b.who, bx, AY - 98, { s: 22, f: F.mono, c: C.text, a: k, id: 'w' + i }); line(bx + bw / 2, AY - 86, bx + bw / 2, AY - 30, C.gold, 1.5); }
+      else { x.save(); x.globalAlpha = k; box(bx, AY - 22, bw, 44, C.teal, 2, [8, 6]); x.restore();
+        txt(b.label, bx, AY + 130, { s: 30, w: 700, c: C.teal, a: k, id: 'b' + i }); txt(b.who, bx, AY + 166, { s: 20, f: F.mono, c: C.dim, a: k, id: 'w' + i }); line(bx + bw / 2, AY + 26, bx + bw / 2, AY + 100, C.teal, 1.5, [4, 4]); } });
+    const kn = eo(seg(u, 4.6, 5.0)); if (kn > 0) { x.save(); x.globalAlpha = kn; box(1520, 200, 200, 70, C.red, 2, [8, 6]); x.restore(); txt(s.note, 1620, 248, { s: 32, w: 700, f: F.serif, c: C.red, al: 'center', a: kn, id: 'note' }); }
+    kicker('2009 · 放射性炭素年代測定の報告', 200, 220, eo(seg(u, 0, .5)), C.gold, 'k');
+  },
+  pull_out(u, s, d) { // slow pull back from the mound into the basin, the lamp dimming
+    const P = SRC.aerial16.pt, sc = lerp(1.9, 1.0, eio(seg(u, 0, d + .6)));
+    const mp = view('aerial16', P[0] - 40, P[1], sc); vignette(.8);
+    const [sx, sy] = mp(P[0] - 30, P[1] + 10); ring(sx, sy, 60 * sc, 1 - seg(u, 1.0, 2.0), C.red, 2);
+  },
+};
+
+function endCard(u) {
+  const k = eo(seg(u, .3, .9)), k2 = eo(seg(u, .5, .9));
+  txt(FILM.title, 120, 360, { s: 84, w: 700, f: F.serif, a: k, id: 'e1' });
+  txt(FILM.title_en.toUpperCase(), 124, 414, { s: 22, f: F.mono, c: C.dim, ls: 2, a: k, id: 'e2' });
+  line(124, 456, lerp(124, 1000, eo(seg(u, .5, 1.2))), 456, C.red, 1.5);
+  txt('灯下の資料室（テスト版）', 124, 520, { s: 30, w: 500, f: F.serif, c: C.gold, a: k2, id: 'e3' });
+  const cr = ['地図・空中写真　出典：国土地理院（地理院タイル：陰影起伏図・シームレス空中写真）',
+    '史料　『日本書紀』巻第五、『三国志』魏書東夷伝倭人条（書き下し・翻刻）',
+    '年代　国立歴史民俗博物館の発表（2009）、橿原考古学研究所の推定 ほか',
+    '音声　VOICEVOX:玄野武宏',
+    '墳丘の輪郭と円は空中写真からの概略図です。築造年代・被葬者には諸説あります。'];
+  cr.forEach((c, i) => txt(c, 124, 690 + i * 40, { s: 22, c: i === 4 ? C.dim : '#C9BFAD', a: eo(seg(u, 1.0 + i * .08, 1.4 + i * .08)), id: 'cr' + i, pass: true }));
+}
+
+function subs(t) { for (const [a, b, s] of FILM.subs) if (t >= a && t < b) txt(s, W / 2, S.frame.subtitle_baseline, { s: S.type.subtitle_px, w: 700, al: 'center', shadow: 14 }); }
+
+function drawScene(i, t) { // one scene (or the end card) into the current target
+  x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground);
+  if (i >= FILM.scenes.length) { endCard(t - FILM.end.t0); return; }
+  const s = FILM.scenes[i]; L[s.layout](t - s.t0, s, s.t1 - s.t0, FILM.scenes);
+  // the source line belongs to the layout, so it fades with it
+  srcLine(s.source || (s.layout === 'theories' ? '' : ''));
+}
+function sceneAt(t) { let i = FILM.scenes.findIndex(s => t >= s.t0 && t < s.t1); return i < 0 ? FILM.scenes.length : i; }
+
+window.render = function (t) {
+  FR = Math.floor(t * FILM.fps);
+  const bounds = FILM.scenes.map(s => s.t1), T = M.transition_s;
+  const b = bounds.find(bt => Math.abs(t - bt) < T / 2);
+  if (b === undefined) { x = x0; drawScene(sceneAt(t), t); }
+  else { // lamp-dim dissolve: A dims toward the ground, B rises out of it
+    const k = seg(t, b - T / 2, b + T / 2), iA = sceneAt(b - 1e-3), iB = sceneAt(b + 1e-3);
+    const keep = REC; REC = null; x = LAYER[0].getContext('2d'); drawScene(iA, t); x = LAYER[1].getContext('2d'); drawScene(iB, t); REC = keep; x = x0;
+    x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground);
+    const dim = 1 - .55 * Math.sin(Math.PI * k);
+    x.globalAlpha = (1 - ss(k)) * dim; x.drawImage(LAYER[0], 0, 0); x.globalAlpha = ss(k) * dim; x.drawImage(LAYER[1], 0, 0); x.globalAlpha = 1;
+  }
+  x = x0; x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; lamp();
+  subs(t);
+};
+window.TEXTS = function (t) { REC = []; window.render(t); const r = REC; REC = null; return r; };
+window.SUBCHECK = function () { return FILM.subs.map(([a, b, s], i) => { const w = Math.round(tw(s, { s: S.type.subtitle_px, w: 700 })); return { i, s, w, ok: w <= S.type.subtitle_safe_width }; }); };
+window.EV = [];
+boot();
+</script></body></html>
