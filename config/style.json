@@ -33,7 +33,9 @@
    214,
    170,
    104
-  ]
+  ],
+  "terrain": "grayscale(1) brightness(0.34) contrast(1.2) sepia(0.45)",
+  "old_photo": "grayscale(1) contrast(1.15) brightness(0.55) sepia(0.25)"
  },
  "type": {
   "heading": "SerifJP",
@@ -48,7 +50,8 @@
   "photo_push_max": 1.06,
   "map_push_max": 1.6,
   "lead_in_s": 0.35,
-  "tail_s": 0.45
+  "tail_s": 0.45,
+  "gap_in_paragraph_s": 0.4
  },
  "sound": {
   "music_below_voice_db": 14,

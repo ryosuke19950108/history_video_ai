@@ -16,6 +16,8 @@ SC = json.load(open(os.path.join(film, 'scenes.json'), encoding='utf-8'))
 LN = json.load(open(os.path.join(film, 'lines.json'), encoding='utf-8'))
 DU = json.load(open(os.path.join(film, 'voice/dur.json')))
 lead, tail = ST['motion']['lead_in_s'], ST['motion']['tail_s']
+# inside a paragraph the pause between sentences is shorter (motion.gap_in_paragraph_s split as lead/tail)
+gin = ST['motion'].get('gap_in_paragraph_s')
 px, safe = ST['type']['subtitle_px'], ST['type']['subtitle_safe_width']
 assert len(SC['scenes']) == len(LN), f'{len(SC["scenes"])} scenes for {len(LN)} sentences'
 
@@ -31,14 +33,20 @@ def split(text):
     cands = [i + 1 for i, c in enumerate(text[:-1]) if c in '、，']
     if not cands:
         cands = [len(text) // 2]
-    mid = min(cands, key=lambda i: abs(width(text[:i]) - width(text) / 2))
+    ok = [i for i in cands if min(width(text[:i]), width(text[i:])) >= .3 * width(text)]   # no tiny fragments
+    if not ok:   # no comma near the middle: break after a particle in the middle third instead
+        ok = [i for i in range(1, len(text) - 1) if text[i - 1] in 'はがをにでともへや' and text[i] not in '、。」）'
+              and .33 * width(text) <= width(text[:i]) <= .67 * width(text)]
+    mid = min(ok or cands, key=lambda i: abs(width(text[:i]) - width(text) / 2))
     return split(text[:mid]) + split(text[mid:])
 
 
 t, scenes, cues = 0.0, [], []
 for i, (sc, ln) in enumerate(zip(SC['scenes'], LN)):
     d = DU[ln['id']]
-    t0 = t; v = t0 + (0.3 if i == 0 else lead); t1 = v + d + tail
+    prev_same = i > 0 and gin is not None and LN[i - 1].get('para') == ln.get('para') is not None
+    next_same = i + 1 < len(LN) and gin is not None and LN[i + 1].get('para') == ln.get('para') is not None
+    t0 = t; v = t0 + (0.3 if i == 0 else (gin / 2 if prev_same else lead)); t1 = v + d + (gin / 2 if next_same else tail)
     scenes.append({**sc, 'id': ln['id'], 'line': ln['text'], 't0': round(t0, 3), 't1': round(t1, 3), 'voice': round(v, 3), 'vdur': d})
     parts = split(ln['text']); tot = sum(len(p) for p in parts); a = v
     for j, p in enumerate(parts):
@@ -55,7 +63,8 @@ for k, c in enumerate(cues):
         print(f'! cue {k} holds only {c["t1"]-c["t0"]:.2f} s: {c["text"]}')
 end = {'t0': round(t, 3), 't1': round(t + END, 3)}
 out = {'title': SC.get('title', ''), 'title_en': SC.get('title_en', ''), 'dur': end['t1'], 'fps': ST['frame']['fps'],
-       'scenes': scenes, 'end': end, 'subs': [[c['t0'], c['t1'], c['text']] for c in cues], 'style': ST}
+       'scenes': scenes, 'end': end, 'subs': [[c['t0'], c['t1'], c['text']] for c in cues], 'style': ST,
+       **{k: v for k, v in SC.items() if k not in ('scenes', '_about', 'title', 'title_en')}}   # film-wide extras (e.g. mysteries, credits)
 json.dump(out, open(os.path.join(film, 'film.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 json.dump([{'t0': c['t0'], 't1': c['t1'], 'text': c['text']} for c in cues], open(os.path.join(film, 'cues.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print(f'{len(scenes)} scenes, {len(cues)} cues, {out["dur"]:.2f} s → {film}/film.json')

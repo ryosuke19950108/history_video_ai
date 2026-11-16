@@ -4,7 +4,7 @@
 Characters are collected from index.html, film.json and scenes.json, plus digits, Latin and common punctuation."""
 import json, os, re, sys, urllib.parse, urllib.request
 film = sys.argv[1]
-text = ''.join(open(os.path.join(film, f), encoding='utf-8').read() for f in ('index.html', 'film.json', 'scenes.json') if os.path.exists(os.path.join(film, f)))
+text = ''.join(open(os.path.join(film, f), encoding='utf-8').read() for f in ('index.html', 'film.json', 'scenes.json', 'lines.json') if os.path.exists(os.path.join(film, f)))
 chars = set(text) | set('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz .,:;·–—-()（）「」『』、。・〜≒≈？！%/ ')
 chars = ''.join(sorted(c for c in chars if c.isprintable()))
 UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'

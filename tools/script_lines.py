@@ -3,7 +3,7 @@
 
   python tools/script_lines.py script.txt lines.json [--scenes scenes.json]
 
-Splits on line breaks and on 。！？ (a closing 」 stays with its sentence); headings, numbering and speaker labels are not expected.
+Splits on line breaks and on 。！？; a blank line starts a new paragraph (`para`, used for the pause length) (a closing 」 stays with its sentence); headings, numbering and speaker labels are not expected.
 Warns when a sentence falls outside conditions.scene_chars_range in config/style.json. `say` (what VOICEVOX reads) and `asr`
 (what the speech check should expect) come from scenes.json when given (same order)."""
 import json, os, re, sys
@@ -11,14 +11,18 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 lo, hi = json.load(open(os.path.join(ROOT, 'config/style.json')))['conditions']['scene_chars_range']
 src, dst = sys.argv[1], sys.argv[2]
 scenes = json.load(open(sys.argv[sys.argv.index('--scenes') + 1], encoding='utf-8'))['scenes'] if '--scenes' in sys.argv else []
-sents = []
+sents, paras, para, blank = [], [], 0, False
 for line in open(src, encoding='utf-8'):
     line = line.strip()
-    if line:
-        sents += [s for s in re.findall(r'[^。！？]+[。！？]?」?', line) if s.strip()]
+    if not line:
+        blank = True; continue
+    if blank and sents: para += 1
+    blank = False
+    for s in re.findall(r'[^。！？]+[。！？]?」?', line):
+        if s.strip(): sents.append(s); paras.append(para)
 lines = []
 for i, s in enumerate(sents):
-    ln = {'id': f's{i+1:02d}', 'text': s}
+    ln = {'id': f's{i+1:02d}', 'text': s, 'para': paras[i]}
     for k in ('say', 'asr', 'speed'):
         if i < len(scenes) and scenes[i].get(k):
             ln[k] = scenes[i][k]

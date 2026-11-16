@@ -35,15 +35,19 @@ def speaker_id(host, name, style):
 
 
 def register_dict(host, path):
+    """Add or update every word (priority 9 by default, so it beats the engine's own segmentation)."""
     words = json.load(open(path, encoding='utf-8'))
-    have = {v['surface'] for v in (call(host, 'GET', '/user_dict') or {}).values()}
+    have = {v['surface']: (u, v) for u, v in (call(host, 'GET', '/user_dict') or {}).items()}
     for w in words:
-        # the engine stores surfaces in full-width form
+        q = {'surface': w['surface'], 'pronunciation': w['pronunciation'], 'accent_type': w.get('accent_type', 0),
+             'word_type': w.get('word_type', 'PROPER_NOUN'), 'priority': w.get('priority', 9)}
         if w['surface'] in have:
-            continue
-        call(host, 'POST', '/user_dict_word', {'surface': w['surface'], 'pronunciation': w['pronunciation'],
-                                               'accent_type': w.get('accent_type', 0), 'word_type': w.get('word_type', 'PROPER_NOUN')})
-        print(f'+ dict {w["surface"]} → {w["pronunciation"]}')
+            u, v = have[w['surface']]
+            if v.get('pronunciation') == w['pronunciation'] and v.get('priority') == q['priority']:
+                continue
+            call(host, 'PUT', f'/user_dict_word/{u}', q); print(f'~ dict {w["surface"]} → {w["pronunciation"]}')
+        else:
+            call(host, 'POST', '/user_dict_word', q); print(f'+ dict {w["surface"]} → {w["pronunciation"]}')
 
 
 def main():
@@ -54,6 +58,7 @@ def main():
     ap.add_argument('--host', default=os.environ.get('VOICEVOX_HOST', 'http://127.0.0.1:50021'))
     ap.add_argument('--dict'); ap.add_argument('--speed', type=float, default=1.0)
     ap.add_argument('--pre', type=float, default=0.05); ap.add_argument('--post', type=float, default=0.15)
+    ap.add_argument('--only', help='comma-separated line ids to (re)synthesize; dur.json and timing.json are updated in place')
     a = ap.parse_args()
     try:
         ver = call(a.host, 'GET', '/version')
@@ -65,6 +70,10 @@ def main():
     os.makedirs(a.out, exist_ok=True)
     lines = json.load(open(a.lines, encoding='utf-8'))
     durs, timing = {}, {}
+    if a.only:
+        keep = set(a.only.split(','))
+        durs = json.load(open(os.path.join(a.out, 'dur.json'))); timing = json.load(open(os.path.join(a.out, 'timing.json')))
+        lines = [l for l in lines if l['id'] in keep]
     for ln in lines:
         q = call(a.host, 'POST', '/audio_query', {'text': ln.get('say') or ln['text'], 'speaker': sid})
         q['speedScale'] = ln.get('speed', a.speed)
@@ -87,7 +96,7 @@ def main():
         print(f'✓ {ln["id"]}  {durs[ln["id"]]:.2f} s  {ln["text"][:30]}')
     json.dump(durs, open(os.path.join(a.out, 'dur.json'), 'w'), ensure_ascii=False, indent=1)
     json.dump(timing, open(os.path.join(a.out, 'timing.json'), 'w'), ensure_ascii=False)
-    print(f'VOICEVOX {ver} · {a.speaker}（{a.style}）· {len(lines)} lines · {sum(durs.values()):.1f} s')
+    print(f'VOICEVOX {ver} · {a.speaker}（{a.style}）· {len(lines)} lines synthesized · total {sum(durs.values()):.1f} s')
 
 
 if __name__ == '__main__':

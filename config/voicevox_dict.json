@@ -1,11 +1,132 @@
 [
- {"surface": "箸墓古墳", "pronunciation": "ハシハカコフン", "accent_type": 4},
- {"surface": "箸墓", "pronunciation": "ハシハカ", "accent_type": 0},
- {"surface": "倭迹迹日百襲姫命", "pronunciation": "ヤマトトトヒモモソヒメノミコト", "accent_type": 0},
- {"surface": "魏志倭人伝", "pronunciation": "ギシワジンデン", "accent_type": 3},
- {"surface": "卑弥呼", "pronunciation": "ヒミコ", "accent_type": 1},
- {"surface": "邪馬台国", "pronunciation": "ヤマタイコク", "accent_type": 3},
- {"surface": "前方後円墳", "pronunciation": "ゼンポウコウエンフン", "accent_type": 5},
- {"surface": "日本書紀", "pronunciation": "ニホンショキ", "accent_type": 4},
- {"surface": "径百余歩", "pronunciation": "ケイヒャクヨホ", "accent_type": 0}
+ {
+  "surface": "箸墓古墳",
+  "pronunciation": "ハシハカコフン",
+  "accent_type": 4
+ },
+ {
+  "surface": "箸墓",
+  "pronunciation": "ハシハカ",
+  "accent_type": 0
+ },
+ {
+  "surface": "倭迹迹日百襲姫命",
+  "pronunciation": "ヤマトトトヒモモソヒメノミコト",
+  "accent_type": 0
+ },
+ {
+  "surface": "魏志倭人伝",
+  "pronunciation": "ギシワジンデン",
+  "accent_type": 3
+ },
+ {
+  "surface": "卑弥呼",
+  "pronunciation": "ヒミコ",
+  "accent_type": 1
+ },
+ {
+  "surface": "邪馬台国",
+  "pronunciation": "ヤマタイコク",
+  "accent_type": 3
+ },
+ {
+  "surface": "前方後円墳",
+  "pronunciation": "ゼンポウコウエンフン",
+  "accent_type": 5
+ },
+ {
+  "surface": "日本書紀",
+  "pronunciation": "ニホンショキ",
+  "accent_type": 4
+ },
+ {
+  "surface": "径百余歩",
+  "pronunciation": "ケイヒャクヨホ",
+  "accent_type": 0
+ },
+ {
+  "surface": "日本",
+  "pronunciation": "ニホン",
+  "accent_type": 2
+ },
+ {
+  "surface": "日本最大",
+  "pronunciation": "ニホンサイダイ",
+  "accent_type": 4
+ },
+ {
+  "surface": "大山古墳",
+  "pronunciation": "ダイセンコフン",
+  "accent_type": 5
+ },
+ {
+  "surface": "大仙古墳",
+  "pronunciation": "ダイセンコフン",
+  "accent_type": 5
+ },
+ {
+  "surface": "誉田御廟山古墳",
+  "pronunciation": "コンダゴビョウヤマコフン",
+  "accent_type": 7
+ },
+ {
+  "surface": "秦の始皇帝陵",
+  "pronunciation": "シンノシコウテイリョウ",
+  "accent_type": 6
+ },
+ {
+  "surface": "始皇帝陵",
+  "pronunciation": "シコウテイリョウ",
+  "accent_type": 4
+ },
+ {
+  "surface": "建造物",
+  "pronunciation": "ケンゾウブツ",
+  "accent_type": 3
+ },
+ {
+  "surface": "村々",
+  "pronunciation": "ムラムラ",
+  "accent_type": 1
+ },
+ {
+  "surface": "纒向",
+  "pronunciation": "マキムク",
+  "accent_type": 0
+ },
+ {
+  "surface": "土師氏",
+  "pronunciation": "ハジシ",
+  "accent_type": 1
+ },
+ {
+  "surface": "土師ノ里",
+  "pronunciation": "ハジノサト",
+  "accent_type": 3
+ },
+ {
+  "surface": "葺石",
+  "pronunciation": "フキイシ",
+  "accent_type": 2
+ },
+ {
+  "surface": "修羅",
+  "pronunciation": "シュラ",
+  "accent_type": 1
+ },
+ {
+  "surface": "百舌鳥古市古墳群",
+  "pronunciation": "モズフルイチコフングン",
+  "accent_type": 6
+ },
+ {
+  "surface": "稲荷山古墳",
+  "pronunciation": "イナリヤマコフン",
+  "accent_type": 5
+ },
+ {
+  "surface": "大坂山",
+  "pronunciation": "オオサカヤマ",
+  "accent_type": 4
+ }
 ]
