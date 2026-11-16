@@ -52,10 +52,10 @@
  },
  "sound": {
   "music_below_voice_db": 14,
-  "voice_speaker": "玄野武宏",
+  "voice_speaker": "青山龍星",
   "voice_style": "ノーマル",
   "speed_scale": 1.0,
-  "credit": "VOICEVOX:玄野武宏"
+  "credit": "VOICEVOX:青山龍星"
  },
  "conditions": {
   "_from": "measurements (51 reference frames, 17 videos): luma mean 34.5, dark 82.4 %, light 2.0 %, bright 0 %, warm 55 % / cool 42 % of coloured pixels, coloured share 15 %, vignette 2.68",

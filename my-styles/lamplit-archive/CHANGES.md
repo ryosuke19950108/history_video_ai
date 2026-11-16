@@ -14,5 +14,5 @@ The user chose "decide with recommendations" (MY-STYLES §2: "you decide"); each
 | §6 Transitions | hard cuts on a 0.5 s grid, no dissolves | lamp-dim dissolve (0.7 s) | user decision: fades, confirmed in the reference channel |
 | §7 Sound | pizzicato, clockwork tick | warm drone, bell per finding, paper | no clock; calm long-form listening |
 | §8 Native moves | freeze/circle, sync grid, evidence map | locator ring, measured outline, highlighted source line, source meets measurement, year band | — (new) |
-| Voice | Kokoro `am_michael` | VOICEVOX 玄野武宏 | user decision; differs from the reference channel's voice |
+| Voice | Kokoro `am_michael` | VOICEVOX 青山龍星 (`config/style.json` sound.*) | user decision (the same voice as the reference channel; everything else about the channel is our own) |
 | Length | 60 s | about 20 min (tests 30–60 s) | channel format |

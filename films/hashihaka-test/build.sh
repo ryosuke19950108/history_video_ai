@@ -18,7 +18,7 @@ cd "$HERE"
 (cd "$LIB" && "$PY" core/tts/asr_check.py "$HERE/lines.json" "$HERE/voice" --lang ja --model medium)
 # 3. timeline (scene length = voice length), fonts, mix
 "$PY" "$REPO/tools/build_timeline.py" "$HERE"
-[ -f fonts/serif700.woff2 ] || "$PY" "$REPO/tools/fonts_subset.py" "$HERE"
+"$PY" "$REPO/tools/fonts_subset.py" "$HERE"
 "$PY" mix.py
 # 4. checks before the long render: reading time, measured style conditions
 cd "$LIB"

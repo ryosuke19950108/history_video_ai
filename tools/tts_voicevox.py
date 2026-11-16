@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """VOICEVOX narration with the same inputs and outputs as Lemo-Opuscar's core/tts/tts.py (core/ is not modified).
 
-  python tools/tts_voicevox.py lines.json out_dir [--speaker 玄野武宏] [--style ノーマル] [--host http://127.0.0.1:50021]
+  python tools/tts_voicevox.py lines.json out_dir [--speaker NAME] [--style STYLE] [--host http://127.0.0.1:50021]
                                [--dict config/voicevox_dict.json] [--speed 1.0] [--pre 0.05] [--post 0.15]
 
+Speaker and style default to sound.voice_speaker / sound.voice_style in config/style.json.
 lines.json = [{"id", "text", "say"?, "speed"?, "pitch"?, "intonation"?}]
   text  what the subtitles show (digits allowed)
   say   what is read, when it differs from text (kana for names VOICEVOX misreads)
@@ -48,7 +49,8 @@ def register_dict(host, path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('lines'); ap.add_argument('out')
-    ap.add_argument('--speaker', default='玄野武宏'); ap.add_argument('--style', default='ノーマル')
+    snd = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config/style.json')))['sound']
+    ap.add_argument('--speaker', default=snd['voice_speaker']); ap.add_argument('--style', default=snd['voice_style'])
     ap.add_argument('--host', default=os.environ.get('VOICEVOX_HOST', 'http://127.0.0.1:50021'))
     ap.add_argument('--dict'); ap.add_argument('--speed', type=float, default=1.0)
     ap.add_argument('--pre', type=float, default=0.05); ap.add_argument('--post', type=float, default=0.15)

@@ -19,7 +19,7 @@ for line in open(src, encoding='utf-8'):
 lines = []
 for i, s in enumerate(sents):
     ln = {'id': f's{i+1:02d}', 'text': s}
-    for k in ('say', 'asr'):
+    for k in ('say', 'asr', 'speed'):
         if i < len(scenes) and scenes[i].get(k):
             ln[k] = scenes[i][k]
     n = len(s)

@@ -8,7 +8,7 @@ Texts (typeset transcriptions)
 Facts
   FACTS.md (Japanese Wikipedia「箸墓古墳」, to be replaced by primary sources before publishing)
 Voice
-  VOICEVOX:玄野武宏 — VOICEVOX engine 0.26.2 (https://voicevox.hiroshiba.jp/), commercial use allowed with this credit; check the character's own terms before publishing
+  VOICEVOX:青山龍星 — VOICEVOX engine 0.26.2 (https://voicevox.hiroshiba.jp/), commercial use allowed with this credit; check the character's own terms before publishing
 Music and sound
   Synthesized in code (numpy) with Lemo-Opuscar core/audio/sfx.py — no samples
 Fonts

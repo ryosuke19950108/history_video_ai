@@ -1,5 +1,5 @@
 {
- "_about": "One entry per script sentence, same order (handbook 11-3 step 2: each sentence gets a layout). Written by Claude Code in the session (no paid API). Layout names are the native layouts of my-styles/lamplit-archive/STYLE.md §6. `asr` = what the speech check heard for a line whose reading was verified through VOICEVOX's kana (voice/timing.json) and an isolated re-test; a person still listens once.",
+ "_about": "One entry per script sentence, same order (handbook 11-3 step 2: each sentence gets a layout). Written by Claude Code in the session (no paid API). Layout names are the native layouts of my-styles/lamplit-archive/STYLE.md §6. `speed` slows a line for clearer names; `asr` = what the speech check heard for a line whose reading was verified through VOICEVOX's kana (voice/timing.json) and an isolated re-test; a person still listens once.",
  "title": "箸墓古墳は誰の墓か",
  "title_en": "Whose Tomb Is Hashihaka?",
  "scenes": [
@@ -8,8 +8,7 @@
    "img": "hillshade",
    "label": "箸墓古墳",
    "sub": "奈良県桜井市箸中 · 34.539N 135.841E",
-   "source": "出典：国土地理院（陰影起伏図）",
-   "asr": "ららぼんちの東のふもとに、全長およそ280メートルの巨大な墓があります。"
+   "source": "出典：国土地理院（陰影起伏図）"
   },
   {
    "layout": "measured_outline",
@@ -19,7 +18,7 @@
    "caption": "墳丘長",
    "kicker": "FILE 01 · 前方後円墳",
    "source": "出典：国土地理院（空中写真）",
-   "asr": "それが橋博子墳、3世紀の中頃から 後半に築かれたと見られる前方公園墳です。"
+   "asr": "それが橋墓墓墳、3世紀の中頃から後半に築かれたと見られる前方公園墳です。"
   },
   {
    "layout": "document_highlight",
@@ -38,7 +37,7 @@
   {
    "layout": "question",
    "text": "眠っているのは、誰か。",
-   "asr": "ではこの墓に眠っているのは一体誰なのでしょうか"
+   "asr": "では、この墓に眠っているのは、一体誰なのでしょうか?"
   },
   {
    "layout": "theories",
@@ -49,12 +48,14 @@
    "b_kicker": "もう一つの説",
    "b_name": "卑弥呼",
    "b_sub": "邪馬台国の女王",
-   "asr": "区内町は、ここを山とととひももそひめのみことの墓として管理しています。"
+   "speed": 0.92,
+   "asr": "くない蝶は、ここをヤマトトトヒモモソヒメノミコトの墓として管理しています。"
   },
   {
    "layout": "theories",
    "step": 2,
-   "asr": "一方で山大国の女王ひみ子の墓ではないかという説があります"
+   "speed": 0.92,
+   "asr": "一方で、山大国の女王ヒミコの墓ではないかという説があります。"
   },
   {
    "layout": "source_meets_measure",
@@ -72,7 +73,8 @@
    "circle_label": "後円部 径 約150 m",
    "note": "≒ 百余歩（長里で換算した場合）",
    "source": "史料：『三国志』魏書 東夷伝 倭人条（翻刻）／出典：国土地理院（空中写真）",
-   "asr": "岸輪神殿は、ヒミコの墓の大きさを 軽百余歩と記しています"
+   "speed": 0.92,
+   "asr": "ギシュア神殿は、ヒミコの墓の大きさを 軽百余歩と記しています。"
   },
   {
    "layout": "year_band",
@@ -98,7 +100,7 @@
    ],
    "note": "諸説あり",
    "source": "出典：国立歴史民俗博物館 発表（2009）ほか",
-   "asr": "そして2009年、畜生を生歴240年から260年頃とする研究が報告されました。"
+   "asr": "そして2009年、畜生を生歴240年から260年ごろとする研究が報告されました。"
   },
   {
    "layout": "pull_out",
