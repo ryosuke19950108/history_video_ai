@@ -94,8 +94,8 @@ const L = {
     const mp = view(k, f, sc); if (s.text) shade(0, 1150, .9);
     if (s.outline) { const kk = eio(seg(u, .5, 2.2)); if (kk > 0) { x.save(); x.strokeStyle = C.teal; x.lineWidth = 3; const pts = DAISEN.map(p => mp(p[0], p[1])); const n = Math.max(2, Math.floor((pts.length + 1) * kk));
       x.beginPath(); x.moveTo(...pts[0]); for (let i = 1; i < n; i++) x.lineTo(...pts[i % pts.length]); x.stroke(); x.restore(); } }
-    (s.rings || []).forEach((r, i) => { const [cx, cy] = mp(...geo(k, r.at)); const rad = r.m ? r.m / A[k].mpp * sc : (r.r || 30); const kk = seg(u, .5 + i * .35, 1.1 + i * .35);
-      ring(cx, cy, rad, kk, r.col ? C[r.col] : C.red, 2.5, r.dashed ? [8, 6] : null); if (!r.label) return; const ka = rise(u, .8 + i * .35); const side = r.side || 1, lx = cx + side * (rad + 18);
+    (s.rings || []).forEach((r, i) => { const [cx, cy] = mp(...geo(k, r.at)); const rad = r.m ? r.m / A[k].mpp * sc : (r.r || 30); const kk = seg(u, .2 + i * .3, .8 + i * .3);
+      ring(cx, cy, rad, kk, r.col ? C[r.col] : C.red, 2.5, r.dashed ? [8, 6] : null); if (!r.label) return; const ka = rise(u, .35 + i * .3); const side = r.side || 1, lx = cx + side * (rad + 18);
       txt(r.label, lx, cy - 4, { s: r.ls || 34, w: 700, f: F.serif, al: side > 0 ? 'left' : 'right', a: ka, shadow: 10, id: 'r' + i });
       if (r.sub) txt(r.sub, lx, cy + 28, { s: 18, f: F.mono, c: C.dim, al: side > 0 ? 'left' : 'right', a: ka, shadow: 8, id: 'rs' + i, pass: true }); });
     if (s.scale) { const m = s.scale, len = m / A[k].mpp * sc, ka = rise(u, .4); alpha(ka, () => { line(W - 120 - len, 880, W - 120, 880, C.dim, 2); line(W - 120 - len, 872, W - 120 - len, 888, C.dim, 2); line(W - 120, 872, W - 120, 888, C.dim, 2); });
