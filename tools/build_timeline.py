@@ -41,12 +41,26 @@ def split(text):
     return split(text[:mid]) + split(text[mid:])
 
 
+SKIP = {'layout', 'img', 'source', 'say', 'asr', 'mode', 'unit', 'col', 'kc', 'at', 'to', 'span', 'id', 'speed'}
+def texts(o, k=None):   # every on-screen string a scene carries (for the reading-time hold)
+    if isinstance(o, str): return [] if k in SKIP else [o]
+    if isinstance(o, dict): return [s for kk, v in o.items() if kk not in SKIP for s in texts(v, kk)]
+    if isinstance(o, list): return [s for v in o for s in texts(v, k)]
+    return []
+def need(sc):   # DIRECTOR.md §7 / readcheck: CJK ÷ 4.5 + other ÷ 15 + 1.5 s, plus the reveal
+    ts = texts(sc)
+    if not ts: return 0
+    cost = lambda s: sum(1 for c in s if ord(c) >= 0x2E80) / 4.5 + sum(1 for c in s if ord(c) < 0x2E80 and not c.isspace()) / 15 + 1.5
+    stagger = .35 * max(0, len(sc.get('rows') or sc.get('items') or []) - 1)
+    return max(cost(s) for s in ts) + .5 + stagger
+HOLD = ST['motion'].get('readable_hold', False)
 t, scenes, cues = 0.0, [], []
 for i, (sc, ln) in enumerate(zip(SC['scenes'], LN)):
     d = DU[ln['id']]
     prev_same = i > 0 and gin is not None and LN[i - 1].get('para') == ln.get('para') is not None
     next_same = i + 1 < len(LN) and gin is not None and LN[i + 1].get('para') == ln.get('para') is not None
     t0 = t; v = t0 + (0.3 if i == 0 else (gin / 2 if prev_same else lead)); t1 = v + d + (gin / 2 if next_same else tail)
+    if HOLD: t1 = max(t1, t0 + need(sc) + ST['motion']['transition_s'] / 2)   # never cut away before the screen text can be read
     scenes.append({**sc, 'id': ln['id'], 'line': ln['text'], 't0': round(t0, 3), 't1': round(t1, 3), 'voice': round(v, 3), 'vdur': d})
     parts = split(ln['text']); tot = sum(len(p) for p in parts); a = v
     for j, p in enumerate(parts):

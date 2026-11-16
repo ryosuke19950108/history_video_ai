@@ -103,16 +103,16 @@ const L = {
     if (s.stamp) { const ka = rise(u, .2); alpha(ka, () => box(W - 470, 96, 350, 54, C.gold, 1.5, [6, 5])); txt(s.stamp, W - 295, 132, { s: 24, f: F.mono, c: C.gold, al: 'center', a: ka, id: 'stamp' }); }
     title(s, u);
   },
-  card(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .15, .6), al = s.center ? 'center' : 'left', X = s.center ? W / 2 : 200;
+  card(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .05, .4), al = s.center ? 'center' : 'left', X = s.center ? W / 2 : 200;
     if (s.kicker) kicker(s.kicker, s.center ? W / 2 - tw(s.kicker, { s: 21, f: F.mono, ls: 2 }) / 2 - 8 : 204, 400, k, C.red, 'k');
     const lines = Array.isArray(s.lines) ? s.lines : [s.lines]; const fs = s.fs || (lines.length > 1 ? 76 : 92);
-    lines.forEach((ln, i) => txt(ln, X, 520 + i * fs * 1.35 - 14 * (1 - k), { s: fs, w: 700, f: F.serif, al, a: rise(u, .15 + i * .25, .6), c: s.gold === i ? C.gold : C.text, id: 'l' + i }));
+    lines.forEach((ln, i) => txt(ln, X, 520 + i * fs * 1.35 - 14 * (1 - k), { s: fs, w: 700, f: F.serif, al, a: rise(u, .05 + i * .1, .4), c: s.gold === i ? C.gold : C.text, id: 'l' + i }));
     const yr = 520 + (lines.length - 1) * fs * 1.35 + 50; if (!s.center) line(204, yr, lerp(204, 520, rise(u, .6, .8)), yr, C.red, 2);
-    if (s.sub) txt(s.sub, X, yr + 70, { s: 28, c: C.dim, al, a: rise(u, .7), id: 'sub' });
+    if (s.sub) txt(s.sub, X, yr + 70, { s: 28, c: C.dim, al, a: rise(u, .25), id: 'sub' });
   },
   chapter(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .1, .6);
     txt('MYSTERY', 200, 330, { s: 24, f: F.mono, c: C.red, ls: 6, a: k, id: 'm' }); txt(s.num, 200, 470, { s: 150, w: 700, f: F.serif, c: C.gold, a: k, id: 'n' });
-    txt(s.title, 200 + tw(s.num, { s: 150, w: 700, f: F.serif }) + 50, 455 - 12 * (1 - k), { s: 84, w: 700, f: F.serif, a: rise(u, .3, .6), id: 't' });
+    txt(s.title, 200 + tw(s.num, { s: 150, w: 700, f: F.serif }) + 50, 455 - 12 * (1 - k), { s: 84, w: 700, f: F.serif, a: rise(u, .05, .4), id: 't' });
     line(204, 520, lerp(204, 1500, rise(u, .5, .9)), 520, C.red, 2); if (s.sub) txt(s.sub, 204, 590, { s: 30, c: C.dim, a: rise(u, .7), id: 's' });
   },
   mysteries(u, s, d) { // the four questions and how far each is settled; recurs through the film
@@ -131,7 +131,7 @@ const L = {
       txt(it.label, X0 - 30, y + 46, { s: 34, w: 700, al: 'right', a: rise(u, .15 + i * .35), id: 'b' + i }); alpha(.9, () => fill(X0, y, w, 64, col));
       if (it.dashed) box(X0, y, BW * it.value / mx, 64, C.teal, 2, [8, 6]);
       txt(it.text, X0 + w + 24, y + 46, { s: 40, w: 700, f: F.serif, c: it.hi ? C.gold : C.text, a: rise(u, .5 + i * .35), id: 'v' + i }); });
-    if (s.note) txt(s.note, 200, 900, { s: 22, c: C.dim, a: rise(u, .8), id: 'note' });
+    if (s.note) txt(s.note, 200, 900, { s: 22, c: C.dim, a: rise(u, .3), id: 'note' });
   },
   squares(u, s, d) { // areas to the same scale
     kicker(s.kicker, 200, 200, rise(u, .1), C.gold, 'k'); const mx = Math.max(...s.items.map(i => i.m2)), side = 520; let X = 200;
@@ -210,11 +210,11 @@ const L = {
       lines.forEach((ln, j) => txt(ln, X + 38, 470 + j * 74, { s: n === 3 ? 52 : 64, w: 700, f: F.serif, a: kk, id: 'n' + i + j })); if (it.sub) txt(it.sub, X + 40, 470 + lines.length * 74 + 30, { s: 26, c: C.dim, a: kk, id: 's' + i }); });
   },
   rows(u, s, d) { backdrop(s.bg, u, d); kicker(s.kicker, 300, 240, rise(u, .05), C.gold, 'k');
-    s.rows.forEach((r, i) => { const y = 360 + i * (s.gap || 130), kk = rise(u, .2 + i * (s.dt || .5)); alpha(kk, () => line(300, y + 30, 1620, y + 30, C.hairline, 1));
+    s.rows.forEach((r, i) => { const y = 360 + i * (s.gap || 130), kk = rise(u, .1 + i * (s.dt || .3)); alpha(kk, () => line(300, y + 30, 1620, y + 30, C.hairline, 1));
       txt(r.k, 300, y, { s: 40, w: 700, f: F.serif, c: r.hi ? C.gold : C.text, a: kk, id: 'k' + i }); txt(r.v, 1620, y, { s: 34, w: 500, c: r.hi ? C.gold : C.text, al: 'right', a: kk, id: 'v' + i }); });
   },
-  comment(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .15, .6); alpha(k, () => { x.save(); x.strokeStyle = C.gold; x.lineWidth = 3; x.beginPath(); x.roundRect(560, 300, 800, 300, 26); x.moveTo(700, 600); x.lineTo(660, 680); x.lineTo(780, 600); x.stroke(); x.restore(); });
-    txt(s.text, W / 2, 470, { s: 60, w: 700, f: F.serif, al: 'center', a: k, id: 't' }); if (s.sub) txt(s.sub, W / 2, 540, { s: 28, c: C.dim, al: 'center', a: rise(u, .4), id: 's' }); },
+  comment(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .05, .4); alpha(k, () => { x.save(); x.strokeStyle = C.gold; x.lineWidth = 3; x.beginPath(); x.roundRect(560, 300, 800, 300, 26); x.moveTo(700, 600); x.lineTo(660, 680); x.lineTo(780, 600); x.stroke(); x.restore(); });
+    txt(s.text, W / 2, 470, { s: 60, w: 700, f: F.serif, al: 'center', a: k, id: 't' }); if (s.sub) txt(s.sub, W / 2, 540, { s: 28, c: C.dim, al: 'center', a: rise(u, .15), id: 's' }); },
 };
 function endCard(u) { const k = rise(u, .3, .6);
   txt(FILM.title, 120, 330, { s: 76, w: 700, f: F.serif, a: k, id: 'e1' }); line(124, 380, lerp(124, 1000, rise(u, .5, .7)), 380, C.red, 1.5);

@@ -51,7 +51,8 @@
   "map_push_max": 1.6,
   "lead_in_s": 0.35,
   "tail_s": 0.45,
-  "gap_in_paragraph_s": 0.4
+  "gap_in_paragraph_s": 0.4,
+  "readable_hold": true
  },
  "sound": {
   "music_below_voice_db": 14,

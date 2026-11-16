@@ -19,7 +19,7 @@ cd "$HERE"
 "$PY" "$REPO/tools/tts_voicevox.py" lines.json voice --dict "$REPO/config/voicevox_dict.json" --pre 0.15 --post 0.2
 (cd "$LIB" && "$PY" core/tts/asr_check.py "$HERE/lines.json" "$HERE/voice" --lang ja --model medium)
 # 3. timeline (scene length = voice length), fonts, mix
-"$PY" "$REPO/tools/build_timeline.py" "$HERE"
+"$PY" "$REPO/tools/build_timeline.py" "$HERE" --end 7
 "$PY" "$REPO/tools/fonts_subset.py" "$HERE"
 "$PY" mix.py
 # 4. checks before the long render: reading time, measured style conditions
