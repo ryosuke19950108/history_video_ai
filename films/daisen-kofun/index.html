@@ -167,9 +167,9 @@ const L = {
         if (ka > .9) txt(it.t, X + 14, y + 50, { s: 26, w: 700, c: '#120F0B', a: 1, id: 'it' + y + i }); X += it.v * unit; }); };
     const k1 = rise(u, .2, .7); row(320, [{ v: 140, c: 'gold', t: '墳丘 140万m³' }], '必要', k1);
     if (s.step >= 2) row(480, [{ v: 60, c: 'teal', t: '内堀 60万' }, { v: 14, c: 'dim', t: '外堀 14万' }], '堀から', rise(u, s.step === 2 ? .3 : 0, .7));
-    if (s.step >= 3) row(640, [{ v: 74, c: 'faint', t: 'よそから 74万', dash: 1 }], 'よそから', rise(u, s.step === 3 ? .3 : 0, .7));
-    if (s.step >= 4) { const ka = rise(u, .3); txt('運んだ土 全部で 200万m³ 近く', X0, 840, { s: 44, w: 700, f: F.serif, c: C.gold, a: ka, id: 'tot' }); }
-    txt('数値は台本どおり（大林組 1985 の試算）', W - 160, 200, { s: 18, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'src', pass: true });
+    if (s.step >= 3) row(640, [{ v: 66, c: 'faint', t: 'よそから 66万', dash: 1 }], 'よそから', rise(u, s.step === 3 ? .3 : 0, .7));
+    if (s.step >= 4) { const ka = rise(u, .3); txt('運んだ土 全部で 140万m³ ほど', X0, 840, { s: 44, w: 700, f: F.serif, c: C.gold, a: ka, id: 'tot' }); }
+    txt('大林組の試算（1985）をもとに計算', W - 160, 200, { s: 18, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'src', pass: true });
   },
   section(u, s, d) { // schematic cross-sections drawn in teal
     kicker(s.kicker, 200, 200, rise(u, .05), C.gold, 'k'); const X0 = 260, X1 = 1660, B = 820;
