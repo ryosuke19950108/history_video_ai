@@ -71,7 +71,7 @@ function backdrop(b, u, d) { if (!b) return; const k = b.img; const f = geo(k, b
 function lamp() {
   const [r, g, b] = G.lamp_rgb; const l = x.createRadialGradient(W / 2, H * .44, 0, W / 2, H * .44, H * .62);
   l.addColorStop(0, `rgba(${r},${g},${b},${G.lamp_alpha})`); l.addColorStop(1, `rgba(${r},${g},${b},0)`); x.save(); x.globalCompositeOperation = 'screen'; x.fillStyle = l; x.fillRect(0, 0, W, H); x.restore();
-  const v = x.createRadialGradient(W / 2, H * .46, H * .22, W / 2, H * .5, H * 1.0); v.addColorStop(0, 'rgba(13,12,11,0)'); v.addColorStop(1, `rgba(13,12,11,${G.vignette_edge_alpha})`); x.fillStyle = v; x.fillRect(0, 0, W, H);
+  const v = x.createRadialGradient(W / 2, H * .46, H * .16, W / 2, H * .5, H * .95); v.addColorStop(0, 'rgba(13,12,11,0)'); v.addColorStop(1, `rgba(13,12,11,${G.vignette_edge_alpha})`); x.fillStyle = v; x.fillRect(0, 0, W, H);
 }
 const rise = (u, at, dur = .45) => eo(seg(u, at, at + dur));
 function title(s, u) { // kicker + serif title + optional number block, left column
@@ -116,7 +116,7 @@ const L = {
     line(204, 520, lerp(204, 1500, rise(u, .5, .9)), 520, C.red, 2); if (s.sub) txt(s.sub, 204, 590, { s: 30, c: C.dim, a: rise(u, .7), id: 's' });
   },
   mysteries(u, s, d) { // the four questions and how far each is settled; recurs through the film
-    backdrop(s.bg || { img: 'daisen_z17', span: 2200, a: .1 }, u, d); const Q = FILM.mysteries; const k0 = rise(u, .1);
+    backdrop(s.bg || { img: 'daisen_z17', span: 2200, a: .2 }, u, d); const Q = FILM.mysteries; const k0 = rise(u, .1);
     kicker(s.kicker || '4つの謎', 300, 230, k0, C.gold, 'k');
     Q.forEach((q, i) => { const y = 330 + i * 140, st = (s.status || [])[i] || 'open', on = s.focus === i, ka = rise(u, .15 + i * .12) * (s.focus == null || on ? 1 : .5);
       alpha(ka, () => { fill(300, y - 10, 1320, 110, on ? 'rgba(200,162,78,.10)' : 'rgba(23,20,15,.6)'); box(300, y - 10, 1320, 110, on ? C.gold : C.hairline, 1.5); });
