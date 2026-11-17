@@ -128,5 +128,30 @@
   "surface": "大坂山",
   "pronunciation": "オオサカヤマ",
   "accent_type": 4
+ },
+ {
+  "surface": "菜畑",
+  "pronunciation": "ナバタケ",
+  "accent_type": 0
+ },
+ {
+  "surface": "大平山元",
+  "pronunciation": "オオダイヤマモト",
+  "accent_type": 5
+ },
+ {
+  "surface": "弓月君",
+  "pronunciation": "ユヅキノキミ",
+  "accent_type": 4
+ },
+ {
+  "surface": "秦氏",
+  "pronunciation": "ハタウジ",
+  "accent_type": 1
+ },
+ {
+  "surface": "和邇吉師",
+  "pronunciation": "ワニキシ",
+  "accent_type": 1
  }
 ]

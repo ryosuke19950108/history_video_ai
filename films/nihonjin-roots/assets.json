@@ -1,0 +1,101 @@
+{
+ "nojiri_z14": {
+  "f": "assets/nojiri_z14.jpg",
+  "z": 14,
+  "gx0": 3706624.01,
+  "gy0": 1634559.99,
+  "mpp": 7.6482,
+  "w": 1536,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "odai_z16": {
+  "f": "assets/odai_z16.jpg",
+  "z": 16,
+  "gx0": 14937600.04,
+  "gy0": 6285567.99,
+  "mpp": 1.8009,
+  "w": 1792,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "sannai_z17": {
+  "f": "assets/sannai_z17.jpg",
+  "z": 17,
+  "gx0": 29890047.97,
+  "gy0": 12602624.04,
+  "mpp": 0.9039,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "kakinoshima_z16": {
+  "f": "assets/kakinoshima_z16.jpg",
+  "z": 16,
+  "gx0": 14956287.98,
+  "gy0": 6231808.01,
+  "mpp": 1.7771,
+  "w": 1792,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "itazuke_z17": {
+  "f": "assets/itazuke_z17.jpg",
+  "z": 17,
+  "gx0": 28935424.04,
+  "gy0": 13452031.97,
+  "mpp": 0.9952,
+  "w": 1792,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "nabatake_z17": {
+  "f": "assets/nabatake_z17.jpg",
+  "z": 17,
+  "gx0": 28889344.02,
+  "gy0": 13465087.98,
+  "mpp": 0.9965,
+  "w": 1792,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "yoshinogari_z16": {
+  "f": "assets/yoshinogari_z16.jpg",
+  "z": 16,
+  "gx0": 14463743.98,
+  "gy0": 6738944.05,
+  "mpp": 1.9959,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "daisen_z17": {
+  "f": "assets/daisen_z17.jpg",
+  "z": 17,
+  "gx0": 29404159.99,
+  "gy0": 13339136.0,
+  "mpp": 0.9835,
+  "w": 2560,
+  "h": 2048,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "mozu_z15": {
+  "f": "assets/mozu_z15.jpg",
+  "z": 15,
+  "gx0": 7350271.97,
+  "gy0": 3334143.97,
+  "mpp": 3.9341,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ }
+}
