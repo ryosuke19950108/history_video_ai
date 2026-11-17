@@ -57,6 +57,7 @@
  },
  "sound": {
   "music_below_voice_db": 14,
+  "transition_sound": false,
   "voice_speaker": "青山龍星",
   "voice_style": "ノーマル",
   "speed_scale": 1.0,

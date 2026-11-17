@@ -54,7 +54,7 @@ for s in SC:
     if s['layout'] == 'chapter': add(fx, thump(.5, 55), s['t0'] + .05, 1.0, 0); add(fx, bell(440.0, .08), s['t0'] + .3, 1.0, -.1)
     if s['layout'] == 'doc' and not cont: add(fx, paper(.16), s['t0'] + .1, 1.0, -.15)
     if s['layout'] == 'photo' and s.get('outline') and not cont: add(fx, bell(587.33, .05), s['t0'] + .5, 1.0, .2)
-    if not into: d = .9; t = t_(d); add(fx, lp(noise(d), 700) * np.sin(np.pi * t / d) * .03, s['t1'] - .45, 1.0, 0)
+    if not into and SND.get('transition_sound', False): d = .9; t = t_(d); add(fx, lp(noise(d), 700) * np.sin(np.pi * t / d) * .03, s['t1'] - .45, 1.0, 0)
 
 for s in SC:
     w, sr = sf.read(os.path.join(D, 'voice', s['id'] + '.wav'), dtype='float32')
