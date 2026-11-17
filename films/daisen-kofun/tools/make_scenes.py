@@ -7,8 +7,12 @@ DS = [34.5642, 135.4875]; KD = [34.5617, 135.6097]; IN = [36.1278, 139.4778]; HS
 SK = [34.5733, 135.4831]; OSY = [34.52, 135.68]
 GSI = {'seamlessphoto': '空中写真', 'hillshademap': '陰影起伏図', 'ort_USA10': '1945〜50年 米軍撮影の空中写真', 'ort_old10': '1961〜69年撮影の空中写真'}
 LAYER = {'daisen_z17': 'seamlessphoto', 'mozu_z15': 'seamlessphoto', 'konda_z16': 'seamlessphoto', 'inariyama_z17': 'seamlessphoto', 'hajinosato_z17': 'seamlessphoto',
+         'hashihaka_z17': 'seamlessphoto', 'goshikizuka_z17': 'seamlessphoto', 'osakajo_z16': 'seamlessphoto', 'levee_z16': 'seamlessphoto',
          'osaka_hill_z11': 'hillshademap', 'sakai_hill_z13': 'hillshademap', 'japan_hill_z8': 'hillshademap', 'daisen_1940s_z16': 'ort_USA10', 'daisen_1960s_z16': 'ort_old10'}
 OB = '出典：大林組の試算（1985）'
+# photographs (not maps) from Wikimedia Commons, public domain / CC0 only (tools/commons_fetch.py); credit shown on screen
+PHOTO = {'pyramid_1904': '写真：Eduard Spelterini（1904年ごろ 気球から撮影・パブリックドメイン／Wikimedia Commons）',
+         'goshikizuka_photo': '写真：Saigen Jiro（CC0／Wikimedia Commons）'}
 BG = [{'img': 'daisen_z17', 'at': DS, 'span': 1900, 'a': .24}, {'img': 'daisen_1940s_z16', 'at': DS, 'span': 2400, 'a': .22}, {'img': 'mozu_z15', 'at': DS, 'span': 5000, 'a': .24}]
 _bgi = [0]
 def bg():
@@ -227,7 +231,7 @@ S = [
  ROWS('石の運び方', [('川原の石', '舟に積んで水の上を', 1), ('人が担ぐ', 'ずっと大変')]),
  ROWS('運び方の使い分け', [('土', '人の肩で'), ('石', '水の上で', 1)]),
  ROWS('運び方の使い分け', [('土', '人の肩で'), ('石', '水の上で', 1)]),
- OLD((1500, 1300), text=T('完成したばかりの古墳', '石に覆われた山', ts=84)),
+ P('goshikizuka_photo', [1200, 820, 0], (2300, 2050), stamp='復元された五色塚古墳（神戸市）', text=T('完成したばかりの古墳', '石に覆われた山', ts=84)),
  P('sakai_hill_z13', [34.5642, 135.47], (17000, 12000), rings=[{'at': DS, 'r': 22, 'label': '大仙古墳'}], stamp='現在の地形（陰影起伏図）'),
  CALC('埴輪（大林組の試算）', [['埴輪', '約1万5000個']], source=OB),
  CARD('宮内庁と堺市が、', '初めて共同で発掘。', kicker='2018年', fs=76),
@@ -260,7 +264,10 @@ S = [
 lines = json.load(open('lines.json', encoding='utf-8'))
 if len(S) != len(lines):
     sys.exit(f'✗ {len(S)} scenes for {len(lines)} sentences')
-SAY = {'s122': lambda t: t.replace('米が必要', 'コメが必要')}
+# readings fixed by hand after checking VOICEVOX's kana for every line (米→コメ, 民→タミ, 「たった今」→経った／今)
+SAY = {'s122': lambda t: t.replace('米が必要', 'コメが必要'), 's13': lambda t: t.replace('米を炊く', 'コメを炊く'),
+       's106': lambda t: t.replace('大勢の民', '大勢のタミ'), 's153': lambda t: t.replace('大勢の民', '大勢のタミ'),
+       's168': lambda t: t.replace('以上たった今も', '以上経った今も')}
 # speech-check expectations: what Whisper heard where the reading was verified correct through VOICEVOX's kana
 # (homophones, number formatting); written from the check's output into asr_overrides.json
 import os
@@ -270,14 +277,54 @@ for s, l in zip(S, lines):
     imgs = [s.get('img')] + ([s['bg']['img']] if s.get('bg') else [])
     imgs = [i for i in imgs if i]
     if 'source' not in s and imgs:
-        s['source'] = '出典：国土地理院（' + '・'.join(dict.fromkeys(GSI[LAYER[i]] for i in imgs)) + '）'
+        g = [i for i in imgs if i in LAYER]; ph = [PHOTO[i] for i in imgs if i in PHOTO]
+        s['source'] = '・'.join((['出典：国土地理院（' + '・'.join(dict.fromkeys(GSI[LAYER[i]] for i in g)) + '）'] if g else []) + ph)
     if l['id'] in SAY: s['say'] = SAY[l['id']](l['text'])
     if l['id'] in ASR: s['asr'] = ASR[l['id']]
+# Backdrops that follow the content (requested 2026-11-17): GSI aerials of the places named, and public-domain / CC0
+# photographs where no map of Japan can show it. Each image's credit goes into the scene's source line.
+PYR = {'img': 'pyramid_1904', 'at': [900, 520, 0], 'span': 1700, 'a': .32}
+HASHI = {'img': 'hashihaka_z17', 'at': [1096, 908, 0], 'span': 1500, 'a': .28}
+PADDY = {'img': 'hashihaka_z17', 'at': [1250, 480, 0], 'span': 900, 'a': .30}
+GOSHIKI = {'img': 'goshikizuka_z17', 'at': [960, 630, 0], 'span': 800, 'a': .28}
+STONES = {'img': 'goshikizuka_photo', 'at': [1200, 820, 0], 'span': 2300, 'a': .30}
+CASTLE = {'img': 'osakajo_z16', 'at': [1110, 726, 0], 'span': 2300, 'a': .28}
+LEVEE = {'img': 'levee_z16', 'at': [1070, 1180, 0], 'span': 2400, 'a': .28}
+HAJI = {'img': 'hajinosato_z17', 'at': [1024, 768, 0], 'span': 1500, 'a': .26}
+TOPIC = [(PYR, 's48 s49 s50 s51 s52 s53 s107 s108 s109 s110 s111'), (HASHI, 's83 s85 s86 s87 s89 s90 s91 s214 s215'),
+         (PADDY, 's119 s120 s121 s122 s123 s124 s125 s140 s141 s142 s157 s222'), (GOSHIKI, 's191 s192 s193 s199 s203'),
+         (STONES, 's188'), (CASTLE, 's180'), (LEVEE, 's185 s186'), (HAJI, 's126 s127')]
+byid = {l['id']: sc for sc, l in zip(S, lines)}
+def credit(imgs):
+    g = [i for i in imgs if i in LAYER]; ph = [PHOTO[i] for i in imgs if i in PHOTO]
+    return '・'.join((['出典：国土地理院（' + '・'.join(dict.fromkeys(GSI[LAYER[i]] for i in g)) + '）'] if g else []) + ph)
+for b, ids in TOPIC:
+    for i in ids.split():
+        sc = byid[i]; sc['bg'] = dict(b); keep = sc.get('source', '')
+        keep = '' if not keep or keep.startswith('出典：国土地理院') else keep + '・'   # e.g. 史料：『日本書紀』… or 出典：大林組の試算 stays first
+        sc['source'] = keep + credit([x for x in (sc.get('img'), b['img']) if x])
+# Same picture, next sentence: the scene continues the previous one (cont) instead of cutting to an identical frame —
+# one camera move, the same backdrop, and only what changes cross-fades (index.html render, mix.py: no transition sound).
+ALWAYS = {'mysteries', 'timeline', 'bars', 'squares', 'budget', 'doc', 'shura', 'theories', 'dots'}
+def same_picture(a, b):
+    if a['layout'] != b['layout']: return False
+    if a['layout'] == 'photo': return a['img'] == b['img']
+    if a['layout'] in ALWAYS: return True
+    if a['layout'] == 'section': return a.get('mode') == b.get('mode')
+    if a['layout'] in ('rows', 'calc', 'comment'): return a.get('kicker', a.get('text')) == b.get('kicker', b.get('text'))
+    return False
+for a, b in zip(S, S[1:]):
+    if same_picture(a, b):
+        b['cont'] = True
+        if 'bg' in a: b['bg'] = a['bg']
+        elif 'bg' in b: b.pop('bg')
+        if a.get('source'): b['source'] = a['source']
 out = {'_about': 'One entry per sentence (same order as script.txt); generated by tools/make_scenes.py (Claude Code). Layouts: index.html L.*.',
        'title': '日本最大の古墳はどうやって築かれたのか', 'title_en': 'How Was Japan\'s Largest Tomb Built?', 'mysteries': MYS,
        'credits': ['地図・空中写真　出典：国土地理院（地理院タイル：シームレス空中写真・陰影起伏図・1945〜50年／1961〜69年の空中写真）',
                    '史料　『日本書紀』巻第五 崇神天皇十年条（書き下しによる翻刻）',
                    '数値　大林組の試算（1985）、宮内庁の3次元測量（2018）ほか（台本による）',
+                   '写真　Eduard Spelterini（ギザのピラミッド、1904年ごろ・パブリックドメイン）、Saigen Jiro（五色塚古墳・CC0）／Wikimedia Commons',
                    '音声　VOICEVOX:青山龍星',
                    '輪郭・断面・修羅の図は模式図、位置の一部は概略です。数値の一部は仮の計算です。'],
        'scenes': S}

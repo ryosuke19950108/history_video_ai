@@ -31,12 +31,17 @@ def split(text):
     if width(text) <= safe:
         return [text]
     cands = [i + 1 for i, c in enumerate(text[:-1]) if c in '、，']
+    commas = bool(cands)
     if not cands:
         cands = [len(text) // 2]
-    ok = [i for i in cands if min(width(text[:i]), width(text[i:])) >= .3 * width(text)]   # no tiny fragments
-    if not ok:   # no comma near the middle: break after a particle in the middle third instead
-        ok = [i for i in range(1, len(text) - 1) if text[i - 1] in 'はがをにでともへや' and text[i] not in '、。」）'
-              and .33 * width(text) <= width(text[:i]) <= .67 * width(text)]
+    ok = commas and [i for i in cands if min(width(text[:i]), width(text[i:])) >= .3 * width(text)]   # no tiny fragments
+    NUM = set('0123456789.０１２３４５６７８９万千億兆')
+    whole = lambda i: not (text[i - 1] in NUM and text[i] in NUM)   # never cut inside a number like 12万1000
+    if not ok:   # no comma near the middle: break after a particle (or から・まで・より) in the middle half instead
+        ok = [i for i in range(2, len(text) - 1) if (text[i - 1] in 'はがをにでともへや' or text[i - 2:i] in ('から', 'まで', 'より'))
+              and text[i] not in '、。」）' and whole(i) and .25 * width(text) <= width(text[:i]) <= .75 * width(text)]
+    if not ok:
+        cands = [i for i in range(1, len(text)) if whole(i) and text[i] not in '、。」）'] or cands
     mid = min(ok or cands, key=lambda i: abs(width(text[:i]) - width(text) / 2))
     return split(text[:mid]) + split(text[mid:])
 

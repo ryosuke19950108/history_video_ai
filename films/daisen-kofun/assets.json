@@ -108,5 +108,71 @@
   "h": 1536,
   "layer": "ort_old10",
   "credit": "出典：国土地理院（地理院タイル ort_old10）"
+ },
+ "hashihaka_z17": {
+  "f": "assets/hashihaka_z17.jpg",
+  "z": 17,
+  "gx0": 29437440.01,
+  "gy0": 13342207.98,
+  "mpp": 0.9838,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "osakajo_z16": {
+  "f": "assets/osakajo_z16.jpg",
+  "z": 16,
+  "gx0": 14703360.02,
+  "gy0": 6662399.95,
+  "mpp": 1.9641,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "levee_z16": {
+  "f": "assets/levee_z16.jpg",
+  "z": 16,
+  "gx0": 14701823.95,
+  "gy0": 6660096.0,
+  "mpp": 1.9632,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "pyramid_1904": {
+  "f": "assets/pyramid_1904.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1800,
+  "h": 1320,
+  "layer": "photo_bw",
+  "credit": "写真：Eduard Spelterini（Public domain／Wikimedia Commons）"
+ },
+ "goshikizuka_photo": {
+  "f": "assets/goshikizuka_photo.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 2400,
+  "h": 1596,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
+ },
+ "goshikizuka_z17": {
+  "f": "assets/goshikizuka_z17.jpg",
+  "z": 17,
+  "gx0": 29363455.97,
+  "gy0": 13332224.05,
+  "mpp": 0.9827,
+  "w": 1536,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
  }
 }

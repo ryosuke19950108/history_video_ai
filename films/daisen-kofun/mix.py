@@ -47,12 +47,14 @@ def bell(f=587.33, v=1.0, d=3.5):
                          + .2 * np.sin(2 * np.pi * f * 5.4 * t) * np.exp(-t / .2)) * np.minimum(1, t / .004)
 def paper(v=1.0):
     d = .45; t = t_(d); return v * bp(noise(d), 1800, 7000) * np.exp(-t / .12) * (1 + .6 * np.sin(2 * np.pi * 23 * t))
+NXT = {a['id']: b for a, b in zip(SC, SC[1:])}
 for s in SC:
+    cont, into = s.get('cont'), NXT.get(s['id'], {}).get('cont')   # a continued scene is the same picture: no cut sounds
     if s['layout'] == 'mysteries' and s.get('reveal') is not None: add(fx, bell(659.25, .14), s['t0'] + .3, 1.0, .1)
     if s['layout'] == 'chapter': add(fx, thump(.5, 55), s['t0'] + .05, 1.0, 0); add(fx, bell(440.0, .08), s['t0'] + .3, 1.0, -.1)
-    if s['layout'] == 'doc': add(fx, paper(.16), s['t0'] + .1, 1.0, -.15)
-    if s['layout'] == 'photo' and s.get('outline'): add(fx, bell(587.33, .05), s['t0'] + .5, 1.0, .2)
-    d = .9; t = t_(d); add(fx, lp(noise(d), 700) * np.sin(np.pi * t / d) * .03, s['t1'] - .45, 1.0, 0)
+    if s['layout'] == 'doc' and not cont: add(fx, paper(.16), s['t0'] + .1, 1.0, -.15)
+    if s['layout'] == 'photo' and s.get('outline') and not cont: add(fx, bell(587.33, .05), s['t0'] + .5, 1.0, .2)
+    if not into: d = .9; t = t_(d); add(fx, lp(noise(d), 700) * np.sin(np.pi * t / d) * .03, s['t1'] - .45, 1.0, 0)
 
 for s in SC:
     w, sr = sf.read(os.path.join(D, 'voice', s['id'] + '.wav'), dtype='float32')

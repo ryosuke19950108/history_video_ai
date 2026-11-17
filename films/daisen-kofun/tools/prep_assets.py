@@ -7,6 +7,12 @@ recs = {json.loads(l)['name']: json.loads(l) for l in open('SOURCES.jsonl', enco
 meta = {}
 for name, r in recs.items():
     key = name.split('/')[-1].rsplit('.', 1)[0]
+    if r['source'].startswith('Wikimedia'):   # a photograph, not a map: no geography, 1 px = 1 "metre" so span = source pixels across
+        im = Image.open(name).convert('RGB'); im.thumbnail((2400, 2400)); im.save(f'assets/{key}.jpg', quality=88)
+        bw = max(abs(a - b) for px in im.resize((64, 64)).getdata() for a, b in ((px[0], px[1]), (px[1], px[2]))) < 24
+        meta[key] = {'f': f'assets/{key}.jpg', 'z': None, 'gx0': 0, 'gy0': 0, 'mpp': 1, 'w': im.width, 'h': im.height,
+                     'layer': 'photo_bw' if bw else 'seamlessphoto', 'credit': r['credit']}
+        continue
     z = int(r['source'].split(' z')[-1]); lat, lon = r['center']; n = 2 ** z
     fx = (lon + 180) / 360 * n * 256
     fy = (1 - math.log(math.tan(math.radians(lat)) + 1 / math.cos(math.radians(lat))) / math.pi) / 2 * n * 256
