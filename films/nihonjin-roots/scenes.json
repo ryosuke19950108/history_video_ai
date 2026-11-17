@@ -16,7 +16,7 @@
   "地図　Natural Earth（パブリックドメイン）をもとに作図　空中写真　出典：国土地理院（地理院タイル）",
   "研究　Cooke ほか（2021）Science Advances 7: eabh2419 ／ Yamamoto ほか（2024）Nature Communications 15: 9780",
   "史料　『日本書紀』巻第十 応神天皇十四年条 ／『古事記』中巻 応神天皇の段（原文・新字体）",
-  "写真　Abasaa（Public domain／Wikimedia Commons）、Owl Cat（CC0／Wikimedia Commons）、Saigen Jiro（CC0／Wikimedia Commons）",
+  "写真　Abasaa（パブリックドメイン／Wikimedia Commons）、Owl Cat（CC0／Wikimedia Commons）、Saigen Jiro（CC0／Wikimedia Commons）",
   "音声　VOICEVOX:青山龍星",
   "地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。"
  ],
@@ -1011,21 +1011,24 @@
    ]
   },
   {
-   "layout": "card",
-   "lines": [
-    "土器を作り、",
-    "狩りと漁と木の実。"
+   "layout": "photo",
+   "img": "sannai_pit",
+   "at": [
+    960,
+    760,
+    0
    ],
-   "bg": {
-    "img": "sannai_z17",
-    "at": [
-     40.8131,
-     140.6974
-    ],
-    "span": 1600,
-    "a": 0.24
+   "span": [
+    1700,
+    1500
+   ],
+   "stamp": "三内丸山遺跡（復元）",
+   "text": {
+    "kicker": "縄文の暮らし",
+    "title": "狩り・漁・木の実",
+    "ts": 84
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "photo",
@@ -1139,15 +1142,16 @@
     }
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "sannai_pit",
     "at": [
-     40.8131,
-     140.6974
+     960,
+     760,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1900,
+    "a": 0.3
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "photo",
@@ -1204,15 +1208,16 @@
     "どこから来たのか。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "sannai_05",
     "at": [
-     40.8131,
-     140.6974
+     900,
+     1250,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 2200,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Owl Cat（CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -1228,15 +1233,16 @@
     }
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "sannai_05",
     "at": [
-     40.8131,
-     140.6974
+     900,
+     1250,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 2200,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Owl Cat（CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -1389,8 +1395,8 @@
     140.6974
    ],
    "span": [
-    2400,
-    2000
+    1800,
+    1500
    ],
    "text": {
     "kicker": "何千年ものあいだ",
@@ -1967,29 +1973,18 @@
   },
   {
    "layout": "photo",
-   "img": "yoshinogari_z16",
+   "img": "yoshinogari_photo",
    "at": [
-    33.325,
-    130.3818
+    960,
+    560,
+    0
    ],
    "span": [
-    2100,
-    1800
+    1500,
+    1300
    ],
-   "rings": [
-    {
-     "at": [
-      33.325,
-      130.3818
-     ],
-     "m": 420,
-     "label": "吉野ヶ里遺跡",
-     "sub": "佐賀県（位置は概略）",
-     "side": 1
-    }
-   ],
-   "source": "出典：国土地理院（空中写真）",
-   "cont": true
+   "stamp": "吉野ヶ里遺跡（佐賀県・復元）",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -2198,8 +2193,8 @@
     130.4528
    ],
    "span": [
-    2600,
-    2200
+    1700,
+    1450
    ],
    "text": {
     "kicker": "弥生〜古墳時代の1000年ほどで",
@@ -3907,15 +3902,16 @@
     "いちばん古い源流。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "sannai_dogu",
     "at": [
-     40.8131,
-     140.6974
+     960,
+     720,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1900,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -5176,8 +5172,8 @@
     129.9579
    ],
    "span": [
-    2600,
-    2000
+    1700,
+    1400
    ],
    "text": {
     "kicker": "約3000年前 · 九州の海辺",
@@ -5189,21 +5185,22 @@
   },
   {
    "layout": "photo",
-   "img": "sannai_z17",
+   "img": "sannai_pit",
    "at": [
-    40.8131,
-    140.6974
+    960,
+    760,
+    0
    ],
    "span": [
-    2000,
-    1600
+    1600,
+    1450
    ],
    "text": {
     "kicker": "浜で迎えたのは",
     "title": "縄文の人々",
     "ts": 84
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "photo",
@@ -5435,8 +5432,8 @@
     140.6974
    ],
    "span": [
-    2600,
-    2300
+    1800,
+    1500
    ],
    "source": "出典：国土地理院（空中写真）"
   }

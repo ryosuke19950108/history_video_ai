@@ -13,7 +13,7 @@ LAYER = {k: 'seamlessphoto' for k in ('nojiri_z14', 'odai_z16', 'sannai_z17', 'k
 PHOTO = {}   # filled from SOURCES.jsonl (Wikimedia Commons, public domain / CC0 only)
 for l in open('SOURCES.jsonl', encoding='utf-8'):
     r = json.loads(l)
-    if r['source'].startswith('Wikimedia'): PHOTO[r['name'].split('/')[-1].rsplit('.', 1)[0]] = r['credit']
+    if r['source'].startswith('Wikimedia'): PHOTO[r['name'].split('/')[-1].rsplit('.', 1)[0]] = r['credit'].replace('Public domain', 'パブリックドメイン')
 NE = '出典：Natural Earth（地図データ、パブリックドメイン）'
 
 # views of the drawn map: centre (lat, lon) and degrees of longitude across the frame
@@ -39,7 +39,7 @@ def B(img, at, span, a=.24): return {'img': img, 'at': at, 'span': span, 'a': a}
 # backdrops by topic (aerials of the places named; the Kofun one is 大仙古墳 from the previous film)
 BG_NOJ = B('nojiri_z14', NOJ, 6000, .24); BG_SAN = B('sannai_z17', SAN, 1600, .24); BG_ODAI = B('odai_z16', ODAI, 2800, .22)
 BG_KAKI = B('kakinoshima_z16', KAKI, 2600, .22); BG_ITA = B('itazuke_z17', ITA, 1300, .22); BG_NABA = B('nabatake_z17', NABA, 1300, .22)
-BG_YOSHI = B('yoshinogari_z16', YOSHI, 2600, .24); BG_DS = B('daisen_z17', DS, 1900, .22); BG_MOZU = B('mozu_z15', DS, 5000, .22)
+BG_YOSHI = B('yoshinogari_z16', YOSHI, 2600, .24); BG_PIT = B('sannai_pit', [960, 760, 0], 1900, .30); BG_TOWER = B('sannai_05', [900, 1250, 0], 2200, .28); BG_DOGU = B('sannai_dogu', [960, 720, 0], 1900, .26); BG_DS = B('daisen_z17', DS, 1900, .22); BG_MOZU = B('mozu_z15', DS, 5000, .22)
 
 # the spine: three waves, each checked against DNA (mysteries layout, film-wide board below)
 WAVES = ['縄文の人々', '弥生の人々', '古墳時代の人々']
@@ -114,15 +114,15 @@ S = [
  CH('01', '縄文の人々', '1つ目の波', BG_SAN),
  # ── wave 1: Jomon (16-32)
  dict(TL, events=EVT[:2]),
- CARD('土器を作り、', '狩りと漁と木の実。', bg=BG_SAN),
+ PH('sannai_pit', [960, 760], (1700, 1500), stamp='三内丸山遺跡（復元）', text=T('縄文の暮らし', '狩り・漁・木の実', ts=84)),
  P('odai_z16', ODAI, (2600, 2200), rings=[{'at': ODAI, 'r': 34, 'label': '大平山元遺跡', 'sub': '青森県外ヶ浜町（位置は概略）', 'side': 1}], text=T('土器のかけら', None, '約1万6500', '年前', None, ns=104)),
  P('odai_z16', ODAI, (2200, 1900), rings=[{'at': ODAI, 'r': 34, 'label': '大平山元遺跡', 'sub': '青森県外ヶ浜町（位置は概略）', 'side': 1}], text=T('世界でも', '最も古い時期の土器', ts=72)),
  P('sannai_z17', SAN, (1500, 1250), rings=[{'at': SAN, 'r': 60, 'label': '三内丸山遺跡', 'sub': '青森市', 'side': 1}], text=T('大きな集落', None, '約5900', '年前から', '1700年ほど続いた', ns=104)),
- THEO('巨大な建物の跡', [{'k': '柱', 'name': '栗の柱\n6本'}, {'k': '柱の太さ', 'name': '直径\n約1m'}, {'k': '伝えるもの', 'name': '暮らしの\n豊かさ'}], bg=BG_SAN),
+ THEO('巨大な建物の跡', [{'k': '柱', 'name': '栗の柱\n6本'}, {'k': '柱の太さ', 'name': '直径\n約1m'}, {'k': '伝えるもの', 'name': '暮らしの\n豊かさ'}], bg=BG_PIT),
  P('kakinoshima_z16', KAKI, (2400, 2000), rings=[{'at': KAKI, 'r': 40, 'label': '垣ノ島遺跡', 'sub': '北海道函館市（位置は概略）', 'side': 1}], text=T('漆を使った品', None, '約9000', '年前', None, ns=104)),
  CARD('木の樹液から、', '塗料を作る技。', bg=BG_KAKI),
- CARD('縄文人は、', 'どこから来たのか。', bg=BG_SAN),
- THEO('骨や顔の形からの説', [{'k': '説 1', 'name': '南の人々に\n近い'}, {'k': '説 2', 'name': '北の人々に\n近い'}], bg=BG_SAN),
+ CARD('縄文人は、', 'どこから来たのか。', bg=BG_TOWER),
+ THEO('骨や顔の形からの説', [{'k': '説 1', 'name': '南の人々に\n近い'}, {'k': '説 2', 'name': '北の人々に\n近い'}], bg=BG_TOWER),
  CARD('DNAで答えを出した、', '2021年9月の研究。', gold=1),
  ROWS('2021年の研究チーム', [('トリニティカレッジダブリン', 'アイルランド'), ('金沢大学', '日本'), ('ほか', '')]),
  ROWS('2021年の研究', [('発表', 'Science Advances（アメリカ）', True)]),
@@ -134,7 +134,7 @@ S = [
  CARD('わずかなかけらを', '1つずつつなぎ合わせる。'),
  CARD('縄文人について、', '驚くような事実。', bg=BG_SAN),
  dict(TL, kicker='縄文人の祖先', events=[{'y': -20000, 'label': '大陸の人々と分かれる', 'sub': '約2万〜1万5000年前', 'side': 1, 'hi': True}], spans=[{'from': -20000, 'to': -15000, 'label': '', 'hi': True}], source='出典：' + SRC21),
- P('sannai_z17', SAN, (2400, 2000), text=T('何千年ものあいだ', None, '約1000', '人', '保たれた集団の規模（推定）', ns=120), source='出典：' + SRC21),
+ P('sannai_z17', SAN, (1800, 1500), text=T('何千年ものあいだ', None, '約1000', '人', '保たれた集団の規模（推定）', ns=120), source='出典：' + SRC21),
  CARD('子どもを残す世代の人数を、', '遺伝の計算から見積もった数。', fs=70),
  CALC('今の日本と比べると', [('1億2000万人 ÷ 1000人', '12万'), ('', '12万ぶんの1', True)], bg=BG_SAN),
  CARD('縄文時代の人口も、', '多くはなかった。', bg=BG_SAN),
@@ -155,7 +155,7 @@ S = [
  P('itazuke_z17', ITA, (1400, 1150), rings=[{'at': ITA, 'r': 60, 'label': '板付遺跡', 'sub': '福岡市', 'side': 1}], text=T('日本で最も古い時期の水田', None, None, None, None)),
  P('nabatake_z17', NABA, (1300, 1100), rings=[{'at': NABA, 'r': 50, 'label': '菜畑遺跡', 'sub': '佐賀県唐津市', 'side': 1}], text=T('水路やあぜ道まで', '本格的な田んぼ', ts=80)),
  P('yoshinogari_z16', YOSHI, (2600, 2200), text=T('深い堀で囲んだ', '大きな村', ts=84)),
- P('yoshinogari_z16', YOSHI, (2100, 1800), rings=[{'at': YOSHI, 'm': 420, 'label': '吉野ヶ里遺跡', 'sub': '佐賀県（位置は概略）', 'side': 1}]),
+ PH('yoshinogari_photo', [960, 560], (1500, 1300), stamp='吉野ヶ里遺跡（佐賀県・復元）'),
  CARD('弥生の始まりにも、', '大きな見直し。', bg=BG_YOSHI),
  ROWS('2003年 · 国立歴史民俗博物館', [('調べたもの', '土器についた焦げなど'), ('方法', '最新の年代測定', True)], bg=BG_YOSHI),
  dict(TLB, events=[{'y': -1000, 'label': '紀元前10世紀ごろ', 'sub': '新しい研究', 'side': 1, 'hi': True}]),
@@ -165,7 +165,7 @@ S = [
  CARD('二重構造モデル', '長く定説とされた考え方。', gold=0, bg=BG_ITA),
  ROWS('二重構造モデル', [('唱えた人', '人類学者 埴原和郎さん'), ('年', '1991年', True)], bg=BG_ITA),
  CARD('骨の形の違いを、', '数字にして比べた。', bg=BG_ITA),
- P('itazuke_z17', ITA, (2600, 2200), text=T('弥生〜古墳時代の1000年ほどで', None, '100万', '人規模', '大陸から渡ってきた人々（埴原さんの見積もり）', ns=120)),
+ P('itazuke_z17', ITA, (1700, 1450), text=T('弥生〜古墳時代の1000年ほどで', None, '100万', '人規模', '大陸から渡ってきた人々（埴原さんの見積もり）', ns=120)),
  CARD('当時としては、', '驚くほど大きな数字。', bg=BG_ITA),
  CARD('渡来した人々の流れが、', '日本人の大部分。', gold=1, bg=BG_ITA),
  CARD('大規模な渡来は、', '方向としては正しかった。', bg=BG_ITA),
@@ -232,7 +232,7 @@ S = [
  CARD('多くの人にとって、', '意外な結果。', bg=BG_DS),
  THEO('いちばん多かったのは', [{'k': '1', 'name': '縄文', 'sub': '12.4%', 'dashed': True}, {'k': '2', 'name': '弥生', 'sub': '21.2%', 'dashed': True}, {'k': '3', 'name': '古墳時代', 'sub': '66.4%'}], hi=[2], bg=BG_DS),
  THEO('いちばん多かったのは', [{'k': '1', 'name': '縄文', 'sub': '12.4%', 'dashed': True}, {'k': '2', 'name': '弥生', 'sub': '21.2%', 'dashed': True}, {'k': '3', 'name': '古墳時代', 'sub': '正解'}], hi=[2], bg=BG_DS),
- CARD('縄文は、', 'いちばん古い源流。', bg=BG_SAN),
+ CARD('縄文は、', 'いちばん古い源流。', bg=BG_DOGU),
  CARD('いちばん多く受け継いだのは、', '海を渡ってきた人々。', fs=70, gold=1, bg=BG_DS),
  # ── reading the result (72-84)
  CARD('ここで1つ、', '誤解しやすい点。', bg=BG_MOZU),
@@ -288,8 +288,8 @@ S = [
  # ── closing (94-101)
  THEO('日本人の成り立ち', [{'k': '1', 'name': '縄文'}, {'k': '2', 'name': '弥生'}, {'k': '3', 'name': '古墳時代'}], hi=[0, 1, 2], bg=BG_DS),
  CARD('奪い合ったのではなく、', '混ざり合った。', gold=1, bg=BG_DS),
- P('nabatake_z17', NABA, (2600, 2000), text=T('約3000年前 · 九州の海辺', '米の種を抱えた舟', ts=76)),
- P('sannai_z17', SAN, (2000, 1600), text=T('浜で迎えたのは', '縄文の人々', ts=84)),
+ P('nabatake_z17', NABA, (1700, 1400), text=T('約3000年前 · 九州の海辺', '米の種を抱えた舟', ts=76)),
+ PH('sannai_pit', [960, 760], (1600, 1450), text=T('浜で迎えたのは', '縄文の人々', ts=84)),
  P('daisen_z17', DS, (2200, 1700), text=T('それから1000年ほど後', '鉄の道具と新しい技', ts=76)),
  CARD('鏡の前の顔は、', 'すべての出会いの続き。', gold=1, bg=BG_DS),
  STACK(show=[0, 1, 2], keep=[0, 1, 2], kicker='17万人分のDNA', note='これまでにない規模の調べ'),
@@ -301,7 +301,7 @@ S = [
  COMMENT('ぜひコメント欄へ', '動画の最初の予想とも比べてみてください', bg=BG_SAN),
  CARD('最初の予想と、', '比べてみてください。', bg=BG_SAN),
  CARD('次回　縄文の人々の顔を、', 'DNAから確かめる。', fs=70, bg=BG_SAN),
- P('sannai_z17', SAN, (2600, 2300)),
+ P('sannai_z17', SAN, (1800, 1500)),
 ]
 
 lines = json.load(open('lines.json', encoding='utf-8'))

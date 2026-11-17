@@ -76,6 +76,50 @@
   "layer": "seamlessphoto",
   "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
  },
+ "sannai_05": {
+  "f": "assets/sannai_05.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1800,
+  "h": 2400,
+  "layer": "seamlessphoto",
+  "credit": "写真：Owl Cat（CC0／Wikimedia Commons）"
+ },
+ "sannai_pit": {
+  "f": "assets/sannai_pit.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1440,
+  "layer": "seamlessphoto",
+  "credit": "写真：Abasaa（Public domain／Wikimedia Commons）"
+ },
+ "sannai_dogu": {
+  "f": "assets/sannai_dogu.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1440,
+  "layer": "seamlessphoto",
+  "credit": "写真：Abasaa（Public domain／Wikimedia Commons）"
+ },
+ "yoshinogari_photo": {
+  "f": "assets/yoshinogari_photo.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 974,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
+ },
  "daisen_z17": {
   "f": "assets/daisen_z17.jpg",
   "z": 17,
