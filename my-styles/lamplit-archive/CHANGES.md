@@ -15,5 +15,6 @@ The user chose "decide with recommendations" (MY-STYLES §2: "you decide"); each
 | §7 Sound | pizzicato, clockwork tick | warm drone, bell per finding, paper | no clock; calm long-form listening |
 | §8 Native moves | freeze/circle, sync grid, evidence map | locator ring, measured outline, highlighted source line, source meets measurement, year band | — (new) |
 | §7 Sound (cuts) | — | no swish at scene changes (`sound.transition_sound: false`) | user decision 2026-11-17: 「画面切り替わる音は無くして」 |
+| §4 Type (size) | — | on-screen text ×1.15, at least 26 px; subtitles 44 px (`type.text_scale`, `type.text_min_px`, `type.subtitle_px`) | user decision 2026-11-17: 「テキストがやや小さいので次回から大きく」 |
 | Voice | Kokoro `am_michael` | VOICEVOX 青山龍星 (`config/style.json` sound.*) | user decision (the same voice as the reference channel; everything else about the channel is our own) |
 | Length | 60 s | about 20 min (tests 30–60 s) | channel format |

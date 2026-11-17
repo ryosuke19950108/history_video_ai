@@ -42,17 +42,18 @@ function geo(k, ll) { const a = A[k]; if (!Array.isArray(ll)) return [a.w / 2, a
 const gradeOf = k => { const l = A[k].layer; return l === 'seamlessphoto' ? G.photo : l === 'hillshademap' ? G.terrain : G.old_photo; };
 
 // ── primitives ──
-function font(o) { return `${o.w || 500} ${o.s || 24}px ${o.f || F.sans}`; }
+const PX = o => o.raw ? (o.s || 24) : Math.round(Math.max(S.type.text_min_px || 0, (o.s || 24) * (S.type.text_scale || 1)));   // type.text_scale / text_min_px (config/style.json): every on-screen text size, subtitles excepted
+function font(o) { return `${o.w || 500} ${PX(o)}px ${o.f || F.sans}`; }
 function txt(s, X, Y, o = {}) {   // text is queued (TQ) and drawn after the lamp, vignette and exposure passes, so the vignette never dims it
   s = String(s); x.save(); x.font = font(o); x.letterSpacing = (o.ls || 0) + 'px'; const w = x.measureText(s).width; x.restore(); const vis = x.globalAlpha * (o.a ?? 1);
   if (vis > .001) { if (TQ) TQ.push([s, X, Y, o, vis]); else drawT(x, s, X, Y, o, vis); }
-  if (REC && o.id && vis > .5) { const sz = o.s || 24, xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X; REC.push({ id: o.id, text: s, x0: xa, y0: Y - sz * .9, x1: xa + w, y1: Y + sz * .25, ...(o.pass ? { pass: true } : {}) }); }
+  if (REC && o.id && vis > .5) { const sz = PX(o), xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X; REC.push({ id: o.id, text: s, x0: xa, y0: Y - sz * .9, x1: xa + w, y1: Y + sz * .25, ...(o.pass ? { pass: true } : {}) }); }
   return w;
 }
 function drawT(c, s, X, Y, o, a) { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.filter = 'none'; c.font = font(o); c.fillStyle = o.c || C.text; c.globalAlpha = Math.min(1, a); c.textAlign = o.al || 'left'; c.textBaseline = 'alphabetic'; c.letterSpacing = (o.ls || 0) + 'px';
   if (o.shadow) { c.shadowColor = 'rgba(0,0,0,.9)'; c.shadowBlur = o.shadow; } else if (!/^#[0-3]/.test(o.c || '')) { c.shadowColor = 'rgba(8,7,6,.75)'; c.shadowBlur = 8; }
   c.fillText(s, X, Y); c.restore(); }
-const tkey = q => q[0] + '|' + Math.round(q[1]) + '|' + Math.round(q[2]) + '|' + (q[3].c || '') + '|' + (q[3].s || 24);
+const tkey = q => q[0] + '|' + Math.round(q[1]) + '|' + Math.round(q[2]) + '|' + (q[3].c || '') + '|' + PX(q[3]);
 function tw(s, o = {}) { x.save(); x.font = font(o); x.letterSpacing = (o.ls || 0) + 'px'; const w = x.measureText(String(s)).width; x.restore(); return w; }
 function line(a, b, c, d, col, w = 1, dash) { x.save(); x.strokeStyle = col; x.lineWidth = w; if (dash) x.setLineDash(dash); x.beginPath(); x.moveTo(a, b); x.lineTo(c, d); x.stroke(); x.restore(); }
 function fill(X, Y, w, h, c) { x.fillStyle = c; x.fillRect(X, Y, w, h); }
@@ -80,10 +81,11 @@ function lamp() {
 const rise = (u, at, dur = .45) => eo(seg(u, at, at + dur));
 function title(s, u) { // kicker + serif title + optional number block, left column
   const t = s.text || {}; let y = t.y || 330; const k = rise(u, .1);
-  if (t.kicker) { kicker(t.kicker, 120, y - (t.title ? (t.ts || 92) + 14 : 70), k, t.kc ? C[t.kc] : C.red, 'k'); }
-  if (t.title) { txt(t.title, 116, y + 10 * (1 - k), { s: t.ts || 92, w: 700, f: F.serif, a: k, id: 'tt' }); line(120, y + 36, lerp(120, 120 + Math.min(520, tw(t.title, { s: t.ts || 92, w: 700, f: F.serif })), rise(u, .3, .6)), y + 36, C.red, 2); y += 140; }
-  if (t.caption) { txt(t.caption, 120, y, { s: 28, c: C.dim, a: rise(u, .35), id: 'cap' }); y += 120; }
-  if (t.number) { const kk = rise(u, .45); if (t.kicker && !t.title && !t.caption) y = Math.max(y, (t.y || 330) - 40 + (t.ns || 120) * .82); const nw = txt(t.number, 114, y + 8 * (1 - kk), { s: t.ns || 120, w: 700, f: F.serif, c: C.gold, a: kk, id: 'num' }); if (t.unit) txt(t.unit, 126 + nw, y, { s: 44, f: F.mono, c: C.gold, a: kk, id: 'unit' }); y += 90; }
+  const Z = S.type.text_scale || 1, NS = PX({ s: t.ns || 120 });
+  if (t.kicker) { kicker(t.kicker, 120, y - (t.title ? PX({ s: t.ts || 92 }) + 14 : 70 * Z), k, t.kc ? C[t.kc] : C.red, 'k'); }
+  if (t.title) { txt(t.title, 116, y + 10 * (1 - k), { s: t.ts || 92, w: 700, f: F.serif, a: k, id: 'tt' }); line(120, y + 36, lerp(120, 120 + Math.min(520, tw(t.title, { s: t.ts || 92, w: 700, f: F.serif })), rise(u, .3, .6)), y + 36, C.red, 2); y += 140 * Z; }
+  if (t.caption) { txt(t.caption, 120, y, { s: 28, c: C.dim, a: rise(u, .35), id: 'cap' }); y += 36 + NS * .9; }
+  if (t.number) { const kk = rise(u, .45); if (t.kicker && !t.title && !t.caption) y = Math.max(y, (t.y || 330) - 40 * Z + NS * .82); const nw = txt(t.number, 114, y + 8 * (1 - kk), { s: t.ns || 120, w: 700, f: F.serif, c: C.gold, a: kk, id: 'num' }); if (t.unit) txt(t.unit, 126 + nw, y, { s: 44, f: F.mono, c: C.gold, a: kk, id: 'unit' }); y += 90 * Z; }
   if (t.note) txt(t.note, 120, y, { s: 22, c: C.dim, a: rise(u, .6), id: 'note' });
 }
 
@@ -109,14 +111,14 @@ const L = {
     title(s, u);
   },
   card(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .05, .4), al = s.center ? 'center' : 'left', X = s.center ? W / 2 : 200;
-    if (s.kicker) kicker(s.kicker, s.center ? W / 2 - tw(s.kicker, { s: 24, f: F.mono, ls: 2 }) / 2 - 8 : 204, 400, k, C.red, 'k');
     const lines = Array.isArray(s.lines) ? s.lines : [s.lines]; const fs = s.fs || (lines.length > 1 ? 76 : 92);
+    if (s.kicker) kicker(s.kicker, s.center ? W / 2 - tw(s.kicker, { s: 24, f: F.mono, ls: 2 }) / 2 - 8 : 204, Math.min(400, 520 - PX({ s: fs }) * .88 - 44), k, C.red, 'k');
     lines.forEach((ln, i) => txt(ln, X, 520 + i * fs * 1.35 - 14 * (1 - k), { s: fs, w: 700, f: F.serif, al, a: rise(u, .05 + i * .1, .4), c: s.gold === i ? C.gold : C.text, id: 'l' + i }));
     const yr = 520 + (lines.length - 1) * fs * 1.35 + 50; if (!s.center) line(204, yr, lerp(204, 520, rise(u, .6, .8)), yr, C.red, 2);
     if (s.sub) txt(s.sub, X, yr + 70, { s: 28, c: C.dim, al, a: rise(u, .25), id: 'sub' });
   },
   chapter(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .1, .6);
-    txt('MYSTERY', 200, 330, { s: 24, f: F.mono, c: C.red, ls: 6, a: k, id: 'm' }); txt(s.num, 200, 470, { s: 150, w: 700, f: F.serif, c: C.gold, a: k, id: 'n' });
+    txt('MYSTERY', 200, 470 - PX({ s: 150 }) * .88 - 32, { s: 24, f: F.mono, c: C.red, ls: 6, a: k, id: 'm' }); txt(s.num, 200, 470, { s: 150, w: 700, f: F.serif, c: C.gold, a: k, id: 'n' });
     txt(s.title, 200 + tw(s.num, { s: 150, w: 700, f: F.serif }) + 50, 455 - 12 * (1 - k), { s: 84, w: 700, f: F.serif, a: rise(u, .05, .4), id: 't' });
     line(204, 520, lerp(204, 1500, rise(u, .5, .9)), 520, C.red, 2); if (s.sub) txt(s.sub, 204, 590, { s: 30, c: C.dim, a: rise(u, .7), id: 's' });
   },
@@ -227,7 +229,7 @@ function endCard(u) { const k = rise(u, .3, .6);
   txt(FILM.title, 120, 330, { s: 76, w: 700, f: F.serif, a: k, id: 'e1' }); line(124, 380, lerp(124, 1000, rise(u, .5, .7)), 380, C.red, 1.5);
   txt('灯下の資料室', 124, 446, { s: 30, f: F.serif, c: C.gold, a: rise(u, .5), id: 'e3' });
   (FILM.credits || []).forEach((c, i) => txt(c, 124, 560 + i * 40, { s: 22, c: i === FILM.credits.length - 1 ? C.dim : C.text, a: rise(u, .8 + i * .06), id: 'cr' + i, pass: true })); }
-function subs(t) { for (const [a, b, s] of FILM.subs) if (t >= a && t < b) { const o = { s: S.type.subtitle_px, w: 700, al: 'center', shadow: 14 }; txt(s, W / 2, S.frame.subtitle_baseline, o); LAST.push([s, W / 2, S.frame.subtitle_baseline, o, 1]); } }
+function subs(t) { for (const [a, b, s] of FILM.subs) if (t >= a && t < b) { const o = { s: S.type.subtitle_px, raw: 1, w: 700, al: 'center', shadow: 14 }; txt(s, W / 2, S.frame.subtitle_baseline, o); LAST.push([s, W / 2, S.frame.subtitle_baseline, o, 1]); } }
 function drawScene(i, t) { x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground); if (i >= FILM.scenes.length) { endCard(t - FILM.end.t0); return; }
   const s = FILM.scenes[i]; GT = t - (s.g ? s.g.t0 : s.t0); GD = (s.g ? s.g.t1 - s.g.t0 : s.t1 - s.t0); L[s.layout](t - s.t0 + (s.cont ? 30 : 0), s, s.t1 - s.t0); if (s.source) txt(s.source, W - 80, 1062, { s: 19, f: F.mono, c: C.dim, al: 'right' }); }
 let IDX = 0; function sceneAt(t) { const sc = FILM.scenes; if (!(sc[IDX] && t >= sc[IDX].t0 && t < sc[IDX].t1)) { IDX = sc.findIndex(s => t >= s.t0 && t < s.t1); if (IDX < 0) { IDX = 0; return sc.length; } } return IDX; }
@@ -252,7 +254,7 @@ window.render = function (t) { FR = Math.floor(t * FILM.fps); const T = M.transi
   if (ex !== 1) { const c = LAYER[0], g = c.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.filter = 'none'; g.drawImage(cv, 0, 0); x.save(); x.filter = `brightness(${ex})`; x.drawImage(c, 0, 0); x.restore(); }
   for (const [q, w] of texts) if (q[4] * w > .002) drawT(x, q[0], q[1], q[2], q[3], q[4] * w);
   LAST = texts.filter(([q, w]) => q[4] * w > .5).map(([q]) => q); subs(t); };
-window.TBOXES = function (t) { window.render(t); return LAST.map(([s, X, Y, o]) => { const w = tw(s, o), sz = o.s || 24, xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X; return { text: s, x0: xa, y0: Y - sz * .88, x1: xa + w, y1: Y + sz * .2 }; }); };
+window.TBOXES = function (t) { window.render(t); return LAST.map(([s, X, Y, o]) => { const w = tw(s, o), sz = PX(o), xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X; return { text: s, x0: xa, y0: Y - sz * .88, x1: xa + w, y1: Y + sz * .2 }; }); };
 window.TEXTS = function (t) { REC = []; window.render(t); const r = REC; REC = null; return r; };
 window.EV = [];
 boot();

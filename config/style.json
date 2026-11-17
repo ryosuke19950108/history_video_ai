@@ -42,7 +42,9 @@
   "heading": "SerifJP",
   "body": "SansJP",
   "mono": "PlexMono",
-  "subtitle_px": 38,
+  "subtitle_px": 44,
+  "text_scale": 1.15,
+  "text_min_px": 26,
   "subtitle_safe_width": 1500
  },
  "motion": {
