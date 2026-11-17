@@ -16,7 +16,7 @@
   "地図　Natural Earth（パブリックドメイン）をもとに作図　空中写真　出典：国土地理院（地理院タイル）",
   "研究　Cooke ほか（2021）Science Advances 7: eabh2419 ／ Yamamoto ほか（2024）Nature Communications 15: 9780",
   "史料　『日本書紀』巻第十 応神天皇十四年条 ／『古事記』中巻 応神天皇の段（原文・新字体）",
-  "写真　Owl Cat（CC0／Wikimedia Commons）",
+  "写真　Abasaa（Public domain／Wikimedia Commons）、Owl Cat（CC0／Wikimedia Commons）、Saigen Jiro（CC0／Wikimedia Commons）",
   "音声　VOICEVOX:青山龍星",
   "地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。"
  ],
@@ -1510,7 +1510,8 @@
     "a": 0.24
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "出典：国土地理院（空中写真）",
+   "say": "そのため、縄文人のDNAは、世界のどの集団とも大きく違う、とても独特なものになっていました。"
   },
   {
    "layout": "mysteries",
@@ -3100,10 +3101,10 @@
      "col": "cream",
      "label": "海を渡った人々",
      "lat": [
-      33.2,
-      128.2
+      35.3,
+      130.0
      ],
-     "al": "right",
+     "al": "left",
      "t": 0.3
     }
    ],
