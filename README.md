@@ -27,4 +27,4 @@
 ## 納品
 
 - 動画は 1080p 版（`<name>_1080p.mp4`、400 MiB 以下）だけをチャットで送る。720p の確認用は頼まれたときだけ作る。
-- 字幕（`.srt`）・サムネイル候補（`poster.jpg`）・チャプター（`CHAPTERS.txt`）は Google ドライブのマイドライブ「history_video_ai」に置く。
+- 字幕（`.srt`）・サムネイル候補（`poster.jpg`）・チャプター（`CHAPTERS.txt`、1 行目は「◾️目次」）は Google ドライブのマイドライブ「history_video_ai」に置く。
