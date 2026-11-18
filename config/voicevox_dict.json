@@ -47,7 +47,8 @@
  {
   "surface": "日本",
   "pronunciation": "ニホン",
-  "accent_type": 2
+  "accent_type": 3,
+  "priority": 10
  },
  {
   "surface": "日本最大",
