@@ -167,7 +167,7 @@ const L = {
     s.groups.forEach((g, gi) => { const n = Math.round(g.n / per), t0 = .2 + gi * 1.0; for (let i = 0; i < n; i++, idx++) { const cx = X0 + (idx % cols) * gap, cy = Y0 + Math.floor(idx / cols) * gap, kk = seg(u, t0 + i * .004, t0 + .2 + i * .004);
       if (kk > 0) { x.save(); x.globalAlpha *= kk; x.fillStyle = g.col ? C[g.col] : gi === 0 ? C.gold : gi === 1 ? C.teal : C.dim; x.beginPath(); x.arc(cx, cy, rad, 0, Math.PI * 2); x.fill(); x.restore(); } }
       txt(g.label, (s.cols ? X0 : 200) + gi * (s.lgap || 520), s.ly || 860, { s: 30, w: 700, c: g.col ? C[g.col] : gi === 0 ? C.gold : gi === 1 ? C.teal : C.dim, a: rise(u, t0), id: 'g' + gi }); });
-    txt(`●1つ＝${per}人`, W - 200, 200, { s: 22, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'per' });
+    txt(`●1つ＝${per}${s.unit || '人'}`, W - 200, 200, { s: 22, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'per' });
   },
   budget(u, s, d) { // soil: what the mound needs and where it comes from (numbers as stated in the script)
     kicker(s.kicker || '土の量（大林組の試算）', 200, 200, rise(u, .05), C.gold, 'k'); const X0 = 520, unit = 6.5, row = (y, items, lab, ka) => { let X = X0; const out = [];

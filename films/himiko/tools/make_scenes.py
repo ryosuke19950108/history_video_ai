@@ -49,6 +49,9 @@ def ROWS(kicker, rows, bg=None, **kw): return {'layout': 'rows', 'kicker': kicke
     'rows': [r if isinstance(r, dict) else {'k': r[0], 'v': r[1] if len(r) > 1 else '', 'hi': len(r) > 2} for r in rows], 'bg': bg, **kw}
 def THEO(kicker, items, bg=None, **kw): return {'layout': 'theories', 'kicker': kicker, 'items': items, 'bg': bg, **kw}
 def COMMENT(text, sub=None, bg=None): return {'layout': 'comment', 'text': text, 'sub': sub, 'bg': bg}
+def DOTS(kicker, groups, per=1, unit='人', bg=None, **kw):
+    return {'layout': 'dots', 'kicker': kicker, 'per': per, 'unit': unit, 'cols': 25, 'gap': 54, 'r': 19,
+            'y0': 380, 'ly': 760, 'lgap': 430, 'groups': groups, 'bg': bg, **kw}
 def DOC(doc, lines, hl, source, bg=None, fs=58): return {'layout': 'doc', 'doc': doc, 'lines': lines, 'hl': hl, 'fs': fs, 'source': source, 'bg': bg}
 def B(img, at, span, a=.22): return {'img': img, 'at': at, 'span': span, 'a': a}
 
@@ -150,7 +153,8 @@ S = [
 
     # ───── 政治と住まい（s32–s35）
     ROWS('卑弥呼の政治', [('政治を実際に助けたのは', '弟', True)], bg=BG_YOSHI),
-    ROWS('王になってから', [('姿を見た者', 'ほとんどいない', True), ('身の回りに仕える女性', '1000人')], bg=BG_YOSHI),
+    DOTS('王になってからは、姿を見た者がほとんどいない', [{'n': 1000, 'label': '身の回りに仕えた女性 1000人', 'col': 'gold'}],
+         per=10, bg=BG_YOSHI),
     ROWS('住まい', [('宮殿と高い物見やぐら', '周りを柵で囲む'), ('守り', 'いつも兵がいた', True)], bg=BG_YP),
     ROWS('取り次ぎ', [('食事を運ぶ', 'ただ1人の男性', True), ('卑弥呼の言葉', 'その男性が取り次ぐ')], bg=BG_YP),
 
@@ -170,7 +174,8 @@ S = [
       rings=[{'at': SHIKA, 'r': 28, 'label': '志賀島', 'sub': '福岡県（金印公園のあたり）', 'side': 1}],
       text={'kicker': '1784年　農民が掘り当てた', 'caption': '「漢委奴国王」と刻まれた金の印'}),
     ROWS('2つの金の印', [('漢委奴国王', '志賀島で見つかった'), ('親魏倭王', '今もどこかの土の中', True)], bg=BG_SHIKA),
-    CARD('贈られた100枚の鏡が', 'どれなのかも分かっていない', bg=BG_HASHI),
+    DOTS('贈られた鏡は、どれなのか', [{'n': 100, 'label': '魏から贈られた銅の鏡 100枚', 'col': 'gold'}],
+         per=1, unit='枚', bg=BG_HASHI),
     BARS('三角縁神獣鏡の出土', [{'label': '日本', 'value': 500, 'text': '500枚を超える', 'hi': True},
                                {'label': '中国', 'value': 0, 'text': '1枚も出ていない', 'col': 'teal'}], max=600, bg=BG_HASHI),
     ROWS('島根県の古墳から', [('1972年', '景初3年と刻まれた鏡', True)], bg=BG_HASHI),
