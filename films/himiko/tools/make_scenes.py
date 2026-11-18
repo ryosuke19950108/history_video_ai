@@ -121,7 +121,9 @@ TLM = lambda ev, **kw: {'layout': 'timeline', 'kicker': '纒向で測られた�
 
 S = [
     # ───── 導入（s01–s13）
-    CARD('卑弥呼という名前は', '日本の歴史書に', '1度も出てこない', kicker='日本で最も有名な古代の女王', bg=BG_MIR),
+    P('mirror_deities', [800, 1040, 0], (1300, 1300),
+      text={'kicker': '日本で最も有名な古代の女王', 'title': '卑弥呼', 'ts': 150,
+            'caption': 'その名は、日本の歴史書に1度も出てこない'}),
     ROWS('卑弥呼という名前', [('日本書紀　720年', '記載なし', True), ('古事記　712年', '記載なし', True)], bg=BG_MIR),
     THEO('卑弥呼を伝えているのは', [{'k': '日本の記録', 'name': '日本書紀・古事記', 'sub': '名前が出てこない'},
                                     {'k': '中国の記録', 'name': '魏志倭人伝', 'sub': 'すべてここから'}], hi=[1], bg=BG_MIR),
@@ -136,7 +138,7 @@ S = [
     COMMENT('あなたの予想は？', '動画を見る前に、コメント欄へ一言', bg=BG_MIR),
     THEO('どれだと思いますか', [{'k': '候補 1', 'name': '天照大神'}, {'k': '候補 2', 'name': '神功皇后'},
                                 {'k': '？', 'name': '別の誰か'}], bg=BG_MIR),
-    COMMENT('最後に答え合わせをしましょう', bg=BG_MIR),
+    COMMENT('最後に答え合わせを', bg=BG_MIR),
     CARD('まずは', '確かに分かっていることから', kicker='検証のはじめに', bg=BG_YOSHI),
 
     # ───── 魏志倭人伝（s14–s21）
@@ -144,8 +146,7 @@ S = [
         source='史料：『三国志』魏書 東夷伝 倭人条（原文・新字体）', bg=BG_MIR3),
     ROWS('魏志倭人伝とは', [('正しくは', '『三国志』魏書 東夷伝 倭人条'), ('長さ', '2000字ほど', True)], bg=BG_MIR3),
     ROWS('書いたのは', [('陳寿', '中国の役人'), ('まとめられた', '3世紀の終わりごろ', True)], bg=BG_MIR3),
-    CALC('卑弥呼の時代との隔たり', [['3世紀の終わり − 卑弥呼の時代', '50年ほど', True]],
-         note='同じ時代に近いほど重く見る、というのが今回の1つ目のルールです', bg=BG_MIR3),
+    CALC('卑弥呼の時代との隔たり', [['3世紀の終わり − 卑弥呼の時代', '50年ほど', True]], bg=BG_MIR3),
     MAP(ROUTE, routes=RT(label='帯方郡から倭の国へ', lat=[36.3, 127.6]),
         places=[{'at': TAIHO, 'label': '帯方郡', 'sub': '朝鮮半島（位置は概略）', 'side': 1, 'col': 'gold', 'r': 12}],
         text={'kicker': '魏志倭人伝が書いた道のり'}),
@@ -212,7 +213,7 @@ S = [
     THEO('国が治まったのは', [{'k': '男の王', 'name': '治まらない', 'dashed': True},
                               {'k': '13歳の少女', 'name': '治まった'}], hi=[1], bg=BG_YOSHI),
     CARD('まとめていたのは', '力の強い王ではなく', '神の言葉を伝える女性', gold=2, bg=BG_YOSHI),
-    COMMENT('この点は、最後に大きな意味を持ちます', bg=BG_YOSHI),
+    COMMENT('この点が、最後に効いてきます', bg=BG_YOSHI),
 
     # ───── 論争史（s57–s74）
     ROWS('この有名な話', [('日本の側の記録には', '1行も出てこない', True)], bg=BG_MAKI),
@@ -330,7 +331,7 @@ S = [
     ROWS('神功皇后が九州を進んだとき', [('筑後の山門という土地に', '田油津媛という女性の首長', True)], bg=BG_YAMATO),
     ROWS('山門', [('読み', 'やまと', True)], bg=BG_YAMATO),
     P('yamato_z15', YAMATO_K, (4200, 3700),
-      rings=[{'at': YAMATO_K, 'r': 26, 'label': '山門', 'sub': '今の福岡県みやま市のあたり（位置は概略）', 'side': 1}],
+      rings=[{'at': YAMATO_K, 'r': 26, 'label': '山門', 'sub': '今の福岡県みやま市（概略）', 'side': 1}],
       text={'kicker': '筑後の山門'}),
     THEO('どちらも、やまと', [{'k': '筑後', 'name': '山門', 'sub': 'やまと'},
                               {'k': '魏志倭人伝', 'name': '邪馬台国', 'sub': 'やまとと読む説'}], bg=BG_YAMATO),
@@ -360,7 +361,7 @@ S = [
     SCORE('九州の女王 合計 13点', [('time', 4), ('place', 4), ('rite', 2), ('rec', 3)], note='20点満点', bg=BG_YOSHI),
     MY(['solved'] * 3 + ['open'], marks=MARKS(12, 13, 13, '？'), focus=2, kicker='神功皇后と並んで同点', bg=BG_YOSHI),
     MY(['solved'] * 3 + ['open'], marks=MARKS(12, 13, 13, '？'), kicker='ここまでの採点', bg=BG_YOSHI),
-    MY(['solved'] * 3 + ['open'], marks=MARKS(12, 13, 13, '？'), kicker='3人がわずか1点の中にひしめいている', bg=BG_YOSHI),
+    MY(['solved'] * 3 + ['open'], marks=MARKS(12, 13, 13, '？'), kicker='3人が1点の中に', bg=BG_YOSHI),
 
     # ───── チャンネル・4人目へ（s168–s176）
     COMMENT('次に確かめるテーマは', 'いただいたコメントから決めています', bg=BG_MAKI),
@@ -490,9 +491,9 @@ S = [
     CARD('だからこそ', '中国の記録をわざわざ引き写した', bg=BG_MAKI),
     CARD('1300年前の人々が抱いた問いを', '私たちは今も同じように抱いている', bg=BG_MAKI),
     CARD('そして桃の種1つから', 'その答えに少しずつ近づいている', bg=BG_MAKI17),
-    COMMENT('卑弥呼は大和の姫だったと思いますか', bg=BG_MAKI),
-    COMMENT('それとも、九州の女王だったと思いますか', bg=BG_YOSHI),
-    COMMENT('ぜひコメント欄で教えてください', bg=BG_MAKI),
+    COMMENT('大和の姫だったのか', bg=BG_MAKI),
+    COMMENT('それとも九州の女王か', bg=BG_YOSHI),
+    COMMENT('ぜひコメント欄へ', bg=BG_MAKI),
     COMMENT('最初に書いた予想とも', '比べてみてください', bg=BG_MAKI),
     CARD('次回は', '奈良の都の大仏は', 'どうやって造られたのか', kicker='卑弥呼の時代から500年後', bg=BG_HASHI),
     CARD('最後までご覧いただき', 'ありがとうございました', center=True, bg=BG_MIWA),
