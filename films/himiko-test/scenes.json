@@ -18,7 +18,7 @@
   "史料　『三国志』魏書 東夷伝 倭人条 ／『日本書紀』巻第九 神功皇后紀（原文・新字体）",
   "年代　春成秀爾ほか（2011）国立歴史民俗博物館研究報告 163 ／ 中塚武ほか（2018）纒向遺跡出土桃核の年代測定",
   "写真　Saigen Jiro（Wikimedia Commons、パブリックドメイン・CC0）",
-  "画像　Katsukawa Shun'ei「Empress Jingu (left), and Her Minister Takenouchi no Sukune (right)」（late 1780s） ／ Totoya Hokkei「Takenouchi no Sukune carrying the Emperor Ojin」（c. 1830） ／ Torii Kiyomasu II「Susano-o no Mikoto Killing the Eight-headed Dragon」（1748） ／ 作者不詳「Mirror with Images of Daoist Deities」（Eastern Han dynasty (25–220 CE), 2nd or 3rd century CE） ／ 作者不詳「Mirror with \"TLV\" Pattern」（Eastern Han dynasty (25–220 CE), about 1st century） ／ 作者不詳「Mirror with Dragon and Bird Arabesque」（Western Han dynasty (206 B.C.–A.D. 9)）（シカゴ美術館、パブリックドメイン・CC0）",
+  "画像　勝川春英「神功皇后と武内宿禰」（1780年代） ／ 魚屋北渓「応神天皇を抱く武内宿禰」（1830年ごろ） ／ 鳥居清倍「素戔嗚尊 八岐大蛇退治」（1748年） ／ 神獣鏡（後漢・2〜3世紀） ／ 方格規矩鏡（後漢・1世紀ごろ） ／ 竜文鏡（前漢）（シカゴ美術館、パブリックドメイン・CC0）",
   "音声　VOICEVOX:青山龍星",
   "地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。"
  ],
@@ -37,11 +37,11 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
    "kicker": "日本で最も有名な古代の女王",
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "rows",
@@ -65,10 +65,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "theories",
@@ -92,13 +92,13 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
    "hi": [
     1
    ],
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "card",
@@ -113,11 +113,11 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
    "center": true,
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "timeline",
@@ -171,10 +171,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）",
    "say": "そこで今回は、中国の記録と日本書紀をいちぎょうずつ突き合わせてみました。"
   },
   {
@@ -191,11 +191,11 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
    "kicker": "今回の検証",
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "mysteries",
@@ -213,10 +213,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "mysteries",
@@ -235,10 +235,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）",
    "cont": true
   },
   {
@@ -252,10 +252,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "theories",
@@ -281,10 +281,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   },
   {
    "layout": "comment",
@@ -296,10 +296,10 @@
      1040,
      0
     ],
-    "span": 1350,
-    "a": 0.26
+    "span": 1300,
+    "a": 0.34
    },
-   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+   "source": "画像：神獣鏡（後漢・2〜3世紀）（シカゴ美術館、パブリックドメイン・CC0）"
   }
  ]
 }
