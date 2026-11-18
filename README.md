@@ -23,3 +23,8 @@
 前提：`~/lemo-opuscar`（`setup.sh deps voice`）、`.tools/ffmpeg`（ffmpeg 7 静的ビルド）、VOICEVOX Engine
 （`docker run -d --rm --name voicevox -p 127.0.0.1:50021:50021 voicevox/voicevox_engine:cpu-latest`）。
 動画ファイルと中間生成物は Git に入れない（`.gitignore`）。
+
+## 納品
+
+- 動画は 1080p 版（`<name>_1080p.mp4`、400 MiB 以下）だけをチャットで送る。720p の確認用は頼まれたときだけ作る。
+- 字幕（`.srt`）・サムネイル候補（`poster.jpg`）・チャプター（`CHAPTERS.txt`）は Google ドライブのマイドライブ「history_video_ai」に置く。
