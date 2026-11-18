@@ -1,0 +1,632 @@
+{
+ "title": "卑弥呼の正体（テスト）",
+ "title_en": "Who Was Himiko?",
+ "dur": 73.613,
+ "fps": 30,
+ "scenes": [
+  {
+   "layout": "comment",
+   "text": "最後に答え合わせをしましょう",
+   "bg": {
+    "img": "makimuku_z15",
+    "at": [
+     34.5398,
+     135.8338
+    ],
+    "span": 2600,
+    "a": 0.22
+   },
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s12",
+   "line": "最後に答え合わせをしましょう。",
+   "t0": 0.0,
+   "t1": 5.461,
+   "voice": 0.3,
+   "vdur": 2.219
+  },
+  {
+   "layout": "doc",
+   "doc": "『三国志』魏書 東夷伝 倭人条",
+   "lines": [
+    "倭人在帶方",
+    "東南大海之中",
+    "依山㠀爲國邑"
+   ],
+   "hl": [
+    0
+   ],
+   "fs": 58,
+   "source": "史料：『三国志』魏書 東夷伝 倭人条（原文・新字体）・出典：国土地理院（空中写真）",
+   "bg": {
+    "img": "yoshinogari_z16",
+    "at": [
+     33.325,
+     130.3818
+    ],
+    "span": 2600,
+    "a": 0.24
+   },
+   "id": "s14",
+   "line": "卑弥呼のことを書いた記録は、魏志倭人伝と呼ばれています。",
+   "t0": 5.461,
+   "t1": 10.7,
+   "voice": 5.811,
+   "vdur": 4.064
+  },
+  {
+   "layout": "map",
+   "view": {
+    "c": [
+     36,
+     122
+    ],
+    "w": 46
+   },
+   "source": "出典：Natural Earth（地図データ、パブリックドメイン）",
+   "routes": [
+    {
+     "pts": [
+      [
+       33.59,
+       130.4
+      ],
+      [
+       33.9,
+       129.2
+      ],
+      [
+       35.0,
+       126.6
+      ],
+      [
+       37.57,
+       126.98
+      ],
+      [
+       38.6,
+       122.2
+      ],
+      [
+       36.8,
+       117.4
+      ],
+      [
+       34.62,
+       112.45
+      ]
+     ],
+     "col": "teal",
+     "wd": 5,
+     "dashed": true,
+     "label": "239年 魏へ",
+     "lat": [
+      38.2,
+      118.6
+     ]
+    }
+   ],
+   "places": [
+    {
+     "at": [
+      34.62,
+      112.45
+     ],
+     "label": "魏",
+     "side": 1,
+     "col": "teal",
+     "r": 12
+    },
+    {
+     "at": [
+      41.27,
+      123.17
+     ],
+     "label": "遼東",
+     "sub": "魏が手に入れた前年",
+     "side": -1,
+     "col": "gold",
+     "r": 11
+    }
+   ],
+   "text": {
+    "kicker": "遼東を手に入れた、すぐ翌年"
+   },
+   "id": "s37",
+   "line": "魏が朝鮮半島の北の遼東を手に入れた、すぐ翌年のことです。",
+   "t0": 10.7,
+   "t1": 16.215,
+   "voice": 11.05,
+   "vdur": 4.715
+  },
+  {
+   "layout": "dots",
+   "kicker": "贈られた鏡は、どれなのか",
+   "per": 1,
+   "unit": "枚",
+   "cols": 25,
+   "gap": 54,
+   "r": 19,
+   "y0": 380,
+   "ly": 760,
+   "lgap": 430,
+   "groups": [
+    {
+     "n": 100,
+     "label": "魏から贈られた銅の鏡 100枚",
+     "col": "gold"
+    }
+   ],
+   "bg": {
+    "img": "hashihaka_z17",
+    "at": [
+     34.53926,
+     135.84123
+    ],
+    "span": 1000,
+    "a": 0.22
+   },
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s46",
+   "line": "贈られた100枚の鏡がどれなのかも、今なお続く論争の1つです。",
+   "t0": 16.215,
+   "t1": 21.932,
+   "voice": 16.565,
+   "vdur": 4.917
+  },
+  {
+   "layout": "calc",
+   "kicker": "景初3年とは",
+   "rows": [
+    [
+     "景初3年",
+     "西暦239年",
+     true
+    ]
+   ],
+   "bg": {
+    "img": "hashihaka_z17",
+    "at": [
+     34.53926,
+     135.84123
+    ],
+    "span": 1000,
+    "a": 0.22
+   },
+   "note": "卑弥呼が魏へ使いを送った、まさにその年",
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s49",
+   "line": "景初3年とは、まさに239年にあたる年です。",
+   "t0": 21.932,
+   "t1": 28.504,
+   "voice": 22.282,
+   "vdur": 4.341
+  },
+  {
+   "layout": "theories",
+   "kicker": "国が治まったのは",
+   "items": [
+    {
+     "k": "男の王",
+     "name": "治まらない",
+     "dashed": true
+    },
+    {
+     "k": "13歳の少女",
+     "name": "治まった"
+    }
+   ],
+   "bg": {
+    "img": "yoshinogari_z16",
+    "at": [
+     33.325,
+     130.3818
+    ],
+    "span": 2600,
+    "a": 0.24
+   },
+   "hi": [
+    1
+   ],
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s54",
+   "line": "男の王では治まらず、少女が立つと治まった。",
+   "t0": 28.504,
+   "t1": 32.995,
+   "voice": 28.854,
+   "vdur": 3.691
+  },
+  {
+   "layout": "chapter",
+   "num": "02",
+   "title": "神功皇后",
+   "sub": "2人目の候補",
+   "bg": {
+    "img": "isonokami_z17",
+    "at": [
+     34.5985,
+     135.852
+    ],
+    "span": 900,
+    "a": 0.22
+   },
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s106",
+   "line": "2人目の候補は、神功皇后です。",
+   "t0": 32.995,
+   "t1": 36.867,
+   "voice": 33.345,
+   "vdur": 3.072
+  },
+  {
+   "layout": "rows",
+   "kicker": "山門",
+   "rows": [
+    {
+     "k": "読み",
+     "v": "やまと",
+     "hi": true
+    }
+   ],
+   "bg": {
+    "img": "yamato_z15",
+    "at": [
+     33.17,
+     130.46
+    ],
+    "span": 4200,
+    "a": 0.22
+   },
+   "source": "出典：国土地理院（空中写真）",
+   "say": "さんもんは、やまと、と読みます。",
+   "id": "s146",
+   "line": "山門は、やまと、と読みます。",
+   "t0": 36.867,
+   "t1": 40.696,
+   "voice": 37.217,
+   "vdur": 3.029
+  },
+  {
+   "layout": "photo",
+   "img": "yamato_z15",
+   "at": [
+    33.17,
+    130.46
+   ],
+   "span": [
+    4200,
+    3700
+   ],
+   "rings": [
+    {
+     "at": [
+      33.17,
+      130.46
+     ],
+     "r": 26,
+     "label": "山門",
+     "sub": "今の福岡県みやま市のあたり（位置は概略）",
+     "side": 1
+    }
+   ],
+   "text": {
+    "kicker": "筑後の山門"
+   },
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s147",
+   "line": "場所は今の福岡県みやま市のあたりです。",
+   "t0": 40.696,
+   "t1": 47.491,
+   "voice": 41.046,
+   "vdur": 2.901
+  },
+  {
+   "layout": "bars",
+   "kicker": "九州の女王の採点",
+   "items": [
+    {
+     "label": "時代が合うか",
+     "value": 4,
+     "text": "4点",
+     "hi": true
+    },
+    {
+     "label": "女性が国の中心か",
+     "value": 4,
+     "text": "4点",
+     "hi": true
+    },
+    {
+     "label": "祭り・まじない",
+     "value": 2,
+     "text": "2点",
+     "hi": false
+    }
+   ],
+   "bg": {
+    "img": "yoshinogari_z16",
+    "at": [
+     33.325,
+     130.3818
+    ],
+    "span": 2600,
+    "a": 0.24
+   },
+   "max": 5,
+   "gap": 140,
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s161",
+   "line": "この物差しは2点です。",
+   "t0": 47.491,
+   "t1": 52.318,
+   "voice": 47.841,
+   "vdur": 1.856
+  },
+  {
+   "layout": "mysteries",
+   "status": [
+    "solved",
+    "solved",
+    "solved",
+    "open"
+   ],
+   "marks": [
+    "12点",
+    "13点",
+    "13点",
+    "？"
+   ],
+   "kicker": "3人がわずか1点の中にひしめいている",
+   "bg": {
+    "img": "yoshinogari_z16",
+    "at": [
+     33.325,
+     130.3818
+    ],
+    "span": 2600,
+    "a": 0.24
+   },
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s167",
+   "line": "3人がわずか1点の中にひしめいています。",
+   "t0": 52.318,
+   "t1": 58.357,
+   "voice": 52.668,
+   "vdur": 3.083
+  },
+  {
+   "layout": "timeline",
+   "kicker": "纒向で測られた年代",
+   "axis": [
+    100,
+    300
+   ],
+   "step": 50,
+   "events": [
+    {
+     "y": 190,
+     "label": "卑弥呼が王に立つ",
+     "sub": "2世紀の終わりごろ",
+     "side": -1,
+     "hi": true
+    }
+   ],
+   "spans": [
+    {
+     "from": 135,
+     "to": 230,
+     "label": "桃が実った年代",
+     "hi": true
+    }
+   ],
+   "id": "s215",
+   "line": "これは、卑弥呼が王に立った時代と重なります。",
+   "t0": 58.357,
+   "t1": 62.707,
+   "voice": 58.707,
+   "vdur": 3.392
+  },
+  {
+   "layout": "card",
+   "lines": [
+    "3つ",
+    "挙げておきます"
+   ],
+   "bg": {
+    "img": "makimuku_z15",
+    "at": [
+     34.5398,
+     135.8338
+    ],
+    "span": 2600,
+    "a": 0.22
+   },
+   "center": true,
+   "source": "出典：国土地理院（空中写真）",
+   "id": "s228",
+   "line": "3つ挙げておきます。",
+   "t0": 62.707,
+   "t1": 66.613,
+   "voice": 63.057,
+   "vdur": 1.589
+  }
+ ],
+ "end": {
+  "t0": 66.613,
+  "t1": 73.613
+ },
+ "subs": [
+  [
+   0.3,
+   3.119,
+   "最後に答え合わせをしましょう。"
+  ],
+  [
+   5.811,
+   10.475,
+   "卑弥呼のことを書いた記録は、魏志倭人伝と呼ばれています。"
+  ],
+  [
+   11.05,
+   16.365,
+   "魏が朝鮮半島の北の遼東を手に入れた、すぐ翌年のことです。"
+  ],
+  [
+   16.565,
+   22.082,
+   "贈られた100枚の鏡がどれなのかも、今なお続く論争の1つです。"
+  ],
+  [
+   22.282,
+   27.223,
+   "景初3年とは、まさに239年にあたる年です。"
+  ],
+  [
+   28.854,
+   33.145,
+   "男の王では治まらず、少女が立つと治まった。"
+  ],
+  [
+   33.345,
+   37.017,
+   "2人目の候補は、神功皇后です。"
+  ],
+  [
+   37.217,
+   40.846,
+   "山門は、やまと、と読みます。"
+  ],
+  [
+   41.046,
+   44.547,
+   "場所は今の福岡県みやま市のあたりです。"
+  ],
+  [
+   47.841,
+   50.297,
+   "この物差しは2点です。"
+  ],
+  [
+   52.668,
+   56.351,
+   "3人がわずか1点の中にひしめいています。"
+  ],
+  [
+   58.707,
+   62.699,
+   "これは、卑弥呼が王に立った時代と重なります。"
+  ],
+  [
+   63.057,
+   65.246,
+   "3つ挙げておきます。"
+  ]
+ ],
+ "style": {
+  "_about": "Single source of truth for the channel look (handbook 5-4: measured values turned into conditions). The page, the checks and the mix read this file; do not hard-code these values elsewhere. Measurements: config/style_measurements.json.",
+  "style": "lamplit-archive",
+  "frame": {
+   "w": 1920,
+   "h": 1080,
+   "fps": 30,
+   "margin": 80,
+   "content_bottom": 900,
+   "subtitle_baseline": 1000
+  },
+  "palette": {
+   "ground": "#0D0C0B",
+   "panel": "#17140F",
+   "hairline": "#4A4236",
+   "text": "#FFFCF5",
+   "dim": "#E8E0D2",
+   "faint": "#8E8473",
+   "gold": "#F7D47E",
+   "red": "#F07A5C",
+   "teal": "#8FE0E2",
+   "paper": "#CBBE9E",
+   "paper_edge": "#5E5444",
+   "ink": "#2A2118"
+  },
+  "grade": {
+   "photo": "saturate(0.72) contrast(1.12) brightness(0.62) sepia(0.18)",
+   "map": "grayscale(1) invert(1) brightness(0.42) contrast(1.25) sepia(0.35)",
+   "vignette_edge_alpha": 0.85,
+   "grain_alpha": 0.16,
+   "lamp_alpha": 0.12,
+   "lamp_rgb": [
+    214,
+    170,
+    104
+   ],
+   "terrain": "grayscale(1) brightness(0.34) contrast(1.2) sepia(0.45)",
+   "old_photo": "grayscale(1) contrast(1.15) brightness(0.55) sepia(0.25)",
+   "exposure": 1.3
+  },
+  "type": {
+   "heading": "SerifJP",
+   "body": "SansJP",
+   "mono": "PlexMono",
+   "subtitle_px": 44,
+   "text_scale": 1.15,
+   "text_min_px": 26,
+   "subtitle_safe_width": 1500
+  },
+  "motion": {
+   "transition": "lamp-dim dissolve: the outgoing layout dims toward the ground while the incoming one rises from it",
+   "transition_s": 0.7,
+   "photo_push_max": 1.06,
+   "map_push_max": 1.6,
+   "lead_in_s": 0.35,
+   "tail_s": 0.45,
+   "gap_in_paragraph_s": 0.4,
+   "readable_hold": true
+  },
+  "sound": {
+   "music_below_voice_db": 14,
+   "transition_sound": false,
+   "voice_speaker": "青山龍星",
+   "voice_style": "ノーマル",
+   "speed_scale": 1.0,
+   "credit": "VOICEVOX:青山龍星"
+  },
+  "conditions": {
+   "_from": "measurements (51 reference frames, 17 videos): luma mean 34.5, dark 82.4 %, light 2.0 %, bright 0 %, warm 55 % / cool 42 % of coloured pixels, coloured share 15 %, vignette 2.68",
+   "frame_luma_mean_max": 45,
+   "light_frame_ratio_max": 0.05,
+   "bright_frame_ratio_max": 0.0,
+   "warm_over_cool_min": 1.0,
+   "coloured_share_range": [
+    0.05,
+    0.3
+   ],
+   "vignette_range": [
+    1.8,
+    4.0
+   ],
+   "scene_chars_range": [
+    10,
+    70
+   ],
+   "subtitle_always_on": true,
+   "frame_luma_mean_min": 30
+  }
+ },
+ "mysteries": [
+  "天照大神",
+  "神功皇后",
+  "九州の女王",
+  "？"
+ ],
+ "board": {
+  "kicker": "4人の候補",
+  "solved": "採点ずみ"
+ },
+ "chapter_label": "CANDIDATE",
+ "credits": [
+  "地図　Natural Earth（パブリックドメイン）をもとに作図　空中写真　出典：国土地理院（地理院タイル）",
+  "史料　『三国志』魏書 東夷伝 倭人条 ／『日本書紀』巻第九 神功皇后紀（原文・新字体）",
+  "年代　春成秀爾ほか（2011）国立歴史民俗博物館研究報告 163 ／ 中塚武ほか（2018）纒向遺跡出土桃核の年代測定",
+  "写真　Saigen Jiro（Wikimedia Commons、パブリックドメイン・CC0）",
+  "音声　VOICEVOX:青山龍星",
+  "地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。"
+ ]
+}

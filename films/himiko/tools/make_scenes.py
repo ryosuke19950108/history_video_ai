@@ -80,8 +80,8 @@ ROUTE_PTS = [TAIHO, [35.6, 126.6], [34.9, 129.0], TSUSHIMA, IKI, MATSURO, [33.50
 RT = lambda **kw: [{'pts': ROUTE_PTS, 'col': 'gold', 'wd': 5, 'dashed': True, **kw}]
 SEA = [{'pts': [NAKOKU, [32.2, 130.9], [30.0, 131.4], [28.0, 131.8]], 'col': 'red', 'wd': 5, 'dashed': True,
         'label': '海の上に出てしまう', 'lat': [29.0, 133.4]}]
-WEI = [{'pts': [NAKOKU, [33.6, 128.0], TAIHO, [39.5, 121.0], [36.0, 116.0], LUOYANG], 'col': 'teal', 'wd': 5,
-        'dashed': True, 'label': '239年 魏へ', 'lat': [38.5, 118.0]}]
+WEI = [{'pts': [NAKOKU, [33.9, 129.2], [35.0, 126.6], TAIHO, [38.6, 122.2], [36.8, 117.4], LUOYANG], 'col': 'teal',
+        'wd': 5, 'dashed': True, 'label': '239年 魏へ', 'lat': [38.2, 118.6]}]
 SITES_RT = [{'at': TSUSHIMA, 'label': '対馬', 'side': -1, 'col': 'gold', 'r': 10},
             {'at': IKI, 'label': '壱岐', 'side': 1, 'col': 'gold', 'r': 10},
             {'at': NAKOKU, 'label': '九州に上陸', 'side': 1, 'col': 'gold', 'r': 10}]

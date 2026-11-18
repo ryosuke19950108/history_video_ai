@@ -1,0 +1,123 @@
+{
+ "hashihaka_z17": {
+  "f": "assets/hashihaka_z17.jpg",
+  "z": 17,
+  "gx0": 29437440.01,
+  "gy0": 13342207.98,
+  "mpp": 0.9838,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "yoshinogari_z16": {
+  "f": "assets/yoshinogari_z16.jpg",
+  "z": 16,
+  "gx0": 14463743.98,
+  "gy0": 6738944.05,
+  "mpp": 1.9959,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "yoshinogari_photo": {
+  "f": "assets/yoshinogari_photo.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 974,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
+ },
+ "makimuku_z17": {
+  "f": "assets/makimuku_z17.jpg",
+  "z": 17,
+  "gx0": 29436671.99,
+  "gy0": 13342208.01,
+  "mpp": 0.9838,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "makimuku_z15": {
+  "f": "assets/makimuku_z15.jpg",
+  "z": 15,
+  "gx0": 7358464.01,
+  "gy0": 3334912.04,
+  "mpp": 3.9352,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "miwa_z15": {
+  "f": "assets/miwa_z15.jpg",
+  "z": 15,
+  "gx0": 7358975.95,
+  "gy0": 3335167.95,
+  "mpp": 3.9356,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "omiwa_z17": {
+  "f": "assets/omiwa_z17.jpg",
+  "z": 17,
+  "gx0": 29438464.0,
+  "gy0": 13343488.02,
+  "mpp": 0.9839,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "isonokami_z17": {
+  "f": "assets/isonokami_z17.jpg",
+  "z": 17,
+  "gx0": 29438463.96,
+  "gy0": 13335551.95,
+  "mpp": 0.9831,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "shikanoshima_z16": {
+  "f": "assets/shikanoshima_z16.jpg",
+  "z": 16,
+  "gx0": 14460160.04,
+  "gy0": 6719744.01,
+  "mpp": 1.9881,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "hirabaru_z17": {
+  "f": "assets/hirabaru_z17.jpg",
+  "z": 17,
+  "gx0": 28912128.02,
+  "gy0": 13452544.04,
+  "mpp": 0.9953,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "yamato_z15": {
+  "f": "assets/yamato_z15.jpg",
+  "z": 15,
+  "gx0": 7233024.03,
+  "gy0": 3373311.96,
+  "mpp": 3.9989,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ }
+}
