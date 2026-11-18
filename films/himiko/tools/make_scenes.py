@@ -78,6 +78,9 @@ BG_YP = B('yoshinogari_photo', [960, 620, 0], 1800, .26)
 # pictures of the things the script is talking about (public domain / CC0, Art Institute of Chicago).
 # The mirrors are Han-dynasty Chinese bronzes of the very kind 卑弥呼 was sent in 239 — her own era's object.
 BG_MIR = B('mirror_deities', [800, 1040, 0], 1300, .34)    # 後漢 2〜3世紀の神獣鏡
+# 卑弥呼その人の姿。同時代の絵も、著作権の切れた肖像も無いので、本作のために描き起こした
+# （横顔・鏡・勾玉。顔立ちは誰も知らないため、逆光の影として描いている）
+BG_HIMI = B('himiko_figure', [1200, 675, 0], 2400, .20)
 BG_MIR2 = B('mirror_tlv', [886, 726, 0], 1350, .26)        # 後漢の方格規矩鏡
 BG_MIR3 = B('mirror_dragon', [408, 425, 0], 850, .26)      # 前漢の鏡
 BG_SUSA = B('susanoo', [417, 884, 0], 950, .26)            # 素戔嗚尊（天照大神の弟）
@@ -121,13 +124,13 @@ TLM = lambda ev, **kw: {'layout': 'timeline', 'kicker': '纒向で測られた�
 
 S = [
     # ───── 導入（s01–s13）
-    P('mirror_deities', [800, 1040, 0], (1300, 1300),
+    P('himiko_figure', [1200, 675, 0], (2400, 2180),
       text={'kicker': '日本で最も有名な古代の女王', 'title': '卑弥呼', 'ts': 150,
             'caption': 'その名は、日本の歴史書に1度も出てこない'}),
-    ROWS('卑弥呼という名前', [('日本書紀　720年', '記載なし', True), ('古事記　712年', '記載なし', True)], bg=BG_MIR),
+    ROWS('卑弥呼という名前', [('日本書紀　720年', '記載なし', True), ('古事記　712年', '記載なし', True)], bg=BG_HIMI),
     THEO('卑弥呼を伝えているのは', [{'k': '日本の記録', 'name': '日本書紀・古事記', 'sub': '名前が出てこない'},
-                                    {'k': '中国の記録', 'name': '魏志倭人伝', 'sub': 'すべてここから'}], hi=[1], bg=BG_MIR),
-    CARD('中国の記録の「倭の女王」は', '日本の側では誰だったのか', center=True, bg=BG_MIR),
+                                    {'k': '中国の記録', 'name': '魏志倭人伝', 'sub': 'すべてここから'}], hi=[1], bg=BG_HIMI),
+    CARD('中国の記録の「倭の女王」は', '日本の側では誰だったのか', center=True, bg=BG_HIMI),
     TLD([{'y': 1716, 'label': '江戸時代に始まる', 'side': 1}, {'y': 2026, 'label': '今も決着せず', 'side': -1, 'hi': True}],
         spans=[{'from': 1716, 'to': 2026, 'label': '300年以上', 'hi': True}]),
     THEO('記録を1行ずつ突き合わせる', [{'k': '中国', 'name': '魏志倭人伝', 'sub': '3世紀の記録'},

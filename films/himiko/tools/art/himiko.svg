@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="-820 150 2400 1350">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="33%" r="46%">
+    <stop offset="0%"  stop-color="#432a12"/>
+    <stop offset="46%" stop-color="#1b1007"/>
+    <stop offset="100%" stop-color="#060402"/>
+  </radialGradient>
+  <radialGradient id="disc" cx="38%" cy="32%" r="74%">
+    <stop offset="0%"  stop-color="#a97b39"/>
+    <stop offset="52%" stop-color="#60411c"/>
+    <stop offset="100%" stop-color="#241607"/>
+  </radialGradient>
+  <linearGradient id="rimg" x1="10%" y1="0%" x2="90%" y2="100%">
+    <stop offset="0%"   stop-color="#ffdca6"/>
+    <stop offset="38%"  stop-color="#d4954c"/>
+    <stop offset="100%" stop-color="#53351a"/>
+  </linearGradient>
+  <linearGradient id="hairg" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="#120d09"/>
+    <stop offset="100%" stop-color="#070504"/>
+  </linearGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="softer"><feGaussianBlur stdDeviation="30"/></filter>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="11"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <radialGradient id="vig" cx="50%" cy="42%" r="48%">
+    <stop offset="0%"   stop-color="#000" stop-opacity="0"/>
+    <stop offset="58%"  stop-color="#000" stop-opacity="0.20"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.86"/>
+  </radialGradient>
+
+  <!-- ─── bust in profile, facing left ─── -->
+  <g id="figure">
+    <!-- shoulders and robe -->
+    <path d="M806 838 C 692 840, 606 886, 552 976 C 504 1056, 468 1316, 454 1600
+             L 1184 1600 C 1170 1316, 1140 1050, 1090 968 C 1034 878, 934 836, 806 838 Z"/>
+    <!-- neck -->
+    <path d="M758 726 C 760 798, 754 836, 740 866 L 886 866 C 874 830, 868 786, 868 710 Z"/>
+    <!-- head: face profile on the left, skull on the right -->
+    <path d="M826 288
+             C 744 292, 686 344, 664 424
+             C 654 460, 650 486, 648 502
+             C 646 514, 658 520, 660 530
+             C 646 552, 628 572, 619 588
+             C 613 598, 622 605, 638 607
+             C 653 609, 657 616, 650 625
+             C 645 632, 652 637, 659 639
+             C 650 649, 644 660, 651 671
+             C 658 684, 673 697, 692 706
+             C 720 722, 754 742, 790 756
+             C 826 770, 864 774, 896 768
+             L 902 740
+             C 940 718, 966 666, 970 596
+             C 976 492, 950 390, 886 334
+             C 866 310, 846 292, 826 288 Z"/>
+    <!-- hair: cap over the crown and the back of the head -->
+    <path d="M826 266 C 724 270, 654 338, 640 438 C 634 482, 638 512, 646 534
+             L 678 510 C 672 470, 678 430, 696 400 C 724 352, 780 330, 830 334
+             C 892 340, 938 384, 960 452 C 980 514, 984 596, 972 664
+             C 964 712, 950 746, 936 770 L 1002 790
+             C 1024 736, 1038 652, 1034 566 C 1026 400, 944 262, 826 266 Z"/>
+    <!-- bound hair falling behind the shoulder -->
+    <path d="M872 668 C 938 760, 1032 834, 1050 900 C 1064 982, 1058 1110, 1036 1248
+             C 1026 1310, 1014 1356, 1002 1388 L 1120 1388
+             C 1138 1304, 1150 1190, 1148 1082 C 1144 916, 1086 772, 986 664 Z"/>
+  </g>
+</defs>
+
+<clipPath id="inFig"><use href="#figure"/></clipPath>
+<rect x="-920" y="0" width="3440" height="1700" fill="url(#bg)"/>
+
+<!-- the bronze mirror behind her -->
+<g>
+  <circle cx="820" cy="560" r="420" fill="url(#disc)" opacity="0.95"/>
+  <circle cx="820" cy="560" r="420" fill="none" stroke="#e7bc7a" stroke-opacity="0.26" stroke-width="5"/>
+  <circle cx="820" cy="560" r="362" fill="none" stroke="#e7bc7a" stroke-opacity="0.16" stroke-width="3"/>
+  <circle cx="820" cy="560" r="276" fill="none" stroke="#e7bc7a" stroke-opacity="0.11" stroke-width="3"/>
+  <g stroke="#e7bc7a" stroke-opacity="0.15" stroke-width="3" fill="none">
+    <path d="M820 200 v54 M820 866 v54 M460 560 h54 M1126 560 h54"/>
+    <path d="M566 306 l40 40 M1034 774 l40 40 M1074 306 l-40 40 M606 774 l-40 40"/>
+  </g>
+  <circle cx="820" cy="560" r="442" fill="#efbe73" opacity="0.11" filter="url(#softer)"/>
+</g>
+
+<!-- rim light along the face: the figure offset to the left, blurred, lamp colour -->
+<g transform="translate(-16,-9)" filter="url(#soft)"><use href="#figure" fill="url(#rimg)"/></g>
+
+<!-- the figure -->
+<use href="#figure" fill="url(#hairg)"/>
+
+<!-- hair strands -->
+<g clip-path="url(#inFig)" stroke="#c89a5c" stroke-opacity="0.17" stroke-width="2.5" fill="none">
+  <path d="M706 362 C 770 322, 864 330, 924 392"/>
+  <path d="M694 414 C 762 366, 874 374, 936 444"/>
+  <path d="M960 742 C 1012 854, 1024 1086, 998 1330"/>
+  <path d="M1006 760 C 1062 876, 1074 1108, 1050 1346"/>
+</g>
+<!-- headband -->
+<path clip-path="url(#inFig)" d="M646 470 C 710 408, 836 386, 934 436" stroke="#d8ab6a" stroke-opacity="0.42" stroke-width="11" fill="none"/>
+
+<!-- 勾玉 necklace at the throat -->
+<g fill="#d0a768" opacity="0.55">
+  <ellipse cx="786" cy="880" rx="15" ry="20" transform="rotate(-8 786 880)"/>
+  <ellipse cx="736" cy="862" rx="11" ry="15"/><ellipse cx="840" cy="868" rx="11" ry="15"/>
+  <ellipse cx="700" cy="836" rx="8"  ry="12"/><ellipse cx="880" cy="844" rx="8"  ry="12"/>
+</g>
+
+<rect x="-920" y="0" width="3440" height="1700" fill="url(#vig)"/>
+<rect x="-920" y="0" width="3440" height="1700" filter="url(#grain)" opacity="0.1" style="mix-blend-mode:overlay"/>
+</svg>

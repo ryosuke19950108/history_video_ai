@@ -185,5 +185,16 @@
   "h": 828,
   "layer": "seamlessphoto",
   "credit": "画像：作者不詳「Mirror with Dragon and Bird Arabesque」（シカゴ美術館、パブリックドメイン・CC0）"
+ },
+ "himiko_figure": {
+  "f": "assets/himiko_figure.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 2400,
+  "h": 1350,
+  "layer": "seamlessphoto",
+  "credit": "イラスト：本作オリジナル（卑弥呼の同時代の肖像は現存しない）"
  }
 }
