@@ -153,5 +153,275 @@
   "surface": "和邇吉師",
   "pronunciation": "ワニキシ",
   "accent_type": 1
+ },
+ {
+  "surface": "倭迹迹日百襲姫",
+  "pronunciation": "ヤマトトトヒモモソヒメ",
+  "accent_type": 0
+ },
+ {
+  "surface": "百襲姫",
+  "pronunciation": "モモソヒメ",
+  "accent_type": 0
+ },
+ {
+  "surface": "壹与",
+  "pronunciation": "イヨ",
+  "accent_type": 1
+ },
+ {
+  "surface": "難升米",
+  "pronunciation": "ナシメ",
+  "accent_type": 0
+ },
+ {
+  "surface": "難斗米",
+  "pronunciation": "ナトメ",
+  "accent_type": 0
+ },
+ {
+  "surface": "狗奴国",
+  "pronunciation": "クナコク",
+  "accent_type": 2
+ },
+ {
+  "surface": "帯方郡",
+  "pronunciation": "タイホウグン",
+  "accent_type": 3
+ },
+ {
+  "surface": "親魏倭王",
+  "pronunciation": "シンギワオウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "漢委奴国王",
+  "pronunciation": "カンノワノナノコクオウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "三角縁神獣鏡",
+  "pronunciation": "サンカクブチシンジュウキョウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "景初",
+  "pronunciation": "ケイショ",
+  "accent_type": 1
+ },
+ {
+  "surface": "七支刀",
+  "pronunciation": "シチシトウ",
+  "accent_type": 2
+ },
+ {
+  "surface": "石上神宮",
+  "pronunciation": "イソノカミジングウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "平原遺跡",
+  "pronunciation": "ヒラバルイセキ",
+  "accent_type": 0
+ },
+ {
+  "surface": "志賀島",
+  "pronunciation": "シカノシマ",
+  "accent_type": 2
+ },
+ {
+  "surface": "吉野ヶ里遺跡",
+  "pronunciation": "ヨシノガリイセキ",
+  "accent_type": 0
+ },
+ {
+  "surface": "纒向遺跡",
+  "pronunciation": "マキムクイセキ",
+  "accent_type": 0
+ },
+ {
+  "surface": "大神神社",
+  "pronunciation": "オオミワジンジャ",
+  "accent_type": 0
+ },
+ {
+  "surface": "大物主神",
+  "pronunciation": "オオモノヌシノカミ",
+  "accent_type": 0
+ },
+ {
+  "surface": "三輪山",
+  "pronunciation": "ミワヤマ",
+  "accent_type": 0
+ },
+ {
+  "surface": "崇神天皇",
+  "pronunciation": "スジンテンノウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "孝霊天皇",
+  "pronunciation": "コウレイテンノウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "仲哀天皇",
+  "pronunciation": "チュウアイテンノウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "神功皇后",
+  "pronunciation": "ジングウコウゴウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "天照大神",
+  "pronunciation": "アマテラスオオミカミ",
+  "accent_type": 0
+ },
+ {
+  "surface": "素戔嗚尊",
+  "pronunciation": "スサノオノミコト",
+  "accent_type": 0
+ },
+ {
+  "surface": "大日孁貴",
+  "pronunciation": "オオヒルメノムチ",
+  "accent_type": 0
+ },
+ {
+  "surface": "田油津媛",
+  "pronunciation": "タブラツヒメ",
+  "accent_type": 0
+ },
+ {
+  "surface": "本居宣長",
+  "pronunciation": "モトオリノリナガ",
+  "accent_type": 0
+ },
+ {
+  "surface": "新井白石",
+  "pronunciation": "アライハクセキ",
+  "accent_type": 0
+ },
+ {
+  "surface": "内藤湖南",
+  "pronunciation": "ナイトウコナン",
+  "accent_type": 0
+ },
+ {
+  "surface": "白鳥庫吉",
+  "pronunciation": "シラトリクラキチ",
+  "accent_type": 0
+ },
+ {
+  "surface": "笠井新也",
+  "pronunciation": "カサイシンヤ",
+  "accent_type": 0
+ },
+ {
+  "surface": "陳寿",
+  "pronunciation": "チンジュ",
+  "accent_type": 1
+ },
+ {
+  "surface": "後漢書",
+  "pronunciation": "ゴカンジョ",
+  "accent_type": 0
+ },
+ {
+  "surface": "鬼道",
+  "pronunciation": "キドウ",
+  "accent_type": 1
+ },
+ {
+  "surface": "玄界灘",
+  "pronunciation": "ゲンカイナダ",
+  "accent_type": 3
+ },
+ {
+  "surface": "筑後",
+  "pronunciation": "チクゴ",
+  "accent_type": 0
+ },
+ {
+  "surface": "倭人",
+  "pronunciation": "ワジン",
+  "accent_type": 1
+ },
+ {
+  "surface": "倭国",
+  "pronunciation": "ワコク",
+  "accent_type": 1
+ },
+ {
+  "surface": "倭",
+  "pronunciation": "ワ",
+  "accent_type": 1
+ },
+ {
+  "surface": "百済",
+  "pronunciation": "クダラ",
+  "accent_type": 0
+ },
+ {
+  "surface": "遼東",
+  "pronunciation": "リョウトウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "魏志",
+  "pronunciation": "ギシ",
+  "accent_type": 1
+ },
+ {
+  "surface": "魏",
+  "pronunciation": "ギ",
+  "accent_type": 1
+ },
+ {
+  "surface": "晋",
+  "pronunciation": "シン",
+  "accent_type": 1
+ },
+ {
+  "surface": "三国志",
+  "pronunciation": "サンゴクシ",
+  "accent_type": 0
+ },
+ {
+  "surface": "古事記",
+  "pronunciation": "コジキ",
+  "accent_type": 1
+ },
+ {
+  "surface": "女王",
+  "pronunciation": "ジョオウ",
+  "accent_type": 2
+ },
+ {
+  "surface": "物見やぐら",
+  "pronunciation": "モノミヤグラ",
+  "accent_type": 0
+ },
+ {
+  "surface": "一回り",
+  "pronunciation": "ヒトマワリ",
+  "accent_type": 0
+ },
+ {
+  "surface": "干支",
+  "pronunciation": "エト",
+  "accent_type": 0
+ },
+ {
+  "surface": "巫女",
+  "pronunciation": "ミコ",
+  "accent_type": 1
+ },
+ {
+  "surface": "皇女",
+  "pronunciation": "ヒメミコ",
+  "accent_type": 0
  }
 ]

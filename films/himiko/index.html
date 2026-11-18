@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>日本人はどこから来たのか</title>
+<style>
+@font-face{font-family:SerifJP;src:url(fonts/serif700.woff2) format('woff2');font-weight:700}
+@font-face{font-family:SerifJP;src:url(fonts/serif500.woff2) format('woff2');font-weight:500}
+@font-face{font-family:SansJP;src:url(fonts/sans700.woff2) format('woff2');font-weight:700}
+@font-face{font-family:SansJP;src:url(fonts/sans500.woff2) format('woff2');font-weight:500}
+@font-face{font-family:PlexMono;src:url(fonts/mono500.woff2) format('woff2');font-weight:500}
+html,body{margin:0;background:#0D0C0B;overflow:hidden}canvas{display:block}
+</style></head><body><canvas id="c" width="1920" height="1080"></canvas>
+<script>
+// Long-form film in the "Lamplit Archive" style (my-styles/lamplit-archive). Canvas 2D, deterministic render(t).
+// film.json (tools/build_timeline.py) holds every scene: one sentence, one layout, its parameters (scenes.json, written by
+// Claude Code). assets.json places GSI images on the globe so scenes can name places by latitude/longitude.
+// Palette, grades and motion come from film.json.style (= config/style.json). Primitives follow Lemo-Opuscar's
+// Visual Investigation demo (MIT); the layouts are this style's own.
+const W = 1920, H = 1080;
+const cv = document.getElementById('c'), x0 = cv.getContext('2d');
+let LAND = [], x = x0, FILM, S, C, G, M, A, FR = 0, REC = null, LAYER, TQ = null, GT = 0, GD = 1, LAST = [];   // TQ: text queued until after the lamp/exposure passes; GT/GD: time in the current shot
+const F = { serif: 'SerifJP', sans: 'SansJP', mono: 'PlexMono, SansJP' };
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), seg = (t, a, b) => clamp((t - a) / (b - a));
+const eo = k => 1 - Math.pow(1 - k, 3), ss = k => k * k * (3 - 2 * k), eio = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2, lerp = (a, b, k) => a + (b - a) * k;
+function rnd(s) { return function () { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const IM = {}; let GRAIN = [];
+function load(src) { return new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => { console.warn('missing', src); r(null); }; i.src = src; }); }
+async function boot() {
+  FILM = await (await fetch('film.json')).json(); A = await (await fetch('assets.json')).json(); window.DUR = FILM.dur;
+  LAND = (await (await fetch('assets/land_eastasia.json')).json()).rings;   // Natural Earth 1:50m land (public domain), East Asia
+  S = FILM.style; C = S.palette; G = S.grade; M = S.motion;
+  const L = Object.entries(A).filter(([k, v]) => v.f).map(([k, v]) => load(v.f).then(i => IM[k] = i));
+  for (const f of ['700 40px SerifJP', '500 40px SerifJP', '700 40px SansJP', '500 40px SansJP', '500 20px PlexMono']) L.push(document.fonts.load(f));
+  await Promise.all(L);
+  for (let g = 0; g < 6; g++) { const c = document.createElement('canvas'); c.width = c.height = 256; const gx = c.getContext('2d'); const d = gx.createImageData(256, 256); const r = rnd(g * 131 + 5);
+    for (let i = 0; i < d.data.length; i += 4) { const v = 128 + (r() + r() + r() - 1.5) * 110; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } gx.putImageData(d, 0, 0); GRAIN.push(c); }
+  let g = null; for (const s of FILM.scenes) { if (!s.cont || !g) g = { t0: s.t0, first: s }; g.t1 = s.t1; g.last = s; s.g = g; }
+  LAYER = [mk(), mk()]; window.READY = true;
+}
+function mk() { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; }
+
+// ── geography: lat/lon → source pixel of an asset ──
+function geo(k, ll) { const a = A[k]; if (!Array.isArray(ll)) return [a.w / 2, a.h / 2]; if (ll.length === 3) return [ll[0], ll[1]];
+  const n = 2 ** a.z, fx = (ll[1] + 180) / 360 * n * 256, la = ll[0] * Math.PI / 180, fy = (1 - Math.log(Math.tan(la) + 1 / Math.cos(la)) / Math.PI) / 2 * n * 256; return [fx - a.gx0, fy - a.gy0]; }
+const gradeOf = k => { const l = A[k].layer; return l === 'seamlessphoto' ? G.photo : l === 'hillshademap' ? G.terrain : G.old_photo; };
+
+// ── primitives ──
+const PX = o => o.raw ? (o.s || 24) : Math.round(Math.max(S.type.text_min_px || 0, (o.s || 24) * (S.type.text_scale || 1)));   // type.text_scale / text_min_px (config/style.json): every on-screen text size, subtitles excepted
+function font(o) { return `${o.w || 500} ${PX(o)}px ${o.f || F.sans}`; }
+function txt(s, X, Y, o = {}) {   // text is queued (TQ) and drawn after the lamp, vignette and exposure passes, so the vignette never dims it
+  s = String(s); x.save(); x.font = font(o); x.letterSpacing = (o.ls || 0) + 'px'; const w = x.measureText(s).width; x.restore(); const vis = x.globalAlpha * (o.a ?? 1);
+  if (vis > .001) { if (TQ) TQ.push([s, X, Y, o, vis]); else drawT(x, s, X, Y, o, vis); }
+  if (REC && o.id && vis > .5) { const sz = PX(o), xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X; REC.push({ id: o.id, text: s, x0: xa, y0: Y - sz * .9, x1: xa + w, y1: Y + sz * .25, ...(o.pass ? { pass: true } : {}) }); }
+  return w;
+}
+function drawT(c, s, X, Y, o, a) { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.filter = 'none'; c.font = font(o); c.fillStyle = o.c || C.text; c.globalAlpha = Math.min(1, a); c.textAlign = o.al || 'left'; c.textBaseline = 'alphabetic'; c.letterSpacing = (o.ls || 0) + 'px';
+  if (o.shadow) { c.shadowColor = 'rgba(0,0,0,.9)'; c.shadowBlur = o.shadow; } else if (!/^#[0-3]/.test(o.c || '')) { c.shadowColor = 'rgba(8,7,6,.75)'; c.shadowBlur = 8; }
+  c.fillText(s, X, Y); c.restore(); }
+const tkey = q => q[0] + '|' + Math.round(q[1]) + '|' + Math.round(q[2]) + '|' + (q[3].c || '') + '|' + PX(q[3]);
+function tw(s, o = {}) { x.save(); x.font = font(o); x.letterSpacing = (o.ls || 0) + 'px'; const w = x.measureText(String(s)).width; x.restore(); return w; }
+function line(a, b, c, d, col, w = 1, dash) { x.save(); x.strokeStyle = col; x.lineWidth = w; if (dash) x.setLineDash(dash); x.beginPath(); x.moveTo(a, b); x.lineTo(c, d); x.stroke(); x.restore(); }
+function fill(X, Y, w, h, c) { x.fillStyle = c; x.fillRect(X, Y, w, h); }
+function box(X, Y, w, h, col, lw = 1.5, dash) { x.save(); x.strokeStyle = col; x.lineWidth = lw; if (dash) x.setLineDash(dash); x.strokeRect(X + .5, Y + .5, w - 1, h - 1); x.restore(); }
+function alpha(a, f) { x.save(); x.globalAlpha *= a; f(); x.restore(); }
+function grain(X, Y, w, h, a) { if (!GRAIN.length || a <= 0) return; x.save(); x.beginPath(); x.rect(X, Y, w, h); x.clip(); x.globalCompositeOperation = 'overlay'; x.globalAlpha *= a; const g = GRAIN[FR % 6]; for (let gy = Y; gy < Y + h; gy += 256) for (let gx = X; gx < X + w; gx += 256) x.drawImage(g, gx, gy); x.restore(); }
+function view(k, f, scale, o = {}) { // camera on one asset; returns source px → screen
+  const img = IM[k]; const X = o.X ?? 0, Y = o.Y ?? 0, w = o.w ?? W, h = o.h ?? H, cx = X + w / 2, cy = Y + h / 2;
+  const map = (px, py) => [cx + (px - f[0]) * scale, cy + (py - f[1]) * scale];
+  x.save(); x.beginPath(); x.rect(X, Y, w, h); x.clip(); fill(X, Y, w, h, C.ground);
+  if (img) { x.globalAlpha *= (o.a ?? 1); x.filter = gradeOf(k); const [sx, sy] = map(0, 0); x.drawImage(img, sx, sy, img.width * scale, img.height * scale); x.filter = 'none'; }
+  x.restore(); grain(X, Y, w, h, (o.a ?? 1) * G.grain_alpha);
+  return map;
+}
+function scaleFor(k, span, w = W) { return w * A[k].mpp / span; } // span = metres across the frame
+function shade(X0, X1, a) { const g = x.createLinearGradient(X0, 0, X1, 0); g.addColorStop(0, `rgba(13,12,11,${a})`); g.addColorStop(1, 'rgba(13,12,11,0)'); x.fillStyle = g; x.fillRect(Math.min(X0, X1), 0, Math.abs(X1 - X0), H); }
+function ring(cx, cy, r, k, col = C.red, lw = 3, dash) { if (k <= 0) return; x.save(); x.strokeStyle = col; x.lineWidth = lw; if (dash) x.setLineDash(dash); x.beginPath(); x.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * eo(k)); x.stroke(); x.restore(); }
+function kicker(s, X, Y, a, col = C.red, id) { if (!s) return 0; alpha(a, () => fill(X, Y - 15, 4, 18, col)); return txt(s, X + 16, Y, { s: 24, f: F.mono, c: col, ls: 2, a, id }); }
+function backdrop(b, u, d) { if (!b) return; const k = b.img; const f = geo(k, b.at); const sc = scaleFor(k, b.span || 1500) * lerp(1, 1.04, ss(seg(GT, 0, GD))); view(k, f, sc, { a: b.a ?? .14 }); }
+function lamp() {
+  const [r, g, b] = G.lamp_rgb; const l = x.createRadialGradient(W / 2, H * .44, 0, W / 2, H * .44, H * .62);
+  l.addColorStop(0, `rgba(${r},${g},${b},${G.lamp_alpha})`); l.addColorStop(1, `rgba(${r},${g},${b},0)`); x.save(); x.globalCompositeOperation = 'screen'; x.fillStyle = l; x.fillRect(0, 0, W, H); x.restore();
+  const v = x.createRadialGradient(W / 2, H * .46, H * .16, W / 2, H * .5, H * .95); v.addColorStop(0, 'rgba(13,12,11,0)'); v.addColorStop(1, `rgba(13,12,11,${G.vignette_edge_alpha})`); x.fillStyle = v; x.fillRect(0, 0, W, H);
+}
+const rise = (u, at, dur = .45) => eo(seg(u, at, at + dur));
+const ago = y => y === 0 ? '今' : (-y >= 10000 ? (-y / 10000) + '万' : String(-y)) + '年前';
+function title(s, u) { // kicker + serif title + optional number block, left column
+  const t = s.text || {}; let y = t.y || 330; const k = rise(u, .1);
+  const Z = S.type.text_scale || 1, NS = PX({ s: t.ns || 120 });
+  if (t.kicker) { kicker(t.kicker, 120, y - (t.title ? PX({ s: t.ts || 92 }) + 14 : 70 * Z), k, t.kc ? C[t.kc] : C.red, 'k'); }
+  if (t.title) { txt(t.title, 116, y + 10 * (1 - k), { s: t.ts || 92, w: 700, f: F.serif, a: k, id: 'tt' }); line(120, y + 36, lerp(120, 120 + Math.min(520, tw(t.title, { s: t.ts || 92, w: 700, f: F.serif })), rise(u, .3, .6)), y + 36, C.red, 2); y += 140 * Z; }
+  if (t.caption) { txt(t.caption, 120, y, { s: 28, c: C.dim, a: rise(u, .35), id: 'cap' }); y += 36 + NS * .9; }
+  if (t.number) { const kk = rise(u, .45); if (t.kicker && !t.title && !t.caption) y = Math.max(y, (t.y || 330) - 40 * Z + NS * .82); const nw = txt(t.number, 114, y + 8 * (1 - kk), { s: t.ns || 120, w: 700, f: F.serif, c: C.gold, a: kk, id: 'num' }); if (t.unit) txt(t.unit, 126 + nw, y, { s: 44, f: F.mono, c: C.gold, a: kk, id: 'unit' }); y += 90 * Z; }
+  if (t.note) txt(t.note, 120, y, { s: 22, c: C.dim, a: rise(u, .6), id: 'note' });
+}
+
+// Daisen keyhole, traced on daisen_z17 source pixels (schematic, see FACTS.md)
+const DAISEN = [[1370, 975], [1430, 950], [1500, 955], [1560, 1000], [1595, 1070], [1595, 1160], [1560, 1230], [1510, 1280], [1470, 1320], [1445, 1400], [1440, 1475], [1150, 1325], [1200, 1290], [1260, 1240], [1300, 1170], [1320, 1080], [1340, 1020]];
+
+// ── layouts ──
+const L = {
+  photo(u, s, d) { // a camera on a map or photograph; rings, outline and a text column
+    const g0 = s.g ? s.g.first : s, g1 = s.g ? s.g.last : s;   // one camera move across a shot of several sentences
+    const k = s.img, f0 = geo(k, g0.at), f1 = geo(k, g1.to || g1.at), p = ss(seg(GT, 0, GD + .7));
+    const sp = [(g0.span || [1500, 1400])[0], (g1.span || [1500, 1400])[1]], sc = scaleFor(k, lerp(sp[0], sp[1], p)), f = [lerp(f0[0], f1[0], p), lerp(f0[1], f1[1], p)];
+    const mp = view(k, f, sc); if (s.text) shade(0, 1150, .9);
+    if (s.outline) { const kk = eio(seg(u, .5, 2.2)); if (kk > 0) { x.save(); x.strokeStyle = C.teal; x.lineWidth = 3; const pts = DAISEN.map(p => mp(p[0], p[1])); const n = Math.max(2, Math.floor((pts.length + 1) * kk));
+      x.beginPath(); x.moveTo(...pts[0]); for (let i = 1; i < n; i++) x.lineTo(...pts[i % pts.length]); x.stroke(); x.restore(); } }
+    (s.rings || []).forEach((r, i) => { const [cx, cy] = mp(...geo(k, r.at)); const rad = r.m ? r.m / A[k].mpp * sc : (r.r || 30); const kk = seg(u, .2 + i * .3, .8 + i * .3);
+      ring(cx, cy, rad, kk, r.col ? C[r.col] : C.red, 2.5, r.dashed ? [8, 6] : null); if (!r.label) return; const ka = rise(u, .35 + i * .3); const side = r.side || 1, lx = cx + side * (rad + 18);
+      txt(r.label, lx, cy - 4, { s: r.ls || 34, w: 700, f: F.serif, al: side > 0 ? 'left' : 'right', a: ka, shadow: 10, id: 'r' + i });
+      if (r.sub) txt(r.sub, lx, cy + 30, { s: 21, f: F.mono, c: C.dim, al: side > 0 ? 'left' : 'right', a: ka, shadow: 8, id: 'rs' + i, pass: true }); });
+    if (s.scale) { const m = s.scale, len = m / A[k].mpp * sc, ka = rise(u, .4); alpha(ka, () => { line(W - 120 - len, 880, W - 120, 880, C.dim, 2); line(W - 120 - len, 872, W - 120 - len, 888, C.dim, 2); line(W - 120, 872, W - 120, 888, C.dim, 2); });
+      txt(m >= 1000 ? `${m / 1000} km` : `${m} m`, W - 120, 862, { s: 20, f: F.mono, c: C.dim, al: 'right', a: ka, id: 'sc', pass: true }); }
+    if (s.stamp) { const ka = rise(u, .2); alpha(ka, () => box(W - 470, 96, 350, 54, C.gold, 1.5, [6, 5])); txt(s.stamp, W - 295, 132, { s: 24, f: F.mono, c: C.gold, al: 'center', a: ka, id: 'stamp' }); }
+    title(s, u);
+  },
+  card(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .05, .4), al = s.center ? 'center' : 'left', X = s.center ? W / 2 : 200;
+    const lines = Array.isArray(s.lines) ? s.lines : [s.lines]; const fs = s.fs || (lines.length > 1 ? 76 : 92);
+    if (s.kicker) kicker(s.kicker, s.center ? W / 2 - tw(s.kicker, { s: 24, f: F.mono, ls: 2 }) / 2 - 8 : 204, Math.min(400, 520 - PX({ s: fs }) * .88 - 44), k, C.red, 'k');
+    lines.forEach((ln, i) => txt(ln, X, 520 + i * fs * 1.35 - 14 * (1 - k), { s: fs, w: 700, f: F.serif, al, a: rise(u, .05 + i * .1, .4), c: s.gold === i ? C.gold : C.text, id: 'l' + i }));
+    const yr = 520 + (lines.length - 1) * fs * 1.35 + 50; if (!s.center) line(204, yr, lerp(204, 520, rise(u, .6, .8)), yr, C.red, 2);
+    if (s.sub) txt(s.sub, X, yr + 70, { s: 28, c: C.dim, al, a: rise(u, .25), id: 'sub' });
+  },
+  chapter(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .1, .6);
+    txt(FILM.chapter_label || 'MYSTERY', 200, 470 - PX({ s: 150 }) * .88 - 32, { s: 24, f: F.mono, c: C.red, ls: 6, a: k, id: 'm' }); txt(s.num, 200, 470, { s: 150, w: 700, f: F.serif, c: C.gold, a: k, id: 'n' });
+    txt(s.title, 200 + tw(s.num, { s: 150, w: 700, f: F.serif }) + 50, 455 - 12 * (1 - k), { s: 84, w: 700, f: F.serif, a: rise(u, .05, .4), id: 't' });
+    line(204, 520, lerp(204, 1500, rise(u, .5, .9)), 520, C.red, 2); if (s.sub) txt(s.sub, 204, 590, { s: 30, c: C.dim, a: rise(u, .7), id: 's' });
+  },
+  mysteries(u, s, d) { // the four questions and how far each is settled; recurs through the film
+    backdrop(s.bg || { img: 'daisen_z17', span: 2200, a: .2 }, u, d); const Q = s.names || FILM.mysteries, B = FILM.board || {}; const k0 = rise(u, .1);
+    kicker(s.kicker || B.kicker || '4つの謎', 300, 230, k0, C.gold, 'k');
+    const Y0 = Q.length === 3 ? 380 : 330; Q.forEach((q, i) => { const y = Y0 + i * 140, st = (s.status || [])[i] || 'open', on = s.focus === i, ka = rise(u, .15 + i * .12) * (s.focus == null || on ? 1 : .72);
+      alpha(ka, () => { fill(300, y - 10, 1320, 110, on ? 'rgba(200,162,78,.10)' : 'rgba(23,20,15,.6)'); box(300, y - 10, 1320, 110, on ? C.gold : C.hairline, 1.5); });
+      txt(String(i + 1).padStart(2, '0'), 340, y + 66, { s: 40, f: F.mono, c: on ? C.gold : C.dim, a: ka, id: 'qn' + i });
+      txt(q, 440, y + 64, { s: 44, w: 700, f: F.serif, a: ka, id: 'q' + i });
+      const mk = (s.marks || [])[i] || (st === 'solved' ? (B.solved || '解けた') : st === 'half' ? '半分' : '？'), col = st === 'solved' ? C.teal : st === 'half' ? C.gold : C.dim; const sk = st === 'open' ? ka : ka * rise(u, (s.reveal === i ? .9 : .3));
+      alpha(sk, () => box(1430, y + 18, 150, 52, col, 2, st === 'open' ? [6, 5] : null)); txt(mk, 1505, y + 56, { s: 28, w: 700, c: col, al: 'center', a: sk, id: 'st' + i }); });
+  },
+  bars(u, s, d) { backdrop(s.bg, u, d); kicker(s.kicker, 200, 230, rise(u, .1), C.gold, 'k');
+    const mx = s.max || Math.max(...s.items.map(i => i.value)), X0 = 560, BW = 1100;
+    s.items.forEach((it, i) => { const y = 340 + i * (s.gap || 150), kk = rise(u, .2 + i * .35, .7), w = BW * it.value / mx * kk, col = it.hi ? C.gold : it.col ? C[it.col] : C.faint;
+      txt(it.label, X0 - 30, y + 46, { s: 34, w: 700, al: 'right', a: rise(u, .15 + i * .35), id: 'b' + i }); alpha(.9, () => fill(X0, y, w, 64, col));
+      if (it.dashed) box(X0, y, BW * it.value / mx, 64, C.teal, 2, [8, 6]);
+      txt(it.text, X0 + w + 24, y + 46, { s: 40, w: 700, f: F.serif, c: it.hi ? C.gold : C.text, a: rise(u, .5 + i * .35), id: 'v' + i }); });
+    if (s.note) txt(s.note, 200, 900, { s: 22, c: C.dim, a: rise(u, .3), id: 'note' });
+  },
+  squares(u, s, d) { // areas to the same scale
+    backdrop(s.bg, u, d); kicker(s.kicker, 200, 200, rise(u, .1), C.gold, 'k'); const mx = Math.max(...s.items.map(i => i.m2)), side = 520; let X = 200;
+    s.items.forEach((it, i) => { const a = Math.sqrt(it.m2 / mx) * side, kk = rise(u, .2 + i * .4, .7), y = 820 - a;
+      alpha(kk, () => { fill(X, y, a, a, it.hi ? 'rgba(200,162,78,.22)' : 'rgba(79,163,165,.12)'); box(X, y, a, a, it.hi ? C.gold : C.teal, 2, it.hi ? null : [8, 6]); });
+      txt(it.label, X, 870, { s: 30, w: 700, a: kk, id: 'l' + i }); txt(it.text, X, 912, { s: 22, f: F.mono, c: it.hi ? C.gold : C.dim, a: kk, id: 't' + i }); X += Math.max(a, 300) + 90; });
+    if (s.note) txt(s.note, W - 160, 200, { s: 22, c: C.dim, al: 'right', a: rise(u, .9), id: 'note' });
+  },
+  timeline(u, s, d) { backdrop(s.bg, u, d); const [a, b] = s.axis, AX = 200, AW = 1520, AY = 640, X = y => AX + (y - a) / (b - a) * AW;
+    kicker(s.kicker, 200, 220, rise(u, .05), C.gold, 'k'); const ka = rise(u, 0, .5); alpha(ka, () => { line(AX, AY, AX + AW * ka, AY, C.dim, 1.5); for (let y = a; y <= b; y += s.step) line(X(y), AY - 8, X(y), AY + 8, C.faint, 1.5); });
+    for (let y = a; y <= b; y += s.step) txt(s.fmt === 'ago' ? ago(y) : s.fmt === 'bc' ? (y < 0 ? '前' + (-y) : y === 0 ? '0' : String(y)) : String(y), X(y), AY + 42, { s: 22, f: F.mono, c: C.dim, al: 'center', a: ka, id: 'y' + y, pass: true });
+    (s.spans || []).forEach((sp, i) => { const kk = rise(u, .3); alpha(kk * .85, () => fill(X(sp.from), AY - 14, X(sp.to) - X(sp.from), 28, sp.hi ? C.red : C.faint)); txt(sp.label, (X(sp.from) + X(sp.to)) / 2, AY + 90, { s: 24, c: C.text, al: 'center', a: kk, id: 'sp' + i }); });
+    s.events.forEach((e, i) => { const kk = rise(u, .3 + i * .3), ex = X(e.y), up = (e.side || (i % 2 ? -1 : 1)) > 0, yy = up ? AY - 120 : AY + 160;
+      line(ex, AY, ex, up ? AY - 66 : AY + 110, e.hi ? C.gold : C.dim, 1.5, e.hi ? null : [4, 4]); ring(ex, AY, 9, kk, e.hi ? C.gold : C.dim, 3);
+      txt(e.label, ex, yy, { s: e.hi ? 40 : 30, w: 700, f: F.serif, c: e.hi ? C.gold : C.text, al: 'center', a: kk, id: 'e' + i }); if (e.sub) txt(e.sub, ex, yy + 36, { s: 22, f: F.mono, c: C.dim, al: 'center', a: kk, id: 'es' + i }); });
+  },
+  calc(u, s, d) { backdrop(s.bg, u, d); kicker(s.kicker || '計算', 300, 260, rise(u, .05), C.gold, 'k');
+    s.rows.forEach((r, i) => { const y = 380 + i * 130, kk = rise(u, .2 + i * (s.dt || .8));
+      txt(r[0], 300, y, { s: 46, w: 500, f: F.mono, c: C.text, a: kk, id: 'a' + i });
+      if (r[1]) { const ka = rise(u, .45 + i * (s.dt || .8)); txt('=', 1110, y, { s: 46, f: F.mono, c: C.dim, a: ka }); txt(r[1], 1180, y, { s: 58, w: 700, f: F.serif, c: i === s.rows.length - 1 || r[2] ? C.gold : C.text, a: ka, id: 'r' + i }); } });
+    if (s.note) txt(s.note, 300, 380 + s.rows.length * 130 + 10, { s: 24, c: C.dim, a: rise(u, .6), id: 'note' });
+  },
+  dots(u, s, d) { backdrop(s.bg, u, d); kicker(s.kicker, 200, 200, rise(u, .05), C.gold, 'k'); const per = s.per || 50; let idx = 0; const cols = s.cols || 60, gap = s.gap || 25, X0 = s.cols ? (W - (cols - 1) * gap) / 2 : 200, Y0 = s.y0 || 300, rad = s.r || 8;
+    s.groups.forEach((g, gi) => { const n = Math.round(g.n / per), t0 = .2 + gi * 1.0; for (let i = 0; i < n; i++, idx++) { const cx = X0 + (idx % cols) * gap, cy = Y0 + Math.floor(idx / cols) * gap, kk = seg(u, t0 + i * .004, t0 + .2 + i * .004);
+      if (kk > 0) { x.save(); x.globalAlpha *= kk; x.fillStyle = g.col ? C[g.col] : gi === 0 ? C.gold : gi === 1 ? C.teal : C.dim; x.beginPath(); x.arc(cx, cy, rad, 0, Math.PI * 2); x.fill(); x.restore(); } }
+      txt(g.label, (s.cols ? X0 : 200) + gi * (s.lgap || 520), s.ly || 860, { s: 30, w: 700, c: g.col ? C[g.col] : gi === 0 ? C.gold : gi === 1 ? C.teal : C.dim, a: rise(u, t0), id: 'g' + gi }); });
+    txt(`●1つ＝${per}人`, W - 200, 200, { s: 22, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'per' });
+  },
+  budget(u, s, d) { // soil: what the mound needs and where it comes from (numbers as stated in the script)
+    kicker(s.kicker || '土の量（大林組の試算）', 200, 200, rise(u, .05), C.gold, 'k'); const X0 = 520, unit = 6.5, row = (y, items, lab, ka) => { let X = X0; const out = [];
+      txt(lab, X0 - 30, y + 52, { s: 32, w: 700, al: 'right', a: ka, id: 'lab' + y });
+      items.forEach((it, i) => { const w = it.v * unit * ka; alpha(.92, () => fill(X, y, w, 76, C[it.c])); if (it.dash) box(X, y, it.v * unit, 76, C.teal, 2, [8, 6]);
+        const fits = tw(it.t, { s: 26, w: 700 }) + 28 <= it.v * unit;
+        if (ka > .9) { if (fits) txt(it.t, X + 14, y + 50, { s: 26, w: 700, c: '#120F0B', a: 1, id: 'it' + y + i }); else out.push(it.t); } X += it.v * unit; });
+      if (out.length && ka > .9) txt(out.join('　'), X + 24, y + 50, { s: 26, w: 700, c: C.text, a: 1, id: 'ot' + y }); };
+    const k1 = rise(u, .2, .7); row(320, [{ v: 140, c: 'gold', t: '墳丘 140万m³' }], '必要', k1);
+    if (s.step >= 2) row(480, [{ v: 60, c: 'teal', t: '内堀 60万' }, { v: 14, c: 'dim', t: '外堀 14万' }], '堀から', rise(u, s.step === 2 ? .3 : 0, .7));
+    if (s.step >= 3) row(640, [{ v: 66, c: 'faint', t: 'よそから 66万', dash: 1 }], 'よそから', rise(u, s.step === 3 ? .3 : 0, .7));
+    if (s.step >= 4) { const ka = rise(u, .3); txt('運んだ土 全部で 140万m³ ほど', X0, 840, { s: 44, w: 700, f: F.serif, c: C.gold, a: ka, id: 'tot' }); }
+    txt('大林組の試算（1985）をもとに計算', W - 160, 200, { s: 20, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'src', pass: true });
+  },
+  section(u, s, d) { // schematic cross-sections drawn in teal
+    kicker(s.kicker, 200, 200, rise(u, .05), C.gold, 'k'); const X0 = 260, X1 = 1660, B = 820;
+    if (s.mode === 'layers') { const n = 14, kk = seg(u, .2, Math.min(d - .5, 3.2)); for (let i = 0; i < n; i++) { const k = clamp(kk * n - i); if (k <= 0) break; const y = B - (i + 1) * 30, inset = i * 34;
+        x.save(); x.globalAlpha = k; x.fillStyle = i % 2 ? 'rgba(200,162,78,.30)' : 'rgba(150,120,80,.22)'; x.beginPath(); x.moveTo(X0 + inset, B - i * 30); x.lineTo(X1 - inset, B - i * 30); x.lineTo(X1 - inset - 34, y); x.lineTo(X0 + inset + 34, y); x.closePath(); x.fill(); x.strokeStyle = C.teal; x.lineWidth = 1; x.stroke(); x.restore(); }
+      txt('薄い層を敷いては突き固める（模式図）', X0, 900, { s: 24, c: C.dim, a: rise(u, .3), id: 'cap' }); }
+    else { const half = [[0, 0], [184, -140], [264, -140], [416, -290], [480, -290], [608, -420]], cx = 664, k = eio(seg(u, .2, 1.8));
+      const pts = half.map(p => [X0 + p[0], B + p[1]]).concat(half.slice().reverse().map(p => [X0 + 2 * cx - p[0], B + p[1]]));
+      x.save(); x.strokeStyle = C.teal; x.lineWidth = 3; x.beginPath(); const n = Math.max(2, Math.floor(pts.length * k)); x.moveTo(...pts[0]); for (let i = 1; i < n; i++) x.lineTo(...pts[i]); x.stroke(); x.restore();
+      if (s.mode === 'terraces') { [[X0 + 224, B - 140], [X0 + 448, B - 290]].forEach((p, i) => { const ka = rise(u, 1.2 + i * .4); ring(p[0], p[1] - 4, 14, ka, C.gold, 3); txt(i ? '2段目の平らな面' : '1段目の平らな面', p[0] - 40, p[1] - 30, { s: 24, w: 700, c: C.gold, al: 'right', a: ka, id: 'tp' + i }); }); txt('墳丘は3段（模式図）', X0, 900, { s: 24, c: C.dim, a: rise(u, .3), id: 'cap' }); }
+      if (s.mode === 'fukiishi') { const r = rnd(7); for (let i = 0; i < 260; i++) { const q = r(), segi = Math.floor(q * (pts.length - 1)), a = pts[segi], b = pts[segi + 1], tt = r(), px = lerp(a[0], b[0], tt), py = lerp(a[1], b[1], tt) - 6; if (a[1] === b[1]) continue; const kk = seg(u, .8 + i * .006, 1.0 + i * .006); if (kk <= 0) continue; x.save(); x.globalAlpha = kk; x.fillStyle = '#BFB6A2'; x.beginPath(); x.arc(px, py, 5 + r() * 3, 0, Math.PI * 2); x.fill(); x.restore(); }
+        txt('斜面を覆う葺石（模式図）', X0, 900, { s: 24, c: C.dim, a: rise(u, .3), id: 'cap' }); } }
+    if (s.label) txt(s.label, W - 160, 300, { s: 40, w: 700, f: F.serif, c: C.gold, al: 'right', a: rise(u, .5), id: 'lab' });
+  },
+  shura(u, s, d) { // the Y-shaped sledge, drawn to scale with its small companion
+    kicker('修羅（1978年 藤井寺市で出土）', 200, 200, rise(u, .05), C.gold, 'k'); const px = 150, X0 = 300, k = eio(seg(u, .2, 1.6));
+    const sledge = (X, Y, L, sc, kk, lab) => { const l = L * px, wd = 1.9 * px * sc; /* length to scale; sc narrows the small one */ x.save(); x.strokeStyle = C.teal; x.lineWidth = 3; x.globalAlpha = Math.min(1, kk * 2);
+      const p = [[X, Y], [X + l * .45, Y - wd * .08], [X + l, Y - wd / 2], null, [X + l * .45, Y + wd * .08], [X + l, Y + wd / 2]]; x.beginPath(); x.moveTo(X, Y - 10); x.lineTo(X + l * .45 * kk, Y - 10 - wd * .08 * kk); if (kk > .45) x.lineTo(X + l * kk, Y - wd / 2 * kk);
+      x.moveTo(X, Y + 10); x.lineTo(X + l * .45 * kk, Y + 10 + wd * .08 * kk); if (kk > .45) x.lineTo(X + l * kk, Y + wd / 2 * kk); x.stroke(); x.restore();
+      const ka = rise(u, 1.2), my = Y + wd / 2 + 32; alpha(ka, () => { line(X, my, X + l, my, C.gold, 2); line(X, my - 10, X, my + 10, C.gold, 2); line(X + l, my - 10, X + l, my + 10, C.gold, 2); });
+      txt(lab, X + l / 2, my + 52, { s: 40, w: 700, f: F.serif, c: C.gold, al: 'center', a: ka, id: lab }); };
+    sledge(X0, 400, 8.8, 1, k, '約8.8 m'); if (s.small) sledge(X0, 752, 2.8, .55, eio(seg(u, .8, 1.8)), '2.8 m');
+    txt('二股の木（アカガシ）をそのまま使ったそり · 模式図', W - 160, 200, { s: 22, al: 'right', c: C.dim, a: rise(u, .3), id: 'cap', pass: true });
+  },
+  doc(u, s, d) { backdrop(s.bg || { img: 'osaka_hill_z11', at: [34.539, 135.84], span: 60000, a: .12 }, u, d); kicker(s.doc, 640, 168, rise(u, .1), C.gold, 'doc');
+    const X = 640, Y = 200, w = 640, h = 640, k = rise(u, .1, .6); if (k <= 0) return; x.save(); x.globalAlpha *= k; x.translate(0, (1 - k) * 18);
+    const g = x.createRadialGradient(X + w / 2, Y + h * .45, 40, X + w / 2, Y + h / 2, Math.max(w, h) * .72); g.addColorStop(0, C.paper); g.addColorStop(1, C.paper_edge); x.fillStyle = g; x.fillRect(X, Y, w, h); grain(X, Y, w, h, .12);
+    const fs = s.fs || 66, gap = fs * 1.55, n = s.lines.length, xc = X + w / 2 + (n - 1) * gap / 2, yt = Y + 92;
+    s.lines.forEach((col, i) => { const cx = xc - i * gap, ch = [...col]; if ((s.hl || []).includes(i)) { const kk = eo(seg(u, .7 + .5 * s.hl.indexOf(i), 1.2 + .5 * s.hl.indexOf(i))); if (kk > 0) { x.save(); x.globalCompositeOperation = 'multiply'; x.globalAlpha *= .6; x.fillStyle = C.red; x.fillRect(cx - fs * .62, yt - fs * .95, fs * 1.24, ch.length * fs * 1.12 * kk + fs * .15); x.restore(); } }
+      ch.forEach((c, j) => { const rot = /[、。「」（）]/.test(c), yy = yt + j * fs * 1.12; x.save(); x.font = `700 ${fs}px ${F.serif}`; x.fillStyle = C.ink; x.textAlign = 'center'; rot ? x.fillText(c, cx + fs * .55, yy - fs * .55) : x.fillText(c, cx, yy); x.restore(); });
+      if (REC) REC.push({ id: 'doc' + i, text: col, x0: cx - fs / 2, y0: yt - fs, x1: cx + fs / 2, y1: yt + ch.length * fs * 1.12 }); });
+    x.restore();
+  },
+  theories(u, s, d) { backdrop(s.bg, u, d); const n = s.items.length, bw = n === 3 ? 480 : 720, gap = 40, X0 = (W - (n * bw + (n - 1) * gap)) / 2; kicker(s.kicker, X0, 230, rise(u, .05), C.gold, 'k');
+    s.items.forEach((it, i) => { const X = X0 + i * (bw + gap), hi = (s.hi || []).includes(i), dim = s.hi && !hi, kk = (s.show ? (s.show.includes(i) ? rise(u, .2 + .3 * s.show.indexOf(i)) : 1) : rise(u, .2 + i * .3)) * (dim ? .65 : 1);
+      if (s.hide && s.hide.includes(i)) return; alpha(kk, () => { fill(X, 290, bw, 480, hi ? 'rgba(200,162,78,.10)' : 'rgba(23,20,15,.78)'); box(X, 290, bw, 480, hi ? C.gold : C.hairline, hi ? 2.5 : 1.5, it.dashed ? [10, 8] : null); });
+      txt(it.k, X + 40, 360, { s: 22, f: F.mono, c: hi ? C.gold : C.dim, ls: 2, a: kk, id: 'k' + i }); const lines = it.name.split('\n');
+      const fz = n === 3 ? 52 : 64, lh = Math.max(74, PX({ s: fz }) * 1.22); lines.forEach((ln, j) => txt(ln, X + 38, 470 + j * lh, { s: fz, w: 700, f: F.serif, a: kk, id: 'n' + i + j })); if (it.sub) txt(it.sub, X + 40, 470 + (lines.length - 1) * lh + 80, { s: 26, c: C.dim, a: kk, id: 's' + i }); });
+  },
+  rows(u, s, d) { backdrop(s.bg, u, d); kicker(s.kicker, 300, 240, rise(u, .05), C.gold, 'k');
+    s.rows.forEach((r, i) => { const y = 360 + i * (s.gap || 130), kk = rise(u, .1 + i * (s.dt || .3)); alpha(kk, () => line(300, y + 30, 1620, y + 30, C.hairline, 1));
+      txt(r.k, 300, y, { s: 40, w: 700, f: F.serif, c: r.hi ? C.gold : C.text, a: kk, id: 'k' + i }); txt(r.v, 1620, y, { s: 34, w: 500, c: r.hi ? C.gold : C.text, al: 'right', a: kk, id: 'v' + i }); });
+  },
+
+  map(u, s, d) { // East Asia drawn from Natural Earth land polygons; view = {c: [lat, lon], w: degrees of longitude across}
+    const g0 = s.g ? s.g.first : s, g1 = s.g ? s.g.last : s, p = ss(seg(GT, 0, GD + .7)), v0 = g0.view, v1 = g1.view || v0;
+    const merc = la => Math.log(Math.tan(Math.PI / 4 + la * Math.PI / 360)) * 180 / Math.PI;
+    const cl = lerp(v0.c[1], v1.c[1], p), ca = lerp(merc(v0.c[0]), merc(v1.c[0]), p), wd = lerp(v0.w, v1.w, p) * lerp(1, .97, ss(seg(GT, 0, GD))), k = W / wd;
+    const P = ll => [W / 2 + (ll[1] - cl) * k, H / 2 - (merc(ll[0]) - ca) * k];
+    fill(0, 0, W, H, C.ground);
+    x.save(); x.strokeStyle = 'rgba(232,224,210,.06)'; x.lineWidth = 1; for (let lo = 80; lo <= 170; lo += 10) { const a = P([0, lo]); line(a[0], 0, a[0], H, 'rgba(232,224,210,.05)'); } for (let la = 0; la <= 70; la += 10) { const a = P([la, cl]); line(0, a[1], W, a[1], 'rgba(232,224,210,.05)'); } x.restore();
+    x.save(); x.beginPath(); for (const r of LAND) { const q = P([r[0][1], r[0][0]]); x.moveTo(q[0], q[1]); for (let i = 1; i < r.length; i++) { const q2 = P([r[i][1], r[i][0]]); x.lineTo(q2[0], q2[1]); } x.closePath(); }
+    x.fillStyle = '#2A241C'; x.fill('evenodd'); x.strokeStyle = 'rgba(232,224,210,.35)'; x.lineWidth = 1.2; x.stroke(); x.restore();
+    grain(0, 0, W, H, G.grain_alpha);
+    (s.regions || []).forEach((r, i) => { const kk = rise(u, .2 + i * .3, .6), c = P(r.at), rx = r.rx * k, ry = r.ry * k; alpha(kk, () => { x.save(); x.fillStyle = r.col === 'teal' ? 'rgba(143,224,226,.16)' : r.col === 'cream' ? 'rgba(255,252,245,.12)' : 'rgba(247,212,126,.16)'; x.strokeStyle = C[r.col === 'cream' ? 'text' : r.col || 'gold']; x.lineWidth = 2; x.setLineDash([8, 6]); x.beginPath(); x.ellipse(c[0], c[1], rx, ry, r.rot || 0, 0, Math.PI * 2); x.fill(); x.stroke(); x.restore(); });
+      if (r.label) txt(r.label, c[0] + (r.lx || 0), c[1] + (r.ly || 0), { s: r.ls || 34, w: 700, f: F.serif, al: 'center', c: r.col === 'teal' ? C.teal : r.col === 'cream' ? C.text : C.gold, a: kk, shadow: 10, id: 'rg' + i }); });
+    (s.bands || []).forEach((b, i) => { const kk = eio(seg(u, .3 + i * .3, 1.4 + i * .3)), pts = b.pts.map(P); if (kk <= 0) return; x.save(); x.globalAlpha *= .55; x.strokeStyle = C[b.col || 'gold']; x.lineWidth = (b.wd || 16); x.lineCap = 'round'; x.lineJoin = 'round'; x.beginPath(); x.moveTo(...pts[0]); const n = (pts.length - 1) * kk; for (let j = 1; j <= Math.ceil(n); j++) { const f = Math.min(1, n - j + 1); x.lineTo(lerp(pts[j - 1][0], pts[j][0], f), lerp(pts[j - 1][1], pts[j][1], f)); } x.stroke(); x.restore();
+      if (b.label) { const c = P(b.lat); txt(b.label, c[0], c[1], { s: 26, w: 700, c: C[b.col || 'gold'], al: b.al || 'left', a: rise(u, 1.2 + i * .3), shadow: 10, id: 'bd' + i }); } });
+    (s.routes || []).forEach((r, i) => { const t0 = (r.t ?? (.3 + i * .45)), kk = eio(seg(u, t0, t0 + (r.dur || 1.4))), pts = r.pts.map(P); if (kk <= 0) return; const col = r.col === 'cream' ? C.text : C[r.col || 'gold'];
+      x.save(); x.strokeStyle = col; x.fillStyle = col; x.lineWidth = r.wd || 4; x.lineCap = 'round'; if (r.dashed) x.setLineDash([12, 10]); x.beginPath(); x.moveTo(...pts[0]); const n = (pts.length - 1) * kk; let e = pts[0], pr = pts[0];
+      for (let j = 1; j <= Math.ceil(n); j++) { const f = Math.min(1, n - j + 1); pr = pts[j - 1]; e = [lerp(pts[j - 1][0], pts[j][0], f), lerp(pts[j - 1][1], pts[j][1], f)]; x.lineTo(...e); } x.stroke(); x.setLineDash([]);
+      if (!r.noarrow) { const an = Math.atan2(e[1] - pr[1], e[0] - pr[0]), L2 = 22; x.beginPath(); x.moveTo(e[0] + Math.cos(an) * 6, e[1] + Math.sin(an) * 6); x.lineTo(e[0] - Math.cos(an - .45) * L2, e[1] - Math.sin(an - .45) * L2); x.lineTo(e[0] - Math.cos(an + .45) * L2, e[1] - Math.sin(an + .45) * L2); x.closePath(); x.fill(); } x.restore();
+      if (r.label) { const c = P(r.lat || r.pts[r.pts.length - 1]); txt(r.label, c[0] + (r.lx || 0), c[1] + (r.ly || 0), { s: r.ls || 30, w: 700, f: F.serif, c: col, al: r.al || 'left', a: rise(u, t0 + .6), shadow: 10, id: 'ro' + i }); } });
+    (s.places || []).forEach((q, i) => { const c = P(q.at), kk = rise(u, (q.t ?? .3 + i * .25), .5), side = q.side || 1, lx = c[0] + side * ((q.r || 9) + 16);
+      if (q.ring) ring(c[0], c[1], q.ring, seg(u, .2 + i * .25, .9 + i * .25), q.col ? C[q.col] : C.red, 2.5); else alpha(kk, () => { x.save(); x.fillStyle = q.col ? C[q.col] : C.red; x.beginPath(); x.arc(c[0], c[1], q.r || 9, 0, Math.PI * 2); x.fill(); x.restore(); });
+      if (q.label) txt(q.label, q.ring ? c[0] + side * (q.ring + 16) : lx, c[1] + (q.dy || 0) - 2, { s: q.ls || 32, w: 700, f: F.serif, c: q.lc ? C[q.lc] : C.text, al: side > 0 ? 'left' : 'right', a: kk, shadow: 10, id: 'pl' + i });
+      if (q.sub) txt(q.sub, q.ring ? c[0] + side * (q.ring + 16) : lx, c[1] + (q.dy || 0) + (q.big ? 56 : 34), { s: q.ss || 22, f: q.big ? F.serif : F.mono, w: q.big ? 700 : 500, c: q.sc ? C[q.sc] : C.dim, al: side > 0 ? 'left' : 'right', a: kk, shadow: 8, id: 'ps' + i }); });
+    (s.names || []).forEach((q, i) => { const c = P(q.at); txt(q.label, c[0], c[1], { s: q.ls || 26, w: 500, f: F.serif, c: q.c ? C[q.c] : C.dim, al: 'center', a: rise(u, q.t ?? .1), shadow: 8, id: 'nm' + i, pass: true }); });
+    if (s.text) { shade(0, 1100, .85); title(s, u); }
+    if (s.note) txt(s.note, 120, 200, { s: 24, c: C.dim, a: rise(u, .4), id: 'note', pass: true });
+  },
+  stack(u, s, d) { // shares of one whole, side by side in one bar (ancestry components)
+    backdrop(s.bg, u, d); kicker(s.kicker, 200, 230, rise(u, .05), C.gold, 'k'); const X0 = 200, BW = 1520, Y = s.y || 420, BH = 120; let X = X0;
+    const col = c => c === 'cream' ? C.text : C[c];
+    alpha(rise(u, .05), () => box(X0, Y, BW, BH, C.hairline, 1.5, [6, 5]));
+    s.parts.forEach((pt, i) => { const show = s.show == null || s.show.includes(i), t0 = .25 + (s.show ? s.show.indexOf(i) : i) * .55, kk = show ? (s.keep && s.keep.includes(i) ? 1 : rise(u, t0, .8)) : 0, w = BW * pt.v / 100;
+      if (kk > 0) { alpha(.9, () => fill(X, Y, w * kk, BH, col(pt.c))); if (pt.dashed) alpha(kk, () => box(X, Y, w, BH, col(pt.c), 2, [8, 6]));
+        const ka = s.keep && s.keep.includes(i) ? 1 : rise(u, t0 + .45); const cx = X + w / 2, inside = w > 260;
+        txt(pt.text, cx, inside ? Y + BH / 2 + 18 : Y - 26, { s: inside ? 48 : 40, w: 700, f: F.serif, c: inside ? '#120F0B' : col(pt.c), al: 'center', a: ka, shadow: inside ? 0 : 10, id: 'v' + i });
+        txt(pt.label, cx, Y + BH + 56, { s: 30, w: 700, c: col(pt.c), al: 'center', a: ka, id: 'l' + i }); if (pt.sub) txt(pt.sub, cx, Y + BH + 96, { s: 22, c: C.dim, al: 'center', a: ka, id: 's' + i }); }
+      X += w; });
+    if (s.note) txt(s.note, 200, 860, { s: 28, c: C.dim, a: rise(u, .6), id: 'note' });
+    txt(s.src || '', W - 160, 230, { s: 20, f: F.mono, c: C.dim, al: 'right', a: rise(u, .1), id: 'src', pass: true });
+  },
+  comment(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .05, .4); alpha(k, () => { x.save(); x.strokeStyle = C.gold; x.lineWidth = 3; x.beginPath(); x.roundRect(560, 300, 800, 300, 26); x.moveTo(700, 600); x.lineTo(660, 680); x.lineTo(780, 600); x.stroke(); x.restore(); });
+    const fs = Math.min(60, Math.floor(60 * 700 / Math.max(700, tw(s.text, { s: 60, w: 700, f: F.serif })))); txt(s.text, W / 2, 470, { s: fs, w: 700, f: F.serif, al: 'center', a: k, id: 't' }); if (s.sub) txt(s.sub, W / 2, 540, { s: 28, c: C.dim, al: 'center', a: rise(u, .15), id: 's' }); },
+};
+function endCard(u) { const k = rise(u, .3, .6);
+  txt(FILM.title, 120, 330, { s: 76, w: 700, f: F.serif, a: k, id: 'e1' }); line(124, 380, lerp(124, 1000, rise(u, .5, .7)), 380, C.red, 1.5);
+  txt('灯下の資料室', 124, 446, { s: 30, f: F.serif, c: C.gold, a: rise(u, .5), id: 'e3' });
+  (FILM.credits || []).forEach((c, i) => txt(c, 124, 560 + i * 40, { s: 22, c: i === FILM.credits.length - 1 ? C.dim : C.text, a: rise(u, .8 + i * .06), id: 'cr' + i, pass: true })); }
+function subs(t) { for (const [a, b, s] of FILM.subs) if (t >= a && t < b) { const o = { s: S.type.subtitle_px, raw: 1, w: 700, al: 'center', shadow: 14 }; txt(s, W / 2, S.frame.subtitle_baseline, o); LAST.push([s, W / 2, S.frame.subtitle_baseline, o, 1]); } }
+function drawScene(i, t) { x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground); if (i >= FILM.scenes.length) { endCard(t - FILM.end.t0); return; }
+  const s = FILM.scenes[i]; GT = t - (s.g ? s.g.t0 : s.t0); GD = (s.g ? s.g.t1 - s.g.t0 : s.t1 - s.t0); L[s.layout](t - s.t0 + (s.cont ? 30 : 0), s, s.t1 - s.t0); if (s.source) txt(s.source, W - 80, 1062, { s: 19, f: F.mono, c: C.dim, al: 'right' }); }
+let IDX = 0; function sceneAt(t) { const sc = FILM.scenes; if (!(sc[IDX] && t >= sc[IDX].t0 && t < sc[IDX].t1)) { IDX = sc.findIndex(s => t >= s.t0 && t < s.t1); if (IDX < 0) { IDX = 0; return sc.length; } } return IDX; }
+window.render = function (t) { FR = Math.floor(t * FILM.fps); const T = M.transition_s; let b; const i = sceneAt(t);
+  const sc = FILM.scenes; const cand = [sc[i - 1], sc[i]].filter(Boolean).map(s => s.t1).concat(i >= sc.length ? [sc[sc.length - 1].t1] : []); b = cand.find(bt => Math.abs(t - bt) < T / 2);
+  let texts;
+  if (b === undefined) { x = x0; TQ = []; drawScene(i, t); texts = TQ.map(q => [q, 1]); }
+  else { const k = seg(t, b - T / 2, b + T / 2), iA = sceneAt(b - 1e-3), iB = sceneAt(b + 1e-3), cont = sc[iB] && sc[iB].cont; const keep = REC; REC = null;
+    x = LAYER[0].getContext('2d'); TQ = []; drawScene(iA, t); const qA = TQ; x = LAYER[1].getContext('2d'); TQ = []; drawScene(iB, t); const qB = TQ; REC = keep; x = x0; x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; fill(0, 0, W, H, C.ground);
+    const kb = ss(k);
+    if (cont) {   // same picture: no dip; what stays the same stays put, only what changes cross-fades
+      x.drawImage(LAYER[0], 0, 0); x.globalAlpha = kb; x.drawImage(LAYER[1], 0, 0); x.globalAlpha = 1;
+      const mB = new Map(qB.map(q => [tkey(q), q])), mA = new Set(qA.map(tkey)); texts = [];
+      for (const q of qA) { const o = mB.get(tkey(q)); texts.push(o ? [[q[0], q[1], q[2], q[3], lerp(q[4], o[4], kb)], 1] : [q, 1 - kb]); }
+      for (const q of qB) if (!mA.has(tkey(q))) texts.push([q, kb]);
+    } else {
+      const dim = 1 - .55 * Math.sin(Math.PI * k); x.globalAlpha = (1 - kb) * dim; x.drawImage(LAYER[0], 0, 0); x.globalAlpha = kb * dim; x.drawImage(LAYER[1], 0, 0); x.globalAlpha = 1;
+      texts = qA.map(q => [q, (1 - kb) * dim]).concat(qB.map(q => [q, kb * dim]));
+    } }
+  TQ = null; x = x0; x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; lamp();
+  const ex = +(new URLSearchParams(location.search).get('exposure') || G.exposure || 1);   // overall exposure (config grade.exposure), pictures only
+  if (ex !== 1) { const c = LAYER[0], g = c.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.filter = 'none'; g.drawImage(cv, 0, 0); x.save(); x.filter = `brightness(${ex})`; x.drawImage(c, 0, 0); x.restore(); }
+  for (const [q, w] of texts) if (q[4] * w > .002) drawT(x, q[0], q[1], q[2], q[3], q[4] * w);
+  LAST = texts.filter(([q, w]) => q[4] * w > .5).map(([q]) => q); subs(t); };
+window.TBOXES = function (t) { window.render(t); return LAST.map(([s, X, Y, o]) => { const w = tw(s, o), sz = PX(o), xa = o.al === 'right' ? X - w : o.al === 'center' ? X - w / 2 : X; return { text: s, x0: xa, y0: Y - sz * .88, x1: xa + w, y1: Y + sz * .2 }; }); };
+window.TEXTS = function (t) { REC = []; window.render(t); const r = REC; REC = null; return r; };
+window.EV = [];
+boot();
+</script></body></html>
