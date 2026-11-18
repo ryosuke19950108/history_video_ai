@@ -16,7 +16,7 @@
   "地図　Natural Earth（パブリックドメイン）をもとに作図　空中写真　出典：国土地理院（地理院タイル）",
   "研究　Cooke ほか（2021）Science Advances 7: eabh2419 ／ Yamamoto ほか（2024）Nature Communications 15: 9780",
   "史料　『日本書紀』巻第十 応神天皇十四年条 ／『古事記』中巻 応神天皇の段（原文・新字体）",
-  "写真　Abasaa（パブリックドメイン／Wikimedia Commons）、Owl Cat（CC0／Wikimedia Commons）、Saigen Jiro（CC0／Wikimedia Commons）",
+  "写真　Abasaa、Daderot、Owl Cat、Saigen Jiro、万温堂、魁文堂（Wikimedia Commons、パブリックドメイン・CC0）",
   "音声　VOICEVOX:青山龍星",
   "地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。"
  ],
@@ -103,15 +103,16 @@
     }
    ],
    "bg": {
-    "img": "yoshinogari_z16",
+    "img": "tb_syougaku",
     "at": [
-     33.325,
-     130.3818
+     960,
+     834,
+     0
     ],
-    "span": 2600,
-    "a": 0.24
+    "span": 1920,
+    "a": 0.2
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：万温堂、魁文堂（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -153,31 +154,33 @@
     "3つ目の流れ。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "tb_syougaku",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     834,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.2
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：万温堂、魁文堂（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "comment",
    "text": "あなたの予想は？",
    "sub": "動画を見る前に、コメント欄へ一言",
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -186,15 +189,16 @@
     "いちばん多いのは？"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -214,15 +218,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -231,15 +236,16 @@
     "答え合わせ。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -943,30 +949,32 @@
    "status": [],
    "kicker": "列島に流れ込んだ3つの波",
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "mysteries",
    "status": [],
    "kicker": "日本人のルーツは、いくつの流れ？",
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -975,15 +983,16 @@
    "title": "縄文の人々",
    "sub": "1つ目の波",
    "bg": {
-    "img": "sannai_z17",
+    "img": "dogu_goggle",
     "at": [
-     40.8131,
-     140.6974
+     895,
+     840,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1700,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "timeline",
@@ -1329,11 +1338,24 @@
    "gold": 0
   },
   {
-   "layout": "card",
-   "lines": [
-    "耳の奥の固い骨に、",
-    "DNAが残っていた。"
-   ]
+   "layout": "photo",
+   "img": "jomon_skull",
+   "at": [
+    1000,
+    1000,
+    0
+   ],
+   "span": [
+    1700,
+    1500
+   ],
+   "stamp": "縄文時代の人の頭骨（伊川津貝塚）",
+   "text": {
+    "kicker": "耳の奥の固い骨に、",
+    "title": "DNAが残っていた",
+    "ts": 72
+   },
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -1349,15 +1371,16 @@
     "驚くような事実。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "dogu_heart",
     "at": [
-     40.8131,
-     140.6974
+     775,
+     700,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1500,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "timeline",
@@ -1507,16 +1530,17 @@
     "とても独特なDNA。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "dogu_goggle",
     "at": [
-     40.8131,
-     140.6974
+     895,
+     840,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1700,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）",
    "say": "そのため、縄文人のDNAは、世界のどの集団とも大きく違う、とても独特なものになっていました。"
   },
   {
@@ -1524,15 +1548,16 @@
    "status": [],
    "focus": 0,
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -1567,15 +1592,16 @@
    "focus": 0,
    "reveal": 0,
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -1675,15 +1701,16 @@
     "まだ答えを出していない。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "dogu_heart",
     "at": [
-     40.8131,
-     140.6974
+     775,
+     700,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1500,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -1692,15 +1719,16 @@
     "きれいには結びつかない。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "jomon_skull",
     "at": [
-     40.8131,
-     140.6974
+     960,
+     1000,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -1807,15 +1835,16 @@
    "title": "弥生の人々",
    "sub": "2つ目の波",
    "bg": {
-    "img": "itazuke_z17",
+    "img": "yayoi_attire",
     "at": [
-     33.5654,
-     130.4528
+     1250,
+     700,
+     0
     ],
     "span": 1300,
-    "a": 0.22
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -1993,15 +2022,16 @@
     "大きな見直し。"
    ],
    "bg": {
-    "img": "yoshinogari_z16",
+    "img": "yoshi_pit",
     "at": [
-     33.325,
-     130.3818
+     960,
+     640,
+     0
     ],
-    "span": 2600,
-    "a": 0.24
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -2089,15 +2119,16 @@
     "ゆっくり広がっていった。"
    ],
    "bg": {
-    "img": "yoshinogari_z16",
+    "img": "yoshi_pit",
     "at": [
-     33.325,
-     130.3818
+     960,
+     640,
+     0
     ],
-    "span": 2600,
-    "a": 0.24
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "say": "コメ作りは、私たちが習ったよりもずっと長い時間をかけ、ゆっくりと列島に広がっていったことになります。"
   },
   {
@@ -2175,15 +2206,16 @@
     "数字にして比べた。"
    ],
    "bg": {
-    "img": "itazuke_z17",
+    "img": "jomon_skull",
     "at": [
-     33.5654,
-     130.4528
+     960,
+     1000,
+     0
     ],
-    "span": 1300,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "photo",
@@ -2229,16 +2261,17 @@
     "日本人の大部分。"
    ],
    "bg": {
-    "img": "itazuke_z17",
+    "img": "yayoi_attire",
     "at": [
-     33.5654,
-     130.4528
+     1250,
+     700,
+     0
     ],
     "span": 1300,
-    "a": 0.22
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -2247,15 +2280,16 @@
     "方向としては正しかった。"
    ],
    "bg": {
-    "img": "itazuke_z17",
+    "img": "yayoi_attire",
     "at": [
-     33.5654,
-     130.4528
+     1250,
+     700,
+     0
     ],
     "span": 1300,
-    "a": 0.22
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -2264,15 +2298,16 @@
     "重なる考え方。"
    ],
    "bg": {
-    "img": "itazuke_z17",
+    "img": "yayoi_attire",
     "at": [
-     33.5654,
-     130.4528
+     1250,
+     700,
+     0
     ],
     "span": 1300,
-    "a": 0.22
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -2288,15 +2323,16 @@
     }
    ],
    "bg": {
-    "img": "itazuke_z17",
+    "img": "three_peoples",
     "at": [
-     33.5654,
-     130.4528
+     1200,
+     675,
+     0
     ],
-    "span": 1300,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "say": "日本人の顔立ちには、目鼻立ちのはっきりした顔と、平らで、すっきりした顔の2つの型があると言われてきたんです。"
   },
   {
@@ -2315,15 +2351,16 @@
     }
    ],
    "bg": {
-    "img": "itazuke_z17",
+    "img": "three_peoples",
     "at": [
-     33.5654,
-     130.4528
+     1200,
+     675,
+     0
     ],
-    "span": 1300,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -2355,15 +2392,16 @@
     }
    ],
    "bg": {
-    "img": "yoshinogari_z16",
+    "img": "yayoi_attire",
     "at": [
-     33.325,
-     130.3818
+     1250,
+     700,
+     0
     ],
-    "span": 2600,
-    "a": 0.24
+    "span": 1300,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Abasaa（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -2548,15 +2586,16 @@
    "focus": 1,
    "reveal": 1,
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "chapter",
@@ -2564,15 +2603,16 @@
    "title": "古墳時代の人々",
    "sub": "3つ目の波",
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "timeline",
@@ -2670,22 +2710,24 @@
    ]
   },
   {
-   "layout": "card",
-   "lines": [
-    "この時代の人々のDNAに、",
-    "3つ目の祖先。"
+   "layout": "photo",
+   "img": "haniwa_woman",
+   "at": [
+    760,
+    760,
+    0
    ],
-   "bg": {
-    "img": "daisen_z17",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 1900,
-    "a": 0.22
+   "span": [
+    1520,
+    1300
+   ],
+   "stamp": "埴輪（古墳時代）",
+   "text": {
+    "kicker": "この時代の人々のDNAに、",
+    "title": "3つ目の祖先",
+    "ts": 72
    },
-   "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -2813,15 +2855,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -2844,15 +2887,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "say": "狩りと採集の縄文、コメ作りの弥生、そして国のまとまりができていく古墳の時代です。",
    "cont": true
   },
@@ -2863,16 +2907,17 @@
     "新しい考え方。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 0,
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "say": "この3つの段階の人々が、それぞれ今の日本人に大きく関わっているというのが、さんじゅう構造モデルと呼ばれる新しい考え方です。"
   },
   {
@@ -2882,16 +2927,17 @@
     "3つの層のモデル」"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "sub": "研究チームの1人",
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -2900,15 +2946,16 @@
     "日本書紀にも。"
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "haniwa_formal",
     "at": [
-     34.5642,
-     135.4875
+     775,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1500,
+    "a": 0.24
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "doc",
@@ -2924,15 +2971,16 @@
     3
    ],
    "fs": 52,
-   "source": "史料：『日本書紀』巻第十 応神天皇十四年条（原文・新字体）・出典：国土地理院（空中写真）",
+   "source": "史料：『日本書紀』巻第十 応神天皇十四年条（原文・新字体）・写真：Daderot（パブリックドメイン／Wikimedia Commons）",
    "bg": {
-    "img": "mozu_z15",
+    "img": "haniwa_formal",
     "at": [
-     34.5642,
-     135.4875
+     775,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1500,
+    "a": 0.24
    },
    "say": "応神天皇の時代に、弓月君という人物が、ひゃくにじゅうのあがたの人々を率いてやって来たという記事です。"
   },
@@ -2952,15 +3000,16 @@
     }
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "haniwa_formal",
     "at": [
-     34.5642,
-     135.4875
+     775,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1500,
+    "a": 0.24
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -2969,15 +3018,16 @@
     "今となっては分からない。"
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "haniwa_formal",
     "at": [
-     34.5642,
-     135.4875
+     775,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1500,
+    "a": 0.24
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -3116,15 +3166,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -3142,15 +3193,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Daderot（CC0／Wikimedia Commons）",
    "say": "焼き物では、のぼりがまで高い温度で焼き締める、須恵器と呼ばれる灰色の器も作られ始めます。",
    "cont": true
   },
@@ -3175,15 +3227,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Daderot（CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -3207,15 +3260,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Daderot（CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -3244,15 +3298,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Daderot（CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -3270,15 +3325,16 @@
     3
    ],
    "fs": 56,
-   "source": "史料：『古事記』中巻 応神天皇の段（原文・新字体）・出典：国土地理院（空中写真）",
+   "source": "史料：『古事記』中巻 応神天皇の段（原文・新字体）・写真：Daderot（パブリックドメイン／Wikimedia Commons）",
    "bg": {
-    "img": "mozu_z15",
+    "img": "haniwa_formal",
     "at": [
-     34.5642,
-     135.4875
+     775,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1500,
+    "a": 0.24
    }
   },
   {
@@ -3288,15 +3344,16 @@
     "海を渡った人々とともに。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_warrior",
     "at": [
-     34.5642,
-     135.4875
+     900,
+     700,
+     0
     ],
-    "span": 1900,
+    "span": 1750,
     "a": 0.22
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -3312,19 +3369,20 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "hi": [
     0,
     1
    ],
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "mysteries",
@@ -3336,15 +3394,16 @@
    "focus": 2,
    "reveal": 2,
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "mysteries",
@@ -3355,15 +3414,16 @@
    ],
    "kicker": "日本人のルーツは 3つの流れ",
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -3470,16 +3530,17 @@
     "答え合わせ。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -3499,15 +3560,16 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -3811,15 +3873,16 @@
     "意外な結果。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -3844,18 +3907,19 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "hi": [
     2
    ],
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "say": "いちばん多かったのは、1万年以上暮らした縄文の流れでも、コメ作りを伝えた弥生の流れでもなかったんです。"
   },
   {
@@ -3881,18 +3945,19 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "hi": [
     2
    ],
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -3920,17 +3985,18 @@
     "海を渡ってきた人々。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "haniwa_woman",
     "at": [
-     34.5642,
-     135.4875
+     800,
+     640,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 1550,
+    "a": 0.24
    },
    "fs": 70,
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Daderot（CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -3939,15 +4005,16 @@
     "誤解しやすい点。"
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4138,13 +4205,13 @@
     "土地の歴史が映る。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "yoshinogari_z16",
     "at": [
-     34.5642,
-     135.4875
+     33.325,
+     130.3818
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2600,
+    "a": 0.24
    },
    "source": "出典：国土地理院（空中写真）"
   },
@@ -4331,15 +4398,16 @@
     "1つの傾向。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "jomon_skull",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     1000,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4363,15 +4431,16 @@
     "大切なこと。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "three_peoples",
     "at": [
-     40.8131,
-     140.6974
+     1200,
+     675,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4380,16 +4449,17 @@
     "はまったくない。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "three_peoples",
     "at": [
-     40.8131,
-     140.6974
+     1200,
+     675,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -4409,20 +4479,21 @@
     }
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "three_peoples",
     "at": [
-     40.8131,
-     140.6974
+     1200,
+     675,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 2400,
+    "a": 0.26
    },
    "hi": [
     0,
     1,
     2
    ],
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4431,15 +4502,16 @@
     "今の私たちはいない。"
    ],
    "bg": {
-    "img": "sannai_z17",
+    "img": "three_peoples",
     "at": [
-     40.8131,
-     140.6974
+     1200,
+     675,
+     0
     ],
-    "span": 1600,
-    "a": 0.24
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4584,15 +4656,16 @@
    ],
    "kicker": "ここまでの結果",
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "mysteries",
@@ -4604,15 +4677,16 @@
    "focus": 0,
    "kicker": "1つ目の波 · 縄文",
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -4625,15 +4699,16 @@
    "focus": 1,
    "kicker": "2つ目の波 · 弥生",
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "say": "2つ目の波の弥生の人々は、北東アジアに近い祖先を持ち、コメ作りとともにやって来ました。",
    "cont": true
   },
@@ -4684,16 +4759,17 @@
     "3つの流れ。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4702,15 +4778,16 @@
     "見えてくる答え。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -4726,18 +4803,19 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "tb_syougaku",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     834,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.2
    },
    "hi": [
     1
    ],
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：万温堂、魁文堂（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4746,30 +4824,21 @@
     "新しい1章。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "tb_syougaku",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     834,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.2
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：万温堂、魁文堂（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "rows",
    "kicker": "この結論の弱いところ",
-   "rows": [],
-   "bg": {
-    "img": "mozu_z15",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 5000,
-    "a": 0.22
-   },
-   "source": "出典：国土地理院（空中写真）"
+   "rows": []
   },
   {
    "layout": "rows",
@@ -4781,16 +4850,7 @@
      "hi": true
     }
    ],
-   "bg": {
-    "img": "mozu_z15",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 5000,
-    "a": 0.22
-   },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -4809,15 +4869,16 @@
     }
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "jomon_skull",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     1000,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -4828,17 +4889,7 @@
      "v": "病院に通う人々",
      "hi": true
     }
-   ],
-   "bg": {
-    "img": "mozu_z15",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 5000,
-    "a": 0.22
-   },
-   "source": "出典：国土地理院（空中写真）"
+   ]
   },
   {
    "layout": "rows",
@@ -4855,16 +4906,6 @@
      "hi": true
     }
    ],
-   "bg": {
-    "img": "mozu_z15",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 5000,
-    "a": 0.22
-   },
-   "source": "出典：国土地理院（空中写真）",
    "cont": true
   },
   {
@@ -4874,15 +4915,16 @@
     "細かいところは変わるかも。"
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "yoshi_pit",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -4891,15 +4933,16 @@
     "まだ始まったばかり。"
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "yoshi_pit",
     "at": [
-     34.5642,
-     135.4875
+     960,
+     640,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 1920,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -4917,15 +4960,16 @@
     }
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "map",
@@ -5021,17 +5065,7 @@
      "v": "日本語の起源は分からない",
      "hi": true
     }
-   ],
-   "bg": {
-    "img": "mozu_z15",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 5000,
-    "a": 0.22
-   },
-   "source": "出典：国土地理院（空中写真）"
+   ]
   },
   {
    "layout": "map",
@@ -5083,17 +5117,7 @@
    "lines": [
     "人の流れと言葉の流れ。",
     "今も大きな謎。"
-   ],
-   "bg": {
-    "img": "mozu_z15",
-    "at": [
-     34.5642,
-     135.4875
-    ],
-    "span": 5000,
-    "a": 0.22
-   },
-   "source": "出典：国土地理院（空中写真）"
+   ]
   },
   {
    "layout": "card",
@@ -5102,16 +5126,17 @@
     "答えは1つ。"
    ],
    "bg": {
-    "img": "mozu_z15",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 5000,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -5131,20 +5156,21 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "hi": [
     0,
     1,
     2
    ],
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -5153,16 +5179,17 @@
     "混ざり合った。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "photo",
@@ -5227,16 +5254,17 @@
     "すべての出会いの続き。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "stack",
@@ -5284,16 +5312,17 @@
     "あなたの中で1つに。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "gold": 1,
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -5313,20 +5342,21 @@
     }
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
    "hi": [
     0,
     1,
     2
    ],
-   "source": "出典：国土地理院（空中写真）",
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）",
    "say": "1万年以上この列島で暮らした人々と、コメの種を携えた人々と、鉄と新しい技を携えた人々。"
   },
   {
@@ -5336,15 +5366,16 @@
     "今も生き続けている。"
    ],
    "bg": {
-    "img": "daisen_z17",
+    "img": "three_peoples",
     "at": [
-     34.5642,
-     135.4875
+     1200,
+     675,
+     0
     ],
-    "span": 1900,
-    "a": 0.22
+    "span": 2400,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
   },
   {
    "layout": "comment",
