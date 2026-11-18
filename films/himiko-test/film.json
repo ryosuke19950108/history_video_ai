@@ -12,16 +12,17 @@
     "1度も出てこない"
    ],
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
    "kicker": "日本で最も有名な古代の女王",
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s01",
    "line": "日本で最も有名な古代の女王、卑弥呼の名前は、日本の歴史書に1度も出てこないんです。",
    "t0": 0.0,
@@ -45,15 +46,16 @@
     }
    ],
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s02",
    "line": "720年にできた日本書紀にも、それより8年早い古事記にも、卑弥呼という名前はどこにも書かれていません。",
    "t0": 7.342,
@@ -77,18 +79,19 @@
     }
    ],
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
    "hi": [
     1
    ],
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s03",
    "line": "私たちが知っている卑弥呼の姿は、すべて中国の歴史書が伝えたものです。",
    "t0": 15.593,
@@ -103,16 +106,17 @@
     "日本の側では誰だったのか"
    ],
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
    "center": true,
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s04",
    "line": "では、中国の記録に残された倭の女王は、日本の側では誰だったのでしょうか。",
    "t0": 21.512,
@@ -172,15 +176,16 @@
     }
    ],
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "say": "そこで今回は、中国の記録と日本書紀をいちぎょうずつ突き合わせてみました。",
    "id": "s06",
    "line": "そこで今回は、中国の記録と日本書紀を1行ずつ突き合わせてみました。",
@@ -197,16 +202,17 @@
     "正体を確かめる"
    ],
    "bg": {
-    "img": "makimuku_z17",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 900,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
    "kicker": "今回の検証",
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s07",
    "line": "最新の年代測定の研究も使って、卑弥呼の正体を確かめたんです。",
    "t0": 40.104,
@@ -224,15 +230,16 @@
    ],
    "kicker": "候補は4人にしぼられた",
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s08",
    "line": "その結果、候補は4人にしぼられ、その中の1人が最後に浮かび上がってきました。",
    "t0": 46.034,
@@ -251,15 +258,16 @@
    "focus": 3,
    "kicker": "最後に浮かび上がった1人",
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "cont": true,
    "id": "s09",
    "line": "しかもそれは、ほとんどのかたが名前を聞いたこともない女性だったんです。",
@@ -273,15 +281,16 @@
    "text": "あなたの予想は？",
    "sub": "動画を見る前に、コメント欄へ一言",
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s10",
    "line": "動画を見る前に、あなたの予想をコメント欄に一言書いておいてください。",
    "t0": 58.029,
@@ -307,15 +316,16 @@
     }
    ],
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s11",
    "line": "卑弥呼は天照大神なのか神功皇后なのか、それとも別の誰かなのか。",
    "t0": 63.935,
@@ -327,15 +337,16 @@
    "layout": "comment",
    "text": "最後に答え合わせをしましょう",
    "bg": {
-    "img": "makimuku_z15",
+    "img": "mirror_deities",
     "at": [
-     34.5398,
-     135.8338
+     800,
+     1040,
+     0
     ],
-    "span": 2600,
-    "a": 0.22
+    "span": 1350,
+    "a": 0.26
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）",
    "id": "s12",
    "line": "最後に答え合わせをしましょう。",
    "t0": 69.786,
@@ -540,6 +551,7 @@
   "史料　『三国志』魏書 東夷伝 倭人条 ／『日本書紀』巻第九 神功皇后紀（原文・新字体）",
   "年代　春成秀爾ほか（2011）国立歴史民俗博物館研究報告 163 ／ 中塚武ほか（2018）纒向遺跡出土桃核の年代測定",
   "写真　Saigen Jiro（Wikimedia Commons、パブリックドメイン・CC0）",
+  "画像　Katsukawa Shun'ei「Empress Jingu (left), and Her Minister Takenouchi no Sukune (right)」（late 1780s） ／ Totoya Hokkei「Takenouchi no Sukune carrying the Emperor Ojin」（c. 1830） ／ Torii Kiyomasu II「Susano-o no Mikoto Killing the Eight-headed Dragon」（1748） ／ 作者不詳「Mirror with Images of Daoist Deities」（Eastern Han dynasty (25–220 CE), 2nd or 3rd century CE） ／ 作者不詳「Mirror with \"TLV\" Pattern」（Eastern Han dynasty (25–220 CE), about 1st century） ／ 作者不詳「Mirror with Dragon and Bird Arabesque」（Western Han dynasty (206 B.C.–A.D. 9)）（シカゴ美術館、パブリックドメイン・CC0）",
   "音声　VOICEVOX:青山龍星",
   "地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。"
  ]

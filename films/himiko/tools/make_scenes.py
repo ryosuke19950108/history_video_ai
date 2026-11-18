@@ -25,11 +25,24 @@ TOKAI = [35.10, 136.90]; HOKURIKU = [36.60, 136.65]; SANIN = [35.47, 133.05]; KI
 
 LAYER = {k: 'seamlessphoto' for k in ('makimuku_z17', 'makimuku_z15', 'miwa_z15', 'omiwa_z17', 'isonokami_z17',
                                       'shikanoshima_z16', 'hirabaru_z17', 'yamato_z15', 'hashihaka_z17', 'yoshinogari_z16')}
-PHOTO = {}   # filled from SOURCES.jsonl (Wikimedia Commons, public domain / CC0 only)
+PHOTO = {}        # filled from SOURCES.jsonl (public domain / CC0 pictures: Wikimedia Commons, Art Institute of Chicago)
+WIKI_NAMES = set() # photographers, for the closing credits
+AIC_WORKS = []     # 作者「題」（年）, for the closing credits
 for l in open('SOURCES.jsonl', encoding='utf-8'):
     r = json.loads(l)
-    if r['source'].startswith('Wikimedia'): PHOTO[r['name'].split('/')[-1].rsplit('.', 1)[0]] = r['credit'].replace('Public domain', 'パブリックドメイン')
+    if r['source'].startswith('GSI tiles'): continue
+    PHOTO[r['name'].split('/')[-1].rsplit('.', 1)[0]] = r['credit'].replace('Public domain', 'パブリックドメイン')
+    if r['source'].startswith('Wikimedia'):
+        WIKI_NAMES.update(n for n in re.sub(r'（.*', '', r['credit'].replace('写真：', '')).split('、') if n)
+    elif r['source'].startswith('Art Institute'):
+        AIC_WORKS.append(r['name'].split('/')[-1].rsplit('.', 1)[0])   # resolved to Japanese titles below
 NE = '出典：Natural Earth（地図データ、パブリックドメイン）'
+# the museum catalogues these in English; on screen they read in Japanese
+JP_TITLE = {'mirror_deities': '神獣鏡（後漢・2〜3世紀）', 'mirror_tlv': '方格規矩鏡（後漢・1世紀ごろ）',
+            'mirror_dragon': '竜文鏡（前漢）', 'susanoo': '鳥居清倍「素戔嗚尊 八岐大蛇退治」（1748年）',
+            'jingu': '勝川春英「神功皇后と武内宿禰」（1780年代）', 'takenouchi': '魚屋北渓「応神天皇を抱く武内宿禰」（1830年ごろ）'}
+for k, v in JP_TITLE.items():
+    if k in PHOTO: PHOTO[k] = f'画像：{v}（シカゴ美術館、パブリックドメイン・CC0）'
 
 # views of the drawn map: centre (lat, lon) and degrees of longitude across the frame
 EA = {'c': [36, 122], 'w': 46}; EA2 = {'c': [36.5, 125], 'w': 34}; ROUTE = {'c': [35.2, 129.6], 'w': 14}
@@ -62,6 +75,14 @@ BG_MIWA = B('miwa_z15', MIWA, 4200, .22); BG_OMIWA = B('omiwa_z17', OMIWA, 900, 
 BG_ISO = B('isonokami_z17', ISO, 900, .22); BG_SHIKA = B('shikanoshima_z16', SHIKA, 2200, .22)
 BG_HIRA = B('hirabaru_z17', ITO, 900, .22); BG_YAMATO = B('yamato_z15', YAMATO_K, 4200, .22)
 BG_YP = B('yoshinogari_photo', [960, 620, 0], 1800, .26)
+# pictures of the things the script is talking about (public domain / CC0, Art Institute of Chicago).
+# The mirrors are Han-dynasty Chinese bronzes of the very kind 卑弥呼 was sent in 239 — her own era's object.
+BG_MIR = B('mirror_deities', [800, 1040, 0], 1300, .34)    # 後漢 2〜3世紀の神獣鏡
+BG_MIR2 = B('mirror_tlv', [886, 726, 0], 1350, .26)        # 後漢の方格規矩鏡
+BG_MIR3 = B('mirror_dragon', [408, 425, 0], 850, .26)      # 前漢の鏡
+BG_SUSA = B('susanoo', [417, 884, 0], 950, .26)            # 素戔嗚尊（天照大神の弟）
+BG_JINGU = B('jingu', [844, 576, 0], 1700, .26)            # 神功皇后と武内宿禰
+BG_TAKE = B('takenouchi', [840, 963, 0], 1750, .24)        # 武内宿禰
 
 # the spine: four candidates, scored out of 20. Candidate 4 is withheld until the script names it.
 CAND = ['天照大神', '神功皇后', '九州の女王', '？']
@@ -100,31 +121,31 @@ TLM = lambda ev, **kw: {'layout': 'timeline', 'kicker': '纒向で測られた�
 
 S = [
     # ───── 導入（s01–s13）
-    CARD('卑弥呼という名前は', '日本の歴史書に', '1度も出てこない', kicker='日本で最も有名な古代の女王', bg=BG_MAKI),
-    ROWS('卑弥呼という名前', [('日本書紀　720年', '記載なし', True), ('古事記　712年', '記載なし', True)], bg=BG_MAKI),
+    CARD('卑弥呼という名前は', '日本の歴史書に', '1度も出てこない', kicker='日本で最も有名な古代の女王', bg=BG_MIR),
+    ROWS('卑弥呼という名前', [('日本書紀　720年', '記載なし', True), ('古事記　712年', '記載なし', True)], bg=BG_MIR),
     THEO('卑弥呼を伝えているのは', [{'k': '日本の記録', 'name': '日本書紀・古事記', 'sub': '名前が出てこない'},
-                                    {'k': '中国の記録', 'name': '魏志倭人伝', 'sub': 'すべてここから'}], hi=[1], bg=BG_MAKI),
-    CARD('中国の記録の「倭の女王」は', '日本の側では誰だったのか', center=True, bg=BG_MAKI),
+                                    {'k': '中国の記録', 'name': '魏志倭人伝', 'sub': 'すべてここから'}], hi=[1], bg=BG_MIR),
+    CARD('中国の記録の「倭の女王」は', '日本の側では誰だったのか', center=True, bg=BG_MIR),
     TLD([{'y': 1716, 'label': '江戸時代に始まる', 'side': 1}, {'y': 2026, 'label': '今も決着せず', 'side': -1, 'hi': True}],
         spans=[{'from': 1716, 'to': 2026, 'label': '300年以上', 'hi': True}]),
     THEO('記録を1行ずつ突き合わせる', [{'k': '中国', 'name': '魏志倭人伝', 'sub': '3世紀の記録'},
-                                      {'k': '日本', 'name': '日本書紀', 'sub': '720年の記録'}], bg=BG_MAKI),
-    CARD('記録と', '最新の年代測定で', '正体を確かめる', kicker='今回の検証', bg=BG_MAKI17),
-    MY(OPEN4, kicker='候補は4人にしぼられた', bg=BG_MAKI),
-    MY(OPEN4, focus=3, kicker='最後に浮かび上がった1人', bg=BG_MAKI),
-    COMMENT('あなたの予想は？', '動画を見る前に、コメント欄へ一言', bg=BG_MAKI),
+                                      {'k': '日本', 'name': '日本書紀', 'sub': '720年の記録'}], bg=BG_MIR),
+    CARD('記録と', '最新の年代測定で', '正体を確かめる', kicker='今回の検証', bg=BG_MIR),
+    MY(OPEN4, kicker='候補は4人にしぼられた', bg=BG_MIR),
+    MY(OPEN4, focus=3, kicker='最後に浮かび上がった1人', bg=BG_MIR),
+    COMMENT('あなたの予想は？', '動画を見る前に、コメント欄へ一言', bg=BG_MIR),
     THEO('どれだと思いますか', [{'k': '候補 1', 'name': '天照大神'}, {'k': '候補 2', 'name': '神功皇后'},
-                                {'k': '？', 'name': '別の誰か'}], bg=BG_MAKI),
-    COMMENT('最後に答え合わせをしましょう', bg=BG_MAKI),
+                                {'k': '？', 'name': '別の誰か'}], bg=BG_MIR),
+    COMMENT('最後に答え合わせをしましょう', bg=BG_MIR),
     CARD('まずは', '確かに分かっていることから', kicker='検証のはじめに', bg=BG_YOSHI),
 
     # ───── 魏志倭人伝（s14–s21）
     DOC('『三国志』魏書 東夷伝 倭人条', ['倭人在帶方', '東南大海之中', '依山㠀爲國邑'], hl=[0],
-        source='史料：『三国志』魏書 東夷伝 倭人条（原文・新字体）', bg=BG_YOSHI),
-    ROWS('魏志倭人伝とは', [('正しくは', '『三国志』魏書 東夷伝 倭人条'), ('長さ', '2000字ほど', True)], bg=BG_YOSHI),
-    ROWS('書いたのは', [('陳寿', '中国の役人'), ('まとめられた', '3世紀の終わりごろ', True)], bg=BG_YOSHI),
+        source='史料：『三国志』魏書 東夷伝 倭人条（原文・新字体）', bg=BG_MIR3),
+    ROWS('魏志倭人伝とは', [('正しくは', '『三国志』魏書 東夷伝 倭人条'), ('長さ', '2000字ほど', True)], bg=BG_MIR3),
+    ROWS('書いたのは', [('陳寿', '中国の役人'), ('まとめられた', '3世紀の終わりごろ', True)], bg=BG_MIR3),
     CALC('卑弥呼の時代との隔たり', [['3世紀の終わり − 卑弥呼の時代', '50年ほど', True]],
-         note='同じ時代に近いほど重く見る、というのが今回の1つ目のルールです', bg=BG_YOSHI),
+         note='同じ時代に近いほど重く見る、というのが今回の1つ目のルールです', bg=BG_MIR3),
     MAP(ROUTE, routes=RT(label='帯方郡から倭の国へ', lat=[36.3, 127.6]),
         places=[{'at': TAIHO, 'label': '帯方郡', 'sub': '朝鮮半島（位置は概略）', 'side': 1, 'col': 'gold', 'r': 12}],
         text={'kicker': '魏志倭人伝が書いた道のり'}),
@@ -167,7 +188,7 @@ S = [
     CARD('海の向こうの大国の動きを', '素早くつかみ、すぐに使いを出した', bg=BG_YOSHI),
     CARD('卑弥呼の国には', '外の世界の情報を集める力があった', bg=BG_YOSHI),
     ROWS('魏の皇帝から授かったもの', [('称号', '親魏倭王', True), ('印', '金の印', True)], bg=BG_SHIKA),
-    ROWS('一緒に贈られた品', [('絹の織物', ''), ('真珠・赤い顔料', ''), ('銅の鏡', '100枚', True)], bg=BG_SHIKA),
+    ROWS('一緒に贈られた品', [('絹の織物', ''), ('真珠・赤い顔料', ''), ('銅の鏡', '100枚', True)], bg=BG_MIR),
     CARD('この金の印は', '今もまだ見つかっていない', bg=BG_SHIKA),
     CARD('もし見つかれば', 'そこが卑弥呼の国だという', '何よりの証拠になる', bg=BG_SHIKA),
     P('shikanoshima_z16', SHIKA, (1900, 1700),
@@ -175,11 +196,11 @@ S = [
       text={'kicker': '1784年　農民が掘り当てた', 'caption': '「漢委奴国王」と刻まれた金の印'}),
     ROWS('2つの金の印', [('漢委奴国王', '志賀島で見つかった'), ('親魏倭王', '今もどこかの土の中', True)], bg=BG_SHIKA),
     DOTS('贈られた鏡は、どれなのか', [{'n': 100, 'label': '魏から贈られた銅の鏡 100枚', 'col': 'gold'}],
-         per=1, unit='枚', bg=BG_HASHI),
+         per=1, unit='枚', bg=BG_MIR),
     BARS('三角縁神獣鏡の出土', [{'label': '日本', 'value': 500, 'text': '500枚を超える', 'hi': True},
-                               {'label': '中国', 'value': 0, 'text': '1枚も出ていない', 'col': 'teal'}], max=600, bg=BG_HASHI),
-    ROWS('島根県の古墳から', [('1972年', '景初3年と刻まれた鏡', True)], bg=BG_HASHI),
-    CALC('景初3年とは', [['景初3年', '西暦239年', True]], note='卑弥呼が魏へ使いを送った、まさにその年', bg=BG_HASHI),
+                               {'label': '中国', 'value': 0, 'text': '1枚も出ていない', 'col': 'teal'}], max=600, bg=BG_MIR),
+    ROWS('島根県の古墳から', [('1972年', '景初3年と刻まれた鏡', True)], bg=BG_MIR2),
+    CALC('景初3年とは', [['景初3年', '西暦239年', True]], note='卑弥呼が魏へ使いを送った、まさにその年', bg=BG_MIR2),
 
     # ───── 狗奴国と壹与（s50–s56）
     MAP(JP, places=[{'at': NAKOKU, 'label': '倭の国々', 'side': -1, 'col': 'gold', 'r': 10},
@@ -239,10 +260,10 @@ S = [
     ROWS('出発点', [('卑弥呼', '日の巫女・日の御子と読める', True)], bg=BG_MIWA),
     CARD('太陽を祭る女性なら', '天照大神とぴったり重なる', bg=BG_MIWA),
     ROWS('日本書紀が記す別の名', [('大日孁貴', '天照大神の別名', True), ('「孁」の字', '太陽に仕える女性を表すとも')], bg=BG_MIWA),
-    ROWS('天照大神には', [('弟', '素戔嗚尊', True)], bg=BG_MIWA),
-    ROWS('卑弥呼にも', [('政治を助ける', '弟', True)], bg=BG_MIWA),
+    ROWS('天照大神には', [('弟', '素戔嗚尊', True)], bg=BG_SUSA),
+    ROWS('卑弥呼にも', [('政治を助ける', '弟', True)], bg=BG_SUSA),
     THEO('形まで、よく似ている', [{'k': '神話', 'name': '天照大神', 'sub': '弟　素戔嗚尊'},
-                                  {'k': '魏志倭人伝', 'name': '卑弥呼', 'sub': '政治を助ける弟'}], bg=BG_MIWA),
+                                  {'k': '魏志倭人伝', 'name': '卑弥呼', 'sub': '政治を助ける弟'}], bg=BG_SUSA),
     CARD('では、4つの物差しを', '当ててみます', bg=BG_MIWA),
     SCORE('天照大神の採点', [('rite', 5)], bg=BG_MIWA),
     SCORE('天照大神の採点', [('rite', 5), ('place', 4)], bg=BG_MIWA),
@@ -257,33 +278,33 @@ S = [
     CARD('姿はよく似ているものの', '記録の上では時代がつながらない', bg=BG_MIWA),
 
     # ───── 候補2 神功皇后（s104–s139）
-    CARD('日本書紀そのものは', '卑弥呼を誰だと考えていたのか', center=True, bg=BG_ISO),
-    CARD('2人目の候補が', 'その答えにあたります', bg=BG_ISO),
-    CH('02', '神功皇后', '2人目の候補', bg=BG_ISO),
-    ROWS('神功皇后', [('仲哀天皇の皇后', '夫に代わって国を治めた'), ('その長さ', '69年', True)], bg=BG_ISO),
-    ROWS('1881年', [('日本で初めて人の顔を描いたお札', '選ばれたのは神功皇后', True)], bg=BG_ISO),
-    ROWS('描いたのは', [('イタリアから招かれた版画家', '顔立ちはどこか西洋風', True)], bg=BG_ISO),
-    CARD('神功皇后の巻には', '驚くべきことが書かれています', bg=BG_ISO),
-    ROWS('日本書紀の編者は', [('中国の魏志を', 'わざわざ引用している', True)], bg=BG_ISO),
+    CARD('日本書紀そのものは', '卑弥呼を誰だと考えていたのか', center=True, bg=BG_JINGU),
+    CARD('2人目の候補が', 'その答えにあたります', bg=BG_JINGU),
+    CH('02', '神功皇后', '2人目の候補', bg=BG_JINGU),
+    ROWS('神功皇后', [('仲哀天皇の皇后', '夫に代わって国を治めた'), ('その長さ', '69年', True)], bg=BG_JINGU),
+    ROWS('1881年', [('日本で初めて人の顔を描いたお札', '選ばれたのは神功皇后', True)], bg=BG_JINGU),
+    ROWS('描いたのは', [('イタリアから招かれた版画家', '顔立ちはどこか西洋風', True)], bg=BG_JINGU),
+    CARD('神功皇后の巻には', '驚くべきことが書かれています', bg=BG_TAKE),
+    ROWS('日本書紀の編者は', [('中国の魏志を', 'わざわざ引用している', True)], bg=BG_JINGU),
     DOC('『日本書紀』神功皇后 三十九年条', ['魏志云、倭女王', '遣大夫難斗米等', '詣郡、求詣天子', '朝獻。'], hl=[0, 1],
-        source='史料：『日本書紀』巻第九 神功皇后紀（原文・新字体）', bg=BG_ISO, fs=54),
-    ROWS('引用された条', [('39年の条', '倭の女王が魏へ使いを送る'), ('40年・43年の条', '魏との使いのやり取り', True)], bg=BG_ISO),
+        source='史料：『日本書紀』巻第九 神功皇后紀（原文・新字体）', bg=BG_JINGU, fs=54),
+    ROWS('引用された条', [('39年の条', '倭の女王が魏へ使いを送る'), ('40年・43年の条', '魏との使いのやり取り', True)], bg=BG_JINGU),
     ROWS('引用された条', [('39年の条', '倭の女王が魏へ使いを送る'), ('40年・43年の条', '魏との使いのやり取り'),
-                         ('66年の条', '中国の晋の記録から', True)], bg=BG_ISO),
-    ROWS('66年の条は', [('倭の女王の使い', '壹与の使いと考えられている', True)], bg=BG_ISO),
-    CARD('日本書紀の編者は', '魏志の倭の女王を', '神功皇后の時代に置いた', bg=BG_ISO),
-    CARD('720年の時点で', '朝廷は卑弥呼の記録を確かに読んでいた', bg=BG_ISO),
+                         ('66年の条', '中国の晋の記録から', True)], bg=BG_JINGU),
+    ROWS('66年の条は', [('倭の女王の使い', '壹与の使いと考えられている', True)], bg=BG_JINGU),
+    CARD('日本書紀の編者は', '魏志の倭の女王を', '神功皇后の時代に置いた', bg=BG_JINGU),
+    CARD('720年の時点で', '朝廷は卑弥呼の記録を確かに読んでいた', bg=BG_JINGU),
     THEO('2つの歴史書', [{'k': '日本書紀　720年', 'name': '中国の記録を引用'},
-                         {'k': '古事記　712年', 'name': '引用は1つもない'}], hi=[0], bg=BG_ISO),
-    CARD('外国の記録まで持ち出して', '年代を合わせようとしたのは日本書紀だけ', bg=BG_ISO),
-    CARD('これは', '強い証拠に見えます', bg=BG_ISO),
-    SCORE('神功皇后の採点', [('place', 5)], bg=BG_ISO),
-    SCORE('神功皇后の採点', [('place', 5), ('rite', 4)], bg=BG_ISO),
-    SCORE('神功皇后の採点', [('place', 5), ('rite', 4), ('rec', 3)], bg=BG_ISO),
-    CARD('ところが、ここで', '大きな問題が出てきます', bg=BG_ISO),
-    ROWS('年代を確かめると', [('神功皇后の記事', '100年以上ずれている', True)], bg=BG_ISO),
-    ROWS('日本書紀は', [('同じ時代の百済の記事も', '引用している', True)], bg=BG_ISO),
-    CALC('百済の王たちの年代', [['日本書紀 − 朝鮮の歴史書', 'およそ120年早い', True]], bg=BG_ISO),
+                         {'k': '古事記　712年', 'name': '引用は1つもない'}], hi=[0], bg=BG_JINGU),
+    CARD('外国の記録まで持ち出して', '年代を合わせようとしたのは日本書紀だけ', bg=BG_JINGU),
+    CARD('これは', '強い証拠に見えます', bg=BG_TAKE),
+    SCORE('神功皇后の採点', [('place', 5)], bg=BG_JINGU),
+    SCORE('神功皇后の採点', [('place', 5), ('rite', 4)], bg=BG_JINGU),
+    SCORE('神功皇后の採点', [('place', 5), ('rite', 4), ('rec', 3)], bg=BG_JINGU),
+    CARD('ところが、ここで', '大きな問題が出てきます', bg=BG_JINGU),
+    ROWS('年代を確かめると', [('神功皇后の記事', '100年以上ずれている', True)], bg=BG_JINGU),
+    ROWS('日本書紀は', [('同じ時代の百済の記事も', '引用している', True)], bg=BG_JINGU),
+    CALC('百済の王たちの年代', [['日本書紀 − 朝鮮の歴史書', 'およそ120年早い', True]], bg=BG_JINGU),
     P('isonokami_z17', ISO, (900, 820),
       rings=[{'at': ISO, 'r': 26, 'label': '石上神宮', 'sub': '奈良県天理市', 'side': 1}],
       text={'kicker': '分かりやすい例', 'caption': 'ここに伝わる七支刀'}),
@@ -291,14 +312,14 @@ S = [
     ROWS('七支刀', [('刀に刻まれた年', '369年'), ('日本書紀が置く年', '252年にあたる年', True)], bg=BG_ISO),
     CALC('120年を足すと', [['252年 ＋ 120年', '372年', True], ['刀が作られた369年の', '3年後にぴたりと収まる']], bg=BG_ISO),
     CALC('120年とは', [['60年で一回りする干支', 'ちょうど2回り分', True]], bg=BG_ISO),
-    ROWS('研究者の多くは', [('神功皇后の実際の時代', '4世紀の後半とみる', True)], bg=BG_ISO),
-    CARD('卑弥呼の記事を神功皇后に合わせるため', '年代を引き延ばした可能性がある', bg=BG_ISO),
-    CARD('そうだとすれば', '引用そのものが重ね合わせの跡', bg=BG_ISO),
-    SCORE('神功皇后の採点', [('place', 5), ('rite', 4), ('rec', 3), ('time', 1)], bg=BG_ISO),
-    SCORE('神功皇后 合計 13点', [('place', 5), ('rite', 4), ('rec', 3), ('time', 1)], note='20点満点', bg=BG_ISO),
-    MY(['solved', 'solved', 'open', 'open'], marks=MARKS(12, 13, '？', '？'), kicker='ここまでの採点', bg=BG_ISO),
+    ROWS('研究者の多くは', [('神功皇后の実際の時代', '4世紀の後半とみる', True)], bg=BG_JINGU),
+    CARD('卑弥呼の記事を神功皇后に合わせるため', '年代を引き延ばした可能性がある', bg=BG_JINGU),
+    CARD('そうだとすれば', '引用そのものが重ね合わせの跡', bg=BG_JINGU),
+    SCORE('神功皇后の採点', [('place', 5), ('rite', 4), ('rec', 3), ('time', 1)], bg=BG_JINGU),
+    SCORE('神功皇后 合計 13点', [('place', 5), ('rite', 4), ('rec', 3), ('time', 1)], note='20点満点', bg=BG_JINGU),
+    MY(['solved', 'solved', 'open', 'open'], marks=MARKS(12, 13, '？', '？'), kicker='ここまでの採点', bg=BG_JINGU),
     MY(['solved', 'solved', 'open', 'open'], marks=MARKS(12, 13, '？', '？'), focus=1,
-       kicker='日本書紀が推した候補が、わずか1点差で先頭', bg=BG_ISO),
+       kicker='日本書紀が推した候補が、わずか1点差で先頭', bg=BG_JINGU),
 
     # ───── 候補3 九州の女王（s140–s167）
     CARD('では、本居宣長が唱えた', '九州の女王はどうでしょうか', center=True, bg=BG_YAMATO),
@@ -524,7 +545,8 @@ out = {'_about': 'One entry per sentence (same order as script.txt); generated b
        'credits': ['地図　Natural Earth（パブリックドメイン）をもとに作図　空中写真　出典：国土地理院（地理院タイル）',
                    '史料　『三国志』魏書 東夷伝 倭人条 ／『日本書紀』巻第九 神功皇后紀（原文・新字体）',
                    '年代　春成秀爾ほか（2011）国立歴史民俗博物館研究報告 163 ／ 中塚武ほか（2018）纒向遺跡出土桃核の年代測定',
-                   *(['写真　' + '、'.join(sorted({n for v in PHOTO.values() for n in re.sub(r'（.*', '', v.replace('写真：', '')).split('、')})) + '（Wikimedia Commons、パブリックドメイン・CC0）'] if PHOTO else []),
+                   *(['写真　' + '、'.join(sorted({n for n in WIKI_NAMES})) + '（Wikimedia Commons、パブリックドメイン・CC0）'] if WIKI_NAMES else []),
+                   *(['画像　' + ' ／ '.join(JP_TITLE.get(k, k) for k in AIC_WORKS) + '（シカゴ美術館、パブリックドメイン・CC0）'] if AIC_WORKS else []),
                    '音声　VOICEVOX:青山龍星',
                    '地図上の経路・範囲は模式図、遺跡の位置の一部は概略です。'],
        'scenes': S}

@@ -119,5 +119,71 @@
   "h": 1536,
   "layer": "seamlessphoto",
   "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "jingu": {
+  "f": "assets/jingu.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1686,
+  "h": 1159,
+  "layer": "seamlessphoto",
+  "credit": "画像：Katsukawa Shun'ei「Empress Jingu (left), and Her Minister Takenouchi no Sukune (right)」（シカゴ美術館、パブリックドメイン・CC0）"
+ },
+ "takenouchi": {
+  "f": "assets/takenouchi.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1686,
+  "h": 1920,
+  "layer": "seamlessphoto",
+  "credit": "画像：Totoya Hokkei「Takenouchi no Sukune carrying the Emperor Ojin」（シカゴ美術館、パブリックドメイン・CC0）"
+ },
+ "susanoo": {
+  "f": "assets/susanoo.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 843,
+  "h": 1762,
+  "layer": "seamlessphoto",
+  "credit": "画像：Torii Kiyomasu II「Susano-o no Mikoto Killing the Eight-headed Dragon」（シカゴ美術館、パブリックドメイン・CC0）"
+ },
+ "mirror_deities": {
+  "f": "assets/mirror_deities.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1686,
+  "h": 2116,
+  "layer": "photo_bw",
+  "credit": "画像：作者不詳「Mirror with Images of Daoist Deities」（シカゴ美術館、パブリックドメイン・CC0）"
+ },
+ "mirror_tlv": {
+  "f": "assets/mirror_tlv.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1686,
+  "h": 1454,
+  "layer": "seamlessphoto",
+  "credit": "画像：作者不詳「Mirror with \"TLV\" Pattern」（シカゴ美術館、パブリックドメイン・CC0）"
+ },
+ "mirror_dragon": {
+  "f": "assets/mirror_dragon.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 825,
+  "h": 828,
+  "layer": "seamlessphoto",
+  "credit": "画像：作者不詳「Mirror with Dragon and Bird Arabesque」（シカゴ美術館、パブリックドメイン・CC0）"
  }
 }
