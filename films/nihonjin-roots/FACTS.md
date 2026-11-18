@@ -32,4 +32,4 @@ This file records what was checked before numbers were put on screen, and what i
 - The 100-person village rounds 12.4 / 21.2 / 66.4 to 12 / 21 / 66 (= 99), as the script does.
 
 ## Readings fixed for VOICEVOX (checked kana for all 211 lines)
-米作り・米の種 (べい→こめ), 8分の1 (はっぷん→はちぶん), 大平山元 (おおだいやまもと), 菜畑 (なばたけ), 弓月君 (ゆづきのきみ), 秦氏 (はたうじ), 和邇吉師 (わにきし), 登り窯 (のぼりがま), 三重構造 (さんじゅうこうぞう), 120の県 → ひゃくにじゅうのあがた (the 書紀's 県, read あがた).
+米作り・米の種 (べい→こめ), 8分の1 (はっぷん→はちぶん), 大平山元 (おおだいやまもと), 菜畑 (なばたけ), 弓月君 (ゆづきのきみ), 秦氏 (はたうじ), 和邇吉師 (わにきし), 登り窯 (のぼりがま), 三重構造 (さんじゅうこうぞう), 120の県 → ひゃくにじゅうのけん (user decision 2026-11-18; the 書紀's 県 can also be read あがた).

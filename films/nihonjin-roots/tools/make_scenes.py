@@ -315,7 +315,7 @@ SAY = {'s01': lambda t: t.replace('8分の1', '8ぶんの1'),
        's88': lambda t: t.replace('平らですっきりした顔', '平らで、すっきりした顔'),
        's59': lambda t: t.replace('そのため縄文人', 'そのため、縄文人'),
        's106': lambda t: t.replace('三重構造モデル', 'さんじゅう構造モデル'),
-       's109': lambda t: t.replace('120の県', 'ひゃくにじゅうのあがた'),
+       's109': lambda t: t.replace('120の県', 'ひゃくにじゅうのけん'),
        's115': lambda t: t.replace('登り窯', 'のぼりがま'),
        's178': lambda t: t.replace('3ぶんの2近く', '3ぶんの2ちかく')}
 for i in ('s69', 's72', 's78', 's94', 's105', 's145', 's177', 's198', 's204'):   # 米作り / 米の種 read べい… without this
