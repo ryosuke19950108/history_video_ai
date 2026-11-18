@@ -13,9 +13,9 @@ VBR=$(awk -v c="$CAP" -v d="$DUR" -v a="$ABR" 'BEGIN{printf "%d", (c*1048576*8*0
 [ "$VBR" -gt 300000 ] || { echo "cap too small for $DUR s"; exit 1; }
 echo "duration ${DUR}s · video target $((VBR/1000)) kbps · cap ${CAP} MiB"
 PASSLOG=$(mktemp -u)
-ffmpeg -hide_banner -nostats -y -i "$IN" -c:v libx264 -preset slow -b:v "$VBR" -pass 1 -passlogfile "$PASSLOG" \
+ffmpeg -hide_banner -nostats -y -i "$IN" -c:v libx264 -preset medium -b:v "$VBR" -pass 1 -passlogfile "$PASSLOG" \
   -pix_fmt yuv420p -an -f mp4 /dev/null
-ffmpeg -hide_banner -nostats -y -i "$IN" -c:v libx264 -preset slow -b:v "$VBR" -pass 2 -passlogfile "$PASSLOG" \
+ffmpeg -hide_banner -nostats -y -i "$IN" -c:v libx264 -preset medium -b:v "$VBR" -pass 2 -passlogfile "$PASSLOG" \
   -pix_fmt yuv420p -movflags +faststart -c:a copy "$OUT.part.mp4"
 mv "$OUT.part.mp4" "$OUT"   # the final name appears only when the file is complete
 rm -f "$PASSLOG"*
