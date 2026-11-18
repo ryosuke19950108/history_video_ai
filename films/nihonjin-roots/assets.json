@@ -229,5 +229,27 @@
   "h": 1350,
   "layer": "seamlessphoto",
   "credit": "写真：Saigen Jiro、Abasaa、Daderot（パブリックドメイン・CC0／Wikimedia Commons）"
+ },
+ "daisen_z17": {
+  "f": "assets/daisen_z17.jpg",
+  "z": 17,
+  "gx0": 29404159.99,
+  "gy0": 13339136.0,
+  "mpp": 0.9835,
+  "w": 2560,
+  "h": 2048,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "mozu_z15": {
+  "f": "assets/mozu_z15.jpg",
+  "z": 15,
+  "gx0": 7350271.97,
+  "gy0": 3334143.97,
+  "mpp": 3.9341,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
  }
 }

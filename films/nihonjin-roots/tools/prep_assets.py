@@ -21,5 +21,8 @@ for name, r in recs.items():
     im.save(f'assets/{key}.jpg', quality=88)
     meta[key] = {'f': f'assets/{key}.jpg', 'z': z, 'gx0': round(fx - r['point_px'][0], 2), 'gy0': round(fy - r['point_px'][1], 2),
                  'mpp': r['m_per_px'], 'w': im.width, 'h': im.height, 'layer': r['source'].split(': ')[1].split(' ')[0], 'credit': r['credit']}
+import os
+for k, v in (json.load(open('assets.json')) if os.path.exists('assets.json') else {}).items():   # entries copied from another film (daisen_z17, mozu_z15) have no record here: keep them
+    if k not in meta and os.path.exists(v['f']): meta[k] = v
 json.dump(meta, open('assets.json', 'w'), ensure_ascii=False, indent=1)
 print('\n'.join(f'{k}: z{v["z"]} {v["w"]}x{v["h"]} {v["layer"]}' for k, v in meta.items()))
