@@ -16,6 +16,7 @@ PASSLOG=$(mktemp -u)
 ffmpeg -hide_banner -nostats -y -i "$IN" -c:v libx264 -preset slow -b:v "$VBR" -pass 1 -passlogfile "$PASSLOG" \
   -pix_fmt yuv420p -an -f mp4 /dev/null
 ffmpeg -hide_banner -nostats -y -i "$IN" -c:v libx264 -preset slow -b:v "$VBR" -pass 2 -passlogfile "$PASSLOG" \
-  -pix_fmt yuv420p -movflags +faststart -c:a copy "$OUT"
+  -pix_fmt yuv420p -movflags +faststart -c:a copy "$OUT.part.mp4"
+mv "$OUT.part.mp4" "$OUT"   # the final name appears only when the file is complete
 rm -f "$PASSLOG"*
 ls -la "$OUT" | awk '{printf "%s  %.1f MiB\n", $9, $5/1048576}'
