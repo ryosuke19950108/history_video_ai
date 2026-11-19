@@ -130,5 +130,38 @@
   "h": 1285,
   "layer": "seamlessphoto",
   "credit": "写真：Maarten Heerlien（CC BY 2.0／Wikimedia Commons）東大寺 盧舎那仏坐像"
+ },
+ "renben": {
+  "f": "assets/renben.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1280,
+  "h": 1722,
+  "layer": "photo_bw",
+  "credit": "画像：小川晴暘「大仏蓮弁線刻図」（パブリックドメイン／Wikimedia Commons）"
+ },
+ "kaigen": {
+  "f": "assets/kaigen.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1280,
+  "h": 558,
+  "layer": "seamlessphoto",
+  "credit": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）"
+ },
+ "beams": {
+  "f": "assets/beams.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1280,
+  "h": 375,
+  "layer": "photo_bw",
+  "credit": "画像：「大仏殿の虹梁を運ぶ」（パブリックドメイン／Wikimedia Commons）"
  }
 }

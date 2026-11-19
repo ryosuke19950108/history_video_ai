@@ -17,7 +17,7 @@
   "地図　Natural Earth（パブリックドメイン）をもとに作図　空中写真　出典：国土地理院（地理院タイル）",
   "史料　『続日本紀』巻第十五 天平十五年十月辛巳条 ／『万葉集』巻第十八 四〇九七（原文・新字体）",
   "数字　『東大寺要録』の材料と人数の記載にもとづく",
-  "写真　Maarten Heerlien、Suohros（Wikimedia Commons、パブリックドメイン・CC0）",
+  "写真　Maarten Heerlien、Suohros、画像：「大仏殿の虹梁を運ぶ」、画像：「大仏開眼供養」、画像：小川晴暘「大仏蓮弁線刻図」（Wikimedia Commons、パブリックドメイン・CC0）",
   "写真　Maarten Heerlien「東大寺 盧舎那仏坐像」（CC BY 2.0／Wikimedia Commons）",
   "音声　VOICEVOX:青山龍星",
   "鋳込みの図・地図上の位置は模式図、遺跡の位置の一部は概略です。"
@@ -960,7 +960,7 @@
     "span": 1800,
     "a": 0.268
    },
-   "source": "出典：国土地理院（空中写真）",
+   "source": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）",
    "cont": true
   },
   {
@@ -974,15 +974,16 @@
     ]
    ],
    "bg": {
-    "img": "todaiji_z17",
+    "img": "kaigen",
     "at": [
-     34.68895,
-     135.83965
+     640,
+     279,
+     0
     ],
-    "span": 1100,
-    "a": 0.293
+    "span": 950,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "dots",
@@ -1003,15 +1004,16 @@
     }
    ],
    "bg": {
-    "img": "todaiji_z17",
+    "img": "kaigen",
     "at": [
-     34.68895,
-     135.83965
+     640,
+     279,
+     0
     ],
-    "span": 1100,
-    "a": 0.293
+    "span": 950,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -1024,15 +1026,16 @@
     }
    ],
    "bg": {
-    "img": "todaiji_z17",
+    "img": "kaigen",
     "at": [
-     34.68895,
-     135.83965
+     640,
+     279,
+     0
     ],
-    "span": 1100,
-    "a": 0.293
+    "span": 950,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "theories",
@@ -1052,15 +1055,16 @@
     }
    ],
    "bg": {
-    "img": "todaiji_z17",
+    "img": "kaigen",
     "at": [
-     34.68895,
-     135.83965
+     640,
+     279,
+     0
     ],
-    "span": 1100,
-    "a": 0.293
+    "span": 950,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",
@@ -1069,15 +1073,16 @@
     "アジアじゅうの文化が集まった1日"
    ],
    "bg": {
-    "img": "todaiji_z17",
+    "img": "kaigen",
     "at": [
-     34.68895,
-     135.83965
+     640,
+     279,
+     0
     ],
-    "span": 1100,
-    "a": 0.293
+    "span": 950,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏開眼供養」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -3953,15 +3958,16 @@
     }
    ],
    "bg": {
-    "img": "todaiji_z15",
+    "img": "beams",
     "at": [
-     34.68895,
-     135.83965
+     640,
+     188,
+     0
     ],
-    "span": 3000,
-    "a": 0.268
+    "span": 660,
+    "a": 0.28
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏殿の虹梁を運ぶ」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "rows",
@@ -4089,21 +4095,22 @@
    "source": "出典：国土地理院（空中写真）"
   },
   {
-   "layout": "card",
-   "lines": [
-    "巨大な銅の仏よりも",
-    "大仏殿の木材を運ぶほうに人手がかかった"
+   "layout": "photo",
+   "img": "beams",
+   "at": [
+    640,
+    188,
+    0
    ],
-   "bg": {
-    "img": "todaiji_z15",
-    "at": [
-     34.68895,
-     135.83965
-    ],
-    "span": 3000,
-    "a": 0.268
+   "span": [
+    660,
+    620
+   ],
+   "text": {
+    "kicker": "大仏殿の虹梁を運ぶ",
+    "caption": "銅の仏よりも、木材を運ぶほうに人手がかかっていた"
    },
-   "source": "出典：国土地理院（空中写真）"
+   "source": "画像：「大仏殿の虹梁を運ぶ」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "bars",
@@ -5127,34 +5134,34 @@
     }
    ],
    "bg": {
-    "img": "daibutsu_photo",
+    "img": "renben",
     "at": [
-     960,
-     600,
+     640,
+     900,
      0
     ],
-    "span": 1700,
-    "a": 0.2
+    "span": 1200,
+    "a": 0.3
    },
-   "source": "写真：Maarten Heerlien（CC BY 2.0／Wikimedia Commons）東大寺 盧舎那仏坐像"
+   "source": "画像：小川晴暘「大仏蓮弁線刻図」（パブリックドメイン／Wikimedia Commons）"
   },
   {
-   "layout": "card",
-   "lines": [
-    "その花びらには",
-    "仏たちの住む世界が細い線で刻まれている"
+   "layout": "photo",
+   "img": "renben",
+   "at": [
+    900,
+    900,
+    0
    ],
-   "bg": {
-    "img": "daibutsu_photo",
-    "at": [
-     960,
-     600,
-     0
-    ],
-    "span": 1700,
-    "a": 0.2
+   "span": [
+    760,
+    700
+   ],
+   "text": {
+    "kicker": "台座の蓮の花びら",
+    "caption": "細い線で、仏たちの住む世界が刻まれている"
    },
-   "source": "写真：Maarten Heerlien（CC BY 2.0／Wikimedia Commons）東大寺 盧舎那仏坐像"
+   "source": "画像：小川晴暘「大仏蓮弁線刻図」（パブリックドメイン／Wikimedia Commons）"
   },
   {
    "layout": "card",

@@ -85,7 +85,7 @@ BG_GYOKI = opt(B('gyoki', [600, 600, 0], 1100, 0.268), BG_TODAI15)
 BG_SHOMU = opt(B('shomu', [600, 600, 0], 1100, 0.268), BG_HEIJO)
 BG_LONG = opt(B('longmen', [800, 600, 0], 1500, 0.268), BG_VAIR)
 BG_REN = opt(B('renben', [640, 900, 0], 1200, 0.30), BG_ART)          # 大仏蓮弁の線刻（小川晴暘）
-BG_KAIGEN = opt(B('kaigen', [640, 600, 0], 1200, 0.28), BG_TODAI)     # 大仏開眼供養の絵
+BG_KAIGEN = opt(B('kaigen', [640, 279, 0], 950, 0.28), BG_TODAI)     # 大仏開眼供養の絵
 BG_BEAMS = opt(B('beams', [640, 188, 0], 660, 0.28), BG_TODAI15)      # 大仏殿の虹梁を運ぶ絵
 BG_KOGANE = opt(B('koganeyama', [800, 600, 0], 1500, 0.268), BG_WAKUYA)
 
