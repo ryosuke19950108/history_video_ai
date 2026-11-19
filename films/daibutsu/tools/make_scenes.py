@@ -457,6 +457,12 @@ SAY = {'s83': lambda t: t.replace('1万6656石', '1万6656こく'),
        's163': lambda t: 'すめろきのみよ、さかえむと、あずまなるみちのくやまに、くがねはなさく。',
        's200': lambda t: t.replace('米3000石', 'こめ3000こく')}
 
+# 都 is the capital here — みやこ, never と — and 炎 is ほのお, not えん. Neither can go in the shared
+# reading dictionary: a single character there also rewrites the compounds (都会 → みやこかい,
+# 炎天下 → ほのおてんか), so the sentences are listed instead and checked against the script below.
+MIYAKO = ('s17', 's19', 's30', 's38', 's44', 's92', 's94', 's115', 's154', 's157', 's166', 's185', 's186')
+HONOO = ('s219', 's236')
+
 def credit(imgs):
     g = [i for i in imgs if i in LAYER]; ph = [PHOTO[i] for i in imgs if i in PHOTO]
     return '・'.join((['出典：国土地理院（空中写真）'] if g else []) + ph)
@@ -466,7 +472,14 @@ for s, l in zip(S, lines):
     if imgs:
         c = credit(imgs); keep = s.get('source', '')
         s['source'] = (keep + '・' + c) if keep and not keep.startswith('出典：国土地理院') else c
-    if l['id'] in SAY: s['say'] = SAY[l['id']](l['text'])
+    say = SAY[l['id']](l['text']) if l['id'] in SAY else l['text']
+    if l['id'] in MIYAKO: say = say.replace('都', 'みやこ')
+    if l['id'] in HONOO: say = say.replace('炎', 'ほのお')
+    if say != l['text']: s['say'] = say
+
+for l in lines:   # a sentence that grew a 都 or a 炎 must be given its reading, not read whichever way
+    if ('都' in l['text'] and l['id'] not in MIYAKO) or ('炎' in l['text'] and l['id'] not in HONOO):
+        sys.exit(f'✗ {l["id"]}: 都 / 炎 の読みが決まっていません — MIYAKO / HONOO に足してください\n  {l["text"]}')
 
 # Same picture, next sentence: continue the shot (cont) instead of cutting to an identical frame
 ALWAYS = {'mysteries', 'timeline', 'bars', 'doc', 'stack'}

@@ -562,5 +562,11 @@
   "pronunciation": "ルシャナブツ",
   "accent_type": 0,
   "priority": 10
+ },
+ {
+  "surface": "みやこ",
+  "pronunciation": "ミヤコ",
+  "accent_type": 0,
+  "word_type": "COMMON_NOUN"
  }
 ]
