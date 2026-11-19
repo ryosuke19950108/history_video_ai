@@ -1,0 +1,134 @@
+{
+ "todaiji_z17": {
+  "f": "assets/todaiji_z17.jpg",
+  "z": 17,
+  "gx0": 29437439.95,
+  "gy0": 13325567.97,
+  "mpp": 0.982,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "todaiji_z15": {
+  "f": "assets/todaiji_z15.jpg",
+  "z": 15,
+  "gx0": 7358719.96,
+  "gy0": 3330815.97,
+  "mpp": 3.9282,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "heijo_z15": {
+  "f": "assets/heijo_z15.jpg",
+  "z": 15,
+  "gx0": 7357696.02,
+  "gy0": 3330815.98,
+  "mpp": 3.928,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "shigaraki_z16": {
+  "f": "assets/shigaraki_z16.jpg",
+  "z": 16,
+  "gx0": 14729727.95,
+  "gy0": 6649343.98,
+  "mpp": 1.9585,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "naganobori_z16": {
+  "f": "assets/naganobori_z16.jpg",
+  "z": 16,
+  "gx0": 14508288.03,
+  "gy0": 6687487.96,
+  "mpp": 1.9745,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "wakuya_z15": {
+  "f": "assets/wakuya_z15.jpg",
+  "z": 15,
+  "gx0": 7482111.95,
+  "gy0": 3218943.96,
+  "mpp": 3.7363,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "chishikiji_z16": {
+  "f": "assets/chishikiji_z16.jpg",
+  "z": 16,
+  "gx0": 14708480.03,
+  "gy0": 6668544.0,
+  "mpp": 1.9666,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "niu_z15": {
+  "f": "assets/niu_z15.jpg",
+  "z": 15,
+  "gx0": 7374079.98,
+  "gy0": 3336960.05,
+  "mpp": 3.9384,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "vairocana_stone": {
+  "f": "assets/vairocana_stone.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1807,
+  "h": 2400,
+  "layer": "seamlessphoto",
+  "credit": "写真：Suohros（CC0／Wikimedia Commons）石の盧舎那仏坐像"
+ },
+ "kamakura_z17": {
+  "f": "assets/kamakura_z17.jpg",
+  "z": 17,
+  "gx0": 29782015.96,
+  "gy0": 13254144.03,
+  "mpp": 0.9745,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "shosoin_z18": {
+  "f": "assets/shosoin_z18.jpg",
+  "z": 18,
+  "gx0": 58875392.03,
+  "gy0": 26651136.04,
+  "mpp": 0.491,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "daibutsu_art": {
+  "f": "assets/daibutsu_art.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 2400,
+  "h": 1350,
+  "layer": "seamlessphoto",
+  "credit": "イラスト：本作オリジナル（奈良の大仏の姿にならって描き起こし）"
+ }
+}

@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350">
+<!-- 東大寺 盧舎那仏坐像 — drawn for this film (no contemporary depiction is free of copyright).
+     Lamplit-archive style: the figure sits in shadow, lit from behind by its halo. 2026 -->
+<defs>
+  <radialGradient id="bg" cx="69%" cy="38%" r="52%">
+    <stop offset="0" stop-color="#2A2117"/><stop offset="55%" stop-color="#17120D"/><stop offset="100%" stop-color="#0E0B08"/>
+  </radialGradient>
+  <radialGradient id="disc" cx="50%" cy="50%" r="50%">
+    <stop offset="0"   stop-color="#C8A24E" stop-opacity=".40"/>
+    <stop offset="52%" stop-color="#9A7B3C" stop-opacity=".20"/>
+    <stop offset="80%" stop-color="#6B5327" stop-opacity=".09"/>
+    <stop offset="100%" stop-color="#6B5327" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="rimg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E7C887"/><stop offset="55%" stop-color="#C8A24E"/><stop offset="100%" stop-color="#6E5628"/>
+  </linearGradient>
+  <linearGradient id="bodyg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#241C13"/><stop offset="60%" stop-color="#16110C"/><stop offset="100%" stop-color="#100C09"/>
+  </linearGradient>
+  <linearGradient id="lotusg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2A2117"/><stop offset="100%" stop-color="#120E0A"/>
+  </linearGradient>
+  <radialGradient id="vig" cx="69%" cy="44%" r="54%">
+    <stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="62%" stop-color="#000" stop-opacity=".18"/>
+    <stop offset="100%" stop-color="#000" stop-opacity=".82"/>
+  </radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="9"/></filter>
+  <filter id="soft2"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.055"/></feComponentTransfer>
+  </filter>
+
+  <!-- the whole seated figure, as one silhouette -->
+  <g id="figure">
+    <!-- lap and crossed legs -->
+    <path d="M1660 1140
+             C 1520 1140, 1390 1128, 1300 1104
+             C 1250 1090, 1232 1066, 1246 1040
+             C 1262 1010, 1318 992, 1388 982
+             C 1430 976, 1460 968, 1476 952
+             C 1496 932, 1524 918, 1562 912
+             L 1758 912
+             C 1796 918, 1824 932, 1844 952
+             C 1860 968, 1890 976, 1932 982
+             C 2002 992, 2058 1010, 2074 1040
+             C 2088 1066, 2070 1090, 2020 1104
+             C 1930 1128, 1800 1140, 1660 1140 Z"/>
+    <!-- torso and robe -->
+    <path d="M1660 612
+             C 1576 612, 1514 640, 1476 692
+             C 1440 742, 1420 822, 1410 930
+             C 1404 992, 1430 1000, 1500 1004
+             L 1820 1004
+             C 1890 1000, 1916 992, 1910 930
+             C 1900 822, 1880 742, 1844 692
+             C 1806 640, 1744 612, 1660 612 Z"/>
+    <!-- right arm: upper arm down to the elbow, forearm raised, palm out (施無畏印) -->
+    <path d="M1510 660
+             C 1462 676, 1432 728, 1424 804
+             C 1418 858, 1414 906, 1410 936
+             C 1406 960, 1382 968, 1368 954
+             C 1352 938, 1348 892, 1354 844
+             L 1354 762
+             C 1354 736, 1368 720, 1392 716
+             L 1440 716
+             C 1468 716, 1486 700, 1492 672 Z"/>
+    <!-- the raised hand: palm and four fingers, thumb at the near side -->
+    <path d="M1352 756
+             C 1348 712, 1352 666, 1360 632
+             C 1364 614, 1382 606, 1394 618
+             C 1402 626, 1404 652, 1402 676
+             C 1410 646, 1414 620, 1420 604
+             C 1426 586, 1446 584, 1454 598
+             C 1460 610, 1458 646, 1452 684
+             C 1462 650, 1470 622, 1478 608
+             C 1488 592, 1506 596, 1510 612
+             C 1514 628, 1508 668, 1500 702
+             C 1512 678, 1522 660, 1530 652
+             C 1544 638, 1560 648, 1558 666
+             C 1556 690, 1540 734, 1526 764
+             C 1512 796, 1486 812, 1452 812
+             L 1392 812
+             C 1368 812, 1354 792, 1352 756 Z"/>
+    <!-- left hand resting on the lap, palm up (与願印) -->
+    <path d="M1828 912
+             C 1868 902, 1908 906, 1930 922
+             C 1950 938, 1946 962, 1920 970
+             C 1890 980, 1840 978, 1810 966
+             C 1786 956, 1788 924, 1812 916 Z"/>
+    <!-- neck -->
+    <path d="M1606 540 L1714 540 C 1716 584, 1726 614, 1748 634 L1572 634 C 1594 614, 1604 584, 1606 540 Z"/>
+    <!-- head: broad face, long ears, 肉髻 on the crown -->
+    <path d="M1660 196
+             C 1620 196, 1596 212, 1586 236
+             C 1560 244, 1540 260, 1528 286
+             C 1512 320, 1506 368, 1508 408
+             C 1490 408, 1478 424, 1478 446
+             C 1478 480, 1492 512, 1512 522
+             C 1522 560, 1548 590, 1584 606
+             C 1608 616, 1634 620, 1660 620
+             C 1686 620, 1712 616, 1736 606
+             C 1772 590, 1798 560, 1808 522
+             C 1828 512, 1842 480, 1842 446
+             C 1842 424, 1830 408, 1812 408
+             C 1814 368, 1808 320, 1792 286
+             C 1780 260, 1760 244, 1734 236
+             C 1724 212, 1700 196, 1660 196 Z"/>
+  </g>
+  <clipPath id="inHead"><circle cx="1660" cy="400" r="176"/></clipPath>
+  <clipPath id="inFig"><use href="#figure"/></clipPath>
+</defs>
+
+<rect width="2400" height="1350" fill="url(#bg)"/>
+
+<!-- halo -->
+<g>
+  <circle cx="1660" cy="470" r="520" fill="url(#disc)"/>
+  <circle cx="1660" cy="470" r="470" fill="none" stroke="#C8A24E" stroke-opacity=".20" stroke-width="2"/>
+  <circle cx="1660" cy="470" r="372" fill="none" stroke="#C8A24E" stroke-opacity=".16" stroke-width="2"/>
+  <circle cx="1660" cy="470" r="286" fill="none" stroke="#C8A24E" stroke-opacity=".12" stroke-width="2"/>
+  <!-- 化仏: small seated buddhas around the rim, suggested as discs -->
+  <g fill="#C8A24E" fill-opacity=".22">
+    <circle cx="1660" cy="50" r="15"/><circle cx="1830" cy="80" r="14"/><circle cx="1980" cy="168" r="14"/>
+    <circle cx="2088" cy="304" r="13"/><circle cx="2134" cy="470" r="13"/>
+    <circle cx="1490" cy="80" r="14"/><circle cx="1340" cy="168" r="14"/>
+    <circle cx="1232" cy="304" r="13"/><circle cx="1186" cy="470" r="13"/>
+  </g>
+</g>
+
+<!-- lotus pedestal (台座の蓮弁) -->
+<g>
+  <path d="M1280 1118 C 1400 1150, 1520 1164, 1660 1164 C 1800 1164, 1920 1150, 2040 1118
+           L 2104 1232 C 1960 1272, 1810 1288, 1660 1288 C 1510 1288, 1360 1272, 1216 1232 Z"
+        fill="url(#lotusg)"/>
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".30" stroke-width="3">
+    <path d="M1660 1156 C 1636 1196, 1632 1242, 1660 1280 C 1688 1242, 1684 1196, 1660 1156 Z"/>
+    <path d="M1520 1146 C 1492 1186, 1486 1230, 1512 1268 C 1544 1232, 1546 1186, 1520 1146 Z"/>
+    <path d="M1800 1146 C 1828 1186, 1834 1230, 1808 1268 C 1776 1232, 1774 1186, 1800 1146 Z"/>
+    <path d="M1382 1122 C 1352 1160, 1344 1204, 1368 1244 C 1402 1210, 1408 1164, 1382 1122 Z"/>
+    <path d="M1938 1122 C 1968 1160, 1976 1204, 1952 1244 C 1918 1210, 1912 1164, 1938 1122 Z"/>
+  </g>
+  <path d="M1216 1232 C 1360 1272, 1510 1288, 1660 1288 C 1810 1288, 1960 1272, 2104 1232"
+        fill="none" stroke="#C8A24E" stroke-opacity=".28" stroke-width="3"/>
+</g>
+
+<!-- rim light: the same silhouette, nudged up-left, blurred, in warm gold -->
+<g transform="translate(-14,-10)" filter="url(#soft)" opacity=".92">
+  <use href="#figure" fill="url(#rimg)"/>
+</g>
+<!-- the figure itself -->
+<use href="#figure" fill="url(#bodyg)"/>
+
+<!-- details, all kept inside the silhouette -->
+<g>
+  <!-- light falling on the upper left, so the figure has some roundness -->
+  <ellipse cx="1520" cy="700" rx="340" ry="300" fill="#C8A24E" fill-opacity=".055" filter="url(#soft)"/>
+  <!-- robe: the edge over the left shoulder, then folds down the body -->
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".30" stroke-width="5" stroke-linecap="round">
+    <path d="M1752 628 C 1726 690, 1668 742, 1588 772 C 1540 790, 1492 798, 1452 798"/>
+    <path d="M1788 664 C 1764 736, 1700 796, 1612 828 C 1558 848, 1506 856, 1464 856"/>
+  </g>
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".20" stroke-width="4" stroke-linecap="round">
+    <path d="M1600 646 C 1584 714, 1576 818, 1576 944"/>
+    <path d="M1684 640 C 1696 716, 1706 820, 1708 944"/>
+    <path d="M1772 700 C 1792 760, 1802 840, 1804 924"/>
+    <path d="M1486 880 C 1546 906, 1604 916, 1660 916 C 1716 916, 1774 906, 1834 880"/>
+    <!-- hem across the lap -->
+    <path d="M1300 1056 C 1410 1094, 1532 1110, 1660 1110 C 1788 1110, 1910 1094, 2020 1056"/>
+    <path d="M1396 988 C 1482 1012, 1572 1022, 1660 1022 C 1748 1022, 1838 1012, 1924 988"/>
+    <!-- the crossed legs under the robe -->
+    <path d="M1468 1004 C 1530 1044, 1590 1060, 1660 1060 C 1730 1060, 1790 1044, 1852 1004"/>
+  </g>
+  <!-- the raised hand: fingers apart, and the thumb -->
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".28" stroke-width="4" stroke-linecap="round">
+    <path d="M1406 690 C 1404 730, 1400 772, 1398 800"/>
+    <path d="M1454 690 C 1452 730, 1448 772, 1446 800"/>
+    <path d="M1502 710 C 1498 744, 1494 778, 1492 802"/>
+    <path d="M1532 724 C 1522 756, 1512 782, 1500 800"/>
+    <path d="M1378 806 C 1420 816, 1474 816, 1512 800"/>
+  </g>
+  <!-- the left hand's fingers on the lap -->
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".24" stroke-width="4" stroke-linecap="round">
+    <path d="M1838 922 C 1842 940, 1842 956, 1838 968"/>
+    <path d="M1872 920 C 1876 940, 1876 956, 1872 970"/>
+    <path d="M1906 924 C 1910 942, 1908 956, 1904 968"/>
+  </g>
+</g>
+
+<!-- 螺髪: rows of curls over the crown, and the 肉髻 -->
+<g clip-path="url(#inHead)" fill="#C8A24E" fill-opacity=".15">
+  <g>
+    <circle cx="1528" cy="286" r="15"/><circle cx="1566" cy="268" r="15"/><circle cx="1604" cy="256" r="15"/>
+    <circle cx="1642" cy="250" r="15"/><circle cx="1680" cy="250" r="15"/><circle cx="1718" cy="256" r="15"/>
+    <circle cx="1756" cy="268" r="15"/><circle cx="1794" cy="286" r="15"/>
+    <circle cx="1512" cy="324" r="15"/><circle cx="1550" cy="308" r="15"/><circle cx="1588" cy="296" r="15"/>
+    <circle cx="1626" cy="290" r="15"/><circle cx="1664" cy="288" r="15"/><circle cx="1702" cy="290" r="15"/>
+    <circle cx="1740" cy="296" r="15"/><circle cx="1778" cy="308" r="15"/><circle cx="1810" cy="324" r="15"/>
+    <circle cx="1506" cy="362" r="15"/><circle cx="1544" cy="348" r="15"/><circle cx="1582" cy="338" r="15"/>
+    <circle cx="1620" cy="332" r="15"/><circle cx="1658" cy="330" r="15"/><circle cx="1696" cy="332" r="15"/>
+    <circle cx="1734" cy="338" r="15"/><circle cx="1772" cy="348" r="15"/><circle cx="1812" cy="362" r="15"/>
+    <circle cx="1596" cy="214" r="14"/><circle cx="1632" cy="204" r="14"/><circle cx="1668" cy="202" r="14"/>
+    <circle cx="1704" cy="206" r="14"/><circle cx="1738" cy="216" r="14"/>
+  </g>
+</g>
+
+<!-- face: eyes, brows, nose, mouth, 白毫, long ears -->
+<g>
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".40" stroke-width="5" stroke-linecap="round">
+    <path d="M1570 432 C 1594 414, 1624 414, 1646 430"/>   <!-- left eye -->
+    <path d="M1674 430 C 1696 414, 1726 414, 1750 432"/>   <!-- right eye -->
+  </g>
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".22" stroke-width="4" stroke-linecap="round">
+    <path d="M1562 400 C 1590 382, 1626 382, 1652 396"/>   <!-- brows -->
+    <path d="M1668 396 C 1694 382, 1730 382, 1758 400"/>
+    <path d="M1660 426 L1660 492"/>                        <!-- nose ridge -->
+    <path d="M1640 500 C 1650 510, 1670 510, 1680 500"/>   <!-- nostrils -->
+  </g>
+  <path d="M1620 538 C 1640 528, 1680 528, 1700 538 C 1680 552, 1640 552, 1620 538 Z"
+        fill="#C8A24E" fill-opacity=".26"/>
+  <circle cx="1660" cy="376" r="11" fill="#E7C887" fill-opacity=".55" filter="url(#soft2)"/>
+  <!-- long ears -->
+  <g fill="none" stroke="#C8A24E" stroke-opacity=".26" stroke-width="5">
+    <path d="M1500 406 C 1486 440, 1486 492, 1502 522"/>
+    <path d="M1820 406 C 1834 440, 1834 492, 1818 522"/>
+  </g>
+</g>
+
+<rect width="2400" height="1350" fill="url(#vig)"/>
+<rect width="2400" height="1350" filter="url(#grain)" opacity=".5"/>
+</svg>

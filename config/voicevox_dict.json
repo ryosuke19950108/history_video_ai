@@ -424,5 +424,143 @@
   "surface": "皇女",
   "pronunciation": "ヒメミコ",
   "accent_type": 0
+ },
+ {
+  "surface": "国分尼寺",
+  "pronunciation": "コクブンニジ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "知識寺",
+  "pronunciation": "チシキジ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "柏原市",
+  "pronunciation": "カシワラシ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "正倉院",
+  "pronunciation": "ショウソウイン",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "白鑞",
+  "pronunciation": "ハクロウ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "丹生",
+  "pronunciation": "ニュウ",
+  "accent_type": 1,
+  "priority": 10
+ },
+ {
+  "surface": "涌谷町",
+  "pronunciation": "ワクヤチョウ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "百済王敬福",
+  "pronunciation": "クダラノコニキシキョウフク",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "黄金山神社",
+  "pronunciation": "コガネヤマジンジャ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "国中連公麻呂",
+  "pronunciation": "クニナカノムラジキミマロ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "高市大国",
+  "pronunciation": "タケチノオオクニ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "公慶",
+  "pronunciation": "コウケイ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "開眼",
+  "pronunciation": "カイゲン",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "鋳物師",
+  "pronunciation": "イモジ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "大仏師",
+  "pronunciation": "ダイブッシ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "蓮の花びら",
+  "pronunciation": "ハスノハナビラ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "菩提僊那",
+  "pronunciation": "ボダイセンナ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "長登",
+  "pronunciation": "ナガノボリ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "熟銅",
+  "pronunciation": "ジュクドウ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "東大寺要録",
+  "pronunciation": "トウダイジヨウロク",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "紫香楽",
+  "pronunciation": "シガラキ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "林邑",
+  "pronunciation": "リンユウ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "盧舎那仏",
+  "pronunciation": "ルシャナブツ",
+  "accent_type": 0,
+  "priority": 10
  }
 ]
