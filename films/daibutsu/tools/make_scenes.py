@@ -61,28 +61,28 @@ def CAST(step=0, bg=None, **kw): return {'layout': 'cast', 'step': step, 'bg': b
 def B(img, at, span, a=.22): return {'img': img, 'at': at, 'span': span, 'a': a} if img in HAVE else None
 
 # backdrops: aerials of the places named, and pictures of the things talked about
-BG_TODAI = B('todaiji_z17', NARA, 1100, .24); BG_TODAI15 = B('todaiji_z15', NARA, 3000, .22)
-BG_HEIJO = B('heijo_z15', HEIJO, 3000, .22); BG_SHIGA = B('shigaraki_z16', SHIGARAKI, 1800, .22)
-BG_NAGA = B('naganobori_z16', NAGANOBORI, 1800, .24); BG_WAKUYA = B('wakuya_z15', WAKUYA, 3000, .22)
-BG_CHISHIKI = B('chishikiji_z16', CHISHIKI, 1800, .22); BG_NIU = B('niu_z15', NIU, 3000, .22)
-BG_KAMA = B('kamakura_z17', KAMAKURA, 900, .24); BG_SHOSO = B('shosoin_z18', SHOSOIN, 500, .24)
+BG_TODAI = B('todaiji_z17', NARA, 1100, 0.293); BG_TODAI15 = B('todaiji_z15', NARA, 3000, 0.268)
+BG_HEIJO = B('heijo_z15', HEIJO, 3000, 0.268); BG_SHIGA = B('shigaraki_z16', SHIGARAKI, 1800, 0.268)
+BG_NAGA = B('naganobori_z16', NAGANOBORI, 1800, 0.293); BG_WAKUYA = B('wakuya_z15', WAKUYA, 3000, 0.268)
+BG_CHISHIKI = B('chishikiji_z16', CHISHIKI, 1800, 0.268); BG_NIU = B('niu_z15', NIU, 3000, 0.268)
+BG_KAMA = B('kamakura_z17', KAMAKURA, 900, 0.293); BG_SHOSO = B('shosoin_z18', SHOSOIN, 500, 0.293)
 # 大仏そのものの姿。同時代の像の写真も著作権の切れた絵も手に入らないので、本作のために描き起こした
 # （坐像・施無畏印・螺髪・蓮の台座。顔立ちは今の大仏にならっている）
-BG_ART = B('daibutsu_art', [1660, 700, 0], 2300, .20)
-BG_ART_H = B('daibutsu_art', [1660, 430, 0], 1100, .22)     # 頭だけ
-BG_VAIR = B('vairocana_stone', [960, 1500, 0], 2200, .20)   # 石の盧舎那仏（CC0）
+BG_ART = B('daibutsu_art', [1380, 690, 0], 1950, 0.244)
+BG_ART_H = B('daibutsu_art', [1660, 430, 0], 1100, 0.268)     # 頭だけ
+BG_VAIR = B('vairocana_stone', [960, 1500, 0], 2200, 0.244)   # 石の盧舎那仏（CC0）
 def opt(*cands):
     """the first backdrop whose picture was actually found (the Commons hunt may come back empty-handed)"""
     for c in cands:
         if c: return c
     return None
-BG_DEN = opt(B('daibutsuden', [800, 600, 0], 1500, .22), BG_TODAI)
-BG_OLD = opt(B('todaiji_old', [800, 600, 0], 1500, .22), BG_TODAI15)
-BG_GYOKI = opt(B('gyoki', [600, 600, 0], 1100, .22), BG_TODAI15)
-BG_SHOMU = opt(B('shomu', [600, 600, 0], 1100, .22), BG_HEIJO)
-BG_LONG = opt(B('longmen', [800, 600, 0], 1500, .22), BG_VAIR)
-BG_REN = opt(B('renben', [800, 600, 0], 1500, .22), BG_ART)
-BG_KOGANE = opt(B('koganeyama', [800, 600, 0], 1500, .22), BG_WAKUYA)
+BG_DEN = opt(B('daibutsuden', [800, 600, 0], 1500, 0.268), BG_TODAI)
+BG_OLD = opt(B('todaiji_old', [800, 600, 0], 1500, 0.268), BG_TODAI15)
+BG_GYOKI = opt(B('gyoki', [600, 600, 0], 1100, 0.268), BG_TODAI15)
+BG_SHOMU = opt(B('shomu', [600, 600, 0], 1100, 0.268), BG_HEIJO)
+BG_LONG = opt(B('longmen', [800, 600, 0], 1500, 0.268), BG_VAIR)
+BG_REN = opt(B('renben', [800, 600, 0], 1500, 0.268), BG_ART)
+BG_KOGANE = opt(B('koganeyama', [800, 600, 0], 1500, 0.268), BG_WAKUYA)
 
 # the spine: four questions
 MYST = ['何をどれだけ使ったか', '材料はどこから来たか', '15 mにどう流し込んだか', '何人が何年かけたか']
@@ -98,7 +98,7 @@ def SHO2(**kw):
 
 S = [
     # ───── つかみ（s01–s11）
-    P('daibutsu_art', [1660, 700, 0], (2300, 2080),
+    P('daibutsu_art', [1380, 690, 0], (1950, 1760),
       text={'kicker': '奈良の大仏はどうやって造られたのか', 'title': '大仏', 'ts': 150,
             'caption': '記録に残された銅は、およそ500トン'}),
     ROWS('数字が残っている', [('東大寺要録', '1300年近く前の記録から', True)], bg=BG_ART),
@@ -432,7 +432,7 @@ for s in S:
 
 # every shot keeps some texture behind the type: the casting diagram gets a faint one, the rest the
 # aerial of the place that part of the film is about
-BG_FAINT = B('todaiji_z17', NARA, 1700, .10)
+BG_FAINT = B('todaiji_z17', NARA, 1700, 0.26)
 FILL = [(range(106, 147), BG_ART), (range(147, 172), BG_TODAI15), (range(172, 209), BG_TODAI15),
         (range(209, 227), BG_ART), (range(227, 247), BG_ART)]
 for i, s in enumerate(S, 1):
