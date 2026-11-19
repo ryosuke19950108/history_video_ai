@@ -120,15 +120,15 @@
   "layer": "seamlessphoto",
   "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
  },
- "daibutsu_art": {
-  "f": "assets/daibutsu_art.jpg",
+ "daibutsu_photo": {
+  "f": "assets/daibutsu_photo.jpg",
   "z": null,
   "gx0": 0,
   "gy0": 0,
   "mpp": 1,
-  "w": 2400,
-  "h": 1350,
+  "w": 1920,
+  "h": 1285,
   "layer": "seamlessphoto",
-  "credit": "イラスト：本作オリジナル（奈良の大仏の姿にならって描き起こし）"
+  "credit": "写真：Maarten Heerlien（CC BY 2.0／Wikimedia Commons）東大寺 盧舎那仏坐像"
  }
 }
