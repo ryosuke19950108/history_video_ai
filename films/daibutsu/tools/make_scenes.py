@@ -58,6 +58,9 @@ def STACK(kicker, parts, bg=None, **kw): return {'layout': 'stack', 'kicker': ki
 def TL(events, axis=(735, 760), step=5, bg=None, **kw):
     return {'layout': 'timeline', 'axis': list(axis), 'step': step, 'events': events, 'bg': bg, **kw}
 def CAST(step=0, bg=None, **kw): return {'layout': 'cast', 'step': step, 'bg': bg, **kw}
+def PIC(img, at, span, fallback, **kw):
+    """a shot of a picture, or the card the film used before it, if that picture is not here"""
+    return P(img, at, span, **kw) if img in HAVE else fallback
 def B(img, at, span, a=.22): return {'img': img, 'at': at, 'span': span, 'a': a} if img in HAVE else None
 
 # backdrops: aerials of the places named, and pictures of the things talked about
@@ -81,7 +84,9 @@ BG_OLD = opt(B('todaiji_old', [800, 600, 0], 1500, 0.268), BG_TODAI15)
 BG_GYOKI = opt(B('gyoki', [600, 600, 0], 1100, 0.268), BG_TODAI15)
 BG_SHOMU = opt(B('shomu', [600, 600, 0], 1100, 0.268), BG_HEIJO)
 BG_LONG = opt(B('longmen', [800, 600, 0], 1500, 0.268), BG_VAIR)
-BG_REN = opt(B('renben', [800, 600, 0], 1500, 0.268), BG_ART)
+BG_REN = opt(B('renben', [640, 900, 0], 1200, 0.30), BG_ART)          # 大仏蓮弁の線刻（小川晴暘）
+BG_KAIGEN = opt(B('kaigen', [640, 600, 0], 1200, 0.28), BG_TODAI)     # 大仏開眼供養の絵
+BG_BEAMS = opt(B('beams', [640, 188, 0], 660, 0.28), BG_TODAI15)      # 大仏殿の虹梁を運ぶ絵
 BG_KOGANE = opt(B('koganeyama', [800, 600, 0], 1500, 0.268), BG_WAKUYA)
 
 # the spine: four questions
@@ -157,13 +162,13 @@ S = [
     TL([{'y': 744, 'label': '紫香楽で着工', 'side': 1},
         {'y': 745, 'label': '平城京へ戻る', 'sub': '東大寺の地で造り直し', 'side': -1, 'hi': True}], axis=(740, 756), step=4, bg=BG_TODAI),
     TL([{'y': 744, 'label': '着工', 'side': 1}, {'y': 745, 'label': '造り直し', 'side': -1},
-        {'y': 752, 'label': '開眼供養', 'sub': '752年の春', 'side': 1, 'hi': True}], axis=(740, 756), step=4, bg=BG_TODAI),
-    CALC('工事にかかった年月', [['745年 → 752年', 'およそ7年', True]], bg=BG_TODAI),
-    DOTS('開眼の儀式に集まった僧', [{'n': 10000, 'label': '1万人を超える僧', 'col': 'gold'}], per=100, unit='人', bg=BG_DEN),
-    ROWS('目を描き入れたのは', [('菩提僊那', '遠くインドから来た僧', True)], bg=BG_DEN),
+        {'y': 752, 'label': '開眼供養', 'sub': '752年の春', 'side': 1, 'hi': True}], axis=(740, 756), step=4, bg=BG_KAIGEN),
+    CALC('工事にかかった年月', [['745年 → 752年', 'およそ7年', True]], bg=BG_KAIGEN),
+    DOTS('開眼の儀式に集まった僧', [{'n': 10000, 'label': '1万人を超える僧', 'col': 'gold'}], per=100, unit='人', bg=BG_KAIGEN),
+    ROWS('目を描き入れたのは', [('菩提僊那', '遠くインドから来た僧', True)], bg=BG_KAIGEN),
     THEO('儀式で演じられた音楽', [{'k': '唐', 'name': '大陸の楽'}, {'k': '朝鮮半島', 'name': '三韓の楽'},
-                                  {'k': '林邑', 'name': '今のベトナム'}], bg=BG_DEN),
-    CARD('奈良の都に', 'アジアじゅうの文化が集まった1日', bg=BG_DEN),
+                                  {'k': '林邑', 'name': '今のベトナム'}], bg=BG_KAIGEN),
+    CARD('奈良の都に', 'アジアじゅうの文化が集まった1日', bg=BG_KAIGEN),
     ROWS('ただし開眼の日', [('大仏の表面', 'まだ金色ではなかった', True)], bg=BG_TODAI),
     CARD('完成を待たずに行ったのには', '理由があったと考えられています', bg=BG_TODAI),
     TL([{'y': 552, 'label': '仏教が伝わる', 'sub': '日本書紀による', 'side': 1, 'hi': True}], axis=(540, 760), step=40, bg=BG_TODAI),
@@ -330,7 +335,7 @@ S = [
     CH('04', '何人が何年かけたか', '4つ目の謎', bg=BG_TODAI15),
     CARD('ここで', 'もう1度 東大寺要録の数字を', bg=BG_TODAI15),
     ROWS('記録は4つに分かれている', [('大仏と大仏殿に関わった人の数', '4つの内訳', True)], bg=BG_TODAI15),
-    ROWS('材木の側', [('材木を寄進した人', '5万1590人', True), ('運搬などで働いた人', '166万5071人', True)], bg=BG_TODAI15),
+    ROWS('材木の側', [('材木を寄進した人', '5万1590人', True), ('運搬などで働いた人', '166万5071人', True)], bg=BG_BEAMS),
     ROWS('金属の側', [('金属を寄進した人', '37万2075人', True), ('その工事で働いた人', '51万4902人', True)], bg=BG_TODAI15),
     CALC('4つを足すと', [['5万1590 ＋ 166万5071', ''], ['＋ 37万2075 ＋ 51万4902', '260万3638人', True]], bg=BG_TODAI15),
     STACK('260万3638人の内訳', [{'v': 2.0, 'c': 'teal', 'text': '5万', 'label': '材木を寄進', 'sub': '5万1590人'},
@@ -340,7 +345,9 @@ S = [
           src='東大寺要録の数字から'),
     BARS('材木の側と金属の側', [{'label': '材木の側', 'value': 171, 'text': '171万人あまり', 'hi': True},
                                 {'label': '金属の側', 'value': 88, 'text': '88万人あまり', 'col': 'teal'}], max=190),
-    CARD('巨大な銅の仏よりも', '大仏殿の木材を運ぶほうに人手がかかった'),
+    PIC('beams', [640, 188, 0], (660, 620),
+        CARD('巨大な銅の仏よりも', '大仏殿の木材を運ぶほうに人手がかかった'),
+        text={'kicker': '大仏殿の虹梁を運ぶ', 'caption': '銅の仏よりも、木材を運ぶほうに人手がかかっていた'}),
     BARS('奈良時代の日本', [{'label': '人口（推計）', 'value': 450, 'text': 'およそ450万人', 'col': 'teal'},
                             {'label': '延べ人数', 'value': 260, 'text': '260万3638人', 'hi': True}], max=500, bg=BG_HEIJO),
     CARD('260万人は', '人口の半分を大きく超えている', bg=BG_HEIJO),
@@ -398,7 +405,9 @@ S = [
         {'y': 1567, 'label': '焼失', 'side': 1}, {'y': 1692, 'label': '今の頭', 'sub': '公慶が再建', 'side': -1, 'hi': True}],
        axis=(1150, 1750), step=100),
     ROWS('奈良時代のまま残るのは', [('台座の蓮の花びらなど', 'ごく一部だけ', True)], bg=BG_REN),
-    CARD('その花びらには', '仏たちの住む世界が細い線で刻まれている', bg=BG_REN),
+    PIC('renben', [900, 900, 0], (760, 700),
+        CARD('その花びらには', '仏たちの住む世界が細い線で刻まれている', bg=BG_REN),
+        text={'kicker': '台座の蓮の花びら', 'caption': '細い線で、仏たちの住む世界が刻まれている'}),
     CARD('工事の細かい手順の多くは', '記録と研究から組み立てた姿です'),
 
     # ───── 結論（s227–s246）
