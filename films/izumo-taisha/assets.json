@@ -1,0 +1,79 @@
+{
+ "honden_cc0": {
+  "f": "assets/honden_cc0.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1277,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
+ },
+ "izumo_z18": {
+  "f": "assets/izumo_z18.jpg",
+  "z": 18,
+  "gx0": 58287615.97,
+  "gy0": 26489087.96,
+  "mpp": 0.4868,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "izumo_z17": {
+  "f": "assets/izumo_z17.jpg",
+  "z": 17,
+  "gx0": 29143295.98,
+  "gy0": 13244160.02,
+  "mpp": 0.9735,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "kojin_z17": {
+  "f": "assets/kojin_z17.jpg",
+  "z": 17,
+  "gx0": 29158911.99,
+  "gy0": 13246720.02,
+  "mpp": 0.9738,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "todaiji_z17": {
+  "f": "assets/todaiji_z17.jpg",
+  "z": 17,
+  "gx0": 29437184.03,
+  "gy0": 13325312.0,
+  "mpp": 0.982,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "toji_z18": {
+  "f": "assets/toji_z18.jpg",
+  "z": 18,
+  "gx0": 58858496.04,
+  "gy0": 26585088.0,
+  "mpp": 0.4893,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "izumo_z15": {
+  "f": "assets/izumo_z15.jpg",
+  "z": 15,
+  "gx0": 7285248.02,
+  "gy0": 3310592.04,
+  "mpp": 3.8943,
+  "w": 2048,
+  "h": 1536,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ }
+}

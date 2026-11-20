@@ -153,5 +153,150 @@
   "surface": "和邇吉師",
   "pronunciation": "ワニキシ",
   "accent_type": 1
+ },
+ {
+  "surface": "出雲大社",
+  "pronunciation": "イズモタイシャ",
+  "accent_type": 4
+ },
+ {
+  "surface": "大国主大神",
+  "pronunciation": "オオクニヌシノオオカミ",
+  "accent_type": 0
+ },
+ {
+  "surface": "神無月",
+  "pronunciation": "カンナヅキ",
+  "accent_type": 3
+ },
+ {
+  "surface": "神在月",
+  "pronunciation": "カミアリヅキ",
+  "accent_type": 3
+ },
+ {
+  "surface": "八雲山",
+  "pronunciation": "ヤクモヤマ",
+  "accent_type": 3
+ },
+ {
+  "surface": "稲佐の浜",
+  "pronunciation": "イナサノハマ",
+  "accent_type": 4
+ },
+ {
+  "surface": "遷宮",
+  "pronunciation": "セングウ",
+  "accent_type": 0
+ },
+ {
+  "surface": "杵築大社",
+  "pronunciation": "キヅキノオオヤシロ",
+  "accent_type": 0
+ },
+ {
+  "surface": "杵築",
+  "pronunciation": "キヅキ",
+  "accent_type": 0
+ },
+ {
+  "surface": "出雲国風土記",
+  "pronunciation": "イズモノクニフドキ",
+  "accent_type": 6
+ },
+ {
+  "surface": "丈",
+  "pronunciation": "ジョウ",
+  "accent_type": 1
+ },
+ {
+  "surface": "東寺",
+  "pronunciation": "トウジ",
+  "accent_type": 1
+ },
+ {
+  "surface": "荒神谷遺跡",
+  "pronunciation": "コウジンダニイセキ",
+  "accent_type": 6
+ },
+ {
+  "surface": "加茂岩倉遺跡",
+  "pronunciation": "カモイワクライセキ",
+  "accent_type": 6
+ },
+ {
+  "surface": "銅鐸",
+  "pronunciation": "ドウタク",
+  "accent_type": 0
+ },
+ {
+  "surface": "源為憲",
+  "pronunciation": "ミナモトノタメノリ",
+  "accent_type": 0
+ },
+ {
+  "surface": "口遊",
+  "pronunciation": "クチズサミ",
+  "accent_type": 0
+ },
+ {
+  "surface": "雲太和二京三",
+  "pronunciation": "ウンタワニキョウサン",
+  "accent_type": 0
+ },
+ {
+  "surface": "大極殿",
+  "pronunciation": "ダイゴクデン",
+  "accent_type": 3
+ },
+ {
+  "surface": "佐渡",
+  "pronunciation": "サド",
+  "accent_type": 1
+ },
+ {
+  "surface": "千家家",
+  "pronunciation": "センゲケ",
+  "accent_type": 1
+ },
+ {
+  "surface": "金輪御造営差図",
+  "pronunciation": "カナワノゴゾウエイサシズ",
+  "accent_type": 0
+ },
+ {
+  "surface": "金輪",
+  "pronunciation": "カナワ",
+  "accent_type": 0
+ },
+ {
+  "surface": "大社造",
+  "pronunciation": "タイシャヅクリ",
+  "accent_type": 4
+ },
+ {
+  "surface": "掘立柱",
+  "pronunciation": "ホッタテバシラ",
+  "accent_type": 4
+ },
+ {
+  "surface": "八足門",
+  "pronunciation": "ヤツアシモン",
+  "accent_type": 4
+ },
+ {
+  "surface": "宇豆柱",
+  "pronunciation": "ウズバシラ",
+  "accent_type": 3
+ },
+ {
+  "surface": "心御柱",
+  "pronunciation": "シンノミハシラ",
+  "accent_type": 4
+ },
+ {
+  "surface": "福山敏男",
+  "pronunciation": "フクヤマトシオ",
+  "accent_type": 0
  }
 ]
