@@ -24,6 +24,8 @@ KAI = [35.66000, 138.56000]       # 甲斐（武田信玄、概略）
 CHOSHU = [34.18500, 131.47100]    # 長州（山口、概略）
 URAGA = [35.24700, 139.71800]     # 浦賀
 
+KANTO_MID = [36.11800, 139.47000]  # 江戸と赤城山のちょうど中ほど（relief の地図の中心）
+
 PHOTO, WIKI_NAMES = {}, set()
 for l in open('SOURCES.jsonl', encoding='utf-8'):
     r = json.loads(l)
@@ -82,7 +84,7 @@ def B(img, at, span, a=.20): return {'img': img, 'at': at, 'span': span, 'a': a}
 
 
 BG_AKAGI = B('akagi_hill_z13', AKAGI, 12000, .18); BG_AKAGI_P = B('akagi_z15', AKAGI, 4000, .15)
-BG_EDO = B('edojo_z16', EDOJO, 2400, .13); BG_KANTO = B('kanto_hill_z10', [36.12, 139.42], 160000, .14)
+BG_EDO = B('edojo_z16', EDOJO, 2400, .13); BG_KANTO = B('kanto_hill_z9', KANTO_MID, 380000, .14)
 BG_GONDA = B('gonda_z16', GONDA, 2400, .13); BG_NIKKO = B('nikko_z17', NIKKO, 900, .13)
 BG_TSUKUDA = B('tsukuda_z16', TSUKUDA, 2400, .13); BG_YOKO = B('yokosuka_z16', YOKOSUKA, 2400, .13)
 
@@ -157,12 +159,12 @@ S = [
  P('tsukuda_z16', TSUKUDA, (2600, 2200), rings=[{'at': TSUKUDA, 'm': 420, 'label': '赤城山のふもと', 'sub': '水野家の発掘地（概略）'}],
    text={'kicker': '明治から3代', 'title': '水野家'}, scale=500),                                                                    # s45
  CARD('なぜ赤城山だったのか', center=True, bg=BG_AKAGI),                                                                            # s46
- P('kanto_hill_z10', [36.12, 139.42], (150000, 140000),
-   rings=[{'at': EDOJO, 'm': 6000, 'label': '江戸', 'side': -1}, {'at': AKAGI, 'm': 6000, 'label': '赤城山', 'sub': '江戸から北へ約100 km'}],
-   text={'kicker': '上州', 'title': '江戸から100キロ'}, scale=20000),                                                                # s47
- P('kanto_hill_z10', [36.12, 139.42], (150000, 140000),
-   rings=[{'at': EDOJO, 'm': 6000, 'label': '江戸', 'side': -1}, {'at': AKAGI, 'm': 6000, 'label': '赤城山'}],
-   text={'kicker': '上州', 'title': '幕府の土地が多い', 'note': '江戸から街道で数日'}),                                                   # s48
+ P('kanto_hill_z9', KANTO_MID, (380000, 360000),
+   rings=[{'at': EDOJO, 'm': 7000, 'label': '江戸', 'side': 1}, {'at': AKAGI, 'm': 7000, 'label': '赤城山', 'sub': '江戸から北へ約100 km'}],
+   text={'kicker': '上州', 'title': '江戸から100キロ', 'y': 700}, scale=50000),                                                                # s47
+ P('kanto_hill_z9', KANTO_MID, (380000, 360000),
+   rings=[{'at': EDOJO, 'm': 7000, 'label': '江戸', 'side': 1}, {'at': AKAGI, 'm': 7000, 'label': '赤城山'}],
+   text={'kicker': '上州', 'title': '幕府の土地が多い', 'note': '江戸から街道で数日', 'y': 700}),                                                   # s48
  CARD('江戸に近くて', '幕府の目の届く山', kicker='隠すなら', bg=BG_KANTO),                                                             # s49
  CARD('初代 水野智義', kicker='1851年 生まれる', sub='幕府の家臣の家に', bg=BG_TSUKUDA, fs=84),                                          # s50
  CARD('義理の父から', '打ち明けられた', kicker='赤城山に御用金がある', bg=BG_TSUKUDA),                                                    # s51
@@ -251,9 +253,9 @@ S = [
      note='80頭で400メートル、430頭で2キロを超える', bg=BG_KANTO),                                                                 # s104
  ROWS('行列に必要なもの', [('馬', '80〜430頭'), ('引き手', '馬と同じ数の人', 1)], bg=BG_KANTO),                                        # s105
  MAP(KANTO, places=[{'at': EDOJO, 'label': '江戸', 'r': 10, 'side': -1}, {'at': AKAGI, 'label': '赤城山', 'r': 10}],
-     routes=[{'pts': [EDOJO, [36.0, 139.52], [36.35, 139.25], AKAGI], 'label': '約100 km・3日以上', 'ly': 40, 'lx': -60}]),       # s106
+     routes=[{'pts': [EDOJO, [36.0, 139.52], [36.35, 139.25], AKAGI], 'label': '約100 km・3日以上', 'lat': [36.12, 139.33], 'ly': 10, 'lx': -24, 'al': 'right'}]),       # s106
  MAP(KANTO, places=[{'at': EDOJO, 'label': '江戸', 'r': 10, 'side': -1}, {'at': AKAGI, 'label': '赤城山', 'r': 10}],
-     routes=[{'pts': [EDOJO, [36.0, 139.52], [36.35, 139.25], AKAGI], 'label': '約100 km・3日以上', 'ly': 40, 'lx': -60}],
+     routes=[{'pts': [EDOJO, [36.0, 139.52], [36.35, 139.25], AKAGI], 'label': '約100 km・3日以上', 'lat': [36.12, 139.33], 'ly': 10, 'lx': -24, 'al': 'right'}],
      regions=[{'at': [36.0, 139.6], 'rx': .85, 'ry': .55, 'col': 'red', 'label': '新政府の軍が街道を押さえていた', 'ls': 28, 'ly': 150}]),  # s107
  CARD('誰の目にも留まらずに', '山へ向かうのは難しい', kicker='何百頭もの行列が', bg=BG_KANTO),                                            # s108
 

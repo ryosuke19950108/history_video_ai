@@ -97,5 +97,16 @@
   "h": 1024,
   "layer": "pale",
   "credit": "出典：国土地理院（地理院タイル pale）"
+ },
+ "kanto_hill_z9": {
+  "f": "assets/kanto_hill_z9.jpg",
+  "z": 9,
+  "gx0": 115455.98,
+  "gy0": 50687.96,
+  "mpp": 246.9848,
+  "w": 1536,
+  "h": 1024,
+  "layer": "hillshademap",
+  "credit": "出典：国土地理院（地理院タイル hillshademap）"
  }
 }
