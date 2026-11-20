@@ -73,7 +73,63 @@ function scaleFor(k, span, w = W) { return w * A[k].mpp / span; } // span = metr
 function shade(X0, X1, a) { const g = x.createLinearGradient(X0, 0, X1, 0); g.addColorStop(0, `rgba(13,12,11,${a})`); g.addColorStop(1, 'rgba(13,12,11,0)'); x.fillStyle = g; x.fillRect(Math.min(X0, X1), 0, Math.abs(X1 - X0), H); }
 function ring(cx, cy, r, k, col = C.red, lw = 3, dash) { if (k <= 0) return; x.save(); x.strokeStyle = col; x.lineWidth = lw; if (dash) x.setLineDash(dash); x.beginPath(); x.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * eo(k)); x.stroke(); x.restore(); }
 function kicker(s, X, Y, a, col = C.red, id) { if (!s) return 0; alpha(a, () => fill(X, Y - 15, 4, 18, col)); return txt(s, X + 16, Y, { s: 24, f: F.mono, c: col, ls: 2, a, id }); }
-function backdrop(b, u, d) { if (!b) return; const k = b.img; const f = geo(k, b.at); const sc = scaleFor(k, b.span || 1500) * lerp(1, 1.04, ss(seg(GT, 0, GD))); view(k, f, sc, { a: b.a ?? .14 }); }
+function backdrop(b, u, d) { if (!b) return; if (b.draw) return BD[b.draw](b); const k = b.img; const f = geo(k, b.at); const sc = scaleFor(k, b.span || 1500) * lerp(1, 1.04, ss(seg(GT, 0, GD))); view(k, f, sc, { a: b.a ?? .14 }); }
+function kb(c, cx, cy, rx, ry) {   // a koban is a flattened oval, straighter along its long sides than an ellipse
+  c.beginPath(); c.moveTo(cx - rx, cy); c.bezierCurveTo(cx - rx, cy - ry * 1.28, cx + rx, cy - ry * 1.28, cx + rx, cy);
+  c.bezierCurveTo(cx + rx, cy + ry * 1.28, cx - rx, cy + ry * 1.28, cx - rx, cy); c.closePath();
+}
+const kobanPath = (cx, cy, rx, ry) => kb(x, cx, cy, rx, ry);
+// Drawn backdrops. A map says where, but it does not say what the film is about: behind the money
+// sections the screen should read "gold coins" before a word of the text is. No usable public-domain
+// photograph of a 慶長小判 could be fetched (Wikimedia refuses this host), and a drawn field sits
+// under text far better than a photograph would — it has no detail to fight the words.
+let BDC = null;
+const BD = {
+  koban(b) {   // a spill of koban: gold, rim, ござ目 and the stamps, lit from the upper left.
+    // Drawn opaque into a buffer and composited once, so coins that overlap cover each other instead of
+    // showing through. Placed mid-right, not in a corner: the vignette is 85 % at the corners and would
+    // swallow the pile. Depth is carried by colour, never by alpha, for the same reason.
+    const r = rnd(b.seed || 7), k = ss(seg(GT, 0, GD));
+    const PX0 = b.px ?? 1470, PY0 = b.py ?? 600, SX = b.sx ?? 330, SY = b.sy ?? 230, put = [];
+    for (let i = 0; i < (b.n || 13); i++) {
+      const a = r() * 6.283, rr = Math.sqrt(r());
+      put.push({ cx: PX0 + Math.cos(a) * SX * rr, cy: PY0 + Math.sin(a) * SY * rr, sz: lerp(.68, 1.2, r()), rot: (r() - .5) * 1.1, dep: lerp(.72, 1, r()) });
+    }
+    for (let i = 0; i < (b.stray || 3); i++)   // a few that rolled away
+      put.push({ cx: lerp(1280, 1820, r()), cy: lerp(180, 960, r()), sz: lerp(.5, .78, r()), rot: (r() - .5) * 1.1, dep: lerp(.42, .62, r()) });
+    put.sort((p, q) => p.cy - q.cy);
+    if (!BDC) BDC = mk();
+    const c = BDC.getContext('2d'); c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H);
+    for (const p of put) {
+      const rx = 92 * p.sz, ry = 52 * p.sz, X = p.cx + lerp(0, b.dx ?? 26, k) * p.dep, Y = p.cy - lerp(0, b.dy ?? 10, k) * p.dep, D = p.dep;
+      const mix = (hi, lo) => `rgb(${Math.round(lerp(lo[0], hi[0], D))},${Math.round(lerp(lo[1], hi[1], D))},${Math.round(lerp(lo[2], hi[2], D))})`;
+      c.save(); c.translate(X, Y); c.rotate(p.rot);
+      kb(c, 7, 11, rx * 1.03, ry * 1.03); c.fillStyle = '#060504'; c.fill();                        // the coin under this one
+      const g = c.createLinearGradient(-rx * .7, -ry, rx * .7, ry);
+      g.addColorStop(0, mix([255, 248, 222], [146, 118, 60])); g.addColorStop(.42, mix([250, 219, 140], [134, 106, 54]));
+      g.addColorStop(.8, mix([214, 164, 74], [104, 82, 40])); g.addColorStop(1, mix([162, 122, 50], [78, 60, 28]));
+      kb(c, 0, 0, rx, ry); c.fillStyle = g; c.fill();
+      c.save(); kb(c, 0, 0, rx * .9, ry * .82); c.clip();                                           // ござ目, inside the rim
+      for (let hy = -ry; hy < ry; hy += 9 * p.sz) {
+        c.strokeStyle = `rgba(255,250,232,${.3 * D})`; c.lineWidth = 1.5 * p.sz; c.beginPath(); c.moveTo(-rx, hy + 1.8 * p.sz); c.lineTo(rx, hy + 1.8 * p.sz); c.stroke();
+        c.strokeStyle = `rgba(92,68,28,${.32 * D})`; c.beginPath(); c.moveTo(-rx, hy); c.lineTo(rx, hy); c.stroke();
+      }
+      c.restore();
+      c.strokeStyle = `rgba(104,76,30,${.6 * D})`; c.lineWidth = 2.6 * p.sz; kb(c, 0, 0, rx * .9, ry * .82); c.stroke();   // the rim
+      c.fillStyle = `rgba(96,70,28,${.55 * D})`;                                                    // the stamps: two small, one centre
+      c.beginPath(); c.ellipse(0, -ry * .47, rx * .075, ry * .12, 0, 0, 7); c.fill();
+      c.beginPath(); c.ellipse(0, ry * .47, rx * .075, ry * .12, 0, 0, 7); c.fill();
+      c.fillRect(-rx * .12, -ry * .23, rx * .24, ry * .46);
+      c.save(); kb(c, 0, 0, rx, ry); c.clip();
+      const sh = c.createLinearGradient(-rx, -ry, rx * .2, ry * .6);
+      sh.addColorStop(0, `rgba(255,252,240,${.5 * D})`); sh.addColorStop(.55, 'rgba(255,252,240,0)');
+      c.fillStyle = sh; c.fillRect(-rx, -ry, rx * 2, ry * 2); c.restore();
+      c.strokeStyle = `rgba(255,248,226,${.6 * D})`; c.lineWidth = 1.6 * p.sz; kb(c, 0, 0, rx, ry); c.stroke();
+      c.restore();
+    }
+    x.save(); x.globalAlpha = b.a ?? .8; x.drawImage(BDC, 0, 0); x.restore();
+  },
+};
 function lamp() {
   const [r, g, b] = G.lamp_rgb; const l = x.createRadialGradient(W / 2, H * .44, 0, W / 2, H * .44, H * .62);
   l.addColorStop(0, `rgba(${r},${g},${b},${G.lamp_alpha})`); l.addColorStop(1, `rgba(${r},${g},${b},0)`); x.save(); x.globalCompositeOperation = 'screen'; x.fillStyle = l; x.fillRect(0, 0, W, H); x.restore();

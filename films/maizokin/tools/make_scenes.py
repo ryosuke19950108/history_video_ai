@@ -83,6 +83,8 @@ def RT(rows, bg=None, **kw): return {'layout': 'ratio', 'rows': rows, 'bg': bg, 
 def B(img, at, span, a=.20): return {'img': img, 'at': at, 'span': span, 'a': a} if img in HAVE else None
 
 
+BG_KOBAN = {'draw': 'koban', 'a': .55, 'seed': 7}        # 小判を敷いた背景（本文が左側だけの版面）
+BG_KOBAN_DIM = {'draw': 'koban', 'a': .22, 'seed': 23}   # 文字が画面の右まで来る版面では、小判は気配だけ残す
 BG_AKAGI = B('akagi_hill_z13', AKAGI, 12000, .18); BG_AKAGI_P = B('akagi_z15', AKAGI, 4000, .15)
 BG_EDO = B('edojo_z16', EDOJO, 2400, .13); BG_KANTO = B('kanto_hill_z9', KANTO_MID, 380000, .14)
 BG_GONDA = B('gonda_z16', GONDA, 2400, .13); BG_NIKKO = B('nikko_z17', NIKKO, 900, .13)
@@ -90,26 +92,26 @@ BG_TSUKUDA = B('tsukuda_z16', TSUKUDA, 2400, .13); BG_YOKO = B('yokosuka_z16', Y
 
 S = [
  # ── はじめに：重さの食い違い ──
- CARD('360万両の重さは', '12トンにも、64トンにも', kicker='徳川埋蔵金', sub='どの小判で数えるかによって', bg=BG_AKAGI, fs=72),                        # s01
+ CARD('360万両の重さは', '12トンにも、64トンにも', kicker='徳川埋蔵金', sub='どの小判で数えるかによって', bg=BG_KOBAN, fs=72),                        # s01
  BARS('360万両の重さ', [{'label': '万延小判', 'value': 12, 'text': '12 t'}, {'label': '天保小判', 'value': 40, 'text': '40 t'},
-                   {'label': '慶長小判', 'value': 64, 'text': '64 t', 'hi': True}], note='小判1枚＝1両として計算', bg=BG_AKAGI),                # s02
- CARD('160年近く', '誰も見つけていない', kicker='この食い違いの中に', bg=BG_AKAGI),                                                            # s03
+                   {'label': '慶長小判', 'value': 64, 'text': '64 t', 'hi': True}], note='小判1枚＝1両として計算', bg=BG_KOBAN_DIM),                # s02
+ CARD('160年近く', '誰も見つけていない', kicker='この食い違いの中に', bg=BG_KOBAN),                                                            # s03
  P('edojo_z16', EDOJO, (2600, 2200), rings=[{'at': EDOJO, 'm': 420, 'label': '江戸城', 'sub': '御用金はここにあった'}],
    text={'kicker': '言い伝え', 'title': '城の金は山へ'}, scale=500),                                                                      # s04
  P('akagi_z15', AKAGI, (5000, 4000), rings=[{'at': AKAGI, 'm': 900, 'label': '赤城山', 'sub': '群馬県'}],
    text={'kicker': '明治から今まで', 'title': '掘り続けてきた'}, scale=1000),                                                               # s05
  P('akagi_z15', AKAGI, (5000, 4000), text={'kicker': '1990年', 'title': '重機が入った'}),                                               # s06
  P('akagi_z15', AKAGI, (5000, 4000), text={'kicker': '1990年', 'title': '重機が入った', 'note': 'テレビ番組の大がかりな発掘'}),                   # s07
- CARD('小判は1枚も', '見つかっていない', kicker='それでも', gold=1, bg=BG_AKAGI),                                                           # s08
- CARD('徳川埋蔵金は', 'どこにあるのか', center=True, bg=BG_AKAGI),                                                                       # s09
- ROWS('今回やったこと', [('小判1枚の重さを計算する', '慶長・天保・万延')], bg=BG_AKAGI),                                                      # s10
- ROWS('今回やったこと', [('小判1枚の重さを計算する', '慶長・天保・万延'), ('幕末の記録と突き合わせる', '幕府の財政')], bg=BG_AKAGI),                 # s11
+ CARD('小判は1枚も', '見つかっていない', kicker='それでも', gold=1, bg=BG_KOBAN),                                                           # s08
+ CARD('徳川埋蔵金は', 'どこにあるのか', center=True, bg=BG_KOBAN_DIM),                                                                       # s09
+ ROWS('今回やったこと', [('小判1枚の重さを計算する', '慶長・天保・万延')], bg=BG_KOBAN_DIM),                                                      # s10
+ ROWS('今回やったこと', [('小判1枚の重さを計算する', '慶長・天保・万延'), ('幕末の記録と突き合わせる', '幕府の財政')], bg=BG_KOBAN_DIM),                 # s11
  ROWS('今回やったこと', [('小判1枚の重さを計算する', '慶長・天保・万延'), ('幕末の記録と突き合わせる', '幕府の財政'),
-                   ('行方を確かめる', '山の中ではなかった', 1)], bg=BG_AKAGI),                                                           # s12
- COMMENT('あなたの予想は？', sub='コメント欄にひとことお願いします', bg=BG_AKAGI),                                                           # s13
- COMMENT('赤城山？ 日光？ それとも別の場所？', bg=BG_AKAGI),                                                                            # s14
- COMMENT('最後に、答え合わせをしましょう', bg=BG_AKAGI),                                                                               # s15
- CARD('この言い伝えは', 'どこから生まれたのか', center=True, bg=BG_AKAGI),                                                               # s16
+                   ('行方を確かめる', '山の中ではなかった', 1)], bg=BG_KOBAN_DIM),                                                           # s12
+ COMMENT('あなたの予想は？', sub='コメント欄にひとことお願いします', bg=BG_KOBAN_DIM),                                                           # s13
+ COMMENT('赤城山？ 日光？ それとも別の場所？', bg=BG_KOBAN_DIM),                                                                            # s14
+ COMMENT('最後に、答え合わせをしましょう', bg=BG_KOBAN_DIM),                                                                               # s15
+ CARD('この言い伝えは', 'どこから生まれたのか', center=True, bg=BG_KOBAN_DIM),                                                               # s16
 
  # ── 1868年 江戸城明け渡し ──
  CARD('1868年の春', kicker='江戸幕府の終わり', sub='265年続いた幕府が終わろうとしていた', bg=BG_EDO),                                         # s17
@@ -201,15 +203,15 @@ S = [
                  {'at': TADA, 'label': '多田銀山', 'sub': '豊臣秀吉', 'r': 8, 'side': -1, 'col': 'teal'}],
      text={'kicker': '日本の埋蔵金伝説', 'title': '数百か所'}),                                                                       # s66
  CARD('金額の大きさと', 'テレビで掘り続けられた歴史', kicker='群を抜いて有名', bg=BG_AKAGI),                                              # s67
- BD(note='この5つを1つずつ確かめる', bg=BG_AKAGI),                                                                                  # s68
- BD(focus=0, bg=BG_AKAGI),                                                                                                      # s69
- BD(focus=4, bg=BG_AKAGI),                                                                                                      # s70
- MY(bg=BG_AKAGI),                                                                                                               # s71
- MY(focus=0, bg=BG_AKAGI),                                                                                                      # s72
- MY(focus=1, bg=BG_AKAGI),                                                                                                      # s73
- MY(focus=2, bg=BG_AKAGI),                                                                                                      # s74
- MY(bg=BG_AKAGI),                                                                                                               # s75
- BD(note='消えた数は、その都度お伝えします', bg=BG_AKAGI),                                                                           # s76
+ BD(note='この5つを1つずつ確かめる', bg=BG_KOBAN_DIM),                                                                                  # s68
+ BD(focus=0, bg=BG_KOBAN_DIM),                                                                                                      # s69
+ BD(focus=4, bg=BG_KOBAN_DIM),                                                                                                      # s70
+ MY(bg=BG_KOBAN_DIM),                                                                                                               # s71
+ MY(focus=0, bg=BG_KOBAN_DIM),                                                                                                      # s72
+ MY(focus=1, bg=BG_KOBAN_DIM),                                                                                                      # s73
+ MY(focus=2, bg=BG_KOBAN_DIM),                                                                                                      # s74
+ MY(bg=BG_KOBAN_DIM),                                                                                                               # s75
+ BD(note='消えた数は、その都度お伝えします', bg=BG_KOBAN_DIM),                                                                           # s76
 
  # ── 物差し1 運べたのか ──
  CH('1', '運べたのか', '360万両を運べたか', bg=BG_KANTO),                                                                      # s77
@@ -415,17 +417,17 @@ S = [
  ROWS('弱点3　大判や延べ棒', [('今回の計算は', '1枚1両の小判の場合', 1), ('大判や延べ棒なら', '必要な馬の数は変わる')], bg=BG_AKAGI),       # s216
 
  # ── 結論 ──
- CARD('今ある記録から考える限り', '答えは1つ', bg=BG_AKAGI),                                                                       # s217
- CARD('そのままの形で山に眠る', '可能性は低い', kicker='360万両の御用金が', bg=BG_AKAGI),                                             # s218
+ CARD('今ある記録から考える限り', '答えは1つ', bg=BG_KOBAN_DIM),                                                                       # s217
+ CARD('そのままの形で山に眠る', '可能性は低い', kicker='360万両の御用金が', bg=BG_KOBAN_DIM),                                             # s218
  ROWS('幕府の金はどこへ行ったか', [('開国のあと', '海の向こうへ流れ出た')], bg=BG_YOKO),                                               # s219
  ROWS('幕府の金はどこへ行ったか', [('開国のあと', '海の向こうへ流れ出た'), ('最後の数年', '長州への出兵・横須賀の製鉄所'),
                         ('山に埋めた分', 'それを示す記録はない', 1)], bg=BG_YOKO),                                                 # s220
  CARD('山の中ではなく', '海の外', kicker='徳川埋蔵金はどこにあるのか', gold=1, center=True, bg=BG_YOKO),                              # s221
 
  # ── エピローグ ──
- CARD('なぜ160年近くも', '消えずに残ってきたのか', center=True, bg=BG_AKAGI),                                                       # s222
- CARD('何かがどこかに', '残されていてほしかった', bg=BG_AKAGI),                                                                     # s223
- CARD('260年続いた幕府が', '何も残さずに消えたとは', bg=BG_AKAGI),                                                                  # s224
+ CARD('なぜ160年近くも', '消えずに残ってきたのか', center=True, bg=BG_KOBAN_DIM),                                                       # s222
+ CARD('何かがどこかに', '残されていてほしかった', bg=BG_KOBAN_DIM),                                                                     # s223
+ CARD('260年続いた幕府が', '何も残さずに消えたとは', bg=BG_KOBAN_DIM),                                                                  # s224
  P('tsukuda_z16', TSUKUDA, (2400, 2000), rings=[{'at': TSUKUDA, 'm': 380, 'label': '水野家の発掘地', 'sub': '3代・100年以上'}],
    text={'kicker': 'その願いを', 'title': '100年以上掘り続けた'}, scale=500),                                                       # s225
  CARD('重機が土を掘り返すたび', '今度こそと身を乗り出した', bg=BG_AKAGI_P, fs=64),                                                    # s226
@@ -435,14 +437,14 @@ S = [
    text={'kicker': '明治の初め ある冬の朝', 'title': 'つるはしを担いだ男'}, scale=500),                                               # s229
  P('tsukuda_z16', TSUKUDA, (2000, 1700), rings=[{'at': TSUKUDA, 'm': 300, 'label': 'ここに立っていた'}],
    text={'kicker': 'その穴は', 'title': '孫の代まで続いた'}),                                                                      # s230
- CARD('小判は1枚も', '見つからなかった', bg=BG_TSUKUDA),                                                                           # s231
- CARD('その穴の深さは', '時代の終わりを惜しんだ深さ', bg=BG_TSUKUDA, fs=64),                                                         # s232
- COMMENT('まだどこかに眠っていると思いますか', bg=BG_AKAGI),                                                                       # s233
- COMMENT('それとも、最初からなかったと思いますか', bg=BG_AKAGI),                                                                   # s234
- COMMENT('ぜひコメント欄で教えてください', bg=BG_AKAGI),                                                                          # s235
- COMMENT('最初に書いていただいた予想とも比べてみてください', bg=BG_AKAGI),                                                          # s236
- CARD('記録と数字で', '1つずつ確かめていきます', kicker='次回も', bg=BG_AKAGI),                                                      # s237
- CARD('最後までご覧いただき', 'ありがとうございました', center=True, bg=BG_AKAGI),                                                   # s238
+ CARD('小判は1枚も', '見つからなかった', bg=BG_KOBAN_DIM),                                                                           # s231
+ CARD('その穴の深さは', '時代の終わりを惜しんだ深さ', bg=BG_KOBAN_DIM, fs=64),                                                         # s232
+ COMMENT('まだどこかに眠っていると思いますか', bg=BG_KOBAN_DIM),                                                                       # s233
+ COMMENT('それとも、最初からなかったと思いますか', bg=BG_KOBAN_DIM),                                                                   # s234
+ COMMENT('ぜひコメント欄で教えてください', bg=BG_KOBAN_DIM),                                                                          # s235
+ COMMENT('最初に書いていただいた予想とも比べてみてください', bg=BG_KOBAN_DIM),                                                          # s236
+ CARD('記録と数字で', '1つずつ確かめていきます', kicker='次回も', bg=BG_KOBAN_DIM),                                                      # s237
+ CARD('最後までご覧いただき', 'ありがとうございました', center=True, bg=BG_KOBAN_DIM),                                                   # s238
 ]
 
 lines = json.load(open('lines.json', encoding='utf-8'))
