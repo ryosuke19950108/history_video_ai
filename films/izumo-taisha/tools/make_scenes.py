@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
 from say import say
 
 # places (lat, lon): GSI place-name search (msearch.gsi.go.jp) and the aerials themselves
-IZ = [35.4019, 132.6856]; HAS = [35.4012, 132.6856]; MUS = [35.39875, 132.68879]; INASA = [35.3965, 132.6680]; YAKUMO = [35.4060, 132.6880]
+IZ = [35.4019, 132.6856]; HAS = [35.4012, 132.6856]; MUS = [35.39875, 132.68879]; INASA = [35.3964, 132.6745]; YAKUMO = [35.4060, 132.6880]
 KOJIN = [35.37938, 132.85253]; NARA = [34.6890, 135.8398]; KYO = [35.0200, 135.7420]; SADO = [38.02, 138.37]; IZW = [35.40, 132.69]
 GSI_KEYS = ('izumo_z18', 'izumo_z17', 'izumo_z15', 'kojin_z17', 'todaiji_z17', 'toji_z18')
 PHOTO = {}   # filled from SOURCES.jsonl (Wikimedia Commons, public domain / CC0 only)
@@ -81,7 +81,7 @@ S = [
  P('oonamuchi', ctr('oonamuchi'), (1000, 900), stamp='大己貴命（大国主大神）', text=T('まつられている神様', '大国主大神', ts=80)),
  P('haiden', ctr('haiden'), (2200, 1900), text=T('縁結びの神様', None, None, None, '毎年、全国から多くの人が参拝')),
  ROWS('旧暦の10月', [('全国では', '神無月'), ('出雲では', '神在月', True)], bg=BG_HOTO),
- P('izumo_z15', [35.400, 132.680], (7000, 6000), rings=[{'at': IZ, 'r': 34, 'label': '本殿', 'side': 1}, {'at': YAKUMO, 'r': 30, 'label': '八雲山', 'side': 1, 'col': 'gold'}, {'at': INASA, 'r': 34, 'label': '稲佐の浜', 'side': -1, 'col': 'teal'}]),
+ P('izumo_z15', [35.400, 132.692], (7000, 6000), rings=[{'at': IZ, 'r': 34, 'label': '本殿', 'side': 1}, {'at': YAKUMO, 'r': 30, 'label': '八雲山', 'side': 1, 'col': 'gold'}, {'at': INASA, 'r': 34, 'label': '稲佐の浜', 'side': -1, 'col': 'teal'}]),
  P('izumo_z15', INASA, (3800, 3200), rings=[{'at': INASA, 'r': 44, 'label': '稲佐の浜', 'side': -1, 'col': 'teal'}], text=T('神在月', '神々が上陸する浜', ts=80)),
  P('honden_cc0', ctr('honden_cc0'), (2000, 1800), text=T('今の本殿（国宝）', '1744年に建立', ts=84)),
  P('honden2', ctr('honden2'), (2000, 1800), text=T('今の本殿の高さ', None, 'およそ24', 'm', '神社の本殿として日本一')),
@@ -110,7 +110,7 @@ S = [
  HT('96メートルは', [{'label': '大昔の言い伝え', 'm': 96, 'hi': True, 'floors': 1, 'sub': '30階建てに近い'}, {'label': '今の本殿', 'm': 24, 'floors': 1}], floors=True, max=100, note='1階 ≈ 3 m で数えた目安'),
  CARD('木の建物で、', 'そこまでの高さは信じがたい。', fs=70),
  CARD('48メートルの言い伝えも、', '大げさな話と見られてきた。', fs=70, bg=BG_HON),
- P('toji', ctr('toji'), (1500, 1300), stamp='東寺の五重塔（京都）', text=T('今ある木造の塔でいちばん高い', None, 'およそ55', 'm')),
+ P('toji', [800, 1000, 0], (1500, 1300), stamp='東寺の五重塔（京都）', text=T('今ある木造の塔でいちばん高い', None, 'およそ55', 'm')),
  HT('江戸時代の五重塔と、平安時代の出雲', [{'label': '東寺の五重塔', 'm': 55, 'sub': '江戸時代の建て直し'}, {'label': '出雲大社？', 'm': 48, 'hi': True, 'dashed': True, 'sub': '平安時代の言い伝え'}], max=60, step=10),
  CARD('明治から100年以上、', '決着がつかない問い。', bg=BG_HON),
  P('kojin_z17', KOJIN, (1300, 1100), rings=[{'at': KOJIN, 'r': 40, 'label': '荒神谷遺跡', 'sub': '島根県出雲市', 'side': 1}], text=T('発掘から分かったこと', '古代出雲の力', ts=84)),
@@ -314,7 +314,7 @@ S = [
  ROWS('今の本殿が倒れない理由', [('高さ', '半分に'), ('柱', '地面に埋めず、石の上に立てる', True)], bg=BG_HON),
  THEO('出雲の人々の選択', [{'k': 'A', 'name': '高さを\n守る'}, {'k': 'B', 'name': '倒れない\n建物'}], bg=BG_HON),
  THEO('出雲の人々の選択', [{'k': 'A', 'name': '高さを\n守る'}, {'k': 'B', 'name': '倒れない\n建物'}], hi=[1], bg=BG_HON),
- P('honden_pd', ctr('honden_pd'), (2000, 1800), text=T('1000年前の人々が見上げた', '高さの記憶', ts=84)),
+ P('honden_cc0', ctr('honden_cc0'), (2000, 1800), text=T('1000年前の人々が見上げた', '高さの記憶', ts=84)),
  COMMENT('48メートルの神殿は本当に建っていた？', bg=BG_HON),
  COMMENT('それとも、記録が大げさだった？', bg=BG_HON),
  COMMENT('ぜひコメント欄へ', '動画の最初の予想とも比べてみてください', bg=BG_HON),
@@ -335,6 +335,11 @@ def fit(k, sp):   # a photograph's span (source px across) must not exceed what 
     return min(sp, int(A[k]['w'] * .98), int(A[k]['h'] * 16 / 9 * .98))
 for s, l in zip(S, lines):
     for k in [k for k, v in s.items() if v is None]: s.pop(k)
+    if s.get('layout') == 'photo' and s['img'] not in A:   # photo not downloaded: show its words on a card over the honden
+        t = s.get('text', {}); first = t.get('title') or ((t.get('number', '') + t.get('unit', '')) or s.get('stamp'))
+        s.clear(); s.update(CARD(*[x for x in [first, t.get('caption')] if x], kicker=t.get('kicker'), bg=BG_HON))
+        if not s['kicker']: s.pop('kicker')
+    if s.get('bg') and s['bg']['img'] not in A: s['bg'] = BG_HON
     if s.get('layout') == 'photo': s['span'] = [fit(s['img'], v) for v in s['span']]
     if s.get('bg'): s['bg'] = dict(s['bg'], span=fit(s['bg']['img'], s['bg']['span']))
     imgs = [i for i in [s.get('img')] + ([s['bg']['img']] if s.get('bg') else []) if i]

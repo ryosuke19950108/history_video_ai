@@ -108,5 +108,60 @@
   "h": 1277,
   "layer": "seamlessphoto",
   "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
+ },
+ "hotohoto": {
+  "f": "assets/hotohoto.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1634,
+  "h": 2400,
+  "layer": "seamlessphoto",
+  "credit": "写真：Rijksmuseum（CC0／Wikimedia Commons）"
+ },
+ "dotaku_group": {
+  "f": "assets/dotaku_group.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1262,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（Public domain／Wikimedia Commons）"
+ },
+ "kenpoko": {
+  "f": "assets/kenpoko.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1276,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（Public domain／Wikimedia Commons）"
+ },
+ "daibutsuden": {
+  "f": "assets/daibutsuden.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1280,
+  "layer": "seamlessphoto",
+  "credit": "写真：Balon Greyjoy（CC0／Wikimedia Commons）"
+ },
+ "toji": {
+  "f": "assets/toji.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1597,
+  "h": 2400,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
  }
 }

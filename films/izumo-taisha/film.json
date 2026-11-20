@@ -13,8 +13,8 @@
     0
    ],
    "span": [
-    2300,
-    1900
+    1881,
+    1881
    ],
    "text": {
     "kicker": "平安〜鎌倉時代 · およそ200年",
@@ -42,7 +42,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -66,7 +66,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -79,10 +79,15 @@
   },
   {
    "layout": "photo",
-   "img": "honden_pd",
+   "img": "honden2",
+   "at": [
+    960.0,
+    720.0,
+    0
+   ],
    "span": [
-    2300,
-    1900
+    1881,
+    1881
    ],
    "text": {
     "kicker": "出雲大社の言い伝え",
@@ -90,7 +95,7 @@
     "unit": "m",
     "caption": "かつての神殿の高さ"
    },
-   "source": "写真：Urashimataro（パブリックドメイン／Wikimedia Commons）",
+   "source": "写真：Kamdoomi（CC0／Wikimedia Commons）",
    "id": "s04",
    "line": "出雲大社には、かつて神殿の高さが48メートルもあったという言い伝えがあります。",
    "t0": 18.999,
@@ -139,7 +144,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -163,7 +168,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -198,7 +203,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "show": [
@@ -240,7 +245,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "show": [
@@ -271,7 +276,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "gold": 1,
@@ -294,7 +299,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -325,7 +330,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -349,7 +354,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -413,19 +418,22 @@
    "vdur": 3.637
   },
   {
-   "layout": "photo",
-   "img": "oonamuchi",
-   "span": [
-    1000,
-    900
+   "layout": "card",
+   "lines": [
+    "大国主大神"
    ],
-   "stamp": "大己貴命（大国主大神）",
-   "text": {
-    "kicker": "まつられている神様",
-    "title": "大国主大神",
-    "ts": 80
+   "bg": {
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
+    "a": 0.24
    },
-   "source": "",
+   "kicker": "まつられている神様",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s16",
    "line": "まつられているのは大国主大神、だいこくさまとして親しまれてきた神様です。",
    "t0": 94.412,
@@ -436,9 +444,14 @@
   {
    "layout": "photo",
    "img": "haiden",
+   "at": [
+    960.0,
+    638.5,
+    0
+   ],
    "span": [
-    2200,
-    1900
+    1881,
+    1881
    ],
    "text": {
     "kicker": "縁結びの神様",
@@ -469,11 +482,15 @@
    ],
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "id": "s18",
    "line": "旧暦の10月には全国の神々が出雲に集まるとされ、出雲ではこの月を神無月ではなく、神在月と呼んでいるんです。",
    "t0": 107.921,
@@ -486,7 +503,7 @@
    "img": "izumo_z15",
    "at": [
     35.4,
-    132.68
+    132.692
    ],
    "span": [
     7000,
@@ -514,8 +531,8 @@
     },
     {
      "at": [
-      35.3965,
-      132.668
+      35.3964,
+      132.6745
      ],
      "r": 34,
      "label": "稲佐の浜",
@@ -535,8 +552,8 @@
    "layout": "photo",
    "img": "izumo_z15",
    "at": [
-    35.3965,
-    132.668
+    35.3964,
+    132.6745
    ],
    "span": [
     3800,
@@ -545,8 +562,8 @@
    "rings": [
     {
      "at": [
-      35.3965,
-      132.668
+      35.3964,
+      132.6745
      ],
      "r": 44,
      "label": "稲佐の浜",
@@ -570,9 +587,14 @@
   },
   {
    "layout": "photo",
-   "img": "honden_pd",
+   "img": "honden_cc0",
+   "at": [
+    960.0,
+    638.5,
+    0
+   ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -580,7 +602,7 @@
     "title": "1744年に建立",
     "ts": 84
    },
-   "source": "写真：Urashimataro（パブリックドメイン／Wikimedia Commons）",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s21",
    "line": "今の本殿は、江戸時代の1744年に建てられたもので、国宝に指定されています。",
    "t0": 130.069,
@@ -591,8 +613,13 @@
   {
    "layout": "photo",
    "img": "honden2",
+   "at": [
+    960.0,
+    720.0,
+    0
+   ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -616,12 +643,16 @@
     "大がかりな修理。"
    ],
    "bg": {
-    "img": "honden_pd",
-    "at": null,
-    "span": 2200,
+    "img": "haiden",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
-   "source": "写真：Urashimataro（パブリックドメイン／Wikimedia Commons）",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s23",
    "line": "本殿は60年ほどごとに大がかりな修理が行われ、その時々に神様が仮の住まいへ移られます。",
    "t0": 143.919,
@@ -632,9 +663,14 @@
   {
    "layout": "photo",
    "img": "honden2",
+   "at": [
+    960.0,
+    720.0,
+    0
+   ],
    "span": [
-    2200,
-    1900
+    1881,
+    1881
    ],
    "text": {
     "kicker": "2013年",
@@ -665,12 +701,16 @@
     }
    ],
    "bg": {
-    "img": "izumo1922",
-    "at": null,
-    "span": 1500,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s25",
    "line": "出雲大社は、明治の初めまで杵築大社と呼ばれていました。",
    "t0": 158.186,
@@ -771,11 +811,15 @@
    ],
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "id": "s29",
    "line": "この出雲大社の始まりは、日本の神話の中に書かれています。",
    "t0": 185.973,
@@ -790,12 +834,16 @@
     "国を譲る場面。"
    ],
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s30",
    "line": "舞台は、大国主大神が国を譲る場面です。",
    "t0": 191.003,
@@ -810,13 +858,17 @@
     "国を譲る。"
    ],
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "kicker": "古事記",
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s31",
    "line": "古事記によると、大国主大神は、天の神々に国を譲ることを受け入れました。",
    "t0": 195.61,
@@ -831,14 +883,18 @@
     "自分の住まいとなる立派な宮。"
    ],
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "gold": 1,
    "fs": 70,
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s32",
    "line": "その代わりに求めたのが、自分の住まいとなる立派な宮だったんです。",
    "t0": 202.091,
@@ -860,11 +916,15 @@
     3
    ],
    "fs": 58,
-   "source": "『古事記』上巻 国譲りの段（書き下し）・・",
+   "source": "『古事記』上巻 国譲りの段（書き下し）・写真：Saigen Jiro（CC0／Wikimedia Commons）・写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "id": "s33",
@@ -888,11 +948,15 @@
     3
    ],
    "fs": 66,
-   "source": "『日本書紀』神代下 第九段 一書第二（書き下し）・",
+   "source": "『日本書紀』神代下 第九段 一書第二（書き下し）・写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "id": "s34",
@@ -909,14 +973,18 @@
     "とてつもなく高く太い建物。"
    ],
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "gold": 1,
    "fs": 70,
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s35",
    "line": "実はこの神話、最初から「とてつもなく高く太い建物」を約束しているんです。",
    "t0": 221.082,
@@ -937,7 +1005,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -961,7 +1029,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -996,7 +1064,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -1199,7 +1267,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 70,
@@ -1214,6 +1282,11 @@
   {
    "layout": "photo",
    "img": "toji",
+   "at": [
+    800,
+    1000,
+    0
+   ],
    "span": [
     1500,
     1300
@@ -1224,7 +1297,7 @@
     "number": "およそ55",
     "unit": "m"
    },
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s46",
    "line": "今、日本に残る木造の塔で一番高い京都の東寺の五重塔でも、高さはおよそ55メートルです。",
    "t0": 289.108,
@@ -1271,7 +1344,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -1321,9 +1394,14 @@
   {
    "layout": "photo",
    "img": "kenpoko",
+   "at": [
+    960.0,
+    638.0,
+    0
+   ],
    "span": [
-    2300,
-    2000
+    1881,
+    1881
    ],
    "stamp": "荒神谷遺跡の銅剣・銅矛",
    "text": {
@@ -1332,7 +1410,7 @@
     "unit": "本",
     "caption": "銅の剣がまとめて"
    },
-   "source": "",
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）",
    "id": "s50",
    "line": "1984年、出雲市の荒神谷遺跡から、358本もの銅の剣がまとめて見つかったんです。",
    "t0": 317.16,
@@ -1395,9 +1473,14 @@
   {
    "layout": "photo",
    "img": "dotaku_group",
+   "at": [
+    960.0,
+    631.0,
+    0
+   ],
    "span": [
-    2300,
-    2000
+    1881,
+    1881
    ],
    "stamp": "加茂岩倉遺跡の銅鐸",
    "text": {
@@ -1406,7 +1489,7 @@
     "unit": "個",
     "caption": "銅鐸"
    },
-   "source": "",
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）",
    "id": "s53",
    "line": "さらに1996年には、近くの加茂岩倉遺跡から39個の銅鐸が見つかりました。",
    "t0": 338.799,
@@ -1415,19 +1498,22 @@
    "vdur": 6.859
   },
   {
-   "layout": "photo",
-   "img": "dotaku8",
-   "span": [
-    1700,
-    1500
+   "layout": "card",
+   "lines": [
+    "日本で最多"
    ],
-   "stamp": "加茂岩倉遺跡の銅鐸",
-   "text": {
-    "kicker": "1か所から出た銅鐸の数",
-    "title": "日本で最多",
-    "ts": 84
+   "bg": {
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
+    "a": 0.24
    },
-   "source": "",
+   "kicker": "1か所から出た銅鐸の数",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s54",
    "line": "1か所から出た銅鐸の数としては、日本で最も多い数です。",
    "t0": 346.208,
@@ -1443,12 +1529,16 @@
    ],
    "bg": {
     "img": "dotaku_group",
-    "at": null,
-    "span": 2200,
+    "at": [
+     960.0,
+     631.0,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "fs": 66,
-   "source": "",
+   "source": "写真：Saigen Jiro（パブリックドメイン／Wikimedia Commons）",
    "id": "s55",
    "line": "巨大な神殿を建てる力が出雲にあったとしても、不思議ではないわけです。",
    "t0": 351.227,
@@ -1469,7 +1559,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -1629,7 +1719,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -1652,7 +1742,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -1894,7 +1984,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 70,
@@ -1959,12 +2049,16 @@
    ],
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
    "fs": 70,
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "id": "s79",
    "line": "では、平安時代の人々は、出雲大社をどれほど高い建物だと見ていたのでしょうか。",
    "t0": 496.564,
@@ -1979,11 +2073,15 @@
    "sub": "検証2",
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "id": "s80",
    "line": "2つ目の検証は、平安時代の記録です。",
    "t0": 503.444,
@@ -2064,7 +2162,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "id": "s84",
@@ -2095,7 +2193,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "cont": true,
@@ -2128,7 +2226,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "say": "そして3番目が、京のみやこの大極殿でした。",
@@ -2141,19 +2239,22 @@
    "vdur": 3.712
   },
   {
-   "layout": "photo",
-   "img": "daigokuden",
-   "span": [
-    1500,
-    1300
+   "layout": "card",
+   "lines": [
+    "都の宮殿の中心"
    ],
-   "stamp": "大極殿（平城宮の模型）",
-   "text": {
-    "kicker": "大極殿",
-    "title": "都の宮殿の中心",
-    "ts": 84
+   "bg": {
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
+    "a": 0.24
    },
-   "source": "",
+   "kicker": "大極殿",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "say": "大極殿とは、天皇が大切な儀式を行う、みやこの宮殿の中心の建物です。",
    "id": "s87",
    "line": "大極殿とは、天皇が大切な儀式を行う、都の宮殿の中心の建物です。",
@@ -2237,9 +2338,14 @@
   {
    "layout": "photo",
    "img": "daibutsuden",
+   "at": [
+    960.0,
+    640.0,
+    0
+   ],
    "span": [
-    2300,
-    2000
+    1881,
+    1881
    ],
    "stamp": "東大寺大仏殿（今の建物）",
    "text": {
@@ -2247,7 +2353,7 @@
     "title": "東大寺の大仏殿",
     "ts": 84
    },
-   "source": "",
+   "source": "写真：Balon Greyjoy（CC0／Wikimedia Commons）",
    "id": "s90",
    "line": "ここで注目したいのが、2番目の東大寺の大仏殿です。",
    "t0": 564.447,
@@ -2444,8 +2550,13 @@
   {
    "layout": "photo",
    "img": "daibutsuden",
+   "at": [
+    960.0,
+    640.0,
+    0
+   ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -2453,7 +2564,7 @@
     "title": "奈良の大仏殿",
     "ts": 84
    },
-   "source": "",
+   "source": "写真：Balon Greyjoy（CC0／Wikimedia Commons）",
    "id": "s101",
    "line": "奈良の大仏殿は、大仏回でもお伝えしたとおり、日本最大級の木造の建物でした。",
    "t0": 629.019,
@@ -2625,7 +2736,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -2683,12 +2794,16 @@
    ],
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
    "kicker": "1031年 · 出雲から都への報告",
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "say": "出雲の国の役人が、風もないのに神殿がひとりでに倒れたと、みやこの朝廷に報告しています。",
    "id": "s110",
    "line": "出雲の国の役人が、風もないのに神殿がひとりでに倒れたと、都の朝廷に報告しています。",
@@ -2824,7 +2939,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 66,
@@ -2849,7 +2964,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -2862,9 +2977,14 @@
   },
   {
    "layout": "photo",
-   "img": "honden_pd",
+   "img": "honden2",
+   "at": [
+    960.0,
+    720.0,
+    0
+   ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -2872,7 +2992,7 @@
     "title": "280年近く倒れていない",
     "ts": 72
    },
-   "source": "写真：Urashimataro（パブリックドメイン／Wikimedia Commons）",
+   "source": "写真：Kamdoomi（CC0／Wikimedia Commons）",
    "id": "s116",
    "line": "今の24メートルの本殿は、1744年に建てられてから280年近く、1度も倒れていません。",
    "t0": 722.843,
@@ -2932,11 +3052,15 @@
    ],
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "id": "s120",
    "line": "ところが、ここで思わぬ記録が見つかります。",
    "t0": 749.4,
@@ -3231,7 +3355,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -3491,7 +3615,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -3508,12 +3632,16 @@
    "title": "1枚の設計図",
    "sub": "検証4",
    "bg": {
-    "img": "honden_pd",
-    "at": null,
-    "span": 2200,
+    "img": "haiden",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
-   "source": "写真：Urashimataro（パブリックドメイン／Wikimedia Commons）",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s146",
    "line": "4つ目の検証は、出雲大社に伝わる1枚の設計図です。",
    "t0": 901.69,
@@ -3628,7 +3756,7 @@
     0
    ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -3971,7 +4099,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -3993,7 +4121,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -4015,7 +4143,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -4065,7 +4193,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -4089,7 +4217,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 70,
@@ -4471,7 +4599,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 70,
@@ -5066,7 +5194,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "gold": 1,
@@ -5116,7 +5244,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "gold": 1,
@@ -5196,7 +5324,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 66,
@@ -5248,7 +5376,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5266,13 +5394,17 @@
     "守り続けること。"
    ],
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "fs": 70,
-   "source": "",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s231",
    "line": "それは、大国主大神が国を譲るときに求めた約束を、守り続けることでもありました。",
    "t0": 1424.872,
@@ -5294,11 +5426,15 @@
     3
    ],
    "fs": 58,
-   "source": "『古事記』上巻 国譲りの段（書き下し）・・",
+   "source": "『古事記』上巻 国譲りの段（書き下し）・写真：Saigen Jiro（CC0／Wikimedia Commons）・写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "bg": {
-    "img": "oonamuchi",
-    "at": null,
-    "span": 1000,
+    "img": "honden_cc0",
+    "at": [
+     960.0,
+     638.5,
+     0
+    ],
+    "span": 1881,
     "a": 0.24
    },
    "id": "s232",
@@ -5312,8 +5448,8 @@
    "layout": "photo",
    "img": "izumo_z15",
    "at": [
-    35.3965,
-    132.668
+    35.3964,
+    132.6745
    ],
    "span": [
     3000,
@@ -5335,11 +5471,16 @@
   {
    "layout": "photo",
    "img": "hotohoto",
+   "at": [
+    817.0,
+    1200.0,
+    0
+   ],
    "span": [
     1500,
     1300
    ],
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "say": "くろぐろとした森の上には、巨大な神殿の屋根がそびえていたはずです。",
    "id": "s234",
    "line": "黒々とした森の上には、巨大な神殿の屋根がそびえていたはずです。",
@@ -5353,11 +5494,15 @@
    "mode": "stair",
    "bg": {
     "img": "hotohoto",
-    "at": null,
+    "at": [
+     817.0,
+     1200.0,
+     0
+    ],
     "span": 1500,
     "a": 0.26
    },
-   "source": "",
+   "source": "写真：Rijksmuseum（CC0／Wikimedia Commons）",
    "id": "s235",
    "line": "長い長い階段を、神職たちが一歩ずつ上っていきます。",
    "t0": 1447.629,
@@ -5398,7 +5543,7 @@
     0
    ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -5436,7 +5581,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5467,7 +5612,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5498,7 +5643,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "hi": [
@@ -5515,9 +5660,14 @@
   },
   {
    "layout": "photo",
-   "img": "honden_pd",
+   "img": "honden_cc0",
+   "at": [
+    960.0,
+    638.5,
+    0
+   ],
    "span": [
-    2000,
+    1881,
     1800
    ],
    "text": {
@@ -5525,7 +5675,7 @@
     "title": "高さの記憶",
     "ts": 84
    },
-   "source": "写真：Urashimataro（パブリックドメイン／Wikimedia Commons）",
+   "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
    "id": "s241",
    "line": "それでも、1000年前の人々が見上げた高さの記憶は、形を変えて今も出雲に受け継がれているんです。",
    "t0": 1486.101,
@@ -5543,7 +5693,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5564,7 +5714,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5586,7 +5736,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5610,7 +5760,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "source": "写真：Saigen Jiro（CC0／Wikimedia Commons）",
@@ -5634,7 +5784,7 @@
      638.5,
      0
     ],
-    "span": 2200,
+    "span": 1881,
     "a": 0.24
    },
    "fs": 70,
@@ -7587,7 +7737,7 @@
  "credits": [
   "空中写真　出典：国土地理院（地理院タイル）　地図　Natural Earth（パブリックドメイン）をもとに作図",
   "史料　『口遊』（970年）／『古事記』上巻／『日本書紀』神代下／『出雲国風土記』（書き下し）",
-  "写真　Kamdoomi、Saigen Jiro、Urashimataro（Wikimedia Commons、パブリックドメイン・CC0）",
+  "写真　Balon Greyjoy、Kamdoomi、Rijksmuseum、Saigen Jiro、Urashimataro（Wikimedia Commons、パブリックドメイン・CC0）",
   "音声　VOICEVOX:青山龍星",
   "高さの図・柱の図・図面の図は、台本の数字をもとにした模式図です。"
  ]
