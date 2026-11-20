@@ -1,0 +1,101 @@
+{
+ "akagi_z15": {
+  "f": "assets/akagi_z15.jpg",
+  "z": 15,
+  "gx0": 7436799.97,
+  "gy0": 3277568.01,
+  "mpp": 3.8378,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "akagi_hill_z13": {
+  "f": "assets/akagi_hill_z13.jpg",
+  "z": 13,
+  "gx0": 1858304.0,
+  "gy0": 818943.99,
+  "mpp": 15.3532,
+  "w": 1536,
+  "h": 1024,
+  "layer": "hillshademap",
+  "credit": "出典：国土地理院（地理院タイル hillshademap）"
+ },
+ "tsukuda_z16": {
+  "f": "assets/tsukuda_z16.jpg",
+  "z": 16,
+  "gx0": 14866175.96,
+  "gy0": 6557440.03,
+  "mpp": 1.9197,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "gonda_z16": {
+  "f": "assets/gonda_z16.jpg",
+  "z": 16,
+  "gx0": 14858239.96,
+  "gy0": 6566400.03,
+  "mpp": 1.9235,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "nikko_z17": {
+  "f": "assets/nikko_z17.jpg",
+  "z": 17,
+  "gx0": 29787903.99,
+  "gy0": 13087999.97,
+  "mpp": 0.9569,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "edojo_z16": {
+  "f": "assets/edojo_z16.jpg",
+  "z": 16,
+  "gx0": 14900735.96,
+  "gy0": 6605568.03,
+  "mpp": 1.9401,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "yokosuka_z16": {
+  "f": "assets/yokosuka_z16.jpg",
+  "z": 16,
+  "gx0": 14896640.02,
+  "gy0": 6628095.96,
+  "mpp": 1.9497,
+  "w": 1536,
+  "h": 1024,
+  "layer": "seamlessphoto",
+  "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "kanto_hill_z10": {
+  "f": "assets/kanto_hill_z10.jpg",
+  "z": 10,
+  "gx0": 231680.05,
+  "gy0": 102144.02,
+  "mpp": 123.4892,
+  "w": 1536,
+  "h": 1024,
+  "layer": "hillshademap",
+  "credit": "出典：国土地理院（地理院タイル hillshademap）"
+ },
+ "kanto_pale_z11": {
+  "f": "assets/kanto_pale_z11.jpg",
+  "z": 11,
+  "gx0": 464383.99,
+  "gy0": 205056.03,
+  "mpp": 61.7446,
+  "w": 1536,
+  "h": 1024,
+  "layer": "pale",
+  "credit": "出典：国土地理院（地理院タイル pale）"
+ }
+}

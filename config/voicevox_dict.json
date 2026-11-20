@@ -568,5 +568,35 @@
   "pronunciation": "ミヤコ",
   "accent_type": 0,
   "word_type": "COMMON_NOUN"
+ },
+ {
+  "surface": "糸井重里",
+  "pronunciation": "イトイシゲサト",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "水野智之",
+  "pronunciation": "ミズノトモユキ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "御金蔵",
+  "pronunciation": "オカネグラ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "津久田原",
+  "pronunciation": "ツクダハラ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "総攻め",
+  "pronunciation": "ソウゼメ",
+  "accent_type": 0,
+  "priority": 10
  }
 ]
