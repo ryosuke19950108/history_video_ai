@@ -598,5 +598,35 @@
   "pronunciation": "ソウゼメ",
   "accent_type": 0,
   "priority": 10
+ },
+ {
+  "surface": "小栗",
+  "pronunciation": "オグリ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "多田銀山",
+  "pronunciation": "タダギンザン",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "勝海舟",
+  "pronunciation": "カツカイシュウ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "上野介",
+  "pronunciation": "コウズケノスケ",
+  "accent_type": 0,
+  "priority": 10
+ },
+ {
+  "surface": "鳥羽",
+  "pronunciation": "トバ",
+  "accent_type": 1,
+  "priority": 10
  }
 ]
