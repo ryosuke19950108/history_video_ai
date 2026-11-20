@@ -212,7 +212,7 @@ S = [
  BD(note='消えた数は、その都度お伝えします', bg=BG_AKAGI),                                                                           # s76
 
  # ── 物差し1 運べたのか ──
- CH('1', '運べたのか', '360万両を山まで運べたか', bg=BG_KANTO),                                                                      # s77
+ CH('1', '運べたのか', '360万両を運べたか', bg=BG_KANTO),                                                                      # s77
  CARD('小判1枚の重さを', '計算してみる', bg=BG_KANTO),                                                                              # s78
  coins(show=[0], kicker='小判は何度も作り直された'),                                                                                # s79
  coins(show=[0], kicker='小判は何度も作り直された'),                                                                                # s80
@@ -271,11 +271,11 @@ S = [
  CARD('大量の小判が', '見つかったという記録はない', bg=BG_EDO),                                                                       # s114
  CARD('城の中にあれば', '運び出す必要さえなかった', bg=BG_EDO),                                                                       # s115
  CARD('城に残っていた', '可能性は低い', bg=BG_EDO),                                                                                 # s116
- BD(status=['open', 'open', 'open', 'out', 'open'], reveal=3, focus=3, note='5つのうち 1つが消えた', bg=BG_EDO),                     # s117
+ BD(status=['open', 'open', 'open', 'out', 'open'], reveal=3, focus=3, note='消えたのは1つ', bg=BG_EDO),                     # s117
  BD(status=['open', 'open', 'open', 'out', 'open'], note='残るのは4つ', bg=BG_EDO),                                               # s118
 
  # ── 物差し2 幕府に金があったか ──
- CH('2', '幕府に金があったか', '360万両が本当にあったか', bg=BG_EDO),                                                                 # s119
+ CH('2', '幕府に金があったか', '360万両はあったか', bg=BG_EDO),                                                                 # s119
  CARD('360万両は', '本当にあったのか', center=True, bg=BG_EDO),                                                                     # s120
  CARD('小栗上野介', kicker='意外な形で、もう一度', bg=BG_GONDA, fs=92),                                                             # s121
  ROWS('小栗上野介', [('幕府の金のこと', '誰よりもよく知っていた', 1)], bg=BG_GONDA),                                                   # s122
@@ -346,7 +346,7 @@ S = [
  CARD('次の検証を見逃さないよう', 'チャンネル登録を', bg=BG_AKAGI),                                                                  # s169
 
  # ── 物差し3 記録があるか ──
- CH('3', '記録があるか', '場所を指す記録があるか', bg=BG_NIKKO),                                                                     # s170
+ CH('3', '記録があるか', '場所の記録はあるか', bg=BG_NIKKO),                                                                     # s170
  BD(status=['open', 'open', 'open', 'out', 'open'], bg=BG_NIKKO),                                                               # s171
  BD(status=['open', 'open', 'open', 'out', 'open'], focus=1, bg=BG_NIKKO),                                                      # s172
  P('nikko_z17', NIKKO, (900, 760), rings=[{'at': NIKKO, 'm': 150, 'label': '東照宮', 'sub': '1617年 徳川家康をまつる'}],
@@ -360,8 +360,8 @@ S = [
  CARD('御用金があったなら', 'そう簡単に手放さなかったはず', bg=BG_NIKKO),                                                             # s178
  CARD('日光へ運ばれたことを示す', '記録は見つかっていない', bg=BG_NIKKO),                                                            # s179
  CARD('場所の意味から', 'あとで組み立てられた説', bg=BG_NIKKO),                                                                     # s180
- BD(status=['open', 'out', 'open', 'out', 'open'], reveal=1, focus=1, note='5つのうち 2つが消えた', bg=BG_NIKKO),                   # s181
- BD(status=['open', 'out', 'open', 'out', 'open'], note='5つのうち 2つが消えた', bg=BG_NIKKO),                                     # s182
+ BD(status=['open', 'out', 'open', 'out', 'open'], reveal=1, focus=1, note='消えたのは2つ', bg=BG_NIKKO),                   # s181
+ BD(status=['open', 'out', 'open', 'out', 'open'], note='消えたのは2つ', bg=BG_NIKKO),                                     # s182
  BD(status=['open', 'out', 'open', 'out', 'open'], focus=2, bg=BG_GONDA),                                                       # s183
  P('gonda_z16', GONDA, (2600, 2200), rings=[{'at': GONDA, 'm': 420, 'label': '権田村', 'sub': '今の高崎市倉渕町'}],
    text={'kicker': '小栗が移り住んだ村', 'title': '権田村'}, scale=500),                                                            # s184
@@ -370,8 +370,8 @@ S = [
  CARD('大量の小判が出てきた', 'という記録はない', bg=BG_GONDA),                                                                     # s186
  CARD('村で静かに暮らすつもりで', '家を建てる準備を始めていた', bg=BG_GONDA, fs=64),                                                   # s187
  CARD('隠した人物が', '人目のある村に住むとは考えにくい', bg=BG_GONDA, fs=64),                                                        # s188
- BD(status=['open', 'out', 'out', 'out', 'open'], reveal=2, focus=2, note='5つのうち 3つが消えた', bg=BG_GONDA),                    # s189
- BD(status=['open', 'out', 'out', 'out', 'open'], note='5つのうち 3つが消えた', bg=BG_GONDA),                                      # s190
+ BD(status=['open', 'out', 'out', 'out', 'open'], reveal=2, focus=2, note='消えたのは3つ', bg=BG_GONDA),                    # s189
+ BD(status=['open', 'out', 'out', 'out', 'open'], note='消えたのは3つ', bg=BG_GONDA),                                      # s190
  BD(status=['left', 'out', 'out', 'out', 'left'], note='残ったのは2つ', bg=BG_AKAGI),                                             # s191
  COMMENT('最初の予想は、まだ残っていますか', bg=BG_AKAGI),                                                                         # s192
  P('akagi_z15', AKAGI, (5000, 4000), rings=[{'at': AKAGI, 'm': 900, 'label': '赤城山'}],
@@ -395,9 +395,9 @@ S = [
  MY(status=['solved', 'solved', 'solved'], marks=['運べない', '金がない', '記録がない'], focus=0, bg=BG_AKAGI),                      # s201
  MY(status=['solved', 'solved', 'solved'], marks=['運べない', '金がない', '記録がない'], focus=1, bg=BG_AKAGI),                      # s202
  MY(status=['solved', 'solved', 'solved'], marks=['運べない', '金がない', '記録がない'], focus=2, bg=BG_AKAGI),                      # s203
- BD(status=['out', 'out', 'out', 'out', 'left'], reveal=0, focus=0, note='5つのうち 4つが消えた', bg=BG_AKAGI),                     # s204
+ BD(status=['out', 'out', 'out', 'out', 'left'], reveal=0, focus=0, note='消えたのは4つ', bg=BG_AKAGI),                     # s204
  CARD('どの物差しに当てても', '筋書きは成り立たなかった', bg=BG_AKAGI, fs=64),                                                        # s205
- BD(status=['out', 'out', 'out', 'out', 'left'], focus=4, note='残ったのは「最初からなかった」', bg=BG_AKAGI),                       # s206
+ BD(status=['out', 'out', 'out', 'out', 'left'], focus=4, note='残りは「最初からなかった」', bg=BG_AKAGI),                       # s206
 
  # ── 弱点 ──
  CARD('この結論には', 'はっきりした弱点がある', bg=BG_AKAGI),                                                                       # s207
