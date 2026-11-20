@@ -75,5 +75,38 @@
   "h": 1536,
   "layer": "seamlessphoto",
   "credit": "出典：国土地理院（地理院タイル seamlessphoto）"
+ },
+ "honden_pd": {
+  "f": "assets/honden_pd.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1440,
+  "layer": "seamlessphoto",
+  "credit": "写真：Urashimataro（Public domain／Wikimedia Commons）"
+ },
+ "honden2": {
+  "f": "assets/honden2.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1440,
+  "layer": "seamlessphoto",
+  "credit": "写真：Kamdoomi（CC0／Wikimedia Commons）"
+ },
+ "haiden": {
+  "f": "assets/haiden.jpg",
+  "z": null,
+  "gx0": 0,
+  "gy0": 0,
+  "mpp": 1,
+  "w": 1920,
+  "h": 1277,
+  "layer": "seamlessphoto",
+  "credit": "写真：Saigen Jiro（CC0／Wikimedia Commons）"
  }
 }

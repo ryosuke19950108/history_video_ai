@@ -37,7 +37,7 @@ def ASK(n): return CARD('AIの判定は、', 'こうでした。', kicker='検�
 
 # backdrops by topic
 def ctr(k): return [A[k]['w'] / 2, A[k]['h'] / 2, 0] if k in A else None
-BG_HON = B('honden_cc0', ctr('honden_cc0'), 2200, .24); BG_HON2 = B('honden_pd', ctr('honden_pd'), 2200, .24); BG_AIR = B('izumo_z17', IZ, 1100, .24)
+BG_HON = B('honden_cc0', ctr('honden_cc0'), 2200, .24); BG_HON2 = B('haiden', ctr('haiden'), 2200, .24); BG_AIR = B('izumo_z17', IZ, 1100, .24)
 BG_AIR18 = B('izumo_z18', HAS, 420, .26); BG_HOTO = B('hotohoto', ctr('hotohoto'), 1500, .26); BG_OON = B('oonamuchi', ctr('oonamuchi'), 1000, .24)
 BG_DOTAKU = B('dotaku_group', ctr('dotaku_group'), 2200, .24); BG_1922 = B('izumo1922', ctr('izumo1922'), 1500, .24)
 
@@ -65,7 +65,7 @@ S = [
  P('honden_cc0', ctr('honden_cc0'), (2300, 1900), text=T('平安〜鎌倉時代 · およそ200年', '7度も倒れた神殿', ts=80)),
  CARD('風もない日に、', 'ひとりでに倒れた。', bg=BG_HON),
  CARD('ふつうの高さの建物なら、', 'そう何度も倒れない。', bg=BG_HON),
- P('honden_pd', ctr('honden_pd'), (2300, 1900), text=T('出雲大社の言い伝え', None, '48', 'm', 'かつての神殿の高さ')),
+ P('honden2', ctr('honden2'), (2300, 1900), text=T('出雲大社の言い伝え', None, '48', 'm', 'かつての神殿の高さ')),
  HT('今の本殿と、言い伝えの高さ', [{'label': '今の本殿', 'm': 24, 'floors': 1}, {'label': '言い伝え', 'm': 48, 'hi': True, 'floors': 1, 'sub': '16階建てほど'}], floors=True, max=60, step=12, note='1階 ≈ 3 m で数えた目安'),
  CARD('長いあいだ、', '話を大きくした言い伝え。', bg=BG_HON),
  CARD('1000年も前に、', '建てられたはずがない。', bg=BG_HON),
@@ -83,7 +83,7 @@ S = [
  ROWS('旧暦の10月', [('全国では', '神無月'), ('出雲では', '神在月', True)], bg=BG_HOTO),
  P('izumo_z15', [35.400, 132.680], (7000, 6000), rings=[{'at': IZ, 'r': 34, 'label': '本殿', 'side': 1}, {'at': YAKUMO, 'r': 30, 'label': '八雲山', 'side': 1, 'col': 'gold'}, {'at': INASA, 'r': 34, 'label': '稲佐の浜', 'side': -1, 'col': 'teal'}]),
  P('izumo_z15', INASA, (3800, 3200), rings=[{'at': INASA, 'r': 44, 'label': '稲佐の浜', 'side': -1, 'col': 'teal'}], text=T('神在月', '神々が上陸する浜', ts=80)),
- P('honden_pd', ctr('honden_pd'), (2000, 1800), text=T('今の本殿（国宝）', '1744年に建立', ts=84)),
+ P('honden_cc0', ctr('honden_cc0'), (2000, 1800), text=T('今の本殿（国宝）', '1744年に建立', ts=84)),
  P('honden2', ctr('honden2'), (2000, 1800), text=T('今の本殿の高さ', None, 'およそ24', 'm', '神社の本殿として日本一')),
  CARD('60年ほどごとに、', '大がかりな修理。', bg=BG_HON2),
  P('honden2', ctr('honden2'), (2200, 1900), text=T('2013年', '平成の大遷宮', ts=84)),
@@ -183,7 +183,7 @@ S = [
  CALC('倒れた間隔', [('200年 ÷ 7度', 'およそ30年に1度')]),
  CARD('親から子へ代わるほどの間隔で、', '倒れては建て直す。', fs=66, bg=BG_HON),
  CARD('AIが目を向けたのは、', '倒れた建物の高さ。', bg=BG_HON),
- P('honden_pd', ctr('honden_pd'), (2000, 1800), text=T('今の本殿 · 1744年から', '280年近く倒れていない', ts=72)),
+ P('honden2', ctr('honden2'), (2000, 1800), text=T('今の本殿 · 1744年から', '280年近く倒れていない', ts=72)),
  ASK(3),
  AI(3, '30年に1度倒れる建物は、', '今の本殿とまったく違う形。', fs=66),
  AI(3, '何度も倒れたことが、', 'とびぬけて高い証拠。', gold=1),
@@ -330,8 +330,13 @@ ASR = json.load(open('asr_overrides.json', encoding='utf-8')) if os.path.exists(
 def credit(imgs):
     g = [i for i in imgs if i in GSI_KEYS]; ph = [PHOTO[i] for i in imgs if i in PHOTO]
     return '・'.join((['出典：国土地理院（空中写真）'] if g else []) + ph)
+def fit(k, sp):   # a photograph's span (source px across) must not exceed what it has, or the frame shows black bars
+    if k not in A or A[k]['z'] is not None: return sp
+    return min(sp, int(A[k]['w'] * .98), int(A[k]['h'] * 16 / 9 * .98))
 for s, l in zip(S, lines):
     for k in [k for k, v in s.items() if v is None]: s.pop(k)
+    if s.get('layout') == 'photo': s['span'] = [fit(s['img'], v) for v in s['span']]
+    if s.get('bg'): s['bg'] = dict(s['bg'], span=fit(s['bg']['img'], s['bg']['span']))
     imgs = [i for i in [s.get('img')] + ([s['bg']['img']] if s.get('bg') else []) if i]
     if imgs:
         c = credit(imgs); keep = s.get('source', '')
