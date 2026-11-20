@@ -222,29 +222,33 @@ const L = {
     backdrop(s.bg, u, d); kicker(s.kicker || '小判1枚', 200, 230, rise(u, .05), C.gold, 'k');
     const PM = s.pxmm || 5.6, its = s.items, CY = s.cy || 500, GAP = s.xgap || 120;
     const tot = its.reduce((a, it) => a + it.mm[0] * PM, 0) + (its.length - 1) * GAP; let X = (W - tot) / 2;
+    const BY = CY + Math.max(...its.map(it => it.mm[1])) * PM / 2;   // one baseline under the largest coin
+    const oval = (cx, cy, rx, ry) => {   // a koban is a flattened oval, straighter along its long sides
+      x.beginPath(); x.moveTo(cx - rx, cy); x.bezierCurveTo(cx - rx, cy - ry * 1.28, cx + rx, cy - ry * 1.28, cx + rx, cy);
+      x.bezierCurveTo(cx + rx, cy + ry * 1.28, cx - rx, cy + ry * 1.28, cx - rx, cy); x.closePath(); };
     its.forEach((it, i) => { const shown = !s.show || s.show.includes(i); const rx = it.mm[0] * PM / 2, ry = it.mm[1] * PM / 2, cx = X + rx;
       if (!shown) { X += it.mm[0] * PM + GAP; return; }   // its place is kept, so the row never shifts as coins appear
       const t0 = .2 + (s.show ? s.show.indexOf(i) : i) * (s.dt || .5), kk = rise(u, t0, .7), faded = it.off ? .45 : 1;
       if (kk > 0) { x.save(); x.globalAlpha *= kk * faded;
         const g = x.createLinearGradient(cx - rx, CY - ry, cx + rx, CY + ry);
         g.addColorStop(0, '#EBD098'); g.addColorStop(.45, '#C8A24E'); g.addColorStop(1, '#8A6F31');
-        x.fillStyle = g; x.beginPath(); x.ellipse(cx, CY, rx, ry, 0, 0, Math.PI * 2); x.fill();
-        x.save(); x.beginPath(); x.ellipse(cx, CY, rx, ry, 0, 0, Math.PI * 2); x.clip();          // ござ目（横の筋）
+        x.fillStyle = g; oval(cx, CY, rx, ry); x.fill();
+        x.save(); oval(cx, CY, rx, ry); x.clip();                                                 // ござ目（横の筋）
         x.strokeStyle = 'rgba(88,68,28,.33)'; x.lineWidth = 1.2;
         for (let yy = CY - ry + 4; yy < CY + ry; yy += Math.max(5, ry / 10)) { x.beginPath(); x.moveTo(cx - rx, yy); x.lineTo(cx + rx, yy); x.stroke(); }
         x.strokeStyle = 'rgba(70,54,22,.55)'; x.lineWidth = 2;                                     // 中央の墨書きに見立てた枠
         x.strokeRect(cx - rx * .3, CY - ry * .22, rx * .6, ry * .44); x.restore();
-        x.strokeStyle = '#6B5524'; x.lineWidth = 2; x.beginPath(); x.ellipse(cx, CY, rx, ry, 0, 0, Math.PI * 2); x.stroke(); x.restore(); }
-      txt(it.label, cx, CY + ry + 58, { s: 36, w: 700, f: F.serif, al: 'center', a: kk * faded, id: 'kl' + i });
-      txt(it.g + ' g', cx, CY + ry + 118, { s: 52, w: 700, f: F.serif, c: it.off ? C.faint : C.gold, al: 'center', a: rise(u, t0 + .2) * faded, id: 'kg' + i });
-      if (it.sub) txt(it.sub, cx, CY + ry + 158, { s: 22, f: F.mono, c: C.dim, al: 'center', a: rise(u, t0 + .3) * faded, id: 'ks' + i, pass: true });
+        x.strokeStyle = '#6B5524'; x.lineWidth = 2; oval(cx, CY, rx, ry); x.stroke(); x.restore(); }
+      txt(it.label, cx, BY + 58, { s: 36, w: 700, f: F.serif, al: 'center', a: kk * faded, id: 'kl' + i });
+      txt(it.g + ' g', cx, BY + 118, { s: 52, w: 700, f: F.serif, c: it.off ? C.faint : C.gold, al: 'center', a: rise(u, t0 + .2) * faded, id: 'kg' + i });
+      if (it.sub) txt(it.sub, cx, BY + 158, { s: 22, f: F.mono, c: C.dim, al: 'center', a: rise(u, t0 + .3) * faded, id: 'ks' + i, pass: true });
       X += it.mm[0] * PM + GAP; });
     if (s.note) txt(s.note, 200, 870, { s: 24, c: C.dim, a: rise(u, .7), id: 'note' });
   },
   column(u, s, d) { // the pack-horse column: how many horses, and how far the line stretches
     backdrop(s.bg, u, d); kicker(s.kicker || '馬の行列', 200, 230, rise(u, .05), C.gold, 'k');
     const AX = 200, AW = 1500, mx = s.max || Math.max(...s.items.map(i => i.m));
-    s.items.forEach((it, i) => { const y = (s.y || 450) + i * (s.gap || 150), t0 = .2 + i * (s.dt || .45), kk = rise(u, t0, .9), w = AW * it.m / mx * kk, col = it.hi ? C.gold : C.faint;
+    s.items.forEach((it, i) => { const y = (s.y || 430) + i * (s.gap || 165), t0 = .2 + i * (s.dt || .45), kk = rise(u, t0, .9), w = AW * it.m / mx * kk, col = it.hi ? C.gold : C.faint;
       txt(it.label, AX, y - 44, { s: 34, w: 700, a: rise(u, t0 - .05), id: 'l' + i });
       if (it.n) txt(`馬 ${it.n} 頭`, AX + 430, y - 44, { s: 34, w: 700, f: F.serif, c: col, a: rise(u, t0 + .1), id: 'n' + i });
       alpha(kk * .85, () => fill(AX, y, w, 9, col));
