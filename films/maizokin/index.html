@@ -118,7 +118,7 @@ const L = {
   chapter(u, s, d) { backdrop(s.bg, u, d); const k = rise(u, .1, .6);
     txt(FILM.chapter_label || 'MYSTERY', 200, 470 - PX({ s: 150 }) * .88 - 32, { s: 24, f: F.mono, c: C.red, ls: 6, a: k, id: 'm' }); txt(s.num, 200, 470, { s: 150, w: 700, f: F.serif, c: C.gold, a: k, id: 'n' });
     txt(s.title, 200 + tw(s.num, { s: 150, w: 700, f: F.serif }) + 50, 455 - 12 * (1 - k), { s: 84, w: 700, f: F.serif, a: rise(u, .05, .4), id: 't' });
-    line(204, 520, lerp(204, 1500, rise(u, .5, .9)), 520, C.red, 2); if (s.sub) txt(s.sub, 204, 590, { s: 30, c: C.dim, a: rise(u, .7), id: 's' });
+    line(204, 520, lerp(204, 1500, rise(u, .5, .9)), 520, C.red, 2); if (s.sub) txt(s.sub, 204, 590, { s: 30, c: C.dim, a: rise(u, .45), id: 's' });
   },
   mysteries(u, s, d) { // the four questions and how far each is settled; recurs through the film
     backdrop(s.bg || { img: 'akagi_hill_z13', span: 9000, a: .18 }, u, d); const Q = s.names || FILM.mysteries, B = FILM.board || {}; const k0 = rise(u, .1);
@@ -273,7 +273,7 @@ const L = {
       if (out) { alpha(ka * kk, () => line(420, y + 44, 420 + tw(q, { s: 42, w: 700, f: F.serif }) + 10, y + 44, C.red, 3));
         const ks = ka * rise(u, rv ? .85 : 0); alpha(ks, () => box(1424, y + 20, 156, 52, C.red, 2)); txt(B.out || '消えた', 1502, y + 56, { s: 26, w: 700, c: C.red, al: 'center', a: ks, id: 's' + i }); }
       else if (st === 'left') { alpha(ka, () => box(1424, y + 20, 156, 52, C.gold, 2, [6, 5])); txt(B.left || '残り', 1502, y + 56, { s: 26, w: 700, c: C.gold, al: 'center', a: ka, id: 's' + i }); } });
-    if (s.note) txt(s.note, 300, Y0 + Q.length * GH + 58, { s: 34, w: 700, f: F.serif, c: C.gold, a: rise(u, .8), id: 'note' });
+    if (s.note) txt(s.note, 300, Y0 + Q.length * GH + 58, { s: 34, w: 700, f: F.serif, c: C.gold, a: rise(u, .6), id: 'note' });
   },
   ratio(u, s, d) { // one gold coin against so many silver ones: the gap that drained the country's gold
     backdrop(s.bg, u, d); kicker(s.kicker || '金1に対して銀いくらか', 200, 230, rise(u, .05), C.gold, 'k');
