@@ -57,7 +57,10 @@ def need(sc):   # DIRECTOR.md §7 / readcheck: CJK ÷ 4.5 + other ÷ 15 + 1.5 s,
     if not ts: return 0
     cost = lambda s: sum(1 for c in s if ord(c) >= 0x2E80) / 4.5 + sum(1 for c in s if ord(c) < 0x2E80 and not c.isspace()) / 15 + 1.5
     stagger = .35 * max(0, len(sc.get('rows') or sc.get('items') or []) - 1)
-    return max(cost(s) for s in ts) + .5 + stagger
+    # +.75, not +.5: the shot's fade-in eats about 0.87 s before readcheck counts the text as fully
+    # visible (transition_s 0.7 in and a little out), so a +.5 pad plus transition_s/2 left every
+    # hold-driven shot 0.02 s short and readcheck failed it. This leaves ~0.25 s of real margin.
+    return max(cost(s) for s in ts) + .75 + stagger
 HOLD = ST['motion'].get('readable_hold', False)
 t, scenes, cues = 0.0, [], []
 for i, (sc, ln) in enumerate(zip(SC['scenes'], LN)):
